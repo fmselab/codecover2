@@ -1,0 +1,258 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>getAppFile - livenotificationrun - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        livenotificationrun
+    </div>
+    <div class="sessionDate">
+        measured on November 5, 2007 4:04:16 PM CET
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../../SimpleJavaAppReport.html">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../../index.html">
+        org</a>
+    .
+    <a href="../../../../index.html">
+        codecover</a>
+    .
+    <a href="../../../index.html">
+        simplejavaapp</a>
+    .
+    <a href="../../index.html">
+        model</a>
+    .
+    <a href="../index.html">
+        AppModel</a>
+    .
+    getAppFile
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Strict Condition Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    private AppFile getAppFile(String fileId)
+            </td>  
+                                    <td class="methodInfo">
+                        1&nbsp;/&nbsp;1
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;4
+                </td>
+                <td class="methodInfo">
+                        50&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:50%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        0&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">AppModel.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L272">
+             <td class="code lineNumber">
+                  <a href="#L272">272</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; private AppFile getAppFile(String fileId) {
+              </td>
+          </tr>
+                      <tr class="code" id="L273">
+             <td class="code lineNumber">
+                  <a href="#L273">273</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span> (<span class="covered notCovered Strict_Condition_Coverage">fileId == null</span>) {
+              </td>
+          </tr>
+                      <tr class="code" id="L274">
+             <td class="code lineNumber">
+                  <a href="#L274">274</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new NullPointerException(&quot;fileId == null&quot;);
+              </td>
+          </tr>
+                      <tr class="code" id="L275">
+             <td class="code lineNumber">
+                  <a href="#L275">275</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L276">
+             <td class="code lineNumber">
+                  <a href="#L276">276</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L277">
+             <td class="code lineNumber">
+                  <a href="#L277">277</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">AppFile appFile = this.appFiles.get(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L278">
+             <td class="code lineNumber">
+                  <a href="#L278">278</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L279">
+             <td class="code lineNumber">
+                  <a href="#L279">279</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: then">if</span> (<span class="covered notCovered Strict_Condition_Coverage">appFile == null</span>) {
+              </td>
+          </tr>
+                      <tr class="code" id="L280">
+             <td class="code lineNumber">
+                  <a href="#L280">280</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; throw new IllegalArgumentException(
+              </td>
+          </tr>
+                      <tr class="code" id="L281">
+             <td class="code lineNumber">
+                  <a href="#L281">281</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;No file with the given id in the model!&quot;);
+              </td>
+          </tr>
+                      <tr class="code" id="L282">
+             <td class="code lineNumber">
+                  <a href="#L282">282</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L283">
+             <td class="code lineNumber">
+                  <a href="#L283">283</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return appFile;
+              </td>
+          </tr>
+                      <tr class="code" id="L284">
+             <td class="code lineNumber">
+                  <a href="#L284">284</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on November 17, 2007 7:07:00 PM CET with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

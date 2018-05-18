@@ -1,0 +1,85 @@
+<!-- $Id: build.xml 2169 2007-10-27 13:54:09Z kiesssn $ -->
+<project default="jar">
+  <property name="codecover-core-jar" value="/usr/local/share/java/codecover/codecover-core.jar" />
+
+  <taskdef name="codecover"
+           classname="org.codecover.ant.CodecoverTask" />
+  
+  <target name="clean">
+    <delete file="instrumented.xml" />
+    <delete file="instrumented-analyzed.xml" />
+    <delete file="test.clf" />
+    <delete dir="bin" />
+    <delete dir="code-example-bin" />
+    <delete file="test-report.html" />
+    <delete dir="test-report.html-files" />
+    <delete file="example.metric-4.2.jar" />
+  </target>
+
+  <target name="jar" depends="clean">
+    <mkdir dir="bin" />
+    
+    <javac classpath="${codecover-core-jar}"
+           srcdir="src"
+           destdir="bin"
+           encoding="utf-8"
+           target="1.5"
+           debug="true"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:all" />
+    </javac>
+    
+
+    <copy file="codecover-plugin.xml" todir="bin" />
+    
+    <jar destfile="example.metric-4.2.jar" basedir="bin" />
+
+    <codecover>
+      <instrument containerId="c" language="java" destination="code-example-bin"
+                  charset="utf-8" copyUninstrumented="yes">
+        <source dir="code-example">
+          <include name="**/*.java" />
+        </source>
+        <criteria>
+          <criterion name="st" />
+          <criterion name="br" />
+        </criteria>
+      </instrument>
+      <save containerId="c" filename="instrumented.xml" />
+    </codecover>
+    
+    <javac srcdir="code-example-bin"
+           destdir="code-example-bin"
+           encoding="utf-8"
+           target="1.5"
+           debug="true"
+           includeAntRuntime="false">
+      <!-- <compilerarg value="-Xlint:all" /> -->
+    </javac>
+
+    <java classpath="code-example-bin"
+          fork="true"
+          failonerror="true"
+          classname="Test">
+      <jvmarg value="-Dorg.codecover.coverage-log-file=test.clf" />
+    </java>
+    
+    <codecover>
+      <load containerId="c" filename="instrumented.xml" />
+      <analyze containerId="c" coverageLog="test.clf" name="Test"
+               comment="123 Test 321" charset="utf-8" />
+      <save containerId="c" filename="instrumented-analyzed.xml" />
+      
+      <addPluginDir dir="." />
+
+      <report containerId="c" destination="test-report.html"
+              template="HTML_Report_hierarchic.xml">
+        <testCases>
+          <testSession pattern=".*">
+            <testCase pattern=".*" />
+          </testSession>
+        </testCases>
+      </report>
+    </codecover>
+  </target>
+</project>

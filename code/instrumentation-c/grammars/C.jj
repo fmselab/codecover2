@@ -1,0 +1,921 @@
+/*
+
+  C grammar defintion for use with JavaCC
+  Contributed by Doug South (dsouth@squirrel.com.au) 21/3/97
+
+  This parser assumes that the C source file has been preprocessed : all
+  #includes have been included and all macros have been expanded. I accomplish
+  this with "gcc -P -E <source file> > <output file>".
+
+  There is a problem with compiler specific types, such as __signed, __const,
+  __inline__, etc. These types can be added as typedef types before the parser
+  is run on a file. See main() for an example. I have also found a strange little
+  compiler specific "type" if you can call it that. It is __attribute__, but it
+  does not seem to be used as a type. I found that just deleting the __attribute__
+  and the following "offensive" code works.
+
+  I have not in anyway extensively tested this grammar, in fact it is barely tested,
+  but I imagine it is better to have a starting point for a C grammar other than from
+  scratch. It has not been optimized in anyway, my main aim was to get a parser that
+  works. Lookahead may not be optimum at choice points and may even be insufficient at
+  times. I choose to err on the side of not optimum if I made a choice at all.
+
+  If you use this grammar, I would appreciate hearing from you. I will try to maintain
+  this grammar to the best of my ability, but at this point in time, this is only a side
+  hobby (unless someone wants to pay me for doing JavaCC work!). In that regards, I am
+  interested in hearing bugs and comments.
+
+=============================================
+3/2/06: Modified by Tom Copeland
+- STRING_LITERAL now handles embedded escaped newlines, thanks to J.Chris Findlay for the patch
+- Works with JavaCC 4.0
+- Preprocessor directives are now simply SKIP'd, so no need to run C files through GCC first
+
+  */
+options {
+    CACHE_TOKENS=true;
+    STATIC=false;
+    USER_TOKEN_MANAGER=true;
+    ERROR_REPORTING=false;
+    TOKEN_EXTENDS="org.codecover.instrumentation.c.adapter.CCToken";
+}
+
+PARSER_BEGIN(CParser)
+package org.codecover.instrumentation.c.parser;
+
+import java.util.*;
+
+public class CParser
+{
+    // Stack of scopes, defined to be true if an identifier is a typename
+    private SCOPESTACK_TYPE types = new SCOPESTACK_TYPE();
+
+    // Add builtin scope
+    {
+        startScope();
+    }
+
+    // Used to filter for stuff like:
+    // typedef int type;
+    // {
+    // type  // type still refers to ::type
+    // type; // variable declared, this shadows ::type
+    // }
+    String lastType;
+
+    private TYPEDEFPARSINGSTACK_TYPE typedefParsingStack = new TYPEDEFPARSINGSTACK_TYPE();
+
+    private boolean isType(String type)
+    {
+       // Search the scopes in reverse order
+       for(int i = types.size() - 1; i >= 0; i--) {
+           Boolean ret = types.get(i).get(type);
+           if(ret != null)
+               return ret;
+       }
+
+       return false;
+    }
+
+    public void addDecl(String name, boolean isType)
+    {
+       types.get(types.size() - 1).put(name, isType);
+    }
+
+    public void startScope() {
+       types.add(new SCOPEENTRY_TYPE());
+    }
+
+    public void endScope() {
+       types.remove(types.size() - 1);
+    }
+}
+
+PARSER_END(CParser)
+
+TOKEN: {
+    <NUMBER: (<INTEGER_LITERAL> | <FLOATING_POINT_LITERAL>)>
+}
+
+TOKEN : {
+ <INTEGER_LITERAL: <DECIMAL_LITERAL> (["l","L"])? | <HEX_LITERAL> (["l","L"])? | <OCTAL_LITERAL> (["l","L"])?>
+|  <#DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])*>
+|  <#HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+>
+|  <#OCTAL_LITERAL: "0" (["0"-"7"])*>
+|  <FLOATING_POINT_LITERAL: (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)? (["f","F","d","D"])? | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])? | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])? | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]>
+|  <#EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+>
+|  <CHARACTER_LITERAL: "\'" (~["\'","\\","\n","\r"] | "\\" (["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])? | ["0"-"3"] ["0"-"7"] ["0"-"7"])) "\'">
+|  <STRING_LITERAL: "\"" ( ~["\"","\\","\n","\r"] | "\\" ( ["n","t","b","r","f","\\","\'","\""] | ["0"-"7"] (["0"-"7"])?  | ["0"-"3"] ["0"-"7"] ["0"-"7"] | ( ["\n","\r"] | "\r\n")))* "\"">
+}
+
+
+TOKEN : {
+    <ALIGNOF: "alignof"> |
+    <AUTO: "auto"> |
+    <BREAK: "break"> |
+    <CASE: "case"> |
+    <CHAR: "char"> |
+    <CONST: "const"> |
+    <CONTINUE: "continue"> |
+    <DFAULT: "DFAULT"> |
+    <DO: "do"> |
+    <DOUBLE: "double"> |
+    <ELSE: "else"> |
+    <ENUM: "enum"> |
+    <EXTERN: "extern"> |
+    <FLOAT: "float"> |
+    <FOR: "for"> |
+    <GOTO: "goto"> |
+    <IF: "if"> |
+    <INLINE: "inline"> |
+    <INT: "int"> |
+    <LONG: "long"> |
+    <REGISTER: "register"> |
+    <RESTRICT: "restrict"> |
+    <RETURN: "return"> |
+    <SHORT: "short"> |
+    <SIGNED: "signed"> |
+    <SIZEOF: "sizeof"> |
+    <STATIC: "static"> |
+    <STRUCT: "struct"> |
+    <SWITCH: "switch"> |
+    <TYPEDEF: "typedef"> |
+    <UNION: "union"> |
+    <UNSIGNED: "unsigned"> |
+    <VOID: "void"> |
+    <VOLATILE: "volatile"> |
+    <WHILE: "while"> |
+    <ALIGNAS: "_Alignas"> |
+    <ATOMIC: "_Atomic"> |
+    <BOOL: "_Bool"> |
+    <COMPLEX: "_Complex"> |
+    <GENERIC: "_Generic"> |
+    <IMAGINARY: "_Imaginary"> |
+    <NORETURN: "_Noreturn"> |
+    <STATICASSERT: "_Static_assert"> |
+    <THREADLOCAL: "_Thread_local"> |
+    <ATTRIBUTE: "__attribute__"> |
+    <EXTENSION: "__extension__"> |
+    <NONNULL: "__nonnull"> |
+    <ASM: "__asm__">
+}
+
+TOKEN : {
+ <IDENTIFIER: <LETTER> (<LETTER> | <DIGIT>)*>
+|  <#LETTER: ["$","A"-"Z","_","a"-"z"]>
+|  <#DIGIT: ["0"-"9"]>
+}
+
+TOKEN : {
+    <INC: "++"> |
+    <DEC: "--"> |
+    <LAND: "&&"> |
+    <LOR: "||"> |
+    <RBL: "("> |
+    <RBR: ")"> |
+    <CBL: "{"> |
+    <CBR: "}"> |
+    <SBL: "["> |
+    <SBR: "]"> |
+    <STAR: "*"> |
+    <SLASH: "/"> |
+    <MOD: "%"> |
+    <PLUS: "+"> |
+    <MINUS: "-"> |
+    <EXCL: "!"> |
+    <AMP: "&"> |
+    <QEM: "?"> |
+    <TILDE: "~"> |
+    <CARE: "^"> |
+    <PIPE: "|"> |
+    <COMMA: ","> |
+    <SEMICOLON: ";"> |
+    <COLON: ":"> |
+    <ASSIGNMENT: "="> |
+    <DOT: "."> |
+    <LESS: "<"> |
+    <GREATER: ">">
+}
+
+//////////////////
+// A.1.5 Constants
+//////////////////
+
+// 6.4.4
+void Constant() : {}
+{
+ <NUMBER> | <CHARACTER_LITERAL> // | EnumerationConstant()
+}
+
+// 6.4.4.3
+void EnumerationConstant() : {}
+{
+    <IDENTIFIER>
+}
+
+// 6.4.5
+void StringLiteral() : {}
+{
+    (<STRING_LITERAL>)+
+}
+
+////////////////////
+// A.2.1 Expressions
+////////////////////
+
+// 6.5.1
+void PrimaryExpression() : {}
+{
+    <IDENTIFIER> | // That's OK
+	Constant() |
+	StringLiteral() |
+	"(" Expression() ")" |
+	GenericSelection()
+}
+
+// 6.5.1.1
+void GenericSelection() : {}
+{
+    <GENERIC> "(" AssignmentExpression() "," GenericAssocList() ")"
+}
+
+// 6.5.1.1
+void GenericAssocList() : {}
+{
+    GenericAssociation() ("," GenericAssociation())*
+}
+
+// 6.5.1.1
+void GenericAssociation() : {}
+{
+    (<DFAULT> | TypeName()) ":" AssignmentExpression()
+}
+
+// 6.5.2
+void PostfixExpression() : {}
+{
+	LOOKAHEAD(2) "(" TypeName() ")" "{" InitializerList() [","] "}" |
+	PrimaryExpression()
+	( "[" Expression() "]" |
+      "(" [ LOOKAHEAD(ArgumentExpressionList() ) ArgumentExpressionList() ] ")" |
+      "." <IDENTIFIER> |
+      <ARROW: "->"> <IDENTIFIER> |
+      "++" |
+      "--" )*
+}
+
+// 6.5.2
+void ArgumentExpressionList() : {}
+{
+	AssignmentExpression() ( "," AssignmentExpression() )*
+}
+
+// 6.5.3
+void UnaryExpression() : {}
+{
+	LOOKAHEAD(3) PostfixExpression() |
+	"++" UnaryExpression() |
+	"--" UnaryExpression() |
+	UnaryOperator() CastExpression() |
+    <SIZEOF> ( LOOKAHEAD(3) "(" TypeName() ")" | UnaryExpression() ) |
+    <ALIGNOF> "(" TypeName() ")"
+}
+
+// 6.5.3
+void UnaryOperator() : {}
+{
+	( "&" | "*" | "+" | "-" | "~" | "!" )
+}
+
+// 6.5.4
+void CastExpression() : {}
+{
+	( LOOKAHEAD("(" TypeName() ")" CastExpression() ) "(" TypeName() ")" CastExpression() |
+	  UnaryExpression() )
+}
+
+// 6.5.5
+void MultiplicativeExpression() : {}
+{
+	CastExpression() [ ( "*" | "/" | "%" ) MultiplicativeExpression() ]
+}
+
+// 6.5.6
+void AdditiveExpression() : {}
+{
+	MultiplicativeExpression() [ ( "+" | "-" ) AdditiveExpression() ]
+}
+
+// 6.5.7
+void ShiftExpression() : {}
+{
+	AdditiveExpression() [ ( <LSH: "<<"> | <RSH: ">>"> ) ShiftExpression() ]
+}
+
+// 6.5.8
+void RelationalExpression() : {}
+{
+	ShiftExpression() [ ( "<" | ">" | <LE: "<="> | <GE: ">="> ) RelationalExpression() ]
+}
+
+// 6.5.9
+void EqualityExpression() : {}
+{
+	RelationalExpression() [ ( <EQ: "=="> | <NE: "!="> ) EqualityExpression() ]
+}
+
+// 6.5.10
+void ANDExpression() : {}
+{
+    EqualityExpression() [ "&" ANDExpression() ]
+}
+
+// 6.5.11
+void ExclusiveORExpression() : {}
+{
+	ANDExpression() [ "^" ExclusiveORExpression() ]
+}
+
+// 6.5.12
+void InclusiveORExpression() : {}
+{
+	ExclusiveORExpression() [ "|" InclusiveORExpression() ]
+}
+
+// 6.5.13
+void LogicalANDExpression() : {}
+{
+	InclusiveORExpression() [ "&&" LogicalANDExpression() ]
+}
+
+// 6.5.14
+void LogicalORExpression() : {}
+{
+	LogicalANDExpression() [ "||" LogicalORExpression() ]
+}
+
+// 6.5.15
+void ConditionalExpression() : {}
+{
+	LogicalORExpression() [ ConditionalExpressionRightSide() ]
+}
+
+// 6.5.15
+void ConditionalExpressionRightSide() : {}
+{
+    "?" Expression() ":" ConditionalExpression()
+}
+
+// 6.5.16
+void AssignmentExpression() : {}
+{
+	  LOOKAHEAD(UnaryExpression() AssignmentOperator()) UnaryExpression() AssignmentOperator() AssignmentExpression() |
+	  ConditionalExpression()
+}
+
+// 6.5.17
+void AssignmentOperator() : {}
+{
+    "=" | <MULT_EQ: "*="> | <DIV_EQ: "/="> | <MOD_EQ: "%="> | <PLUS_EQ: "+="> | <SUB_EQ: "-="> | <LSH_EQ: "<<="> | <RSH_EQ: ">>="> | <AND_EQ: "&="> | <XOR_EQ: "^="> | <OR_EQ: "|=">
+}
+
+// 6.5.17
+void Expression() : {}
+{
+	AssignmentExpression() ( "," AssignmentExpression() )*
+}
+
+// 6.6
+void ConstantExpression() : {}
+{
+	ConditionalExpression()
+}
+
+/////////////////////
+// A.2.2 Declarations
+/////////////////////
+
+// 6.7
+void Declaration() : {}
+{
+    ( DeclarationSpecifiers() {lastType=null;} [ InitDeclaratorList() ] [AttributeSpecifierList()]
+        {
+            // Finished with a typedefDeclaration??
+            if(!(typedefParsingStack.empty()) && (typedefParsingStack.peek())){
+                typedefParsingStack.pop();
+            }
+        }
+        ";" |
+      Static_AssertDeclaration() )
+}
+
+// 6.7
+void DeclarationSpecifiers() : {}
+{
+    StorageClassSpecifier() [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ] |
+    LOOKAHEAD(2)
+    TypeSpecifier()  [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ] |
+    TypeQualifier() [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ] |
+    FunctionSpecifier() [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ] |
+    AlignmentSpecifier() [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ]
+    AttributeSpecifier() [ LOOKAHEAD(DeclarationSpecifiers())
+        DeclarationSpecifiers() ]
+}
+
+// 6.7
+void InitDeclaratorList() : {}
+{
+	InitDeclarator() ("," InitDeclarator())*
+}
+
+// 6.7
+void InitDeclarator() : {}
+{
+	Declarator() [ "=" Initializer() ]
+}
+
+// 6.7.1
+void StorageClassSpecifier() : {}
+{
+	( <EXTERN> | <STATIC> | <THREADLOCAL> | <AUTO> | <REGISTER> | <TYPEDEF>
+	{
+		typedefParsingStack.push(true);
+	} )
+}
+
+// 6.7.2
+void TypeSpecifier() : {}
+{
+    ( <VOID> | <CHAR> | <SHORT> | <INT> | <LONG> | <FLOAT> | <DOUBLE> |
+	  <SIGNED> | <UNSIGNED> | <BOOL> | <COMPLEX> | <EXTENSION> |
+	  AtomicSpecifier() | StructOrUnionSpecifier() | EnumSpecifier() |
+	  LOOKAHEAD( { (lastType == null || !lastType.equals(getToken(1).image)) && isType(getToken(1).image)} )
+	    TypedefName() {lastType = getToken(0).image; } )
+}
+
+// 6.7.2.1
+void StructOrUnionSpecifier() : {}
+{
+	{
+		typedefParsingStack.push(false);
+	}
+
+	StructOrUnion() ( LOOKAHEAD(2) [ <IDENTIFIER> ] "{" StructDeclarationList() "}" | <IDENTIFIER> )
+
+	{
+		typedefParsingStack.pop();
+	}
+}
+
+// 6.7.2.1
+void StructOrUnion() : {}
+{
+	( <STRUCT> | <UNION> )
+}
+
+// 6.7.2.1
+void StructDeclarationList() : {}
+{
+	(StructDeclaration())+
+}
+
+// 6.7.2.1
+void StructDeclaration() : {}
+{
+    ( SpecifierQualifierList() {lastType=null;} [ StructDeclaratorList() ] ";" |
+      Static_AssertDeclaration() )
+}
+
+// 6.7.2.1
+void SpecifierQualifierList() : {}
+{
+	  LOOKAHEAD(2)
+	  TypeSpecifier() [ LOOKAHEAD(SpecifierQualifierList())
+	        SpecifierQualifierList() ] |
+	  TypeQualifier() [ LOOKAHEAD(SpecifierQualifierList())
+	        SpecifierQualifierList() ]
+}
+
+// 6.7.2.1
+void StructDeclaratorList() : {}
+{
+	StructDeclarator() ( "," StructDeclarator() )*
+}
+
+// 6.7.2.1
+void StructDeclarator() : {}
+{
+    Declarator() [":" ConstantExpression() ] |
+    ":" ConstantExpression()
+}
+
+// 6.7.2.2
+void EnumSpecifier() : {}
+{
+	<ENUM> ( LOOKAHEAD(3) [ <IDENTIFIER> ] "{" EnumeratorList() [","] "}" | <IDENTIFIER> )
+}
+
+// 6.7.2.2
+void EnumeratorList() : {}
+{
+	Enumerator() (LOOKAHEAD(2) "," Enumerator())*
+}
+
+// 6.7.2.2
+void Enumerator() : {}
+{
+    EnumerationConstant() [ "=" ConstantExpression() ]
+}
+
+// 6.7.2.4
+void AtomicSpecifier() : {}
+{
+	<ATOMIC> "(" LOOKAHEAD( { isType(getToken(1).image) } ) TypedefName() ")"
+}
+
+// 6.7.3
+void TypeQualifier() : {}
+{
+	( <CONST> | <RESTRICT> | <VOLATILE> | <ATOMIC> )
+}
+
+// 6.7.4
+void FunctionSpecifier() : {}
+{
+    ( <INLINE> | <NORETURN> )
+}
+
+// 6.7.5
+void AlignmentSpecifier() : {}
+{
+    <ALIGNAS> "(" ( LOOKAHEAD( { isType(getToken(1).image) } ) TypedefName() |
+      ConstantExpression() )
+    ")"
+}
+
+// 6.7.6
+void Declarator() : {}
+{
+	[ Pointer() ] DirectDeclarator()
+}
+
+// 6.7.6
+void DirectDeclarator() : { Token t;}
+{
+	( t = <IDENTIFIER>
+	{
+	    addDecl(t.image, !(typedefParsingStack.empty()) && (typedefParsingStack.peek()));
+	}
+	| "(" Declarator() ")" )
+  
+    { typedefParsingStack.push( false ); }
+
+	(  "[" ( <STATIC> [ TypeQualifierList() ] AssignmentExpression() |
+	         LOOKAHEAD(TypeQualifierList() <STATIC>) TypeQualifierList() <STATIC> AssignmentExpression() |
+	         LOOKAHEAD(2) [ TypeQualifierList() ] "*" "]" |
+	         [ ConstantExpression() ]
+	         ) "]" |
+
+	   LOOKAHEAD(3) "(" ParameterTypeList() ")" |
+	   "(" [ IdentifierList() ] ")" )*
+
+    { typedefParsingStack.pop(); }
+}
+
+// 6.7.6
+void Pointer() : {}
+{
+	"*" [ TypeQualifierList() ] [ Pointer() ]
+}
+
+// 6.7.6
+void TypeQualifierList() : {}
+{
+	(TypeQualifier())+
+}
+
+// 6.7.6
+void ParameterTypeList() : {}
+{
+	ParameterList() ["," <ELLIPSIS: "..."> ]
+}
+
+// 6.7.6
+void ParameterList() : {}
+{
+	ParameterDeclaration() (LOOKAHEAD(2) "," ParameterDeclaration())*
+}
+
+// 6.7.6
+void ParameterDeclaration() : {}
+{
+	DeclarationSpecifiers() {lastType=null;} ( LOOKAHEAD(Declarator()) Declarator() | [ AbstractDeclarator() ] )
+}
+
+// 6.7.6
+void IdentifierList() : {}
+{
+	<IDENTIFIER> ("," <IDENTIFIER>)*
+}
+
+// 6.7.7
+void TypeName() : {}
+{
+	SpecifierQualifierList() {lastType=null;} [ AbstractDeclarator() ]
+}
+
+// 6.7.7
+void AbstractDeclarator() : {}
+{
+	( LOOKAHEAD(3) Pointer() |
+	  [Pointer()] DirectAbstractDeclarator() )
+}
+
+// 6.7.7
+void DirectAbstractDeclarator() : {}
+{
+	( LOOKAHEAD(2) "(" AbstractDeclarator() ")" |
+	               "(" [ParameterTypeList()] ")" |
+	               "[" ( <STATIC> [ TypeQualifierList() ] AssignmentExpression() |
+                               LOOKAHEAD(TypeQualifierList() <STATIC>) TypeQualifierList() <STATIC> AssignmentExpression() |
+                               LOOKAHEAD(2) "*" |
+                               [ TypeQualifierList() ] AssignmentExpression()
+                             ) "]"
+	)
+
+    ( "(" [ParameterTypeList()] ")" |
+      "[" ( <STATIC> [ TypeQualifierList() ] AssignmentExpression() |
+            LOOKAHEAD(TypeQualifierList() <STATIC>) TypeQualifierList() <STATIC> AssignmentExpression() |
+            LOOKAHEAD(2) "*" |
+            [ TypeQualifierList() ] AssignmentExpression()
+          ) "]"
+    )*
+}
+
+// 6.7.8
+void TypedefName() : {}
+{
+	<IDENTIFIER>
+}
+
+// 6.7.9
+void Initializer() : {}
+{
+	( AssignmentExpression() |
+	  "{" InitializerList() [","] "}" )
+}
+
+// 6.7.9
+void InitializerList() : {}
+{
+	[Designation()] Initializer() (LOOKAHEAD(2) "," Initializer())*
+}
+
+// 6.7.9
+void Designation() : {}
+{
+    DesignatorList() "="
+}
+
+// 6.7.9
+void DesignatorList() : {}
+{
+    (Designator())+
+}
+
+// 6.7.9
+void Designator() : {}
+{
+    ( "[" ConstantExpression() "]" |
+      "." <IDENTIFIER> )
+}
+
+// 6.7.10
+void Static_AssertDeclaration() : {}
+{
+    <STATICASSERT> "(" ConstantExpression() "," StringLiteral() ")"  ";"
+}
+
+///////////////////
+// A.2.3 Statements
+///////////////////
+
+// 6.8
+void Statement() : {}
+{
+	( LOOKAHEAD(2) LabeledStatement() |
+	  CompoundStatement() |
+	  ExpressionStatement() |
+	  IfStatement() |
+	  SwitchStatement() |
+	  WhileStatement() |
+	  DoStatement() |
+	  ForStatement() |
+	  JumpStatement() )
+}
+
+// 6.8.1
+void LabeledStatement() : {}
+{
+	( <IDENTIFIER> ":" [AttributeSpecifierList()] Statement() |
+	  CaseStatement() |
+	  DefaultStatement() )
+}
+
+// 6.8.1 LabeledStatement
+void CaseStatement() : {}
+{
+    <CASE> ConstantExpression() ":" Statement()
+}
+
+// 6.8.1 LabeledStatement
+void DefaultStatement() : {}
+{
+    <DFAULT> ":" Statement()
+}
+
+// 6.8.2
+void CompoundStatement() : {}
+{
+    "{" {startScope();} [BlockItemList()] {endScope();} "}"
+}
+
+// 6.8.2
+void BlockItemList() : {}
+{
+    (BlockItem())+
+}
+
+// 6.8.2
+void BlockItem() : {}
+{
+    Declaration() |
+    Statement()
+}
+
+// 6.8.3
+void ExpressionStatement() : {}
+{
+	[ Expression() ] ";"
+}
+
+// 6.8.4 SelectionStatement
+void IfStatement() : {}
+{
+    <IF> "(" Expression() ")" Statement() [ LOOKAHEAD(2) <ELSE> Statement() ]
+}
+
+// 6.8.4 SelectionStatement
+void SwitchStatement() : {}
+{
+    <SWITCH> "(" Expression() ")" Statement()
+}
+
+// 6.8.5 IterationStatement
+void WhileStatement() : {}
+{
+    <WHILE> "(" Expression() ")" Statement()
+}
+
+// 6.8.5 IterationStatement
+void DoStatement() : {}
+{
+    <DO> Statement() <WHILE> "(" Expression() ")" ";"
+}
+
+// 6.8.5 IterationStatement
+void ForStatement() : {}
+{
+    <FOR> "("
+    ( LOOKAHEAD(Declaration()) Declaration() [ Expression() ] |
+      [ Expression() ] ";" [ Expression() ] )
+
+    ";" [ Expression() ] ")" Statement()
+}
+
+// 6.8.6
+void JumpStatement() : {}
+{
+	( <GOTO> <IDENTIFIER> ";" |
+	  <CONTINUE> ";" |
+	  <BREAK> ";" |
+	  ReturnStatement() )
+}
+
+// 6.8.6 ReturnStatement
+void ReturnStatement() : {}
+{
+    <RETURN> [ Expression() ] ";"
+}
+
+/////////////////////////////
+// A.2.4 External definitions
+/////////////////////////////
+
+// 6.9
+void TranslationUnit() : {}
+{
+    { startScope(); }
+    (ExternalDeclaration())+
+    { endScope(); }
+}
+
+// 6.9
+void ExternalDeclaration() : {}
+{
+    ( LOOKAHEAD( Declaration() ) Declaration() | FunctionDefinition() )
+}
+
+// 6.9.1
+void FunctionDefinition() : {}
+{
+    [LOOKAHEAD(DeclarationSpecifiers()) DeclarationSpecifiers() {lastType=null;}] Declarator() [ DeclarationList() ]
+    CompoundStatement()
+}
+
+// 6.9.1
+void DeclarationList() : {}
+{
+    ( LOOKAHEAD(Declaration()) Declaration() )+
+}
+
+// GCC specific, see: http://gcc.gnu.org/onlinedocs/gcc/Attribute-Syntax.html
+void AttributeSpecifierList() : {}
+{
+    (AttributeSpecifier())+
+}
+
+void AttributeSpecifier() : {}
+{
+    (<ATTRIBUTE> | <NONNULL>) "(" "(" AttributeList() ")" ")" |
+    Asm()
+}
+
+void Asm() : {}
+{
+    <ASM> "(" StringLiteral() ")"
+}
+
+void AttributeList() : {}
+{
+    [Attribute()] ("," [Attribute()])*
+}
+
+void Attribute() : {}
+{
+    Word() ["(" Expression() ")"]
+}
+
+void Word() : {}
+{
+    <IDENTIFIER> |
+    <ALIGNOF> |
+    <AUTO> |
+    <BREAK> |
+    <CASE> |
+    <CHAR> |
+    <CONST> |
+    <CONTINUE> |
+    <DFAULT> |
+    <DO> |
+    <DOUBLE> |
+    <ELSE> |
+    <ENUM> |
+    <EXTERN> |
+    <FLOAT> |
+    <FOR> |
+    <GOTO> |
+    <IF> |
+    <INLINE> |
+    <INT> |
+    <LONG> |
+    <REGISTER> |
+    <RESTRICT> |
+    <RETURN> |
+    <SHORT> |
+    <SIGNED> |
+    <SIZEOF> |
+    <STATIC> |
+    <STRUCT> |
+    <SWITCH> |
+    <TYPEDEF> |
+    <UNION> |
+    <UNSIGNED> |
+    <VOID> |
+    <VOLATILE> |
+    <WHILE> |
+    <ALIGNAS> |
+    <ATOMIC> |
+    <BOOL> |
+    <COMPLEX> |
+    <GENERIC> |
+    <IMAGINARY> |
+    <NORETURN> |
+    <STATICASSERT> |
+    <THREADLOCAL>
+}

@@ -1,0 +1,71 @@
+\svnid{$Id: Introduction.tex 1 2007-12-12 17:37:26Z t-scheller $}
+\section{Introduction} \label{Introduction}
+
+\subsection{Project overview} \label{in:Overview}
+\gbt stands for \textbf{g}lass \textbf{b}ox \textbf{t}esting \textbf{t}ool. It measures the \gl[code coverage]{code coverage} of a running program and will be as independent as possible of the programming language of the covered program.
+\par
+Characteristics of \gbt:
+\begin{itemize}
+  \item \gbt runs at least on Linux and Windows,
+  \item \gbt can measure code coverage for programs written in Java and COBOL.
+  \item \gbt is extensible to measure code coverage for further programming languages as well.
+  \item \gbt measures multiple code coverage criteria and is extensible to further ones.
+  \item \gbt provides functionality to create reports of the measured code coverage in \gl[HTML]{HTML}-files.
+  \item \gbt is an Eclipse\linkwithfootnote{http://www.eclipse.org/}{} plug-in with a graphical user interface, but also provides a command line interface for use without Eclipse.
+\end{itemize}
+\par
+To understand the functional requirements specified in this document, a visual overview of the work flow is shown in figure~\ref{in_fg:Workflow of the software}.
+\begin{figure}[hbtp]
+ \centering
+ \includegraphics[width=0.7\textwidth]{images/Workflow/Workflow}
+ \caption{Work flow of the software}
+ \label{in_fg:Workflow of the software}
+\end{figure}
+\par
+Several steps and intermediate results exist for the whole of the coverage measurement process. The ellipses stand for processing, the rectangles stand for intermediate results or final results.
+\par
+The process starts with the \gl[instrumentation]{instrumentation} of \gl[code file]{code files}. A \gl{MAST} is produced in addition to the instrumented code files. The \gl{MAST} is stored with the \gl[code file]{code files} in a \gl{session container}. After the compilation and execution of all the instrumented code files of the \gl[SUT]{SUT}, a \gl[coverage log]{coverage log} with the raw coverage results is produced.
+\par
+During the analysis phase, the coverage log is processed to obtain a \gl[test session]{test session} with \gl[test case]{test cases}. They contain all the processed coverage results. These information are added to the \gl{session container}.
+\par
+Using the information of the \gl{MAST} and the \gl[test session]{test sessions}, \gbt can generate a \gl[HTML]{HTML} report.
+
+\subsection{About this document} \label{in:AboutThisDocument}
+This document specifies all requirements the software has to fulfill and all interfaces to users or other programs. The design of the software will be written based upon this document. This document is the common ground between the customer and the \gl[developer]{developers}. Therefore, it's important that both, customers and developers, pay attention to the quality of this document and keep it current.
+
+\subsection{Addressed audience} \label{in:Addressed audience}
+This document is addressed to
+\begin{itemize}
+  \item the customer who ordered the software
+  \item the project manager controlling the work
+  \item the designers writing the software design
+  \item the quality assurance division creating \gl[test case]{test cases} for the software
+  \item the developers implementing the design
+  \item future developers maintaining and extending the software
+  \item interested users of the software
+  \item students of upcoming student projects
+\end{itemize}
+
+\subsection{Conventions for this document} \label{in:Conventions for this document}
+A glossary is shipped together with this \gl[specification]{specification}. It contains basic definitions and allows clear statements in this document because it prevents ambiguity. Therefore words mentioned in the glossary are used often and are not explicitly defined in this specification but in the glossary.
+\par
+The term ``software'' is used for \gbt. Code examples and file names are written in the \code{typewriter style}. Labels and names of graphical user interface components are written in \eclui{small caps}. If necessary, examples are used and placeholders are enclosed by percentage signs: \%placeholder\%. Furthermore, glossary entries are marked with the symbol $\nearrow$, but only at the first occurrence in a section.
+
+\subsection{Authors}
+In the following table the contact persons per section are named.
+{\small
+\begin{longtable}{|p{35mm}|p{35mm}|l|} \hline
+   {\normalsize \textbf{Section}} &
+   {\normalsize \textbf{Author}} &
+   {\normalsize \textbf{E-mail}} \\\hline \hline \endhead
+   Introduction & Michael Starzmann & starzmml@studi.informatik.uni-stuttgart.de \\\hline
+   Functional requirements (\ref{fr:Test sessions and test cases} -- \ref{fr:Configuration}) & Christoph Müller & muellecr@studi.informatik.uni-stuttgart.de \\\hline
+   Functional requirements (\ref{fr:Report} -- \ref{fr:Language support}) & Michael Starzmann & starzmml@studi.informatik.uni-stuttgart.de \\\hline
+   Graphical user interface & Stefan Franke & frankesn@studi.informatik.uni-stuttgart.de \\\hline
+   Non-functional requirements & Johannes Langauf & langaujs@studi.informatik.uni-stuttgart.de \\\hline
+\end{longtable}
+}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "Specification.ltx"
+%%% End: 

@@ -1,0 +1,21 @@
+format 29
+
+classcanvas 128020 class_ref 128276 // EclipseUser
+  xyz 265 132 3005 label_xy 243 172
+usecasecanvas 128148 usecase_ref 129428 // select session
+  xyzwh 170 54 3005 64 32 label_xy 152 86
+usecasecanvas 128276 usecase_ref 129556 // select test cases
+  xyzwh 370 70 3005 64 32 label_xy 342 102
+usecasecanvas 128404 usecase_ref 129684 // show coverage results
+  xyzwh 137 193 3005 64 32 label_xy 89 225
+usecasecanvas 128532 usecase_ref 129812 // show covered code
+  xyzwh 368 196 3005 64 32 label_xy 330 228
+line 128660 ----
+  from ref 128148 z 3004 to ref 128020
+line 128788 ----
+  from ref 128276 z 3004 to ref 128020
+line 128916 ----
+  from ref 128404 z 3004 to ref 128020
+line 129044 ----
+  from ref 128020 z 3004 to ref 128532
+end

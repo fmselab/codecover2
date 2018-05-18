@@ -1,0 +1,9 @@
+START TEST CASE "CodeExampleLoopCoverage"
+finaldesign.CodeExampleLoopCoverage
+L1_2 1
+L2_2 2
+L3_2 1
+L4_0 1
+L4_1 1
+L4_2 17
+END TEST CASE "CodeExampleLoopCoverage"

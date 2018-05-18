@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../instrumentation-cobol"/>
+	<lib name="junit.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../instrumentation-cobol/lib/junit.jar!/"/>
+	</lib>
+</component>

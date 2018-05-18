@@ -1,0 +1,74 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 129802 // initial
+  xyz 32 2 2000
+activitynodecanvas 128138 activitynode_ref 129930 // activity_final
+  xyz 28 416 2000
+activitynodecanvas 128266 activitynode_ref 130058 // decision
+  xyz 245 200 2000
+activityactioncanvas 129034 activityaction_ref 130314 // activity action User opens the "Session" view of the plugin
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 162 94 2000 192 81
+end
+activityactioncanvas 129162 activityaction_ref 130442 // activity action User selects the session using the combobox
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 252 253 2000 192 73
+end
+activitynodecanvas 131210 activitynode_ref 137994 // decision
+  xyz 29 56 2000
+activityactioncanvas 133258 activityaction_ref 137738 // activity action Display the data of the session in the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 255 344 2000 196 83
+end
+flowcanvas 128650 flow_ref 133898 // No session exists
+  geometry VHr
+  
+  from ref 128266 z 1999 label "No session exists" xyz 78 198 1999 to point 38 216
+  line 132106 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131338 flow_ref 160266 // <flow>
+  
+  from ref 128010 z 1999 to ref 131210
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131466 flow_ref 160394 // Project not opened
+  
+  from ref 131210 z 1999 label "Project not opened" xyz 1 111 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133386 flow_ref 160650 // <flow>
+  
+  from ref 129162 z 1999 to ref 133258
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 160778 // <flow>
+  geometry VHr
+  
+  from ref 133258 z 1999 to point 38 383
+  line 133642 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134026 flow_ref 161930 // Project opened
+  geometry HV
+  
+  from ref 131210 z 1999 label "Project opened" xyz 95 50 1999 to point 255 72
+  line 134154 z 1999 to ref 129034
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134282 flow_ref 162058 // <flow>
+  
+  from ref 129034 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134410 flow_ref 162186 // Session exists
+  geometry HV
+  
+  from ref 128266 z 1999 label "Session exists" xyz 293 196 1999 to point 345 216
+  line 134538 z 1999 to ref 129162
+  show_infonote default drawing_language default write_horizontally default
+end
+end

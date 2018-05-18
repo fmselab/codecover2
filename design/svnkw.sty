@@ -1,0 +1,195 @@
+%%
+%% This is file `svnkw.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% svnkw.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2006 by Martin Scharrer <martin@scharrer-online.de>
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{svnkw}
+    [2006/05/27 v1.0 SVN Keywords]
+
+\newcommand{\svn}[1]{\@svn#1}
+\def\@svn$#1${#1}
+
+\newcommand{\svnkwdef}[2]{%
+\@ifundefined{svnkwdef@#1}
+{\svnkwdef@{#1}{#2}}
+{\csname svnkwdef@#1\endcsname{#2}}
+}
+
+\newcommand{\svnkwdef@}[2]
+{\expandafter\xdef\csname svnkw#1\endcsname{#2}}
+
+\def\svnkwdef@Rev#1{\svnkwdef@{Rev}{#1}}
+\def\svnkwdef@Author#1{\svnkwdef@{Author}{#1}}
+\def\svnkwdef@Date#1{\svnkwdef@{Date}{#1}}
+\let\svnkwdef@Revision=\svnkwdef@Rev
+\let\svnkwdef@LastChangedRevision=\svnkwdef@Rev
+\let\svnkwdef@LastChangedBy=\svnkwdef@Author
+\let\svnkwdef@LastChangedAt=\svnkwdef@Date
+\def\svnkwRevision{\svnkwRev}
+\def\svnkwLastChangedRevision{\svnkwRev}
+\def\svnkwLastChangedBy{\svnkwAuthor}
+\def\svnkwLastChangedAt{\svnkwDate}
+\svnkwdef{Rev}{0} % must always be numerical
+\svnkwdef{Date}{}
+\svnkwdef{Author}{}
+\svnkwdef{Filename}{}
+\svnkwdef{HeadURL}{}
+
+\newcommand{\svnkw}[1]{\csname svnkw#1\endcsname}
+
+\def\svn@scanId#1 #2 #3 #4 #5${%
+\@svn@updateid{#2}{#3 #4}{#5}%
+\svnkwdef{Filename}{#1}%
+\svnkwdef{Date}{#3 #4}%
+\svnkwdef{Revision}{#2}%
+\svnkwdef{Author}{#5}%
+}
+
+\def\svn@readkw$#1${%
+\svn@readkw@sub$#1: $ % call submacro to get case
+\ifnum\svn@case<3
+\def\svn@key{#1}
+\let\svn@value=\svn@empty
+\svn@checkkeyforcolon$#1:$ % needed for case '$kw:$'
+\relax
+\else
+\svn@readkw@def$#1$ % needed to remove leading space
+\fi
+}
+
+\newcount\svn@case
+\let\svn@empty=\empty
+\def\svn@readkw@sub$#1: #2${%
+\def\svn@temp{#2}
+\ifx\svn@temp\empty
+\svn@case=1
+\else
+\svn@checkcolon$#2$
+\ifx\svn@temp\empty
+\svn@case=2
+\else
+\svn@case=3
+\fi\fi
+}
+
+\def\svn@readkw@def$#1: #2 ${%
+\def\svn@key{#1}
+\def\svn@value{#2}
+}
+
+\def\svn@checkcolon$#1: ${%
+\def\svn@temp{#1}
+}
+
+\def\svn@checkkeyforcolon$#1:#2${%
+\def\svn@temp{#2}
+\ifx\svn@temp\empty
+\else
+\def\svn@key{#1}
+\fi
+}
+
+\def\svnrev{0}  % \
+\def\svndate{}  %  > Values for whole project
+\def\svnauthor{}  % /
+\def\svnfilerev{0} % \
+\def\svnfiledate{} %  > Values for current file
+\def\svnfileauthor{} % /
+\def\@svn@rev{0} % \
+\def\@svn@date{} %  > Values for packet internal use
+\def\@svn@author{} % /
+
+\newcommand{\svnid}[1]{%
+\svn@readkw#1 % Read keyword
+\ifx\svn@value\empty % Check if value is empty
+\else
+\expandafter\svn@scanId\svn@value$ % Scan Id
+\fi
+}
+
+\newcommand{\svnidlong}[4]{
+\svnkwdef{HeadURL}{}%
+\svnkwdef{LastChangedDate}{}%
+\svnkwdef{LastChangedRevision}{0}%
+\svnkwdef{LastChangedBy}{}%
+\svnkwsave{#1}\svnkwsave{#2}
+\svnkwsave{#3}\svnkwsave{#4}
+\@svn@updateid{\svnkw{LastChangedRevision}}{\svnkw{LastChangedDate}}%
+{\svnkw{LastChangedBy}}
+}
+
+\newcommand{\svnkwsave}[1]{%
+\def\svn@temp{#1}
+\ifx\svn@temp\empty
+%% skip at empty argument
+\else
+\svn@readkw#1% read keyword
+\svnkwdef{\svn@key}{\svn@value}
+\fi
+}
+
+\def\@svn@updateid#1#2#3{% #1 = rev, #2 date, #3 author (username)
+\edef\svnfilerev{#1}
+\edef\svnfiledate{#2}
+\edef\svnfileauthor{#3}
+\ifx\svnfilerev\empty\else % skip rest if rev is empty
+\ifnum\@svn@rev<\svnfilerev%
+\edef\@svn@rev{#1}
+\edef\@svn@date{#2}
+\edef\@svn@author{#3}
+\else\fi
+\fi
+}
+
+\newcommand{\svnRegisterAuthor}[2]{%
+\expandafter\def\csname svn@author@#1\endcsname{#2}
+}
+
+\newcommand{\svnFullAuthor}{%
+\@ifnextchar{*}
+{\svnFullAuthor@star}
+{\svnFullAuthor@normal}
+}
+\def\svnFullAuthor@star*#1{\svnFullAuthor@{#1}{\ (#1)}}
+\def\svnFullAuthor@normal#1{\svnFullAuthor@{#1}{}}
+\def\svnFullAuthor@#1#2{%
+\csname svn@author@#1\endcsname #2
+}
+
+\AtEndDocument{
+ \ifx\@svn@rev\empty\else
+ \ifnum\@svn@rev=0\else
+ \ifx\@svn@date\empty\else
+ \ifx\@svn@author\empty\else
+ \newwrite\svnwrite
+ \immediate\openout\svnwrite=\jobname.svn
+ \immediate\write\svnwrite{\@percentchar\space SVN cache}
+ \immediate\write\svnwrite{\noexpand\def\noexpand\svnrev{\@svn@rev}}
+ \immediate\write\svnwrite{\noexpand\def\noexpand\svndate{\@svn@date}}
+ \immediate\write\svnwrite{\noexpand\def\noexpand\svnauthor{\@svn@author}}
+ \immediate\closeout\svnwrite
+ \fi\fi\fi\fi
+}
+
+\InputIfFileExists{\jobname.svn}{}{}
+\endinput
+%%
+%% End of file `svnkw.sty'.

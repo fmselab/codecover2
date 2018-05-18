@@ -1,0 +1,163 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 133130 // initial
+  xyz 33 1 2000
+activitynodecanvas 128138 activitynode_ref 133258 // activity_final
+  xyz 28 712 2000
+activitynodecanvas 128266 activitynode_ref 133386 // decision
+  xyz 29 40 2000
+activityactioncanvas 129546 activityaction_ref 133770 // activity action User clicks the "Delete Test Case(s)" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 330 333 2000 191 70
+end
+activityactioncanvas 129802 activityaction_ref 133898 // activity action Open dialog to confirm that the selected test case(s) should be deleted
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 83 331 2000 228 77
+end
+activitynodecanvas 130058 activitynode_ref 133642 // decision
+  xyz 185 424 2000
+activityactioncanvas 130314 activityaction_ref 134026 // activity action Delete test case(s)
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 312 475 2000 100 60
+end
+activitynodecanvas 130698 activitynode_ref 133770 // decision
+  xyz 349 569 2000
+activityactioncanvas 130954 activityaction_ref 134154 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 365 622 2000 122 73
+end
+activityactioncanvas 131594 activityaction_ref 134410 // activity action Refresh the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 88 555 2000 128 66
+end
+activityactioncanvas 133386 activityaction_ref 138122 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 109 74 2000 145 75
+end
+activitynodecanvas 133514 activitynode_ref 140042 // decision
+  xyz 172 165 2000
+activityactioncanvas 134154 activityaction_ref 138250 // activity action Call activity "select test cases"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 227 202 2000 147 71
+end
+activitynodecanvas 135434 activitynode_ref 140170 // decision
+  xyz 288 286 2000
+flowcanvas 128522 flow_ref 142346 // <flow>
+  
+  from ref 128010 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128650 flow_ref 142474 // Project not opened
+  
+  from ref 128266 z 1999 label "Project not opened" xyz 1 115 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129930 flow_ref 143242 // <flow>
+  
+  from ref 129546 z 1999 to ref 129802
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 143498 // User clicks the "Delete" button
+  geometry HV
+  
+  from ref 130058 z 1999 label "User clicks the \"Delete\" button" xyz 233 421 1999 to point 359 440
+  line 135306 z 1999 to ref 130314
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130570 flow_ref 143626 // User clicks the "Cancel" button
+  geometry VHV unfixed
+  
+  from ref 130058 z 1999 label "User clicks the \"Cancel\" button" xyz 65 493 1999 to point 195 517
+  line 138378 z 1999 to point 38 517
+  line 138506 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130826 flow_ref 143754 // <flow>
+  
+  from ref 130314 z 1999 to ref 130698
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131082 flow_ref 143882 // Failure
+  geometry HV
+  
+  from ref 130698 z 1999 label "Failure" xyz 397 564 1999 to point 423 585
+  line 137738 z 1999 to ref 130954
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132106 flow_ref 144394 // Success
+  
+  from ref 130698 z 1999 label "Success" xyz 248 564 1999 to ref 131594
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132234 flow_ref 144522 // <flow>
+  geometry VHr
+  
+  from ref 131594 z 1999 to point 38 585
+  line 135050 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132618 flow_ref 144650 // <flow>
+  geometry VHr
+  
+  from ref 130954 z 1999 to point 38 656
+  line 135178 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133642 flow_ref 167306 // Project opened
+  geometry HV
+  
+  from ref 128266 z 1999 label "Project opened" xyz 55 32 1999 to point 179 56
+  line 134666 z 1999 to ref 133386
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133770 flow_ref 167434 // <flow>
+  
+  from ref 133386 z 1999 to ref 133514
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133898 flow_ref 167562 // No session selected
+  geometry VHr
+  
+  from ref 133514 z 1999 label "No session selected" xyz 48 167 1999 to point 38 181
+  line 134794 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134282 flow_ref 167690 // Session selected
+  geometry HV
+  
+  from ref 133514 z 1999 label "Session selected" xyz 193 159 1999 to point 298 181
+  line 134538 z 1999 to ref 134154
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135562 flow_ref 167818 // <flow>
+  
+  from ref 134154 z 1999 to ref 135434
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135690 flow_ref 167946 // No test case selected
+  geometry VHr
+  
+  from ref 135434 z 1999 label "No test case selected" xyz 73 278 1999 to point 38 302
+  line 135818 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136330 flow_ref 168202 // Test case selected
+  geometry HV
+  
+  from ref 135434 z 1999 label "Test case selected" xyz 333 283 1999 to point 423 302
+  line 136586 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136714 flow_ref 168330 // <flow>
+  
+  from ref 129802 z 1999 to ref 130058
+  show_infonote default drawing_language default write_horizontally default
+end
+end

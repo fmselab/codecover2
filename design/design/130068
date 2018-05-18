@@ -1,0 +1,749 @@
+format 29
+"instrumentation"
+  revision 18
+  modified_by 64 "ahija"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language java show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  java_package "org.gbt2.instrumentation"
+  classview 128532 "instrumentation view"
+    //class diagram settings
+    draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition yes show_members_visibility yes package_name_in_tab yes class_drawing_mode default drawing_language java show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    default_attribute_visibility public default_relation_visibility public default_operation_visibility public
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 129684 "Instrumenter"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 128192 "InstrumenterProvider"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 134080 "getFirstInstrumenterDescriptor"
+	class_operation public return_type class_ref 128064 // InstrumenterDescriptor
+	nparams 1
+	  param inout name "language" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133952 "getInstrumenterDescriptors"
+	class_operation public explicit_return_type "Set<InstrumenterDescriptor>"
+	nparams 1
+	  param inout name "language" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128576 "getFirstInstrumenterDescriptor"
+	class_operation public return_type class_ref 128064 // InstrumenterDescriptor
+	nparams 2
+	  param inout name "language" explicit_type "string"
+	  param inout name "version" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129472 "getInstrumenterDescriptors"
+	class_operation public explicit_return_type "Set<InstrumenterDescriptor>"
+	nparams 2
+	  param inout name "language" explicit_type "string"
+	  param inout name "version" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 133524 "InstrumenterFactory"
+       stereotype "interface"
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 129216 "setInstrumenterDescriptor"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "instrumenterDescriptor" type class_ref 128064 // InstrumenterDescriptor
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129684 "setCharset"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" type class_ref 133780 // Charset
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129856 "setCharset"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "name" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129812 "addCriterion"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "criterion" type class_ref 133908 // Criterion
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134464 "addCriteria"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "criteria" explicit_type "Set<Criterion>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129556 "setProject"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "project" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134208 "setDatabase"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "database" type class_ref 128296 // Database
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 132672 "getInstrumenter"
+	public return_type class_ref 135060 // Instrumenter
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 130068 "reset"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 134548 "DefaultInstrumenterFactory"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 133696 "setInstrumenterDescriptor"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "instrumenterDescriptor" type class_ref 128064 // InstrumenterDescriptor
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133440 "setCharset"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" type class_ref 133780 // Charset
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133312 "setCharset"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "name" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133184 "addCriterion"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "criterion" type class_ref 133908 // Criterion
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134592 "setCriteria"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "criteria" explicit_type "Set<Criterion>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133056 "setProject"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "project" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134336 "setDatabase"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "database" type class_ref 128296 // Database
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 132928 "getInstrumenter"
+	public return_type class_ref 135060 // Instrumenter
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 132800 "reset"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 133140 // <realization>
+	relation 132500 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 133140 // <realization>
+	  b parent class_ref 133524 // InstrumenterFactory
+      end
+
+      classrelation 133268 // criteria (<unidirectional association>)
+	relation 132628 --->
+	  a role_name "criteria" multiplicity "1..*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133268 // criteria (<unidirectional association>)
+	  b parent class_ref 133908 // Criterion
+      end
+    end
+
+    class 134036 "Instrumenter"
+      abstract 
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 130196 "addCriterion"
+	package explicit_return_type "void"
+	nparams 1
+	  param in name "criterion" type class_ref 133908 // Criterion
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 132544 "addCriteria"
+	package explicit_return_type "void"
+	nparams 1
+	  param in name "criterion" explicit_type "Set<Criterion>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 130324 "setCharset"
+	package explicit_return_type "void"
+	nparams 1
+	  param inout name "charset" type class_ref 133780 // Charset
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 130452 "setCharset"
+	package explicit_return_type "void"
+	nparams 1
+	  param inout name "name" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129088 "setProject"
+	package explicit_return_type "void"
+	nparams 1
+	  param in name "project" explicit_type "String"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 135744 "setDatabase"
+	package explicit_return_type "void"
+	nparams 1
+	  param inout name "database" type class_ref 128296 // Database
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136128 "getCriteria"
+	public explicit_return_type "Set<Criterion>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136256 "getCharset"
+	public return_type class_ref 133780 // Charset
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136512 "getProject"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136384 "getDatabase"
+	public return_type class_ref 128296 // Database
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 130580 "instrument"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "source" explicit_type "string"
+	  param inout name "target" explicit_type "string"
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 130708 "instrument"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "file" explicit_type "File"
+	  param inout name "target" type class_ref 135444 // File
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131220 "instrumentFolder"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "sourceFolder" explicit_type "String"
+	  param inout name "recursive" explicit_type "boolean"
+	  param inout name "targetFolder" explicit_type "string"
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131092 "instrumentFolder"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "sourceFolder" explicit_type "File"
+	  param inout name "recursive" explicit_type "boolean"
+	  param inout name "targetFolder" type class_ref 135444 // File
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136000 "instrumentFolder"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "sourceFolder" explicit_type "string"
+	  param inout name "recursive" explicit_type "boolean"
+	  param inout name "extensions" explicit_type "Set<String>"
+	  param inout name "targetFolder" explicit_type "string"
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 135872 "instrumentFolder"
+	public explicit_return_type "void"
+	nparams 4
+	  param inout name "sourceFolder" explicit_type "File"
+	  param inout name "recursive" explicit_type "boolean"
+	  param inout name "extensions" explicit_type "Set<String>"
+	  param inout name "targetFolder" type class_ref 135444 // File
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 135104 "instrumentAll"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "rootDirectory" explicit_type "File"
+	  param inout name "sourceFiles" explicit_type "List<File>"
+	  param inout name "targetFolder" type class_ref 135444 // File
+	nexceptions 1
+	  exception class_ref 134164 // InstrumentExeption
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131348 "getInstrumenterDescriptor"
+	abstract cpp_virtual protected return_type class_ref 128064 // InstrumenterDescriptor
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133824 "instrumentThis"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 2
+	  param inout name "source" type class_ref 128960 // Reader
+	  param inout name "target" type class_ref 128832 // Writer
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 133012 // criteria (<unidirectional association>)
+	relation 132372 --->
+	  a role_name "criteria" multiplicity "1..*" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 133012 // criteria (<unidirectional association>)
+	  b parent class_ref 133908 // Criterion
+      end
+
+      classrelation 128832 // <unidirectional association>
+	relation 128704 --->
+	  a role_name "" multiplicity "" public
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128832 // <unidirectional association>
+	  b parent class_ref 128064 // InstrumenterDescriptor
+      end
+    end
+
+    class 128064 "InstrumenterDescriptor"
+      abstract 
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128704 "getLanguage"
+	abstract cpp_virtual public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128320 "getDescription"
+	abstract cpp_virtual public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129600 "getAuthor"
+	abstract cpp_virtual public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129728 "getVersion"
+	abstract cpp_virtual public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128192 "isCriterionSupported"
+	abstract cpp_virtual public explicit_return_type "bool"
+	nparams 1
+	  param inout name "criterion" type class_ref 133908 // Criterion
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128448 "getSupportedCriteria"
+	abstract cpp_virtual public explicit_return_type "Set<Criterion>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128832 "isCharsetSupported"
+	abstract cpp_virtual public explicit_return_type "bool"
+	nparams 1
+	  param inout name "charset" type class_ref 133780 // Charset
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128960 "getSupportedCharsets"
+	abstract cpp_virtual public explicit_return_type "Set<Charset>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134976 "getFileExtensions"
+	abstract cpp_virtual public explicit_return_type "Set<String>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129344 "getInstrumenter"
+	abstract cpp_virtual protected return_type class_ref 134036 // Instrumenter
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	comment "should only be used by the InstrumenterFactory"
+      end
+    end
+
+    class 134164 "InstrumentExeption"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 134420 "JavaParser"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+  end
+
+  package_ref 131092 // java15
+
+  package_ref 131220 // cobol85
+
+  package_ref 128064 // criteria
+
+  simplerelation 129674
+    -_->
+      on 
+      package_ref 129044 // gbt2
+  end
+end

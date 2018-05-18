@@ -1,0 +1,39 @@
+<!--
+ !
+ ! You need javacc 4.0 in "..\..\lib\javacc-4.0\bin\lib\javacc.jar"
+ ! You can get it from: https://javacc.dev.java.net/
+ !
+ !-->
+<project default="all">
+
+    <property name="javacc-src" value="coverage_log.jj"/>
+
+    <target name="all">
+        <antcall target="javacc"/>
+	<antcall target="replacing"/>
+    </target>
+    
+    <target name="javacc">
+        <java classname="javacc"
+              failonerror="true"
+              fork="yes"
+              clonevm="yes"
+              classpath="..\..\lib\javacc-4.0\bin\lib\javacc.jar">
+
+            <!-- Parser is nonstatic -->
+            <arg line="-static=false" />
+            <!-- move created files to this dir and use as package declaration -->
+            <arg line="-output_directory=parser" />
+            <!-- source grammar -->
+            <arg line="${javacc-src}" />
+        </java>
+    </target>
+
+    <target name="replacing">
+	<replace dir="parser" encoding="UTF-8">
+      	    <include name="CoverageLogParser.java"/>
+            <replacetoken>static private final class LookaheadSuccess extends java.lang.Error</replacetoken>
+            <replacevalue>static final class LookaheadSuccess extends java.lang.Error</replacevalue>
+        </replace>
+    </target>
+</project>

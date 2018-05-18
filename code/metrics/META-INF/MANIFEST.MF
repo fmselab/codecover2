@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.codecover.metrics
+Bundle-SymbolicName: org.codecover.metrics
+Bundle-Version: 1.0.1.2
+Export-Package: org.codecover.metrics,
+ org.codecover.metrics.correlation,
+ org.codecover.metrics.coverage
+Require-Bundle: org.codecover.model
+Bundle-ClassPath: bin
+Bundle-Vendor: CodeCover.org

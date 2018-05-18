@@ -1,0 +1,23 @@
+format 29
+
+classcanvas 128394 class_ref 128266 // ReportGenerator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 35 199 1994
+classcanvas 128906 class_ref 128522 // FileCreationHandler
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 79 19 2000
+classcanvas 129034 class_ref 128650 // DefaultFileCreationHandler
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 79 119 2000
+classcanvas 129418 class_ref 128778 // ProgressHandler
+  draw_all_relations no hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode package auto_label_position default shadow default
+  xyz 33 337 2000
+classcanvas 129546 class_ref 128906 // Report
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 270 199 2000
+relationcanvas 129290 relation_ref 128650 // <realization>
+  from ref 129034 z 1999 to ref 128906
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+preferred_whz 1277 918 1
+end

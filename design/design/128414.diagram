@@ -1,0 +1,138 @@
+format 29
+
+activitynodecanvas 128030 activitynode_ref 130206 // initial
+  xyz 34 3 2000
+activityactioncanvas 128414 activityaction_ref 129182 // activity action Open "Session Properties" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 321 222 2000 165 58
+end
+activitynodecanvas 128522 activitynode_ref 135818 // decision
+  xyz 32 52 2000
+activityactioncanvas 128670 activityaction_ref 129310 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 142 33 2000 139 73
+end
+activityactioncanvas 129054 activityaction_ref 129438 // activity action User changes name and/or comment
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 312 302 2000 183 63
+end
+activitynodecanvas 130186 activitynode_ref 135946 // decision
+  xyz 198 143 2000
+activitynodecanvas 130334 activitynode_ref 130590 // activity_final
+  xyz 31 684 2000
+activityactioncanvas 130826 activityaction_ref 135946 // activity action User clicks the "Session Properties" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 323 124 2000 162 78
+end
+activitynodecanvas 131210 activitynode_ref 136074 // decision
+  xyz 391 386 2000
+activityactioncanvas 131466 activityaction_ref 136074 // activity action Save changes to the session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 326 458 2000 157 59
+end
+activitynodecanvas 132106 activitynode_ref 136202 // decision
+  xyz 391 548 2000
+activityactioncanvas 132362 activityaction_ref 136202 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 338 618 2000 131 64
+end
+activityactioncanvas 133130 activityaction_ref 136330 // activity action Update the combobox containing the sessions in the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 75 517 2000 157 101
+end
+flowcanvas 129034 flow_ref 151690 // <flow>
+  
+  from ref 128030 z 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129546 flow_ref 151946 // Project not opened
+  
+  from ref 128522 z 1999 label "Project not opened" xyz 3 108 1999 to ref 130334
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 152074 // Project opened
+  
+  from ref 128522 z 1999 label "Project opened" xyz 53 49 1999 to ref 128670
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130314 flow_ref 152202 // <flow>
+  
+  from ref 128670 z 1999 to ref 130186
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 152330 // No session selected
+  geometry VHr
+  
+  from ref 130186 z 1999 label "No session selected" xyz 58 141 1999 to point 41 159
+  line 130698 z 1999 to ref 130334
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130590 flow_ref 135070 // <flow>
+  
+  from ref 128414 z 1999 to ref 129054
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130954 flow_ref 152458 // Session selected
+  
+  from ref 130186 z 1999 label "Session selected" xyz 220 141 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131082 flow_ref 152586 // <flow>
+  
+  from ref 130826 z 1999 to ref 128414
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131338 flow_ref 152714 // <flow>
+  
+  from ref 129054 z 1999 to ref 131210
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131594 flow_ref 152842 // User clicks the "OK" button
+  
+  from ref 131210 z 1999 label "User clicks the \"OK\" button" xyz 374 428 1999 to ref 131466
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131722 flow_ref 152970 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 131210 z 1999 label "User clicks the \"Cancel\" button" xyz 94 380 1999 to point 41 402
+  line 131850 z 1999 to ref 130334
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132234 flow_ref 153098 // <flow>
+  
+  from ref 131466 z 1999 to ref 132106
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132490 flow_ref 153226 // Errors whilst saving
+  
+  from ref 132106 z 1999 label "Errors whilst saving" xyz 407 589 1999 to ref 132362
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132746 flow_ref 153482 // <flow>
+  geometry VHr
+  
+  from ref 132362 z 1999 to point 41 647
+  line 133002 z 1999 to ref 130334
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133258 flow_ref 153610 // <flow>
+  geometry VHr
+  
+  from ref 133130 z 1999 to point 41 565
+  line 133386 z 1999 to ref 130334
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 153738 // No errors whilst saving
+  
+  from ref 132106 z 1999 label "No errors whilst saving" xyz 248 545 1999 to ref 133130
+  show_infonote default drawing_language default write_horizontally default
+end
+end

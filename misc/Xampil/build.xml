@@ -1,0 +1,167 @@
+<!--
+ !
+ ! You need javacc 4.0 in "..\instrumentation\lib\javacc-4.0\bin\lib\javacc.jar"
+ ! You can get it from: https://javacc.dev.java.net/
+ !
+ !-->
+<project default="all">
+
+    <property name="website-dir" value="../../website/development/programming-language-files/" />
+    <property name="jar-file" value="${website-dir}Instrumenter-Xampil.jar" />
+    <property name="jtb-src" value="${website-dir}xampil.counter.jj"/>
+    <property name="jtb-out" value="xampil.jtb.jj"/>
+    <property name="classpath" value="../../code/model/bin/;../../code/instrumentation/bin/"/>
+
+    <target name="all">
+        <antcall target="jtb"/>
+        <antcall target="javacc">
+            <param name="javacc-src" value="${jtb-out}" />
+        </antcall>
+    	<antcall target="copying"/>
+    	<antcall target="replacing"/>
+        <antcall target="compile"/>
+        <antcall target="run"/>
+    </target>
+
+    <target name="jtb">
+        <delete>
+            <fileset dir="src/" includes="org/codecover/instrumentation/xampil/syntaxtree/*.java"/>
+            <fileset dir="src/">
+                <include name="org/codecover/instrumentation/xampil/visitor/*.java" />
+             	<exclude name="org/codecover/instrumentation/xampil/visitor/EndOffset.java" />
+                <exclude name="org/codecover/instrumentation/xampil/visitor/InstrBasicBooleanVisitor.java" />
+             	<exclude name="org/codecover/instrumentation/xampil/visitor/InstrumentationVisitor.java" />
+				<exclude name="org/codecover/instrumentation/xampil/visitor/StartOffset.java" />
+         		<exclude name="org/codecover/instrumentation/xampil/visitor/StringTreeDumper.java" />
+        	</fileset>
+        </delete>
+
+        <java jar ="..\instrumentation\lib\jtb132.jar"
+              failonerror="true"
+              fork="yes">
+
+            <!-- package for the syntaxtree and visitor -->
+            <arg line="-p org.codecover.instrumentation.xampil" />
+            <!-- target grammar -->
+            <arg line="-o ${jtb-out}" />
+            <!-- produce treedumper -->
+            <arg line="-printer" />
+            <!-- A Scheme tree building visitor -->
+            <!-- <arg line="-scheme" /> -->
+            <!-- Generate JavaDoc-friendly comments in the nodes and visitor. -->
+            <arg line="-jd" />
+            <!-- Generate parent pointers in all node classes. -->
+            <arg line="-pp" />
+            <!-- Generate special tokens into the tree. -->
+            <arg line="-tk" />
+            <!-- source grammar -->
+            <arg line="${jtb-src}" />
+        </java>
+
+        <move todir="src/org/codecover/instrumentation/xampil/syntaxtree">
+            <fileset dir="syntaxtree" />
+        </move>
+        <move todir="src/org/codecover/instrumentation/xampil/visitor">
+            <fileset dir="visitor" />
+        </move>
+    </target>
+
+    <target name="javacc-raw">
+        <antcall target="javacc">
+            <param name="javacc-src" value="${jtb-src}" />
+        </antcall>
+    </target>
+
+    <target name="javacc">
+        <delete>
+            <fileset dir="src/" includes="org/codecover/instrumentation/xampil/parser/*.java"/>
+        </delete>
+
+        <java classname="javacc"
+              failonerror="true"
+              fork="yes"
+              classpath="..\instrumentation\lib\javacc-4.0\bin\lib\javacc.jar">
+
+            <!-- move created files to this dir and use as package declaration -->
+            <arg line="-output_directory=src/org/codecover/instrumentation/xampil/parser/" />
+            <!-- source grammar -->
+            <arg line="${javacc-src}" />
+        </java>
+    </target>
+
+	<target name="copying">
+		<copy file="${website-dir}/parser/Token.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/parser/" />
+		<copy file="${website-dir}/parser/CharStream.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/parser/" />
+		<copy file="${website-dir}/parser/SimpleCharStream.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/parser/" />
+		<copy file="${website-dir}/parser/InstrumentableItemCounter.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/parser/" />
+        <copy file="${website-dir}/parser/ParseException.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/parser/" />
+
+		<copy file="${website-dir}/syntaxtree/NodeToken.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/syntaxtree/" />
+
+        <copy file="${website-dir}/visitor/TreeDumper.java" overwrite="yes"
+	          todir="src/org/codecover/instrumentation/xampil/visitor/" />
+	</target>
+	
+	<target name="replacing">
+        <replace dir="src/org/codecover/instrumentation/xampil/parser/" encoding="UTF-8">
+      	    <include name="XampilParser.java"/>
+            <replacetoken>new NodeToken(t.image.intern(), t.kind, t.beginLine, t.beginColumn, t.endLine, t.endColumn)</replacetoken>
+            <replacevalue>new NodeToken(t.image.intern(), t.kind, t.beginLine, t.endLine, t.beginColumn, t.endColumn, t.beginOffset, t.endOffset) </replacevalue>
+        </replace>
+        <replace dir="src/org/codecover/instrumentation/xampil/parser/" encoding="UTF-8">
+      	    <include name="XampilParserTokenManager.java"/>
+            <replacetoken>t.image = (im == null) ? input_stream.GetImage() : im;</replacetoken>
+            <replacevalue><![CDATA[t.image = (im == null) ? input_stream.GetImage() : im;
+  t.beginOffset = input_stream.getBeginOffset();
+  t.endOffset = input_stream.getEndOffset();]]></replacevalue>
+        </replace>
+		<replace dir="src/org/codecover/instrumentation/xampil/syntaxtree/" encoding="UTF-8">
+      	    <include name="IfStatement.java"/>
+      	    <include name="SwitchStatement.java"/>
+      	    <include name="WhileStatement.java"/>
+            <replacetoken> implements Node {</replacetoken>
+            <replacevalue><![CDATA[ implements Node {
+   public String statementID;]]></replacevalue>
+        </replace>
+	</target>
+	
+	<target name="compile">
+ 		<javac srcdir="src"
+               destdir="bin"
+               classpath="${classpath}"
+		       debug="on"
+ 			   encoding="UTF-8" />
+    </target>
+	
+	<target name="run">
+		<java classname="org.codecover.instrumentation.xampil.Main"
+	          classpath="bin;${classpath}"
+              />
+	</target>
+
+	<target name="jar" depends="compile">
+		<delete file="${jar-file}"/>
+		<jar destfile="${jar-file}"
+			 compress="true"
+		     update="false">
+			<fileset dir="bin" excludes="**/*Test.class **/*Test$*.class **/*Tests.class **/*Tests$*.class **/UtilsForTesting*.class">
+				<include name="**/*.class" />
+			</fileset>
+
+			<fileset dir="src">
+				<include name="**/*.java" />
+			</fileset>
+
+			<fileset dir="${website-dir}">
+				<include name="*.jj" />
+				<include name="*.xpl" />
+			</fileset>
+		</jar>
+    </target>
+</project>

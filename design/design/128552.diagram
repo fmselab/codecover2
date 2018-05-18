@@ -1,0 +1,235 @@
+format 29
+
+classinstance 128040 class_ref 128040 // HierarchyLevel
+  xyz 99 205 2000 name "toplevel"
+end
+classinstance 128168 class_ref 128168 // HierarchyLevelType
+  xyz 69 43 2000 name "packageType"
+  values
+    attribute_ref 128168 // englishName
+    "package"
+    attribute_ref 128296 // internalName
+    "package"
+end
+classinstance 128424 class_ref 128168 // HierarchyLevelType
+  xyz 306 42 2000 name "classType"
+  values
+    attribute_ref 128168 // englishName
+    "class"
+    attribute_ref 128296 // internalName
+    "class"
+end
+classinstance 128552 class_ref 128040 // HierarchyLevel
+  xyz 304 207 2000 name "testClassObject"
+end
+classinstance 128936 class_ref 128168 // HierarchyLevelType
+  xyz 559 37 2000 name "methodType"
+  values
+    attribute_ref 128168 // englishName
+    "method"
+    attribute_ref 128296 // internalName
+    "method"
+end
+classinstance 129064 class_ref 128040 // HierarchyLevel
+  xyz 573 207 2000 name "mainMethod"
+end
+classinstance 129448 class_ref 130324 // StatementSequence
+  xyz 551 672 2000 name "mainSequence"
+end
+classinstance 129832 class_ref 128916 // ConditionalStatement
+  xyz 375 546 2000 name "ifStatment"
+end
+classinstance 130088 class_ref 128660 // BasicStatement
+  xyz 59 414 2000 name "fooStatement"
+end
+classinstance 130344 class_ref 130324 // StatementSequence
+  xyz 18 475 2000 name "fooStatementSequence"
+end
+classinstance 130728 class_ref 130324 // StatementSequence
+  xyz 19 639 2000 name "barStatementSequence"
+end
+classinstance 130984 class_ref 128660 // BasicStatement
+  xyz 61 698 2000 name "barStatement"
+end
+classinstance 131240 class_ref 129044 // LoopingStatement
+  xyz 496 763 2000 name "whileStatement"
+  values
+    attribute_ref 130196 // multipleExecutedItem
+    "item3"
+    attribute_ref 129940 // neverExecutedItem
+    "item1"
+    attribute_ref 130068 // onceExecutedItem
+    "item2"
+    attribute_ref 130324 // optionalBodyExecution
+    "false"
+end
+classinstance 131496 class_ref 130324 // StatementSequence
+  xyz 267 859 2000 name "whileBody"
+end
+classinstance 131752 class_ref 128660 // BasicStatement
+  xyz 122 913 2000 name "incrementIStatement"
+end
+classinstance 132008 class_ref 128660 // BasicStatement
+  xyz 416 912 2005 name "incrementJStatement"
+end
+classinstance 133928 class_ref 130068 // CoverableItem
+  xyz 436 484 2000 name "item"
+end
+classinstance 134184 class_ref 130196 // Branch
+  xyz 260 503 2000 name "ifBranch"
+  values
+    attribute_ref 130452 // implicit
+    "false"
+end
+classinstance 134568 class_ref 130196 // Branch
+  xyz 254 575 2000 name "elseBranch"
+  values
+    attribute_ref 130452 // implicit
+    "false"
+end
+classinstance 135080 class_ref 130068 // CoverableItem
+  xyz 294 440 2005 name "item"
+end
+classinstance 135336 class_ref 130068 // CoverableItem
+  xyz 337 664 2000 name "item"
+end
+classinstance 135592 class_ref 130068 // CoverableItem
+  xyz 86 357 2005 name "item"
+end
+classinstance 135848 class_ref 130068 // CoverableItem
+  xyz 89 767 2000 name "item"
+end
+classinstance 136104 class_ref 130068 // CoverableItem
+  xyz 380 719 2000 name "item"
+end
+classinstance 136744 class_ref 130068 // CoverableItem
+  xyz 170 979 2000 name "item"
+end
+classinstance 136872 class_ref 130068 // CoverableItem
+  xyz 465 981 2000 name "item"
+end
+classinstance 137256 class_ref 130708 // RootTerm
+  xyz 514 419 2000 name "ifTerm"
+end
+classinstance 137512 class_ref 130836 // OperatorTerm
+  xyz 483 372 2000 name "operatorTerm"
+end
+classinstance 137768 class_ref 130580 // BasicBooleanTerm
+  xyz 252 288 2000 name "somethingTerm"
+end
+classinstance 138024 class_ref 130580 // BasicBooleanTerm
+  xyz 242 373 2000 name "nothingTerm"
+end
+classinstance 138280 class_ref 130964 // BooleanOperator
+  xyz 481 255 2005 name "orOperator"
+  values
+    attribute_ref 130708 // arity
+    "2"
+    attribute_ref 130964 // name
+    "shortCircuitOr"
+end
+classinstance 138536 class_ref 130708 // RootTerm
+  xyz 652 913 2000 name "whileExpression"
+end
+classinstance 138664 class_ref 130580 // BasicBooleanTerm
+  xyz 649 970 2000 name "barTerm"
+end
+objectlinkcanvas 128296 rel relation_ref 128424 // <unidirectional association>
+  from ref 128040 z 1999 to ref 128168
+  role_a_pos 178 124 3000 no_role_b
+objectlinkcanvas 128680 rel relation_ref 128296 // <unidirectional association>
+  from ref 128040 z 1999 to ref 128552
+  role_a_pos 249 193 3000 no_role_b
+objectlinkcanvas 128808 rel relation_ref 128424 // <unidirectional association>
+  from ref 128552 z 1999 to ref 128424
+  role_a_pos 405 123 3000 no_role_b
+objectlinkcanvas 129192 rel relation_ref 128296 // <unidirectional association>
+  from ref 128552 z 1999 to ref 129064
+  role_a_pos 518 195 3000 no_role_b
+objectlinkcanvas 129320 rel relation_ref 128424 // <unidirectional association>
+  from ref 129064 z 1999 to ref 128936
+  role_a_pos 665 118 3000 no_role_b
+objectlinkcanvas 129576 rel relation_ref 128168 // <unidirectional association>
+  from ref 129064 z 1999 to ref 129448
+  role_a_pos 665 646 3000 no_role_b
+objectlinkcanvas 129960 rel relation_ref 130708 // <unidirectional association>
+  from ref 129448 z 1999 stereotype "<<list>>" xyz 520 620 3000 to ref 129832
+  role_a_pos 502 567 3000 no_role_b
+objectlinkcanvas 130600 rel relation_ref 130708 // <unidirectional association>
+  from ref 130344 z 1999 stereotype "<<list>>" xyz 124 457 3000 to ref 130088
+  role_a_pos 155 449 3000 no_role_b
+objectlinkcanvas 131112 rel relation_ref 130708 // <unidirectional association>
+  from ref 130728 z 1999 stereotype "<<list>>" xyz 95 677 3000 to ref 130984
+  role_a_pos 156 672 3000 no_role_b
+objectlinkcanvas 131368 rel relation_ref 130708 // <unidirectional association>
+  from ref 129448 z 1999 stereotype "<<list>>" xyz 637 723 3000 to ref 131240
+  role_a_pos 632 737 3000 no_role_b
+objectlinkcanvas 131624 rel relation_ref 131220 // <unidirectional association>
+  from ref 131240 z 1999 to ref 131496
+  role_a_pos 423 831 3000 no_role_b
+objectlinkcanvas 132136 rel relation_ref 130708 // <unidirectional association>
+  from ref 131496 z 1999 stereotype "<<list>>" xyz 266 898 3000 to ref 131752
+  role_a_pos 263 884 3000 no_role_b
+objectlinkcanvas 132264 rel relation_ref 130708 // <unidirectional association>
+  from ref 131496 z 1999 stereotype "<<list>>" xyz 422 898 3000 to ref 132008
+  role_a_pos 415 889 3000 no_role_b
+objectlinkcanvas 134056 rel relation_ref 129940 // <unidirectional association>
+  from ref 129832 z 1999 to ref 133928
+  role_a_pos 485 515 3000 no_role_b
+objectlinkcanvas 134312 rel relation_ref 130324 // <unidirectional association>
+  from ref 129832 z 1999 to ref 134184
+  role_a_pos 368 513 3000 no_role_b
+objectlinkcanvas 134440 rel relation_ref 130580 // <unidirectional association>
+  from ref 134184 z 1999 to ref 130344
+  no_role_a no_role_b
+objectlinkcanvas 134696 rel relation_ref 130324 // <unidirectional association>
+  from ref 129832 z 1999 to ref 134568
+  role_a_pos 377 569 3000 no_role_b
+objectlinkcanvas 134824 rel relation_ref 130580 // <unidirectional association>
+  from ref 134568 z 1999 to ref 130728
+  no_role_a no_role_b
+objectlinkcanvas 135208 rel relation_ref 130196 // <unidirectional association>
+  from ref 134184 z 1999 to ref 135080
+  role_a_pos 348 475 3000 no_role_b
+objectlinkcanvas 135464 rel relation_ref 130196 // <unidirectional association>
+  from ref 134568 z 1999 to ref 135336
+  role_a_pos 294 647 3000 no_role_b
+objectlinkcanvas 135720 rel relation_ref 129940 // <unidirectional association>
+  from ref 130088 z 1999 to ref 135592
+  role_a_pos 155 392 3000 no_role_b
+objectlinkcanvas 135976 rel relation_ref 129940 // <unidirectional association>
+  from ref 130984 z 1999 to ref 135848
+  role_a_pos 157 741 3000 no_role_b
+objectlinkcanvas 136232 rel relation_ref 129940 // <unidirectional association>
+  from ref 131240 z 1999 to ref 136104
+  role_a_pos 483 738 3000 no_role_b
+objectlinkcanvas 137000 rel relation_ref 129940 // <unidirectional association>
+  from ref 131752 z 1999 to ref 136744
+  role_a_pos 238 953 3000 no_role_b
+objectlinkcanvas 137128 rel relation_ref 129940 // <unidirectional association>
+  from ref 132008 z 1999 to ref 136872
+  role_a_pos 533 955 3000 no_role_b
+objectlinkcanvas 137384 rel relation_ref 131732 // <unidirectional association>
+  geometry HV
+  from ref 129832 z 1999 to point 563 557
+  line 1 z 1999 to ref 137256
+  role_a_pos 575 454 3000 no_role_b
+objectlinkcanvas 137640 rel relation_ref 131860 // <unidirectional association>
+  from ref 137256 z 1999 to ref 137512
+  role_a_pos 571 397 3000 no_role_b
+objectlinkcanvas 137896 rel relation_ref 132244 // <unidirectional association>
+  from ref 137512 z 1999 to ref 137768
+  role_a_pos 362 321 3000 no_role_b
+objectlinkcanvas 138152 rel relation_ref 132244 // <unidirectional association>
+  from ref 137512 z 1999 to ref 138024
+  role_a_pos 399 399 3000 no_role_b
+objectlinkcanvas 138408 rel relation_ref 132116 // <unidirectional association>
+  from ref 137512 z 1999 to ref 138280
+  role_a_pos 575 336 3000 no_role_b
+objectlinkcanvas 138920 rel relation_ref 131860 // <unidirectional association>
+  from ref 138536 z 1999 to ref 138664
+  role_a_pos 741 944 3000 no_role_b
+objectlinkcanvas 139048 rel relation_ref 131732 // <unidirectional association>
+  from ref 131240 z 1999 to ref 138536
+  role_a_pos 669 894 3000 no_role_b
+end

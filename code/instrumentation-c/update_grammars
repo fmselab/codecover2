@@ -1,0 +1,34 @@
+#!/bin/bash
+
+JAVACC="${HOME}/dev/javacc-5.0/bin/javacc"
+JTB="${HOME}/dev/jtb132.jar"
+
+mkdir tmp_grammar
+cd tmp_grammar
+java -jar ${JTB} -jd -pp -ns org.codecover.instrumentation.c.adapter.CCNode -p org.codecover.instrumentation.c -f -o ../grammars/C.jtb.jj ../grammars/C.jj
+sed -i 's/t=n2=<IDENTIFIER> { n1 = JTBToolkit\.makeNodeToken(n2); }/t=<IDENTIFIER> { n1 = JTBToolkit\.makeNodeToken(n2); }/g' ../grammars/C.jtb.jj
+${JAVACC} ../grammars/C.jtb.jj
+${JAVACC} -output_directory=debug -debug_parser ../grammars/C.jtb.jj
+mv debug/CParser.java DebugCParser.java
+sed -i 's/public class CParser implements CParserConstants/public class DebugCParser implements CParserConstants/g' DebugCParser.java
+sed -i 's/public CParser(TokenManager tm)/public DebugCParser(TokenManager tm)/g' DebugCParser.java
+sed -i 's/class JTBToolkit/class DebugJTBToolkit/g' DebugCParser.java
+sed -i 's/SCOPESTACK_TYPE/ArrayList<HashMap<String, Boolean>>/g' CParser.java DebugCParser.java
+sed -i 's/SCOPEENTRY_TYPE/HashMap<String, Boolean>/g' CParser.java DebugCParser.java
+sed -i 's/TYPEDEFPARSINGSTACK_TYPE/Stack<Boolean>/g' CParser.java DebugCParser.java
+sed -i 's/t = jj_consume_token(IDENTIFIER);/t = n2 = jj_consume_token(IDENTIFIER);/g' CParser.java DebugCParser.java
+sed -i 's/return new NodeToken(t\.image\.intern(), t\.kind, t\.beginLine, t\.beginColumn, t\.endLine, t\.endColumn);/NodeToken n = new NodeToken(t\.image\.intern(), t\.kind, t\.beginLine, t\.beginColumn, t\.endLine, t\.endColumn);\
+        n\.beginOffset = t\.beginOffset;\
+        n\.endOffset = t\.endOffset;\
+        return n;/g' CParser.java DebugCParser.java
+sed -i 's/public class ParseException extends Exception {/public class ParseException extends org.codecover.instrumentation.exceptions.ParseException {/g' ParseException.java
+rm -r debug/
+rm TokenMgrError.java
+cd ..
+
+mv tmp_grammar/*.java src/org/codecover/instrumentation/c/parser/
+
+rm -r src/org/codecover/instrumentation/c/syntaxtree src/org/codecover/instrumentation/c/visitor
+mv tmp_grammar/syntaxtree tmp_grammar/visitor src/org/codecover/instrumentation/c/
+
+rmdir tmp_grammar

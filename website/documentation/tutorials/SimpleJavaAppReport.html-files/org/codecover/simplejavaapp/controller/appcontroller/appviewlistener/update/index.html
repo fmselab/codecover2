@@ -1,0 +1,426 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>update - livenotificationrun - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        livenotificationrun
+    </div>
+    <div class="sessionDate">
+        measured on November 5, 2007 4:04:16 PM CET
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../../../SimpleJavaAppReport.html">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../../../index.html">
+        org</a>
+    .
+    <a href="../../../../../index.html">
+        codecover</a>
+    .
+    <a href="../../../../index.html">
+        simplejavaapp</a>
+    .
+    <a href="../../../index.html">
+        controller</a>
+    .
+    <a href="../../index.html">
+        AppController</a>
+    .
+    <a href="../index.html">
+        AppViewListener</a>
+    .
+    update
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Strict Condition Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public void update(ViewEvent viewEvent, String fileId, Object args)
+            </td>  
+                                    <td class="methodInfo">
+                        12&nbsp;/&nbsp;16
+                </td>
+                <td class="methodInfo">
+                        75&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:75%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        6&nbsp;/&nbsp;9
+                </td>
+                <td class="methodInfo">
+                        66&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:66%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">AppController.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L203">
+             <td class="code lineNumber">
+                  <a href="#L203">203</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void update(ViewEvent viewEvent, String fileId, Object args) {
+              </td>
+          </tr>
+                      <tr class="code" id="L204">
+             <td class="code lineNumber">
+                  <a href="#L204">204</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Branch_Coverage" title="Unexecuted branches: case EVENT_QUIT,  case EVENT_SAVE_AS,  implicit (omitted) branch">switch</span> (viewEvent) {
+              </td>
+          </tr>
+                      <tr class="code" id="L205">
+             <td class="code lineNumber">
+                  <a href="#L205">205</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_CLOSE_WINDOW</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L206">
+             <td class="code lineNumber">
+                  <a href="#L206">206</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onCloseWindow(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L207">
+             <td class="code lineNumber">
+                  <a href="#L207">207</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L208">
+             <td class="code lineNumber">
+                  <a href="#L208">208</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_DELETE</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L209">
+             <td class="code lineNumber">
+                  <a href="#L209">209</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onDelete(fileId, (String[]) args);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L210">
+             <td class="code lineNumber">
+                  <a href="#L210">210</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L211">
+             <td class="code lineNumber">
+                  <a href="#L211">211</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_NEW_BOOK</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L212">
+             <td class="code lineNumber">
+                  <a href="#L212">212</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onNewBook(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L213">
+             <td class="code lineNumber">
+                  <a href="#L213">213</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L214">
+             <td class="code lineNumber">
+                  <a href="#L214">214</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_NEW_WINDOW</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L215">
+             <td class="code lineNumber">
+                  <a href="#L215">215</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onOpenNewWindow();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L216">
+             <td class="code lineNumber">
+                  <a href="#L216">216</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L217">
+             <td class="code lineNumber">
+                  <a href="#L217">217</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_OPEN</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L218">
+             <td class="code lineNumber">
+                  <a href="#L218">218</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onOpen(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L219">
+             <td class="code lineNumber">
+                  <a href="#L219">219</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L220">
+             <td class="code lineNumber">
+                  <a href="#L220">220</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">case EVENT_QUIT</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L221">
+             <td class="code lineNumber">
+                  <a href="#L221">221</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">onQuit(fileId, (String[]) args);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L222">
+             <td class="code lineNumber">
+                  <a href="#L222">222</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L223">
+             <td class="code lineNumber">
+                  <a href="#L223">223</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">case EVENT_SAVE</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L224">
+             <td class="code lineNumber">
+                  <a href="#L224">224</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">onSave(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L225">
+             <td class="code lineNumber">
+                  <a href="#L225">225</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L226">
+             <td class="code lineNumber">
+                  <a href="#L226">226</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage">case EVENT_SAVE_AS</span>:
+              </td>
+          </tr>
+                      <tr class="code" id="L227">
+             <td class="code lineNumber">
+                  <a href="#L227">227</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">onSaveAs(fileId);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L228">
+             <td class="code lineNumber">
+                  <a href="#L228">228</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">break;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L229">
+             <td class="code lineNumber">
+                  <a href="#L229">229</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L230">
+             <td class="code lineNumber">
+                  <a href="#L230">230</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on November 17, 2007 7:07:00 PM CET with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

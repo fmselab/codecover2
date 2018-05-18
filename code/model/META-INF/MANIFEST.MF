@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.codecover.model
+Bundle-SymbolicName: org.codecover.model;singleton:=true
+Bundle-Version: 1.0.1.2
+Export-Package: org.codecover,
+ org.codecover.model;uses:="org.codecover.model.utils,junit.framework",
+ org.codecover.model.exceptions,
+ org.codecover.model.extensions;uses:="org.codecover.model.utils,org.w3c.dom",
+ org.codecover.model.mast;uses:="org.codecover.model.utils",
+ org.codecover.model.utils;uses:="junit.framework",
+ org.codecover.model.utils.criteria,
+ org.codecover.model.utils.file;uses:="org.codecover.model.utils.file.listener,junit.framework",
+ org.codecover.model.utils.file.listener
+Eclipse-BuddyPolicy: dependent
+Bundle-ClassPath: bin, lib/svnkit.jar
+Bundle-Vendor: CodeCover.org

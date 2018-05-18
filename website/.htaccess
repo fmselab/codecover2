@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^codecover\.org$
+RewriteCond $1 !^site.xml$
+RewriteRule ^(.*)$ http://codecover.org/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} !^update\.codecover\.org$
+RewriteRule ^site.xml$ http://update.codecover.org/site.xml [R=301,L]

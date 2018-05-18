@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="for_green.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Source_Code_Highlighting/for"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="32.200000pt"
+   width="186.40000pt">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1280"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="20.124996"
+     inkscape:cx="99.488634"
+     inkscape:zoom="5.4368671"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       y="2.6970654"
+       x="101.00000"
+       height="11.552935"
+       width="74.000000"
+       id="rect1298"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="14.809248"
+       x="0.49492371"
+       height="11.552935"
+       width="56.957504"
+       id="rect3581"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="2.3621826"
+       x="0.49492371"
+       height="12.000000"
+       width="23.505075"
+       id="rect2063"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text1291"
+       y="11.262182"
+       x="1.04825"
+       style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:FreeMono;text-anchor:start;writing-mode:lr;line-height:100%"
+       xml:space="preserve"><tspan
+         x="1.0482500"
+         y="11.262182"
+         sodipodi:role="line"
+         id="tspan1296">for (int i=0; i&lt;a.length; i++) {</tspan><tspan
+         x="1.0482500"
+         y="23.262182"
+         sodipodi:role="line"
+         id="tspan1298">  doB();</tspan><tspan
+         x="1.0482500"
+         y="35.262182"
+         sodipodi:role="line"
+         id="tspan1300">}</tspan></text>
+  </g>
+</svg>

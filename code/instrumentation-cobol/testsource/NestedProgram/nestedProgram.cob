@@ -1,0 +1,92 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TESTPROG.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 E-FELDER.
+         05 FAC PIC 9999 VALUE ZERO.
+       01 V-FELDER.
+         05 ERG PIC 9999 VALUE 1.
+         05 I PIC 9999.
+       PROCEDURE DIVISION.
+       B100.
+       DISPLAY "Calculate faculty:" ACCEPT FAC.
+       IF FAC >= 0 AND < 8 THEN
+         MOVE 1 TO ERG
+         PERFORM VARYING I FROM 1 BY 1 UNTIL I > FAC
+           COMPUTE ERG = ERG * I
+         END-PERFORM
+         DISPLAY "FACULTY: " ERG
+       ELSE
+         DISPLAY "Fehlerhafte Eingabe"
+       END-IF
+       PERFORM B100 UNTIL FAC = 9.
+       STOP RUN.
+       
+       END PROGRAM TESTPROG.
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TESTPROG1.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 E-FELDER.
+         05 FAC PIC 9999 VALUE ZERO.
+       01 V-FELDER.
+         05 ERG PIC 9999 VALUE 1.
+         05 I PIC 9999.
+       PROCEDURE DIVISION.
+       B100.
+       DISPLAY "Calculate faculty:" ACCEPT FAC.
+       IF FAC >= 0 AND < 8 THEN
+         MOVE 1 TO ERG
+*>         STARTTESTCASE
+         PERFORM VARYING I FROM 1 BY 1 UNTIL I > FAC
+           COMPUTE ERG = ERG * I
+         END-PERFORM
+*>         STARTTESTCASE "asdf"
+         DISPLAY "FACULTY: " ERG
+       ELSE
+         DISPLAY "Fehlerhafte Eingabe"
+       END-IF
+*>       STARTTESTCASE "asdf"
+       PERFORM B100 UNTIL FAC = 9.
+       END PROGRAM TESTPROG1.
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TESTPROG2.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 E-FELDER.
+         05 FAC PIC 9999 VALUE ZERO.
+       01 V-FELDER.
+         05 ERG PIC 9999 VALUE 1.
+         05 I PIC 9999.
+       PROCEDURE DIVISION.
+       B100.
+       DISPLAY "Calculate faculty:" ACCEPT FAC.
+       IF FAC >= 0 AND < 8 THEN
+         MOVE 1 TO ERG
+*>         STARTTESTCASE
+         PERFORM VARYING I FROM 1 BY 1 UNTIL I > FAC
+           COMPUTE ERG = ERG * I
+         END-PERFORM
+*>         STARTTESTCASE "asdf
+         DISPLAY "FACULTY: " ERG
+       ELSE
+         DISPLAY "Fehlerhafte Eingabe"
+       END-IF
+*>       STARTTESTCASE "asdf"
+       PERFORM B100 UNTIL FAC = 9.
+       END PROGRAM TESTPROG2.
+       

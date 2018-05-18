@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="649.00000px"
+   height="521.00000px"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.41.1"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Instrumentation_Dialog"
+   sodipodi:docname="Instrumentation_Dialog.svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="359.72084"
+     inkscape:cy="302.76495"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1272"
+     inkscape:window-height="743"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF6">
+      <cc:Work
+         id="Work8"
+         rdf:about="">
+        <dc:format
+           id="format10">image/svg+xml</dc:format>
+        <dc:type
+           id="type12"
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-2,-2.362518)"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       y="2.3625183"
+       x="2"
+       id="image1606"
+       height="520"
+       width="648"
+       sodipodi:absref="report_dialog.png"
+       xlink:href="report_dialog.png" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="243.51562"
+       y="23.909424"
+       id="text1427"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1325"
+         sodipodi:role="line"
+         y="23.909424"
+         x="243.51562">Instrumentation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:white;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="242.53125"
+       y="22.909424"
+       id="text1431"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1323"
+         sodipodi:role="line"
+         y="22.909424"
+         x="242.53125">Instrumentation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="12.857142"
+       y="58.791122"
+       id="text6754"
+       sodipodi:linespacing="100%"><tspan
+         x="12.857142"
+         y="58.791122"
+         sodipodi:role="line"
+         id="tspan2108">Source Code Instrumentation</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="12.857143"
+       y="88.791122"
+       id="text6758"><tspan
+         x="12.857143"
+         y="88.791122"
+         sodipodi:role="line"
+         id="tspan1346">Choose destination folder for instrumented source code.</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="button.png"
+       width="107"
+       height="29"
+       id="image7231"
+       x="523"
+       y="471.86252" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="549.24219"
+       y="492.13596"
+       id="text7166"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan7168"
+         x="549.24219"
+         y="492.13596">Cancel</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="button.png"
+       width="107"
+       height="29"
+       id="image7295"
+       x="404.5"
+       y="471.86252" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="413.42969"
+       y="491.52661"
+       id="text7426"
+       sodipodi:linespacing="100%"><tspan
+         x="413.42969"
+         y="491.52661"
+         sodipodi:role="line"
+         id="tspan1324">Instrument</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:0.33948502;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1331"
+       width="607.14288"
+       height="69.973274"
+       x="20.923271"
+       y="147.23779" />
+    <rect
+       style="fill:#efefef;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1333"
+       width="153.55328"
+       height="13.571428"
+       x="25.923271"
+       y="139.4379" />
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="25.208984"
+       y="150.86646"
+       id="text1335"><tspan
+         id="tspan1339"
+         sodipodi:role="line"
+         y="150.86646"
+         x="25.208984">Select Destination Folder:</tspan></text>
+    <image
+       style="fill:black;fill-opacity:1"
+       xlink:href="ComboBox.png"
+       sodipodi:absref="ComboBox.png"
+       width="374"
+       height="29"
+       id="image1341"
+       x="128.02539"
+       y="168.82056" />
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="137.06055"
+       y="187.93774"
+       id="text1343"><tspan
+         x="137.06055"
+         y="187.93774"
+         sodipodi:role="line"
+         id="tspan2110">/home/user/programming/project2/instrumentedcode1/</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="43.951172"
+       y="187.19263"
+       id="text1347"><tspan
+         id="tspan1357"
+         sodipodi:role="line"
+         y="187.19263"
+         x="43.951172">Destination:</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="button.png"
+       width="107"
+       height="29"
+       id="image1351"
+       x="511.02539"
+       y="168.82056" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="528.45508"
+       y="189.02661"
+       id="text1353"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan1355"
+         x="528.45508"
+         y="189.02661">Browse...</tspan></text>
+  </g>
+</svg>

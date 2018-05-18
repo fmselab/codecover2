@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="Coverage_Button.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_Button"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="131.36000px"
+   width="312.09000px">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     showgrid="true"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1280"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="59.196809"
+     inkscape:cx="153.66602"
+     inkscape:zoom="3.1931428"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <image
+       y="3.2193909"
+       x="3.4999924"
+       id="image1539"
+       height="24.000000"
+       width="153.00000"
+       sodipodi:absref="/home/stefan/toolbar.png"
+       xlink:href="toolbar.png" />
+    <rect
+       y="26.284729"
+       x="18.223221"
+       height="100.36922"
+       width="161.76784"
+       id="rect1568"
+       style="fill:none;fill-opacity:0.11805553;stroke:#000000;stroke-width:0.20242223;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <image
+       y="30.290756"
+       x="23.000000"
+       id="image2389"
+       height="12.000000"
+       width="14.000000"
+       sodipodi:absref="/home/stefan/anwendung.png"
+       xlink:href="anwendung.png" />
+    <text
+       id="text2392"
+       y="40.576477"
+       x="43.928558"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans;font-stretch:normal;font-variant:normal;text-anchor:start;writing-mode:lr;line-height:100%"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="40.576477"
+         x="43.928558"
+         id="tspan2394"
+         sodipodi:role="line">1 Java-Application</tspan></text>
+    <text
+       id="text2463"
+       y="61.647919"
+       x="43.928574"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="61.647919"
+         x="43.928574"
+         id="tspan2465"
+         sodipodi:role="line">2 Java-Application (1)</tspan></text>
+    <image
+       y="52.362183"
+       x="22.500000"
+       id="image2531"
+       height="10.000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/ju-anwendung.png"
+       xlink:href="ju-anwendung.png" />
+    <rect
+       y="67.719345"
+       x="23.210205"
+       height="0.35714287"
+       width="151.07957"
+       id="rect2534"
+       style="fill:#000000;fill-opacity:0.11805553;stroke:#000000;stroke-width:0.19588113;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <text
+       id="text2536"
+       y="83.43364"
+       x="43.928558"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="83.433640"
+         x="43.928558"
+         id="tspan2538"
+         sodipodi:role="line">Coverage As</tspan></text>
+    <text
+       id="text2540"
+       y="101.29076"
+       x="43.928574"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="101.29076"
+         x="43.928574"
+         id="tspan2542"
+         sodipodi:role="line">Coverage...</tspan></text>
+    <image
+       y="91.290756"
+       x="23.428558"
+       id="image2608"
+       height="12.857142"
+       width="13.857142"
+       sodipodi:absref="/home/stefan/coverage.png"
+       xlink:href="coverage.png" />
+    <text
+       id="text2611"
+       y="119.1479"
+       x="43.571411"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Sans;font-stretch:normal;font-variant:normal;text-anchor:start;writing-mode:lr;line-height:100%"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1314"
+         sodipodi:role="line"
+         y="119.14790"
+         x="43.571411">Organize Favorites...</tspan></text>
+    <image
+       y="73.576477"
+       x="167.71429"
+       id="image2679"
+       height="9.0000000"
+       width="6.0000000"
+       sodipodi:absref="/home/stefan/pfeil.png"
+       xlink:href="pfeil.png" />
+    <rect
+       y="69.511902"
+       x="180.00555"
+       height="42.843441"
+       width="128.20312"
+       id="rect2682"
+       style="fill:none;fill-opacity:0.11805553;stroke:#000000;stroke-width:0.21173899;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <image
+       y="74.576477"
+       x="185.14282"
+       id="image2748"
+       height="12.000000"
+       width="14.000000"
+       sodipodi:absref="/home/stefan/anwendung.png"
+       xlink:href="anwendung.png" />
+    <text
+       id="text2751"
+       y="84.505051"
+       x="207.85715"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="84.505051"
+         x="207.85715"
+         id="tspan2753"
+         sodipodi:role="line">Java-Application</tspan></text>
+    <text
+       id="text2755"
+       y="105.21935"
+       x="207.49997"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         y="105.21935"
+         x="207.49997"
+         id="tspan2757"
+         sodipodi:role="line">JUnit-Test</tspan></text>
+    <image
+       y="96.290787"
+       x="185.35712"
+       id="image2823"
+       height="10.000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/ju-anwendung.png"
+       xlink:href="ju-anwendung.png" />
+  </g>
+</svg>

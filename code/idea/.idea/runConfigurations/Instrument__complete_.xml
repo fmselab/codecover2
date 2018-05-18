@@ -1,0 +1,24 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Instrument (complete)" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.codecover.batch.Batch" />
+    <option name="VM_PARAMETERS" value="" />
+    <option name="PROGRAM_PARAMETERS" value="in --add-plugin-dir lib/plugins/ -l C -c c.xml -d out/ -r src/ -DIncludeDirs=/usr/lib/gcc/x86_64-linux-gnu/4.7/include:/usr/local/include:/usr/lib/gcc/x86_64-linux-gnu/4.7/include-fixed:/usr/include/x86_64-linux-gnu:/usr/include &quot;-DDefines=__x86_64__:__STDC__:__UINT_LEAST8_TYPE__=unsigned char:__UINTMAX_TYPE__=long unsigned int:__INT_FAST16_TYPE__=long int:__INT_FAST64_TYPE__=long int:__UINT8_TYPE__=unsigned char:__INT_FAST32_TYPE__=long int:__UINT_LEAST16_TYPE__=short unsigned int:__INT8_TYPE__=signed char:__INT_LEAST16_TYPE__=short int:__UINT_LEAST64_TYPE__=long unsigned int:__UINT_FAST16_TYPE__=long unsigned int:__INT_LEAST64_TYPE__=long int:__INT16_TYPE__=short int:__INT_LEAST8_TYPE__=signed char:__INTPTR_TYPE__=long int:__UINT16_TYPE__=short unsigned int:__UINT_FAST64_TYPE__=long unsigned int:__INT64_TYPE__=long int:__WINT_TYPE__=unsigned int:__UINT_LEAST32_TYPE__=unsigned int:__INT_LEAST32_TYPE__=int:__UINT64_TYPE__=long unsigned int:__INT_FAST8_TYPE__=signed char:__UINT_FAST32_TYPE__=long unsigned int:__INT32_TYPE__=int:__INTMAX_TYPE__=long int:__UINT32_TYPE__=unsigned int:__UINTPTR_TYPE__=long unsigned int:__UINT_FAST8_TYPE__=unsigned char&quot; -DTypes=__builtin_va_list" />
+    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/../release" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+    <option name="ALTERNATIVE_JRE_PATH" value="" />
+    <option name="ENABLE_SWING_INSPECTOR" value="false" />
+    <option name="ENV_VARIABLES" />
+    <option name="PASS_PARENT_ENVS" value="true" />
+    <module name="batch" />
+    <envs />
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="" />
+      <option name="TRANSPORT" value="0" />
+      <option name="LOCAL" value="true" />
+    </RunnerSettings>
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Debug" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method />
+  </configuration>
+</component>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="614.84998px"
+   height="569.11000px"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/trunk/spec/working/Test_Case_Administration_View"
+   sodipodi:docname="Import_Session.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="384.94658"
+     inkscape:cy="289.8927"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="746"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       xlink:href="clear_import_dialog.png"
+       sodipodi:absref="/home/stefan/temp/spezi-temp/working/Test_Case_Administration_View/clear_import_dialog.png"
+       width="613.00000"
+       height="566.00000"
+       id="image1425"
+       x="0.58637530"
+       y="0.61254883" />
+    <text
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="270"
+       y="23.612549"
+       id="text1381"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1419"
+         sodipodi:role="line"
+         y="23.612549"
+         x="270">Import</tspan></text>
+    <text
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#ffffff;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="269.28571"
+       y="22.898264"
+       id="text1385"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1417"
+         sodipodi:role="line"
+         y="22.898264"
+         x="269.28571">Import</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       x="13.571429"
+       y="60.755405"
+       id="text2148"><tspan
+         id="tspan1421"
+         sodipodi:role="line"
+         y="60.755405"
+         x="13.571429">Coverage Result Import</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;font-stretch:normal;font-variant:normal;text-anchor:start;writing-mode:lr;line-height:100%"
+       x="12.857143"
+       y="86.469688"
+       id="text2152"><tspan
+         x="12.857143"
+         y="86.469688"
+         sodipodi:role="line"
+         id="tspan1326">Import a coverage session container.</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;font-stretch:normal;font-variant:normal;text-anchor:start;writing-mode:lr;line-height:100%"
+       x="14.474609"
+       y="156.44263"
+       id="text3700"><tspan
+         x="14.474609"
+         y="156.44263"
+         sodipodi:role="line"
+         id="tspan1328">Session container:</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3765"
+       x="491.00000"
+       y="137.07419" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3829"
+       x="155.00000"
+       y="515.61255" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3832"
+       x="376.54825"
+       y="516.04150" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3834"
+       x="491.00000"
+       y="515.61255" />
+    <image
+       xlink:href="button_disabled.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button_disabled.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3897"
+       x="262.00000"
+       y="515.61255" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="510.17188"
+       y="157.27661"
+       id="text4850"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4852"
+         x="510.17188"
+         y="157.27661">Browse...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="518.24219"
+       y="536.38599"
+       id="text4854"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4856"
+         x="518.24219"
+         y="536.38599">Cancel</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="405.78125"
+       y="536.38599"
+       id="text4858"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4860"
+         x="405.78125"
+         y="536.38599">Finish</tspan></text>
+    <text
+       xml:space="preserve"
+       style="writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#d7d7d7;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="287.91406"
+       y="536.27661"
+       id="text4862"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4864"
+         x="287.91406"
+         y="536.27661">Next &gt;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="176.6875"
+       y="536.38599"
+       id="text4866"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4868"
+         x="176.6875"
+         y="536.38599">&lt; Back</tspan></text>
+    <image
+       xlink:href="ComboBox_medium.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/ComboBox_medium.png"
+       width="340.00000"
+       height="29.000000"
+       id="image1665"
+       x="140.00000"
+       y="137.10747" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="146.38672"
+       y="156.72974"
+       id="text8884"
+       sodipodi:linespacing="100%"><tspan
+         x="146.38672"
+         y="156.72974"
+         sodipodi:role="line"
+         id="tspan1430">/home/user/programming/project1/session1.xml</tspan></text>
+    <image
+       xlink:href="Checkbox_Checked.png"
+       sodipodi:absref="/home/stefan/temp/spezi-temp/working/Test_Case_Administration_View/Checkbox_Checked.png"
+       width="13.000000"
+       height="13.000000"
+       id="image1520"
+       x="25.000000"
+       y="187.61255" />
+    <image
+       xlink:href="Checkbox.png"
+       sodipodi:absref="/home/stefan/temp/spezi-temp/working/Test_Case_Administration_View/Checkbox.png"
+       width="13.000000"
+       height="13.000000"
+       id="image1584"
+       x="25.000000"
+       y="212.61255" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="54.386719"
+       y="198.72974"
+       id="text1587"><tspan
+         sodipodi:role="line"
+         id="tspan1589"
+         x="54.386719"
+         y="198.72974">Project1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       x="54.480469"
+       y="223.11646"
+       id="text1591"><tspan
+         sodipodi:role="line"
+         id="tspan1593"
+         x="54.480469"
+         y="223.11646">Project2</tspan></text>
+  </g>
+</svg>

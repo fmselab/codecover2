@@ -1,0 +1,12 @@
+<!-- $Id: build-manual.xml 2178 2007-10-27 14:28:23Z podolsir $ -->
+<project default="parserTest">
+	<property name="codeFolder" value="../../../../code/" />
+	<target name="parserTest">
+		<java classpath="bin:${codeFolder}model/bin:${codeFolder}instrumentation/bin:${codeFolder}instrumentation-java/bin:${codeFolder}instrumentation-java-measurement/bin:${codeFolder}instrumentation-java/lib/junit.jar"
+			classname="org.codecover.instrumentation.test.ParserTest"
+			fork="true"
+			cloneVM="tru">
+			<jvmarg value="-Xmx1024M" />
+		</java>
+	</target>	
+</project>

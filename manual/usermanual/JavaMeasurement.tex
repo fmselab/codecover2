@@ -1,0 +1,113 @@
+\svnid{$Id: JavaMeasurement.tex 1 2007-12-12 17:37:26Z t-scheller $}
+\section{Measurement under Java}
+The following sections descibes some special features of the instrumentation and coverage measurement process under Java, if you use the Java instrumenter shipped together with \codecover.
+
+\subsection{Test case selection}
+All coverage data collected during a test run is called a test session. You can subdivide this test session into test cases. There is a number of methods to do this.
+\subsubsection{One test case}
+If you just instrument your classes and run it on your own, only one test case containing all coverage data will be produced. This test case has the name \textit{UNNAMED TESTCASE}.
+\subsubsection{Comments}
+You can use specific comments in source files, that will be instrumented. These comments will be translated to method calls during the instrumentation process. For this reason, it is important, that you place these comments at such positions in your source files, where a method call is allowed. Otherwise you will receive compiler errors.
+\par
+The possible comments are:
+\begin{verbatim}
+// startTestCase("NAME");
+// startTestCase("NAME", "COMMENT");
+// endTestCase();
+// endTestCase("NAME");
+// endTestCase("NAME", "COMMENT");
+// finishTestSession();
+\end{verbatim}
+You have to ensure, that a comment looks exactly like one of these patterns. Otherwise a comment will be ignored.
+\par
+The start and end test case comments explicitly start or end a test case. The start of a test case implicitly ends a prior test case, if it has not ended yet. So two test cases can not overlap.
+\par
+The finish test session comment forces the coverage measurement to stop, flush all remaining coverage counters and close the log. No more coverage results will be collected after this call. You can use this method for example to finish the coverage measurement of a Java dynamic web project. Here the \code{ShutdownHook} approach of \codecover might not catch the shutdown of the server or \code{webapp}.
+\subsubsection{Method calls}
+If you like the method of the comments, but want to use dynamic \code{Strings} as parameters, you can use specific method calls in your own test suite. For this approach, you need to add a jar file to your class path: \\
+\code{java-protocol-dummy.jar} \\
+And you have to call one of the methods of the class: \\ \code{org.codecover.instrumentation.java.measurement.Protocol}.
+\par
+Here is an example for this approach:
+\lstset{language=Java}
+\begin{lstlisting}[caption=Example for the usage of the Protocol]{Protocol}
+try {
+  Person person = null;
+  for (int i = 0; i < MAX; i++ {
+    person = persons[i];
+    Protocol.startTestCase(person.getName());
+    person.prepare();
+    person.callTestMethods();
+    // throws Exception
+    String result = person.checkResults();
+    Protocol.endTestCase(person.getName(), result);
+  }
+} catch (Exception e) {
+  Protocol.endTestCase(person.getName(),
+    "An Exception occurred" + e.getMessage());
+}
+\end{lstlisting}
+\subsubsection{JUnit}
+\codecover supports JUnit for the test case selection too. For this approach you need not to instrument your JUnit \code{TestCases}. But you have to use so called \code{TestRunners} provided by \codecover in the jar: \\
+\code{JUnit-TestRunner.jar} \\
+There are a number of \code{TestRunners} available:
+\begin{itemize}
+  \item \code{org.codecover.junit3.swing.TestRunner}: \\
+a Swing UI for JUnit 3.x
+  \item \code{org.codecover.junit3.awt.TestRunner}: \\
+an AWT UI for JUnit 3.x
+  \item \code{org.codecover.junit3.text.TestRunner}: \\
+a command line UI for JUnit 3.x
+  \item \code{org.codecover.junit4.core.TestRunner}: \\
+a command line UI for JUnit 4.x
+\end{itemize}
+These test runners can be called by:
+\begin{verbatim}
+java -cp junit.jar:JUnit-TestRunner.jar:bin
+    org.codecover.junit.swing.TestRunner
+    [-methodsAsTestCases]
+    de.myprogram.AllTests
+\end{verbatim}
+Where \code{AllTests} is a JUnit test suite. There is an optional argument: \\ \code{-methodsAsTestCases}. \\
+This tells \codecover whether to use JUnit test cases or the methods of JUnit test cases as test cases in the understanding of the software. \codecover will explicitly start end end test cases synchronously to JUnit. If there are own calls of start test case, using one of the methods described above, they might be ignored, because JUnit test cases have a higher priority.
+
+\subsection{Coverage result}
+The coverage results of a test run is stored in a so called \code{coverage log file}. Per default its file name has the following format: \\
+\code{coverage-log-yyyy-MM-dd-HH-mm-ss-SSS.clf} \\
+This file is stored in the current directory. To change the target of this coverage log file, you can use one of the following methods:
+\begin{enumerate}
+  \item System property: \\
+You can set a so called system property when starting your instrumented program. The name of the property is: \\
+\code{org.codecover.coverage-log-file}. \\
+An example call:
+\begin{verbatim}
+java -Dorg.codecover.coverage-log-file=archiv/coverage1.clf
+     -cp bin:library.jar
+     Main
+\end{verbatim}
+  \item Environment variable: \\
+You can set a system variable with the name: \\
+\code{org.codecover.coverage-log-file}.
+  \item \code{CoverageLogPath}: \\
+After having instrumented your source files, additionally classes have been added. One of them is: \\
+\code{org.codecover.instrumentation.java.measurement.CoverageLogPath} \\
+You just can change the return value of the method \code{getDefaultPath()} to another file name or another path. Afterwards you have to recompile this class.
+\end{enumerate}
+If a coverage log file with the same name already exists, the name of the new \code{coverage log file} will be extended by \textit{(1)}. If you want to enable overwriting, set the following system variable to \code{"true"} or \code{"on"}: \\
+\code{org.codecover.coverage-log-overwrite}. \\
+Example:
+\begin{verbatim}
+java -Dorg.codecover.coverage-log-file=archiv/coverage2.clf
+     -Dorg.codecover.coverage-log-overwrite=true
+     -cp bin:library.jar
+     Main
+\end{verbatim}
+
+\subsection{Special characteristics}
+When instrumenting your Java source files, some additional files will be added. They lie in the following package: \\
+\code{org.codecover} \\
+You have to compile them and add them to your class path when executing your program, because these files are needed for the coverage measurement.
+\par
+The measurement approach under Java uses a so called \code{ShutdownHook}, to guarantee, that all measurement results are captured. If you use an own \code{ShutdownHook} its effected coverage data might not be captured.
+\par
+If you use an own \code{ClassLoader} you have to ensure, that this classloader is not instrumented because the instrumentation causes problems in this specific case.

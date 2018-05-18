@@ -1,0 +1,38 @@
+///////////////////////////////////////////
+// source file: example.cob
+///////////////////////////////////////////
+
+START TEST CASE "Input 3"
+S1 2
+S2 2
+B1 1
+C1-1111 1
+C1-1110 1
+C1-1011 0
+C1-1010 0
+S3 1
+L0-1 0
+L1-1 0
+L2-1 1
+S4 3
+S5 1
+B2 1
+S6 1
+END TEST CASE "Input 3"
+START TEST CASE "Input 0"
+S1 2
+S2 2
+B1 1
+C1-1111 1
+C1-1110 1
+C1-1011 0
+C1-1010 0
+S3 1
+L0-1 1
+L1-1 0
+L2-1 0
+S4 0
+S5 1
+B2 1
+S6 1
+END TEST CASE "Input 0"

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--($Id: testSessionContainerSchema.xsd 2442 2007-11-13 16:24:26Z wittlims $)-->
+<!--
+This schema can be used to validate the 1.0 test session container xml format.
+-->
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="TestSessionContainer">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="SrcFileList"/>
+				<xsd:element ref="CritList"/>
+				<xsd:element ref="BoolOpList"/>
+				<xsd:element ref="HierarchyLvlTypeList"/>
+				<xsd:element ref="MASTRoot"/>
+				<xsd:element ref="TestSession"/>
+			</xsd:choice>
+			<xsd:attribute name="Date" type="xsd:string" use="required"/>
+			<xsd:attribute name="TestSessionContainerId" type="xsd:string" use="required"/>
+			<xsd:attribute name="version" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SrcFileList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="SrcFile"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SrcFile">
+		<xsd:complexType>
+			<xsd:attribute name="Content" type="xsd:string" use="required"/>
+			<xsd:attribute name="Filename" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CritList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="CritListEntry"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CritListEntry">
+		<xsd:complexType>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="PluginName" type="xsd:string" use="optional"/>
+			<xsd:attribute name="MthdName" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BoolOpList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="BoolOp"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BoolOp">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="BoolAssgnmntBoolMapList"/>
+			</xsd:choice>
+			<xsd:attribute name="Arity" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BoolAssgnmntBoolMapList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="MapEntry"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MapEntry">
+		<xsd:complexType>
+			<xsd:attribute name="BoolAssgnmnt" type="xsd:string" use="required"/>
+			<xsd:attribute name="Value" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="HierarchyLvlTypeList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="HierarchyLvlType"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="HierarchyLvlType">
+		<xsd:complexType>
+			<xsd:attribute name="EnglishName" type="xsd:string" use="required"/>
+			<xsd:attribute name="IntrnlName" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MASTRoot">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="HierarchyLvl"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="HierarchyLvl">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Header"/>
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="HierarchyLvl"/>
+				<xsd:element ref="StmntSeq"/>
+			</xsd:choice>
+			<xsd:attribute name="HierarchyLvlId" type="xsd:string" use="required"/>
+			<xsd:attribute name="HierarchyLvlTypeId" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Header">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Loc"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Loc">
+		<xsd:complexType>
+			<xsd:attribute name="EndOffset" type="xsd:string" use="required"/>
+			<xsd:attribute name="SrcFileId" type="xsd:string" use="required"/>
+			<xsd:attribute name="StartOffset" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LocList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Loc"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="StmntSeq">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="CondStmnt"/>
+				<xsd:element ref="BasicStmnt"/>
+				<xsd:element ref="LoopStmnt"/>
+				<xsd:element ref="SyncStmnt"/>
+			</xsd:choice>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CondStmnt">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Branch"/>
+				<xsd:element ref="Keyword"/>
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="RootTerm"/>
+				<xsd:element ref="QMO"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Branch">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Cond"/>
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="StmntSeq"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Implct" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Cond">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Loc"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BasicStmnt">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="QMO"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Keyword">
+		<xsd:complexType>
+			<xsd:attribute name="EndOffset" type="xsd:string" use="required"/>
+			<xsd:attribute name="SrcFileId" type="xsd:string" use="required"/>
+			<xsd:attribute name="StartOffset" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="RootTerm">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="OpTerm"/>
+				<xsd:element ref="BasicBoolTerm"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="QMO">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="QMO_E"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="QMO_E">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="OpTerm">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="BasicBoolTerm"/>
+				<xsd:element ref="OpTerm"/>
+			</xsd:choice>
+			<xsd:attribute name="BooleanOpId" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BasicBoolTerm">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="LocList"/>
+			</xsd:choice>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LoopStmnt">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="StmntSeq"/>
+				<xsd:element ref="Keyword"/>
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="RootTerm"/>
+				<xsd:element ref="QMO"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="MltplExecId" type="xsd:string" use="required"/>
+			<xsd:attribute name="MltplExecPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="NvrExecId" type="xsd:string" use="required"/>
+			<xsd:attribute name="NvrExecPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="OnceExecutedId" type="xsd:string" use="required"/>
+			<xsd:attribute name="OnceExecutedPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="OptBodyExec" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="SyncStmnt">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Keyword"/>
+				<xsd:element ref="LocList"/>
+				<xsd:element ref="QMO"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+			<xsd:attribute name="Intrnl_Id" type="xsd:string" use="required"/>
+
+			<xsd:attribute name="SyncStmnt0" type="xsd:string" use="required"/>
+			<xsd:attribute name="SyncStmnt1" type="xsd:string" use="required"/>
+			<xsd:attribute name="SyncStmnt2" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+	<xsd:element name="TestSession">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="TestCase"/>
+				<xsd:element ref="MetaDataList"/>
+			</xsd:choice>
+			<xsd:attribute name="Comment" type="xsd:string" use="required"/>
+			<xsd:attribute name="Date" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="TestCase">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="CovList"/>
+				<xsd:element ref="AssgnmntList"/>
+				<xsd:element ref="ObjMetaDataList"/>
+				<xsd:element ref="MetaDataList"/>
+			</xsd:choice>
+			<xsd:attribute name="Comment" type="xsd:string" use="required"/>
+			<xsd:attribute name="Date" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CovList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="CovPrefix"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CovPrefix">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="Cov"/>
+			</xsd:choice>
+			<xsd:attribute name="CovItemPrefix" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Cov">
+		<xsd:complexType>
+			<xsd:attribute name="CovItemId" type="xsd:string" use="required"/>
+			<xsd:attribute name="Value" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AssgnmntList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="AssgnmntPrefix"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AssgnmntPrefix">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="AssgnmntListEntry"/>
+			</xsd:choice>
+			<xsd:attribute name="RootTermCovItemPrefix" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AssgnmntListEntry">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="MapEntry"/>
+			</xsd:choice>
+			<xsd:attribute name="Length" type="xsd:string" use="required"/>
+			<xsd:attribute name="RootTermCovItemId" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ObjMetaDataList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="ObjMetaDataListEntry"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ObjMetaDataListEntry">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="MetaData"/>
+			</xsd:choice>
+			<xsd:attribute name="MetaDataObjId" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MetaData">
+		<xsd:complexType>
+			<xsd:attribute name="Base64" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MetaDataList">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="MetaDataListEntry"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MetaDataListEntry">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element ref="MetaData"/>
+			</xsd:choice>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

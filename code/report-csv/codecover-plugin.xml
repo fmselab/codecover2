@@ -1,0 +1,6 @@
+<plugin xmlns="http://www.codecover.org/xml/plugin-descriptor-1.0"
+        name="org.codecover.report.csv"
+        version="1.0"
+        class="org.codecover.report.csv.CSVReportPlugin">
+  <depends name="org.codecover" version="1.0" />
+</plugin>

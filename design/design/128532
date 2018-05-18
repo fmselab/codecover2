@@ -1,0 +1,441 @@
+format 29
+"Use Cases"
+  revision 5
+  modified_by 20 "tilmann"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  usecaseview 128020 "Key Use Cases"
+    //use case diagram settings
+    package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    usecase 128020 "configure software"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    end
+
+    usecase 128148 "measure coverage"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      associated_diagram usecasediagram_ref 128148 // Measure coverage
+      simplerelation 128020
+	-_->
+	  stereotype "include"
+	  on usecase_ref 128660 // analyze coverage log
+      end
+
+      simplerelation 128148
+	-_->
+	  stereotype "include"
+	  on usecase_ref 129300 // instrument instrumentable items
+      end
+
+      simplerelation 128276
+	-_->
+	  stereotype "include"
+	  on usecase_ref 130324 // create session file
+      end
+
+      simplerelation 128404
+	-_->
+	  stereotype "include"
+	  on usecase_ref 130196 // create session
+      end
+    end
+
+    usecase 128276 "generate report"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    end
+
+    usecase 128404 "administrate sessions"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      associated_diagram usecasediagram_ref 128404 // Administrate sessions
+    end
+
+    usecase 128532 "show coverage"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      associated_diagram usecasediagram_ref 128276 // Show coverage
+    end
+
+    class 128020 "ShellUser"
+       stereotype "actor"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128020 // <generalisation>
+	relation 128020 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128020 // <generalisation>
+	  b parent class_ref 128404 // GenericUser
+      end
+    end
+
+    class 128276 "EclipseUser"
+       stereotype "actor"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128148 // <generalisation>
+	relation 128148 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128148 // <generalisation>
+	  b parent class_ref 128404 // GenericUser
+      end
+    end
+
+    class 128404 "GenericUser"
+       stereotype "actor"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    usecasediagram 128020 "Key Use Cases"
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      size A4
+    end
+
+    usecaseview 128148 "Measure coverage"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      usecasediagram 128148 "Measure coverage"
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	size A4
+      end
+
+      usecase 128660 "analyze coverage log"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 128788 "associate test case"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 128916 "configure measurement"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129044 "select coverage criteria"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129172 "select instrumentable items"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129300 "instrument instrumentable items"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+    end
+
+    usecaseview 128404 "Show coverage"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      usecasediagram 128276 "Show coverage"
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	size A4
+      end
+
+      usecase 129428 "select session"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129556 "select test cases"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129684 "show coverage results"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 129812 "show covered code"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+    end
+
+    usecaseview 128532 "Administrate sessions"
+      //use case diagram settings
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      //sequence diagram settings
+      show_full_operations_definition default write_horizontally default drawing_language default shadow default
+      //collaboration diagram settings
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+      //object diagram settings
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      usecasediagram 128404 "Administrate sessions"
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	size A4
+      end
+
+      usecase 129940 "import session"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130068 "export session"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130196 "create session"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130324 "create session file"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130452 "merge sessions"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130580 "drop session"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+	simplerelation 128532
+	  -_->
+	    stereotype "include"
+	    on usecase_ref 130964 // drop test case
+	end
+      end
+
+      usecase 130708 "edit session properties"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130836 "edit test case properties"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 130964 "drop test case"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+
+      usecase 131092 "merge test cases"
+	//use case diagram settings
+	package_name_in_tab default show_context default auto_label_position default shadow default
+	//sequence diagram settings
+	show_full_operations_definition default write_horizontally default drawing_language default shadow default
+	//collaboration diagram settings
+	show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+	//object diagram settings
+	 write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      end
+    end
+  end
+
+end

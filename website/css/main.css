@@ -1,0 +1,264 @@
+/* $Id: main.css 32 2009-03-09 12:33:36Z schmidberger $ */
+html {
+        background-color: #D8EFFF;
+}
+body {
+        font-family: sans-serif;
+}
+div.content {
+        display: block;
+        clear: both;
+        float: left;
+        background-color: #FFFFFF;
+        padding: 20px;
+        margin: auto;
+        width: 800px;
+        border: 1px solid #00497B;
+}
+pre {
+        font-size: 11pt;
+        background-color: #eee;
+        border: 1px solid #666666;
+        border-spacing: 5px;
+        border-collapse: separate;
+        padding: 5px;
+        padding-left: 15px;
+}
+code {
+        font-family: monospace;
+}
+div.footer {
+        clear: both;
+        float: left;
+        width: 100%;
+        margin-top: 5px;
+        border-top: 3px solid #00497B;
+}
+div.commandDiv {
+        border: thin solid #000000;
+        padding: 25px;
+        margin-top: 1em;
+}
+.todo {
+        color: #cc0000;
+}
+#navigation {
+        margin-bottom: 1em;
+        background-color: #32528c;
+        float: left;
+        width: 100%;
+        line-height: normal;
+}
+#navigation .clear {
+        clear: left;
+}
+/* Added because of a weird Safari bug */
+
+#navigation .c {
+        display: block; /*background-color: #fff;*/
+        background-color: transparent;
+}
+#navigation .c * {
+        display: block;
+        height: 1px;
+        overflow: hidden;
+        background-color: #32528c;
+}
+#navigation .c1, #navigation .c2, #navigation .c3 {
+        border-width: 0 1px;
+        border-style: solid;
+}
+#navigation .c1 {
+        padding: 0 1px;
+        margin: 0 1px; /*background-color: #7288b0; border-color: #d9dfe9;*/
+        background-color: transparent;
+        border-color: transparent;
+}
+#navigation .c2 {
+        padding: 0 1px; /*background-color: #3e5c93; border-color: #d9dfe9;*/
+        background-color: transparent;
+        border-color: transparent;
+}
+#navigation .c3 {
+        /*border-color: #7288b0;*/
+        border-color: transparent;
+}
+#navigation ul {
+        list-style-type: none;
+        padding: 0 .2em;
+        margin: 0;
+}
+#navigation li {
+        float: left;
+        border-left: 1px solid #7ba5dd;
+}
+#navigation a {
+        color: #fff;
+        text-decoration: none;
+        padding: 0 .4em;
+}
+#navigation a:hover {
+        color: #fff;
+        text-decoration: underline;
+}
+#navigation li.first {
+        border-left: none;
+}
+#navigation ul ul {
+        display: none;
+        position: absolute;
+        left: -1px;
+        z-index: 3;
+        padding: .2em 0;
+        background-color: #eff3fb;
+        border: 1px solid #8ba7cd;
+        border-top: 3px solid #32528c;
+        float: none;
+}
+#navigation ul ul li {
+        float: none;
+        border: none;
+}
+#navigation ul ul a {
+        color: #000;
+        line-height: 1.35em;
+        padding: 0 .4em;
+        background-image: none;
+}
+#navigation ul ul a:hover {
+        color: #fff;
+        text-decoration: none;
+        background-color: #4986d9;
+}
+#documentation, #support {
+        position: relative;
+        margin: 0;
+}
+#documentation a, #support a {
+        display: block;
+        background: url(../images/darrow-white.gif) right center no-repeat;
+}
+#documentation a {
+        width: 8em;
+}
+#support a {
+        width: 5em;
+}
+#documentation:hover ul, #support:hover ul {
+        display: block;
+}
+#screenShotDiv {
+        float:left;
+        width:45%;
+        margin-bottom: 1em;
+}
+#downloadAreaDiv {
+        float:left;
+        width: 55%;
+}
+
+#downloadAreaDiv h2  {
+        font-style:oblique;
+        color: #333333;
+        margin-bottom:0px;
+        margin-top:0px;
+        font-family: Verdana;
+        font-size: 36pt;
+}
+
+#downloadAreaDiv h3  {
+margin-top:0px;
+padding-left:4em;
+        font-style:oblique;
+        color: #CCCCCC;
+        font-family: Verdana;
+}
+
+
+
+.mainInformationEntry h3 {
+        font-size: 12pt;
+        color: #0066cc;
+        font-family: Verdana;
+        width:60%;
+        float:left;
+}
+.mainInformationEntry p {
+        font-size: 10pt;
+        color: #003399;
+        font-family: Verdana;
+        width:40%;
+        float:left;
+}
+
+#content {
+	margin-top: 0px;
+	font-size: 12pt;
+	float:left;
+	border: 1px solid #dddddd;
+}
+
+#content p {
+	font-weight: bold;
+	background-color: #eeeeee;
+	border: 10px solid #eeeeee;
+ }
+
+
+#content ul {
+	list-style-image: url(../images/bulletArrow.gif);
+ }
+
+#content ul li {
+	border-bottom: #ffffff solid 10px;
+ }
+
+
+#features {
+        list-style: none;
+}
+
+#features li {
+        float: left;
+        width: 164px;
+        min-height: 35px;
+        margin-right: 25px;
+        margin-top: 1.5em;
+        padding-left: 40px;
+        background-repeat: no-repeat;
+        background-position: 0 3px;
+}
+* html #features li {
+        height: 35px;
+}
+#features li.alt {
+        margin-right: 0;
+}
+#features h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+}
+#features a {
+        display: inline;
+        width: auto;
+        padding-left: 0;
+}
+#features p {
+        margin-top: 0;
+        font-size: 90%;
+}
+#page {
+        position: relative;
+        width: 800px;
+        margin: 0 auto;
+        padding-bottom: 25px;
+        text-align: left;
+}
+#page h1 {
+        font-style:oblique;
+        color: #CCCCCC;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+img {
+        border: none;
+}

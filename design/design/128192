@@ -1,0 +1,231 @@
+format 29
+"manipulators"
+  revision 2
+  modified_by 64 "ahija"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  java_package "org.gbt2.instrumentation.java15.manipulators"
+  classview 128192 "manipulators"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 129556 "Manipulators"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 133396 "StatementManipulator"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 129984 "DefaultStatementManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134592 // <realization>
+	relation 133056 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134592 // <realization>
+	  b parent class_ref 133396 // StatementManipulator
+      end
+    end
+
+    class 130112 "DummyStatementManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132800 // <realization>
+	relation 131264 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132800 // <realization>
+	  b parent class_ref 133396 // StatementManipulator
+      end
+    end
+
+    class 133268 "BranchManipulator"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 130240 "DefaultBranchManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134464 // <realization>
+	relation 132928 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134464 // <realization>
+	  b parent class_ref 133268 // BranchManipulator
+      end
+    end
+
+    class 130496 "DummyBranchManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133440 // <realization>
+	relation 131904 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 133440 // <realization>
+	  b parent class_ref 133268 // BranchManipulator
+      end
+    end
+
+    class 133012 "ConditionManipulator"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 130368 "DefaultConditionManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134336 // <realization>
+	relation 132800 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134336 // <realization>
+	  b parent class_ref 133012 // ConditionManipulator
+      end
+    end
+
+    class 130624 "DummyConditionManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133568 // <realization>
+	relation 132032 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 133568 // <realization>
+	  b parent class_ref 133012 // ConditionManipulator
+      end
+    end
+
+    class 133140 "LoopManipulator"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 134676 "DefaultLoopManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134208 // <realization>
+	relation 132672 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 134208 // <realization>
+	  b parent class_ref 133140 // LoopManipulator
+      end
+    end
+
+    class 134804 "DummyLoopManipulator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133652 // <realization>
+	relation 133012 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 133652 // <realization>
+	  b parent class_ref 133140 // LoopManipulator
+      end
+    end
+  end
+end

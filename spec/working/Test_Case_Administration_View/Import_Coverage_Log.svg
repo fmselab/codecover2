@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="615.34998px"
+   height="567.36255px"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/trunk/spec/working/Test_Case_Administration_View"
+   sodipodi:docname="Import_Coverage_Log.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="384.94658"
+     inkscape:cy="289.89270"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="743"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       y="0.509682"
+       x="0.58637786"
+       id="image2283"
+       height="566"
+       width="613"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/trunk/spec/working/Test_Case_Administration_View/clear_import_dialog_log.png"
+       xlink:href="clear_import_dialog_log.png" />
+    <text
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="270"
+       y="23.612549"
+       id="text1381"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1419"
+         sodipodi:role="line"
+         y="23.612549"
+         x="270">Import</tspan></text>
+    <text
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#ffffff;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="269.28571"
+       y="22.898264"
+       id="text1385"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1417"
+         sodipodi:role="line"
+         y="22.898264"
+         x="269.28571">Import</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-variant:normal;font-stretch:normal;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-weight:normal;font-style:normal;font-size:12.000000"
+       x="13.571429"
+       y="60.755405"
+       id="text2148"><tspan
+         id="tspan1421"
+         sodipodi:role="line"
+         y="60.755405"
+         x="13.571429">Coverage Result Import</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;font-stretch:normal;font-variant:normal;text-anchor:start;writing-mode:lr;line-height:100%"
+       x="12.857143"
+       y="86.469688"
+       id="text2152"><tspan
+         x="12.857143"
+         y="86.469688"
+         sodipodi:role="line"
+         id="tspan1395">Import the coverage results from an external coverage run.</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3829"
+       x="155.00000"
+       y="515.61255" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3832"
+       x="376.54825"
+       y="516.04150" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3834"
+       x="491.00000"
+       y="515.61255" />
+    <image
+       xlink:href="button_disabled.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button_disabled.png"
+       width="107.00000"
+       height="29.000000"
+       id="image3897"
+       x="262.00000"
+       y="515.61255" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="518.24219"
+       y="536.38599"
+       id="text4854"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4856"
+         x="518.24219"
+         y="536.38599">Cancel</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="405.78125"
+       y="536.38599"
+       id="text4858"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4860"
+         x="405.78125"
+         y="536.38599">Finish</tspan></text>
+    <text
+       xml:space="preserve"
+       style="writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#d7d7d7;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="287.91406"
+       y="536.27661"
+       id="text4862"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4864"
+         x="287.91406"
+         y="536.27661">Next &gt;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="176.6875"
+       y="536.38599"
+       id="text4866"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4868"
+         x="176.6875"
+         y="536.38599">&lt; Back</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="11.316019"
+       y="155.90872"
+       id="text1489"><tspan
+         x="11.316019"
+         y="155.90872"
+         sodipodi:role="line"
+         id="tspan1505">Coverage log:</tspan></text>
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/button.png"
+       width="107"
+       height="29"
+       id="image1493"
+       x="489.98984"
+       y="137.36255" />
+    <image
+       xlink:href="ComboBox_long.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Test_Case_Administration_View/ComboBox_long.png"
+       width="369"
+       height="29"
+       id="image1495"
+       x="114.45438"
+       y="137.36255" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="509.16171"
+       y="157.56497"
+       id="text1497"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan1499"
+         x="509.16171"
+         y="157.56497">Browse...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="121.98985"
+       y="156.90872"
+       id="text1501"
+       sodipodi:linespacing="100%"><tspan
+         x="121.98985"
+         y="156.90872"
+         sodipodi:role="line"
+         id="tspan1345">/home/user/programming/project1/coverage.clf</tspan></text>
+    <rect
+       y="201.84064"
+       x="13.045849"
+       height="97.234146"
+       width="583.758"
+       id="rect2099"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.42942169;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       y="189.72418"
+       x="17.989847"
+       height="25"
+       width="188"
+       id="rect1339"
+       style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.16;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text1333"
+       y="204.84137"
+       x="19.198832"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         id="tspan1337"
+         sodipodi:role="line"
+         y="204.84137"
+         x="19.198832">Session name and description:</tspan></text>
+    <text
+       id="text2859"
+       y="226.47221"
+       x="27.933207"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="226.47221"
+         x="27.933207"
+         id="tspan2861"
+         sodipodi:role="line">Name:</tspan></text>
+    <text
+       id="text2863"
+       y="260.22806"
+       x="27.980082"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="260.22806"
+         x="27.980082"
+         id="tspan2865"
+         sodipodi:role="line">Description:</tspan></text>
+    <rect
+       y="211.85417"
+       x="109.11984"
+       height="22.52788"
+       width="216"
+       id="rect2867"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.25999999;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       y="247.72417"
+       x="109.11981"
+       height="43"
+       width="478.87006"
+       id="rect3627"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.25996473;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+  </g>
+</svg>

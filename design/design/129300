@@ -1,0 +1,756 @@
+format 29
+"ast"
+  revision 19
+  modified_by 40 "steffen"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  java_dir "org/gbt2/model/ast"
+  java_package "org.gbt2.model.ast"
+  classview 128148 "ast"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 129044 "ast"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 128532 "Statement"
+      abstract 
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128916 // <realization>
+	relation 128916 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128916 // <realization>
+	  b parent class_ref 129172 // Locatable
+      end
+
+      classrelation 130580 // coverableItem (<unidirectional association>)
+	relation 129940 --->
+	  a role_name "coverableItem" multiplicity "1" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130580 // coverableItem (<unidirectional association>)
+	  b parent class_ref 130068 // CoverableItem
+      end
+
+      classrelation 132372 // terms (<unidirectional association>)
+	relation 131732 --->
+	  a role_name "terms" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132372 // terms (<unidirectional association>)
+	  b parent class_ref 130708 // RootTerm
+      end
+
+      classrelation 130088 // <realization>
+	relation 129704 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130088 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 128660 "BasicStatement"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128404 // <generalisation>
+	relation 128404 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128404 // <generalisation>
+	  b parent class_ref 128532 // Statement
+      end
+    end
+
+    class 128788 "ComplexStatement"
+      abstract 
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128532 // <generalisation>
+	relation 128532 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128532 // <generalisation>
+	  b parent class_ref 128532 // Statement
+      end
+    end
+
+    class 128916 "ConditionalStatement"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128660 // <generalisation>
+	relation 128660 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128660 // <generalisation>
+	  b parent class_ref 128788 // ComplexStatement
+      end
+
+      classrelation 130964 // branches (<unidirectional association>)
+	relation 130324 --->
+	  a role_name "branches" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130964 // branches (<unidirectional association>)
+	  b parent class_ref 130196 // Branch
+      end
+
+      attribute 129684 "keyword"
+	const_attribute private type class_ref 128010 // LocationList
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+    end
+
+    class 129044 "LoopingStatement"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128788 // <generalisation>
+	relation 128788 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128788 // <generalisation>
+	  b parent class_ref 128788 // ComplexStatement
+      end
+
+      classrelation 131860 // body (<unidirectional association>)
+	relation 131220 --->
+	  a role_name "body" multiplicity "1" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131860 // body (<unidirectional association>)
+	  b parent class_ref 130324 // StatementSequence
+      end
+
+      attribute 129812 "keyword"
+	const_attribute private type class_ref 128010 // LocationList
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 129940 "neverExecutedItem"
+	const_attribute private type class_ref 130068 // CoverableItem
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130068 "onceExecutedItem"
+	const_attribute private type class_ref 130068 // CoverableItem
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130196 "multipleExecutedItem"
+	const_attribute private type class_ref 130068 // CoverableItem
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130324 "optionalBodyExecution"
+	const_attribute private explicit_type "bool"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+    end
+
+    class 129172 "Locatable"
+      abstract  stereotype "interface"
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128020 "getLocation"
+	abstract cpp_virtual public return_type class_ref 128010 // LocationList
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 129300 "Location"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128276 "startOffset"
+	const_attribute private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 128404 "endOffset"
+	const_attribute private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 129044 // file (<unidirectional association>)
+	relation 129044 --->
+	  a role_name "file" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129044 // file (<unidirectional association>)
+	  b parent class_ref 129428 // SourceFile
+      end
+    end
+
+    class 129428 "SourceFile"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128020 "fileName"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 128148 "content"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+    end
+
+    class 130068 "CoverableItem"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 130196 "Branch"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130836 // coverableItem (<unidirectional association>)
+	relation 130196 --->
+	  a role_name "coverableItem" multiplicity "1" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130836 // coverableItem (<unidirectional association>)
+	  b parent class_ref 130068 // CoverableItem
+      end
+
+      classrelation 131220 // <unidirectional association>
+	relation 130580 --->
+	  a role_name "" multiplicity "" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131220 // <unidirectional association>
+	  b parent class_ref 130324 // StatementSequence
+      end
+
+      classrelation 131732 // <realization>
+	relation 131092 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131732 // <realization>
+	  b parent class_ref 129172 // Locatable
+      end
+
+      attribute 130452 "implicit"
+	const_attribute private explicit_type "bool"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130580 "condition"
+	const_attribute private type class_ref 129300 // Location
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 130216 // <realization>
+	relation 129832 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130216 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 130324 "StatementSequence"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131348 // statements (<unidirectional association>)
+	relation 130708 --->
+	  stereotype "list"
+	  a role_name "statements" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype} ${name}${value};
+"
+	    classrelation_ref 131348 // statements (<unidirectional association>)
+	  b parent class_ref 128532 // Statement
+      end
+
+      classrelation 131476 // <realization>
+	relation 130836 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131476 // <realization>
+	  b parent class_ref 129172 // Locatable
+      end
+
+      classrelation 130728 // <realization>
+	relation 130344 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130728 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 130452 "BooleanTerm"
+      abstract 
+      cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132116 // <realization>
+	relation 131476 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132116 // <realization>
+	  b parent class_ref 129172 // Locatable
+      end
+
+      classrelation 130472 // <realization>
+	relation 130088 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130472 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 130580 "BasicBooleanTerm"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131988 // <generalisation>
+	relation 131348 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131988 // <generalisation>
+	  b parent class_ref 130452 // BooleanTerm
+      end
+    end
+
+    class 130708 "RootTerm"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132500 // term (<unidirectional association>)
+	relation 131860 --->
+	  a role_name "term" multiplicity "1" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132500 // term (<unidirectional association>)
+	  b parent class_ref 130452 // BooleanTerm
+      end
+
+      attribute 131476 "results"
+	const_attribute private explicit_type "Map<BooleanAssignment,CoverableItem>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 130600 // <realization>
+	relation 130216 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130600 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 130836 "OperatorTerm"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 132628 // <generalisation>
+	relation 131988 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132628 // <generalisation>
+	  b parent class_ref 130452 // BooleanTerm
+      end
+
+      classrelation 132756 // operator (<unidirectional association>)
+	relation 132116 --->
+	  a role_name "operator" multiplicity "1" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132756 // operator (<unidirectional association>)
+	  b parent class_ref 130964 // BooleanOperator
+      end
+
+      classrelation 132884 // operands (<unidirectional association>)
+	relation 132244 --->
+	  a role_name "operands" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132884 // operands (<unidirectional association>)
+	  b parent class_ref 130452 // BooleanTerm
+      end
+    end
+
+    class 130964 "BooleanOperator"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 130708 "arity"
+	const_attribute private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130836 "possibleAssignments"
+	const_attribute private explicit_type "Map<BooleanAssignment,Boolean>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 130964 "name"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+    end
+
+    class 131092 "BooleanResult"
+       stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl "${comment}${@}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 131092 "FALSE"
+	public explicit_type ""
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	idl_decl ""
+      end
+
+      attribute 131220 "TRUE"
+	public explicit_type ""
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	idl_decl ""
+      end
+
+      attribute 131348 "NOT_EVALUATED"
+	public explicit_type ""
+	cpp_decl ""
+	java_decl "  ${@}${name}${value},${comment}"
+	idl_decl ""
+      end
+    end
+
+    class 128040 "HierarchyLevel"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128040 // <realization>
+	relation 128040 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128040 // <realization>
+	  b parent class_ref 129172 // Locatable
+      end
+
+      attribute 128040 "header"
+	const_attribute private type class_ref 128010 // LocationList
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 128168 // sequences (<unidirectional association>)
+	relation 128168 --->
+	  a role_name "sequences" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128168 // sequences (<unidirectional association>)
+	  b parent class_ref 130324 // StatementSequence
+      end
+
+      classrelation 128296 // children (<unidirectional association>)
+	relation 128296 --->
+	  a role_name "children" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128296 // children (<unidirectional association>)
+	  b parent class_ref 128040 // HierarchyLevel
+      end
+
+      classrelation 128424 // type (<unidirectional association>)
+	relation 128424 --->
+	  a role_name "type" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128424 // type (<unidirectional association>)
+	  b parent class_ref 128168 // HierarchyLevelType
+      end
+
+      classrelation 130344 // <realization>
+	relation 129960 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130344 // <realization>
+	  b parent class_ref 129192 // MetaDataObject
+      end
+    end
+
+    class 128168 "HierarchyLevelType"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128168 "englishName"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 128296 "internalName"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+    end
+
+    class 129192 "MetaDataObject"
+      abstract  stereotype "interface"
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128680 "getMetaData"
+	abstract cpp_virtual public return_type class_ref 129320 // MetaData
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 129320 "MetaData"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 128010 "LocationList"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128010 // locations (<unidirectional association>)
+	relation 128010 --->
+	  a role_name "locations" multiplicity "1..*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128010 // locations (<unidirectional association>)
+	  b parent class_ref 129300 // Location
+      end
+    end
+
+    class 128138 "BooleanAssignment"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128138 // results (<unidirectional association>)
+	relation 128138 --->
+	  a role_name "results" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128138 // results (<unidirectional association>)
+	  b parent class_ref 131092 // BooleanResult
+      end
+
+      operation 129930 "BooleanAssignment"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "results" explicit_type "List<BooleanResult>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
+  ${body}}
+"
+	
+      end
+    end
+
+    objectdiagram 128552 "Example1"
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+      size A4
+    end
+  end
+
+  simplerelation 129290
+    -_->
+      on 
+      package_ref 129172 // model
+  end
+end

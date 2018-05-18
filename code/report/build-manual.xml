@@ -1,0 +1,10 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="component-name" value="report" />
+
+  <property name="classpath" value="../model/model.jar:../metrics/metrics.jar" />
+  <property name="junit-classpath" value="" />
+  <property name="unittest-class-name" value="org.codecover.report.AllTests" />
+  
+  <import file="build-common.xml" />
+</project>

@@ -1,0 +1,107 @@
+format 29
+
+activitynodecanvas 128020 activitynode_ref 130708 // initial
+  xyz 62 9 2000
+activitynodecanvas 128148 activitynode_ref 130836 // decision
+  xyz 58 55 2000
+activitynodecanvas 128788 activitynode_ref 130964 // activity_final
+  xyz 58 664 2000
+activitynodecanvas 129172 activitynode_ref 131092 // decision
+  xyz 225 102 2000
+activityactioncanvas 132500 activityaction_ref 131092 // activity action User selects entry point
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 320 134 2000 139 61
+end
+activityactioncanvas 132628 activityaction_ref 131220 // activity action User clicks the "Coverage" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 317 212 2000 147 75
+end
+activityactioncanvas 132756 activityaction_ref 131348 // activity action Call activity "instrument instrumentable items"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 293 300 2000 195 87
+end
+activityactioncanvas 132884 activityaction_ref 131476 // activity action Rebuild project and start SUT at previously selected entry point
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 303 403 2005 173 91
+end
+activityactioncanvas 133140 activityaction_ref 131604 // activity action Call activity "analyze coverage log"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 298 516 2004 181 67
+end
+activityactioncanvas 133268 activityaction_ref 131732 // activity action Update "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 306 603 1988 167 61
+end
+flowcanvas 128276 flow_ref 134548 // <flow>
+  geometry VHr
+  
+  from ref 128020 z 1999 to point 68 16
+  line 128660 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128916 flow_ref 134676 // Project not opened
+  
+  from ref 128148 z 1999 label "Project not opened" xyz 31 124 1999 to ref 128788
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129300 flow_ref 134804 // Project opened
+  geometry HV
+  
+  from ref 128148 z 1999 label "Project opened" xyz 139 57 1999 to point 235 71
+  line 130580 z 1999 to ref 129172
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130708 flow_ref 134932 // Project contains no entry point
+  geometry VHV unfixed
+  
+  from ref 129172 z 1999 label "Project contains no entry point" xyz 102 196 1999 to point 235 332
+  line 128266 z 1999 to point 68 332
+  line 128394 z 1999 to ref 128788
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133396 flow_ref 135060 // Project contains at least one entry point
+  geometry HV
+  
+  from ref 129172 z 1999 label "Project contains at least one entry point" xyz 270 98 1999 to point 387 118
+  line 133524 z 1999 to ref 132500
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133652 flow_ref 135188 // <flow>
+  
+  from ref 132500 z 1999 to ref 132628
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133908 flow_ref 135316 // <flow>
+  
+  from ref 132628 z 1999 to ref 132756
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134164 flow_ref 135444 // <flow>
+  
+  from ref 132756 z 1999 to ref 132884
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134676 flow_ref 135700 // <flow>
+  
+  from ref 132884 z 1999 to ref 133140
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135956 flow_ref 135956 // <flow>
+  
+  from ref 133140 z 1993 to ref 133268
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136980 flow_ref 136084 // <flow>
+  geometry VHr
+  
+  from ref 133268 z 1987 to point 68 631
+  line 128522 z 1987 to ref 128788
+  show_infonote default drawing_language default write_horizontally default
+end
+end

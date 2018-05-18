@@ -1,0 +1,247 @@
+\svnid{$Id: Glossary.tex 23 2008-05-28 11:39:25Z ahija $}
+
+\storeglosentry{basic boolean term}{
+name={basic boolean term},
+description={is the smallest, not further separable part of a boolean expression. Boolean expressions can be separated at their boolean operators leading to smaller boolean expressions and in the end to basic boolean terms. E.g. the Java the \texttt{A ? B : C} operator separates the three boolean expressions A, B and C, which are, if they don't contain further operators, basic boolean terms.}
+}
+
+\storeglosentry{basic statement}{
+name={basic statement},
+description={is a statement, that is not a \gl{looping statement} or a \gl{conditional statement}. For Java the statements \code{return}, \code{throw}, \code{assert} are also excluded.}
+}
+
+\storeglosentry{black box test}{
+name={black box test},
+description={testing the \gl{SUT} with \gl[test case]{test cases} defined on the basis of the functional and non-functional requirements stated in the \gl{specification}.}
+}
+
+\storeglosentry{boundary-interior coverage}{
+name={boundary-interior coverage},
+description={(synonym: C2b) is a type of path coverage. General path coverage is known as incomputable if there are looping statements. To make the problem computable only a limited number of paths are considered. So boundary-interior coverage only examines whether a loop has been executed:
+\begin{itemize}
+\item never
+\item once
+\item more than one time
+\end{itemize}}
+}
+
+\storeglosentry{branch coverage}{
+name={branch coverage},
+description={(synonym: decision coverage) is a \gl{coverage criterion}. A coverable item is a branch of a \gl{conditional statement}. For branch coverage, a coverable item is covered, if it is entered at least once.}
+}
+
+\storeglosentry{CM}{
+name={CM},
+description={abbreviation for configuration management.}
+}
+
+\storeglosentry{code base}{
+name={code base},
+description={contains all the uninstrumented \gl[code file]{code files} of a specific version of the \gl{SUT}.\\
+A code base has a date and time of the first \gl{instrumentation}. If a code base is instrumented from Eclipse, it has a relation to an Eclipse project.}
+}
+
+\storeglosentry{code coverage}{
+name={code coverage},
+description={has two meanings:
+\begin{enumerate}
+\item is a measurement needed for a \gl{glass box test}. There are different coverage criteria, each defining the \gl[coverable item]{coverable items} and how they are covered.
+\item depends on a concrete \gl{coverage criterion} and is defined---only considering the instrumented part of the SUT---as the quotient of the covered coverable items and the total number of coverable items.
+\end{enumerate}}
+}
+
+\storeglosentry{code file}{
+name={code file},
+description={is a file containing the whole or a part of the source code of the SUT. For example a \code{*.java} file in Java.}
+}
+
+\storeglosentry{condition coverage}{
+name={condition coverage},
+description={is a \gl{coverage criterion}. Condition coverage defines the \gl[coverable item]{coverable items} as \gl[basic boolean term]{basic boolean terms} used in \gl[statement]{statements} which require a boolean expression that affects the control flow. There are different definitions of when such a basic boolean term is considered as covered---e.g. \gl{strict condition coverage}.}
+}
+
+\storeglosentry{conditional statement}{
+name={conditional statement},
+description={is a \gl{statement} of a specific programming language. Conditional statements are statements creating branches in the control flow, e.g. \texttt{if} or \texttt{switch} in Java. It does not matter, if a \textit{particular} usage of a conditional statement creates a branch (e.g. \texttt{if (true)}) or if branches of a \textit{particular} usage are equal (e.g. \texttt{if (a) \{ \}}). It is a conditional statement creating two branches nonetheless, because an \texttt{if} usually creates two branches.\newline
+On the other hand, though the result of some operators depends on a decision, an operator itself creates no branch in the control flow. An example for such an operator would be the \texttt{A ? B : C} operator, of which the result is determined by the value of A. Accounted by itself, such an operator only influences data, not the control flow. Therefore, it is no conditional statement.}
+}
+
+\storeglosentry{coverable item}{
+name={coverable item},
+description={is the smallest unit that can be covered by a coverage criterion, e.g. a \texttt{then} branch in branch coverage.}
+}
+
+\storeglosentry{coverage criterion}{
+name={coverage criterion},
+description={defines the \gl[coverable item]{coverable item} and under which condition they are covered. Some coverage criteria are:
+\begin{itemize}
+\item \gl{statement coverage}
+\item \gl{branch coverage}
+\item \gl{condition coverage}
+\item \gl{loop coverage}
+\end{itemize}}
+}
+
+\storeglosentry{coverage log}{
+name={coverage log},
+description={is a container for raw result data of a coverage run. It contains e.g. counters for all basic statements. This file must be processed afterwards to produce \gl[test session]{test sessions} and \gl[test case]{test cases}.}
+}
+
+\storeglosentry{developer}{
+name={developer},
+description={is a person who is able to write and compile programs in at least one programming language and can understand well documented programs. He is also experienced in both using his computer, especially with file system interaction, web browsing, extracting archive files, applying patches and editing plain text.}
+}
+
+\storeglosentry{DocBook XML}{
+name={DocBook XML},
+description={is a XML based markup language for technical documentation.}
+}
+
+\storeglosentry{entry point}{
+name={entry point},
+description={is the item, that is used to start the \gl{SUT}. For Java, it is a class
+file containing the \texttt{main} method. For COBOL, it is the single \gl{code file}.}
+}
+
+\storeglosentry{executable file}{
+name={executable file},
+description={is a compiled code file that can be executed. For Java it is the byte code \code{*.class} file, under COBOL it is a native executable.}
+}
+
+\storeglosentry{glass box test}{
+name={glass box test},
+description={considers the source code of the SUT and aims at reaching a predefined code coverage for a number of coverage criteria.}
+}
+
+\storeglosentry{HTML}{
+name={HTML},
+description={(abbreviation for: Hyper Text Markup Language) is the predominant markup language for the creation of web pages.}
+}
+
+\storeglosentry{instrumentable item}{
+name={instrumentable item},
+description={is an item of the \gl{SUT}. An instrumentable item is a package, containing other instrumentable items, or a code file.}
+}
+
+\storeglosentry{instrumentation}{
+name={instrumentation},
+description={is the process of adding extra code elements to a \gl{code file} in order to get information about the control flow of the running SUT. Instrumentation is used to measure the \gl{code coverage} of the code file.}
+}
+
+\storeglosentry{loop coverage}{
+name={loop coverage},
+description={is a coverage criterion. The loop coverage defines several \gl[coverable item]{coverable items} for each \gl{looping statement}:
+\begin{itemize}
+\item loop body is not entered
+\item loop body is entered once, but not repeated
+\item loop body is repeated more than one time
+\end{itemize}
+Looping statements like do-while cannot be bypassed and have only two possible coverable items.}
+}
+
+\storeglosentry{looping statement}{
+name={looping statement},
+description={is a \gl{statement} of a specific programming language. A looping
+statement repeatedly executes a number of statements. For example,
+\texttt{for} and \texttt{while} in Java.}
+}
+
+\storeglosentry{maintenance engineer}{
+name={maintenance engineer},
+description={is a \gl{developer} who changes software. He understands technical English. He is able to work out technical details himself, if he is pointed to good documentation.}
+}
+
+\storeglosentry{MAST}{
+name={MAST},
+description={(abbreviation for: More Abstract Syntax Tree) The MAST is a model of the source code containing only the elements of the source code which are necessary to calculate \gl[coverage criterion]{coverage criteria} e.g. \gl[statement]{statements}, branches or boolean expressions which have an affect on control flow.\\
+A MAST always refers to a specific \gl{code base}.}
+}
+
+\storeglosentry{PDF}{
+name={PDF},
+description={(abbreviation for: Portable Document Format) is an file format created and controlled by Adobe Systems, for representing two-dimensional documents in a device independent and resolution independent fixed-layout document format.}
+}
+
+\storeglosentry{path coverage}{
+name={path coverage},
+description={is a coverage criterion. To reach full path coverage each of the possible paths from the program entry to the exit must have been followed.}
+}
+
+\storeglosentry{project}{
+name={project},
+description={is an Eclipse project that appears e.g. in the Package Explorer of Eclipse.}
+}
+
+\storeglosentry{session container}{
+name={session container},
+description={is a file in the file system. It contains:
+\begin{itemize}
+  \item a \gl{code base}
+  \item a \gl{MAST} of this code base
+  \item a number of \gl[test session]{test sessions} ($\geq$ 0)
+\end{itemize}}
+}
+
+\storeglosentry{specification}{
+name={specification},
+description={describes all functional and non-functional requirements the software has to fulfill.}
+}
+
+\storeglosentry{statement}{
+name={statement},
+description={is an element in a \gl{code file} that is the result of the statement production of the grammar of the corresponding programming language.}
+}
+
+\storeglosentry{statement coverage}{
+name={statement coverage},
+description={is a \gl{coverage criterion}. Statement coverage defines the \gl[coverable item]{coverable items} as \gl[basic statement]{basic statements}. A coverable item is covered, if the basic statement is executed. For the Java programming language the execution of the statement has to start to set the statement covered. For COBOL, a basic statement is called covered, if it is executed and the program flow goes to the next statement.}
+}
+
+\storeglosentry{strict condition coverage}{
+name={strict condition coverage},
+description={is a kind of \gl{condition coverage}. Strict condition coverage defines a basic boolean term as covered, if it is evaluated to both true and false and the change from true to false (or false to true) changes the result of the whole condition while every other basic boolean term of the condition remains constant or is not evaluated.}
+}
+
+\storeglosentry{SUT}{
+name={SUT},
+description={(abbreviation for: system under test) The system tested with the software.}
+}
+
+\storeglosentry{test case}{
+name={test case},
+description={
+\begin{enumerate}
+\item is the description of the input for a test with its expected output according to the \gl{specification}.
+\item is an element of a \gl{test session} containing a part or all of the \gl{code coverage} results for code files depending on a set of coverage criteria. Additional information which are stored with a test case are: 
+ \begin{itemize}
+  \item a name
+  \item date and time of measurement
+  \item a comment
+  \item the related test session
+ \end{itemize}
+If the test case is related to a JUnit test case or test method extra information are needed:
+ \begin{itemize}
+  \item the names of the test methods of the JUnit test case
+  \item whether the test methods of the JUnit test case failed or not
+  \item if a test method failed, which failure respectively error was the reason
+ \end{itemize}
+\end{enumerate}}
+}
+
+\storeglosentry{test session}{
+name={test session},
+description={is the result of a coverage measurement of the SUT by the software. It has:
+\begin{itemize}
+  \item a name
+  \item a date and a time of measurement
+  \item a comment
+\end{itemize}
+and contains:
+\begin{itemize}
+  \item a number of \gl[test case]{test cases} ($\geq$ 0)
+  \item the measurement results 
+  \item calculated coverage by \gl[instrumentable item]{instrumentable item} 
+  \item a reference to a \gl{code base}
+  \item possibly a reference to a related Eclipse \gl[project]{project}
+\end{itemize}}
+}

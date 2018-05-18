@@ -1,0 +1,328 @@
+format 29
+"java15"
+  revision 13
+  modified_by 64 "ahija"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  java_package "org.gbt2.instrumentation.java15"
+  classview 128660 "java15 view"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 128320 "Java 15 Instrumenter"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 134932 "JavaParser"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 133780 // <generalisation>
+	relation 133140 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 133780 // <generalisation>
+	  b parent class_ref 134420 // JavaParser
+      end
+
+      operation 136896 "JavaParser"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "source" type class_ref 128960 // Reader
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
+  ${body}}
+"
+	
+      end
+    end
+
+    class 135060 "Instrumenter"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 137024 "getInstrumenterDescriptor"
+	cpp_virtual protected return_type class_ref 128064 // InstrumenterDescriptor
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 136640 "instrumentThis"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 2
+	  param inout name "source" type class_ref 128960 // Reader
+	  param inout name "target" type class_ref 128832 // Writer
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 129216 // <generalisation>
+	relation 129088 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129216 // <generalisation>
+	  b parent class_ref 134036 // Instrumenter
+      end
+
+      classrelation 130624 // descriptor (<association>)
+	relation 129216 ----
+	  a role_name "descriptor" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130624 // descriptor (<association>)
+	  b role_name "instrumenter" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130752 // instrumenter (<association>)
+      end
+
+      classrelation 130880 // parser (<unidirectional association>)
+	relation 129344 --->
+	  a role_name "parser" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130880 // parser (<unidirectional association>)
+	  b parent class_ref 134932 // JavaParser
+      end
+
+      classrelation 131904 // criteria (<unidirectional association>)
+	relation 130368 --->
+	  a role_name "criteria" multiplicity "1..*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131904 // criteria (<unidirectional association>)
+	  b parent class_ref 133908 // Criterion
+      end
+
+      classrelation 132032 // visitor (<unidirectional association>)
+	relation 130496 --->
+	  a role_name "visitor" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132032 // visitor (<unidirectional association>)
+	  b parent class_ref 129600 // InstrumentationVisitor
+      end
+    end
+
+    class 128320 "InstrumenterDescriptor"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 132160 "getName"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 132032 "getDescription"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131904 "getAuthor"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131776 "getVersion"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131648 "isCriterionSupported"
+	public explicit_return_type "bool"
+	nparams 1
+	  param inout name "criterion" type class_ref 133908 // Criterion
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131520 "getSupportedCriteria"
+	public explicit_return_type "Set<Criterion>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131392 "isCharsetSupported"
+	public explicit_return_type "bool"
+	nparams 1
+	  param inout name "charset" type class_ref 133780 // Charset
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131264 "getSupportedCharsets"
+	public explicit_return_type "Set<Charset>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 131136 "getInstrumenter"
+	public return_type class_ref 134036 // Instrumenter
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 128960 // <realization>
+	relation 128832 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128960 // <realization>
+	  b parent class_ref 128064 // InstrumenterDescriptor
+      end
+
+      classrelation 130752 // instrumenter (<association>)
+	relation_ref 129216 // <association>
+      end
+
+      classrelation 131776 // criteria (<unidirectional association>)
+	relation 130240 --->
+	  a role_name "criteria" multiplicity "1..*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131776 // criteria (<unidirectional association>)
+	  b parent class_ref 133908 // Criterion
+      end
+    end
+
+    class 129600 "InstrumentationVisitor"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 134720 // <unidirectional association>
+	relation 133184 --->
+	  a role_name "" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134720 // <unidirectional association>
+	  b parent class_ref 133396 // StatementManipulator
+      end
+
+      classrelation 134848 // <unidirectional association>
+	relation 133312 --->
+	  a role_name "" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134848 // <unidirectional association>
+	  b parent class_ref 133268 // BranchManipulator
+      end
+
+      classrelation 134976 // <unidirectional association>
+	relation 133440 --->
+	  a role_name "" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 134976 // <unidirectional association>
+	  b parent class_ref 133012 // ConditionManipulator
+      end
+
+      classrelation 135104 // <unidirectional association>
+	relation 133568 --->
+	  a role_name "" multiplicity "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135104 // <unidirectional association>
+	  b parent class_ref 133140 // LoopManipulator
+      end
+    end
+  end
+
+  simplerelation 129802
+    -_->
+      on 
+      package_ref 130068 // instrumentation
+  end
+
+  package_ref 128192 // manipulators
+end

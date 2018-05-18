@@ -1,0 +1,170 @@
+<!-- $Id: build-common.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project>
+  <property name="jarfile" value="${component-name}.jar" />
+  <property name="junit-jarfile" value="lib/junit.jar" />
+  <property name="bin-dir" value="bin" />
+  <property name="src-dir" value="src" />
+  <property name="lib-dir" value="lib" />
+  <property name="unittest-src-dir" value="junit" />
+  <property name="componenttest-src-dir" value="componenttest" />
+  <property name="bom-deleter-jar" value="${lib-dir}/BOMDeleter.jar" />
+  
+  <target name="compile">
+    <mkdir dir="${bin-dir}" />
+    <javac target="1.5" srcdir="src"
+           destdir="${bin-dir}"
+           encoding="utf-8"
+           classpath="${classpath}"
+           excludes="**/package-info.java"
+           debug="true"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:{all,-serial}" />
+    </javac>
+  </target>
+
+  <target name="jar" depends="compiletest,compile">
+    <jar destfile="${jarfile}"
+         basedir="${bin-dir}"
+         includes="**/*.class"
+         excludes="**/*Test.class **/*Test$*.class **/*Tests.class **/*Tests$*.class **/*SpecialTestHarness.class **/UtilsForTesting*.class org/codecover/instrumentation/ada*/*.class" />
+  </target>
+
+  <target name="compiletest" depends="compile">
+    <javac target="1.5" srcdir="${unittest-src-dir}"
+           destdir="${bin-dir}"
+           encoding="utf-8"
+           classpath="${classpath}:${junit-classpath}:${junit-jarfile}"
+           debug="true"
+           includeAntRuntime="false"
+           excludes="org/codecover/instrumentation/ada*/*.java">
+      <compilerarg value="-Xlint:all" />
+    </javac>
+  </target>
+
+  <target name="test" depends="compiletest">
+    <java classname="junit.textui.TestRunner"
+          classpath="${classpath}:${junit-classpath}:${junit-jarfile}:bin"
+          fork="true"
+          failonerror="true">
+      <arg value="${unittest-class-name}" />
+    </java>
+  </target>
+
+  <target name="set-svn-properties">
+    <exec executable="svn">
+      <arg value="propset" />
+      <arg value="svn:ignore" />
+      <arg value="bin&#10;${jarfile}&#10;javadoc&#10;test&#10;testreport&#10;*.jar&#10;" />
+      <arg value="." />
+    </exec>
+    <exec executable="svn">
+      <arg value="propset" />
+      <arg value="svn:keywords" />
+      <arg value="Id" />
+      <arg value="build.xml" />
+      <arg value="build-common.xml" />
+    </exec>
+    <exec executable="find">
+      <arg value="src" />
+      <arg value="junit" />
+      <arg value="-name" />
+      <arg value="*.java" />
+      <arg value="-exec" />
+      <arg value="svn" />
+      <arg value="propset" />
+      <arg value="svn:keywords" />
+      <arg value="Id" />
+      <arg value="{}" />
+      <arg value="+" />
+    </exec>
+  </target>
+  
+  <target name="javadoc">
+    <javadoc destdir="javadoc"
+             packagenames="*"
+             classpath="${classpath}"
+             encoding="utf-8"
+             docencoding="utf-8"
+             charset="utf-8" >
+     <packageset dir="src" defaultexcludes="yes">
+       <include name="**"/>
+     </packageset>
+
+      <link offline="true"
+            href="http://java.sun.com/j2se/1.5.0/docs/api/"
+	    packagelistLoc="package-lists/java.sun.com/j2se/1.5.0/docs/api/" />
+      <link offline="true"
+            href="http://junit.sourceforge.net/javadoc/"
+	    packagelistLoc="package-lists/junit.sourceforge.net/javadoc/" />
+      <link offline="true"
+            href="http://jakarta.apache.org/commons/cli/api-release/"
+	    packagelistLoc="package-lists/jakarta.apache.org/commons/cli/api-release/" />
+    </javadoc>
+  </target>
+  
+  <target name="get-javadoc-package-lists">
+    <mkdir dir="package-lists/java.sun.com/j2se/1.5.0/docs/api/" />
+    <get src="http://java.sun.com/j2se/1.5.0/docs/api/package-list" dest="package-lists/java.sun.com/j2se/1.5.0/docs/api/package-list" />
+    <mkdir dir="package-lists/junit.sourceforge.net/javadoc/" />
+    <get src="http://junit.sourceforge.net/javadoc/package-list" dest="package-lists/junit.sourceforge.net/javadoc/package-list" />
+    <mkdir dir="package-lists/jakarta.apache.org/commons/cli/api-release/" />
+    <get src="http://jakarta.apache.org/commons/cli/api-release/package-list" dest="package-lists/jakarta.apache.org/commons/cli/api-release/package-list" />
+  </target>
+
+  <target name="deletebom" description="deletes BOM of src, junit">
+    <java jar="${bom-deleter-jar}" fork="true" failonerror="true">
+      <arg value="${src-dir}" />
+      <classpath>
+        <pathelement location="${bom-deleter-jar}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+    <java jar="${bom-deleter-jar}" fork="true" failonerror="true">
+      <arg value="${unittest-src-dir}" />
+      <classpath>
+        <pathelement location="${bom-deleter-jar}" />
+        <pathelement path="${java.class.path}" />
+      </classpath>
+    </java>
+  </target>
+
+  <target name="showtodo" description="List all TOD&#79;s we can find to the console">
+    <!-- the &#79; is to avoid this target to find itself... -->
+    <exec executable="find">
+      <arg value="-type" />
+      <arg value="f" />
+      <arg value="-a" />
+      <arg value="-name" />
+      <arg value="TOD&#79;" />
+      <arg value="-exec" />
+      <arg value="cat" />
+      <arg value="{}" />
+      <arg value=";" />
+    </exec>
+    <exec executable="find">
+      <arg value="-type" />
+      <arg value="f" />
+      <arg value="-a" />
+      <arg value="(" />
+      <arg value="-name" />
+      <arg value="*.java" />
+      <arg value="-o" />
+      <arg value="-name" />
+      <arg value="*.xml" />
+      <arg value=")" />
+      <arg value="-exec" />
+      <arg value="grep" />
+      <arg value="TOD&#79;" />
+      <arg value="{}" />
+      <arg value="+" />
+    </exec>
+  </target>
+
+  <target name="clean">
+    <delete dir="${bin-dir}" />
+    <mkdir dir="${bin-dir}"/>
+    <delete dir="javadoc" />
+    <delete dir="test" />
+    <delete file="${jarfile}" />
+  </target>
+</project>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: sf-site.xml 2589 2007-11-30 00:09:20Z kiesssn $ -->
+<!-- This version is put to sf.net and has to contain absolute URIs -->
+<site>
+  <feature url="http://downloads.sourceforge.net/codecover/codecover_1.0.0.0.jar" id="codecover" version="1.0.0.0">
+    <category name="CodeCover"/>
+  </feature>
+
+
+  <archive path="plugins/org.codecover.report.html_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.report.html_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.report.csv_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.report.csv_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.model_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.model_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.instrumentation.java.junit_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.instrumentation.java.junit_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.metrics_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.metrics_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.report_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.report_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.instrumentation.java.measurement_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.instrumentation.java.measurement_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.instrumentation_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.instrumentation_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.eclipse_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.eclipse_1.0.0.0.jar" />
+  <archive path="plugins/org.codecover.instrumentation.java_1.0.0.0.jar" url="http://downloads.sourceforge.net/codecover/org.codecover.instrumentation.java_1.0.0.0.jar" />
+
+   <category-def name="CodeCover" label="CodeCover">
+     <description>
+       <!-- TODO a bit more -->
+       CodeCover is a coverage measurement tool released unter the EPL.
+     </description>
+   </category-def>
+</site>

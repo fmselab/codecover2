@@ -1,0 +1,225 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>updateTitle - livenotificationrun - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        livenotificationrun
+    </div>
+    <div class="sessionDate">
+        measured on November 5, 2007 4:04:16 PM CET
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../../SimpleJavaAppReport.html">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../../index.html">
+        org</a>
+    .
+    <a href="../../../../index.html">
+        codecover</a>
+    .
+    <a href="../../../index.html">
+        simplejavaapp</a>
+    .
+    <a href="../../index.html">
+        view</a>
+    .
+    <a href="../index.html">
+        FrameMain</a>
+    .
+    updateTitle
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Strict Condition Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    private void updateTitle(boolean modified)
+            </td>  
+                                    <td class="methodInfo">
+                        3&nbsp;/&nbsp;3
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;1
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">FrameMain.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L257">
+             <td class="code lineNumber">
+                  <a href="#L257">257</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; private void updateTitle(boolean modified) {
+              </td>
+          </tr>
+                      <tr class="code" id="L258">
+             <td class="code lineNumber">
+                  <a href="#L258">258</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">String title = (model.getPathOfFile(this.fileId) == null ? &quot;Untitled&quot;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L259">
+             <td class="code lineNumber">
+                  <a href="#L259">259</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  <span class="covered fullyCovered Statement_Coverage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : model.getPathOfFile(this.fileId));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L260">
+             <td class="code lineNumber">
+                  <a href="#L260">260</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L261">
+             <td class="code lineNumber">
+                  <a href="#L261">261</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Branch_Coverage">if</span> (<span class="covered fullyCovered Strict_Condition_Coverage">modified</span>) {
+              </td>
+          </tr>
+                      <tr class="code" id="L262">
+             <td class="code lineNumber">
+                  <a href="#L262">262</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">title += &quot;*&quot;;</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L263">
+             <td class="code lineNumber">
+                  <a href="#L263">263</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L264">
+             <td class="code lineNumber">
+                  <a href="#L264">264</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L265">
+             <td class="code lineNumber">
+                  <a href="#L265">265</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">setTitle(title);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L266">
+             <td class="code lineNumber">
+                  <a href="#L266">266</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on November 17, 2007 7:07:00 PM CET with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

@@ -1,0 +1,158 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 129162 // initial
+  xyz 36 2 2000
+activitynodecanvas 128138 activitynode_ref 129290 // activity_final
+  xyz 33 767 2000
+activitynodecanvas 128266 activitynode_ref 129418 // decision
+  xyz 218 118 2000
+activityactioncanvas 128906 activityaction_ref 129290 // activity action User opens the import dialog in eclipse and chooses the entry "Coverage Log" under "Other"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 271 161 2000 247 76
+end
+activityactioncanvas 129290 activityaction_ref 129418 // activity action User chooses the files created by the previously done measurement
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 73 162 2000 184 71
+end
+activityactioncanvas 129546 activityaction_ref 129546 // activity action User states the name and a comment for the created session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 82 247 2000 168 75
+end
+activitynodecanvas 130058 activitynode_ref 129546 // decision
+  xyz 153 337 2000
+activityactioncanvas 130314 activityaction_ref 129674 // activity action Close dialog window
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 67 678 2000 121 65
+end
+activityactioncanvas 131082 activityaction_ref 129802 // activity action Select the new session in the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 351 673 2000 165 77
+end
+activityactioncanvas 131210 activityaction_ref 129930 // activity action Create new session with given name and comment out of given data
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 253 398 2000 181 95
+end
+activityactioncanvas 131338 activityaction_ref 130058 // activity action Store the session in the plugin's properties folder of the project
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 338 575 2005 193 73
+end
+activitynodecanvas 132234 activitynode_ref 129674 // decision
+  xyz 333 511 2000
+activityactioncanvas 132618 activityaction_ref 130186 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 189 583 2000 135 63
+end
+activitynodecanvas 133770 activitynode_ref 137866 // decision
+  xyz 33 43 2000
+flowcanvas 128522 flow_ref 131850 // no previous measurement
+  geometry VHr
+  
+  from ref 128266 z 1999 label "no previous measurement" xyz 56 115 1999 to point 43 134
+  line 134410 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129034 flow_ref 131978 // <flow>
+  geometry HV
+  
+  from ref 128266 z 1999 to point 392 134
+  line 134538 z 1999 to ref 128906
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129418 flow_ref 132106 // <flow>
+  
+  from ref 128906 z 1999 to ref 129290
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129674 flow_ref 132234 // <flow>
+  
+  from ref 129290 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 132362 // <flow>
+  
+  from ref 129546 z 1999 to ref 130058
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 132490 // <flow>
+  geometry VHr
+  
+  from ref 130314 z 1999 to point 43 708
+  line 135690 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 132618 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 130058 z 1999 label "User clicks the \"Cancel\" button" xyz 66 385 1999 to point 125 353
+  line 135050 z 1999 to ref 130314
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131978 flow_ref 132874 // User clicks the "Finish" button
+  geometry HV
+  
+  from ref 130058 z 1999 label "User clicks the \"Finish\" button" xyz 259 331 1999 to point 341 353
+  line 135178 z 1999 to ref 131210
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132362 flow_ref 133002 // <flow>
+  
+  from ref 131210 z 1999 to ref 132234
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132746 flow_ref 133130 // Errors whilst processing
+  geometry VHr
+  
+  from ref 132234 z 1999 label "Errors whilst processing" xyz 149 506 1999 to point 254 527
+  line 135306 z 1999 to ref 132618
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132874 flow_ref 133258 // <flow>
+  geometry VHr
+  
+  from ref 132618 z 1999 to point 125 612
+  line 135562 z 1999 to ref 130314
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133258 flow_ref 133386 // No errors whilst processing
+  geometry HV
+  
+  from ref 132234 z 1999 label "No errors whilst processing" xyz 370 504 1999 to point 432 527
+  line 135434 z 1999 to ref 131338
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 133514 // <flow>
+  
+  from ref 131338 z 1999 to ref 131082
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133642 flow_ref 133642 // <flow>
+  
+  from ref 131082 z 1999 to ref 130314
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133898 flow_ref 159882 // Project not opened
+  
+  from ref 133770 z 1999 label "Project not opened" xyz 6 92 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134666 flow_ref 160010 // Project opened
+  geometry HV
+  
+  from ref 133770 z 1999 label "Project opened" xyz 89 40 1999 to point 228 59
+  line 134922 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135818 flow_ref 160138 // <flow>
+  
+  from ref 128010 z 1999 to ref 133770
+  show_infonote default drawing_language default write_horizontally default
+end
+end

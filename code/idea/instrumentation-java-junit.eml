@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../instrumentation-java-junit"/>
+	<lib name="junit3.8.1.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/../instrumentation-java-junit/lib/junit3.8.1-src.jar!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/../instrumentation-java-junit/lib/junit3.8.1-src.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../instrumentation-java-junit/lib/junit3.8.1.jar!/"/>
+	</lib>
+	<lib name="junit-4.5.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/../instrumentation-java-junit/lib/junit-4.5-src.jar!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/../instrumentation-java-junit/lib/junit-4.5-src.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../instrumentation-java-junit/lib/junit-4.5.jar!/"/>
+	</lib>
+</component>

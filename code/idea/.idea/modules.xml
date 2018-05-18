@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ant.iml" filepath="$PROJECT_DIR$/ant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/batch.iml" filepath="$PROJECT_DIR$/batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instrumentation.iml" filepath="$PROJECT_DIR$/instrumentation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instrumentation-c.iml" filepath="$PROJECT_DIR$/instrumentation-c.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instrumentation-cobol.iml" filepath="$PROJECT_DIR$/instrumentation-cobol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instrumentation-java.iml" filepath="$PROJECT_DIR$/instrumentation-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instrumentation-java-measurement.iml" filepath="$PROJECT_DIR$/instrumentation-java-measurement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/metrics.iml" filepath="$PROJECT_DIR$/metrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model.iml" filepath="$PROJECT_DIR$/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/report.iml" filepath="$PROJECT_DIR$/report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/report-csv.iml" filepath="$PROJECT_DIR$/report-csv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/report-html.iml" filepath="$PROJECT_DIR$/report-html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
+    </modules>
+  </component>
+</project>
+

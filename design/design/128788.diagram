@@ -1,0 +1,179 @@
+format 29
+
+activitynodecanvas 128020 activitynode_ref 129428 // initial
+  xyz 34 6 2000
+activitynodecanvas 128148 activitynode_ref 129556 // decision
+  xyz 30 43 2000
+activityactioncanvas 128276 activityaction_ref 129300 // activity action User opens the "Session" view of the plugin
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 155 31 2000 218 64
+end
+activityactioncanvas 128532 activityaction_ref 129428 // activity action User clicks the "Import Session" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 172 106 2000 184 65
+end
+activityactioncanvas 128660 activityaction_ref 129556 // activity action User chooses the file containing the session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 176 186 2000 179 68
+end
+activityactioncanvas 128788 activityaction_ref 129684 // activity action User selects project into which the session file will be imported
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 164 266 2000 206 69
+end
+activitynodecanvas 129300 activitynode_ref 129812 // activity_final
+  xyz 29 706 2000
+activityactioncanvas 129546 activityaction_ref 134922 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 79 656 2000 119 59
+end
+activitynodecanvas 129556 activitynode_ref 129940 // decision
+  xyz 251 346 2000
+activitynodecanvas 130442 activitynode_ref 134410 // fork
+  horizontal xyz 286 388 2000
+activityactioncanvas 130452 activityaction_ref 129812 // activity action Import file containing the session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 67 416 2000 219 71
+end
+activityactioncanvas 130708 activityaction_ref 129940 // activity action Select imported session in the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 203 578 2000 198 58
+end
+activityactioncanvas 130836 activityaction_ref 130068 // activity action Copy file containing the session to the plugin's properties folder of the project
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 301 418 2000 266 71
+end
+activitynodecanvas 131338 activitynode_ref 134538 // decision
+  xyz 167 503 2000
+activitynodecanvas 131466 activitynode_ref 134666 // decision
+  xyz 420 503 2000
+activitynodecanvas 131850 activitynode_ref 134794 // join
+  horizontal xyz 287 550 2000
+flowcanvas 128394 flow_ref 145418 // <flow>
+  
+  from ref 128276 z 1999 to ref 128532
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128916 flow_ref 131348 // <flow>
+  
+  from ref 128020 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129044 flow_ref 131476 // Project opened
+  
+  from ref 128148 z 1999 label "Project opened" xyz 58 41 1999 to ref 128276
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129428 flow_ref 131604 // Project not opened
+  
+  from ref 128148 z 1999 label "Project not opened" xyz 2 118 1999 to ref 129300
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129684 flow_ref 131732 // <flow>
+  
+  from ref 128788 z 1999 to ref 129556
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129812 flow_ref 131860 // <flow>
+  
+  from ref 128660 z 1999 to ref 128788
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130068 flow_ref 131988 // <flow>
+  
+  from ref 128532 z 1999 to ref 128660
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 146442 // <flow>
+  geometry VHr
+  
+  from ref 129546 z 1999 to point 39 683
+  line 135434 z 1999 to ref 129300
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130324 flow_ref 132244 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 129556 z 1999 label "User clicks the \"Cancel\" button" xyz 51 346 1999 to point 39 362
+  line 133898 z 1999 to ref 129300
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 146570 // User clicks the "Finished" button
+  geometry HV
+  
+  from ref 129556 z 1999 label "User clicks the \"Finished\" button" xyz 277 341 1999 to point 296 362
+  line 134026 z 1999 to ref 130442
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130826 flow_ref 146698 // <flow>
+  geometry VHr
+  
+  from ref 130442 z 1999 to point 174 393
+  line 134154 z 1999 to ref 130452
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130954 flow_ref 146826 // <flow>
+  geometry HV
+  
+  from ref 130442 z 1999 to point 431 393
+  line 134282 z 1999 to ref 130836
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131594 flow_ref 146954 // <flow>
+  
+  from ref 130452 z 1999 to ref 131338
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131722 flow_ref 147082 // <flow>
+  
+  from ref 130836 z 1999 to ref 131466
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131978 flow_ref 147210 // no errors
+  geometry HV
+  
+  from ref 131338 z 1999 label "no errors" xyz 229 526 1999 to point 297 519
+  line 135050 z 1999 to ref 131850
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132106 flow_ref 147338 // no errors
+  geometry VHr
+  
+  from ref 131466 z 1999 label "no errors" xyz 344 524 1999 to point 297 519
+  line 134922 z 1999 to ref 131850
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132490 flow_ref 147466 // <flow>
+  
+  from ref 131850 z 1999 to ref 130708
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132618 flow_ref 147594 // <flow>
+  geometry VHr
+  
+  from ref 130708 z 1999 to point 39 604
+  line 135306 z 1999 to ref 129300
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133130 flow_ref 147722 // error whilst copying
+  geometry HVr
+  
+  from ref 131466 z 1999 label "error whilst copying" xyz 434 566 1999 to point 430 683
+  line 135178 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133386 flow_ref 147850 // error whilst importing
+  geometry VHr
+  
+  from ref 131338 z 1999 label "error whilst importing" xyz 54 503 1999 to point 136 519
+  line 134794 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+end

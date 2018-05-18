@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="Report_Configuration_Dialog.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Report_Configuration_Dialog"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="522.00000px"
+   width="649.00000px"
+   version="1.0">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1272"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="222.76495"
+     inkscape:cx="301.94756"
+     inkscape:zoom="1"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF6">
+      <cc:Work
+         rdf:about=""
+         id="Work8">
+        <dc:format
+           id="format10">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type12" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1"
+     transform="translate(-2,-1.362549)">
+    <image
+       y="1.3625488"
+       x="2"
+       id="image1414"
+       height="520"
+       width="648"
+       sodipodi:absref="report_dialog.png"
+       xlink:href="report_dialog.png" />
+    <rect
+       y="143.73811"
+       x="22.857143"
+       height="71.930237"
+       width="607.14288"
+       id="rect2194"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:0.34419954;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text1427"
+       y="23.791121"
+       x="269.28571"
+       style="font-family:Bitstream Vera Sans;stroke-opacity:1;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1px;stroke:none;fill-opacity:1;fill:black;text-anchor:start;writing-mode:lr;line-height:100%;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       xml:space="preserve"><tspan
+         x="269.28571"
+         y="23.791121"
+         sodipodi:role="line"
+         id="tspan1336">Export</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text1431"
+       y="23.076834"
+       x="268.57141"
+       style="font-family:Bitstream Vera Sans;stroke-opacity:1;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1px;stroke:none;fill-opacity:1;fill:white;text-anchor:start;writing-mode:lr;line-height:100%;font-stretch:normal;font-weight:bold;font-variant:normal;font-style:normal;font-size:16.000000"
+       xml:space="preserve"><tspan
+         x="268.57141"
+         y="23.076834"
+         sodipodi:role="line"
+         id="tspan1334">Export</tspan></text>
+    <rect
+       y="135.93398"
+       x="27.857143"
+       height="13.571428"
+       width="99.285713"
+       id="rect5236"
+       style="fill:#efefef;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.40000001;stroke-miterlimit:4;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       id="text3712"
+       y="147.36255"
+       x="27.142859"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="147.36255"
+         x="27.142859"
+         id="tspan3714"
+         sodipodi:role="line">Select Template:</tspan></text>
+    <text
+       id="text6754"
+       y="58.791122"
+       x="12.857142"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="58.791122"
+         x="12.857142"
+         id="tspan6756"
+         sodipodi:role="line">Report Generation</tspan></text>
+    <text
+       id="text6758"
+       y="88.791122"
+       x="12.857143"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"
+       sodipodi:linespacing="100%"><tspan
+         x="12.857143"
+         y="88.791122"
+         sodipodi:role="line"
+         id="tspan1329">Choose a template for the coverage result reporting and report destination folder.</tspan></text>
+    <image
+       y="165.36255"
+       x="131"
+       id="image7159"
+       height="29"
+       width="374"
+       sodipodi:absref="ComboBox.png"
+       xlink:href="ComboBox.png"
+       style="fill:black;fill-opacity:1" />
+    <text
+       id="text6830"
+       y="184.47974"
+       x="140.03516"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="184.47974"
+         x="140.03516"
+         id="tspan6832"
+         sodipodi:role="line">TemplateFullHTML</tspan></text>
+    <text
+       id="text6966"
+       y="182.47974"
+       x="45.035156"
+       style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="182.47974"
+         x="45.035156"
+         id="tspan6968"
+         sodipodi:role="line">Template:</tspan></text>
+    <image
+       y="165.36255"
+       x="514"
+       id="image7031"
+       height="29"
+       width="107"
+       sodipodi:absref="button.png"
+       xlink:href="button.png" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text7162"
+       y="185.5686"
+       x="531.42969"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="185.56860"
+         x="531.42969"
+         id="tspan7164"
+         sodipodi:role="line">Browse...</tspan></text>
+    <image
+       y="472.86255"
+       x="523"
+       id="image7231"
+       height="29"
+       width="107"
+       sodipodi:absref="button.png"
+       xlink:href="button.png" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text7166"
+       y="493.13599"
+       x="549.24219"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="493.13599"
+         x="549.24219"
+         id="tspan7168"
+         sodipodi:role="line">Cancel</tspan></text>
+    <image
+       y="472.86255"
+       x="404.5"
+       id="image7295"
+       height="29"
+       width="107"
+       sodipodi:absref="button.png"
+       xlink:href="button.png" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text7426"
+       y="493.13599"
+       x="435.42969"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       xml:space="preserve"><tspan
+         x="435.42969"
+         y="493.13599"
+         sodipodi:role="line"
+         id="tspan1338">Finish</tspan></text>
+    <image
+       xlink:href="button_disabled.png"
+       sodipodi:absref="/home/stefan/temp/spezi-temp/working/Report_Configuration_Dialog/button_disabled.png"
+       width="107.00000"
+       height="29.000000"
+       id="image1453"
+       x="275.50000"
+       y="472.86255" />
+    <image
+       xlink:href="button.png"
+       sodipodi:absref="/home/stefan/temp/spezi-temp/working/Report_Configuration_Dialog/button.png"
+       width="107.00000"
+       height="29.000000"
+       id="image1516"
+       x="169.00000"
+       y="472.86255" />
+    <text
+       xml:space="preserve"
+       style="font-size:16.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       x="191.30469"
+       y="493.5188"
+       id="text1519"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan1521"
+         x="191.30469"
+         y="493.51880">&lt; Back</tspan></text>
+    <text
+       xml:space="preserve"
+       style="writing-mode:lr-tb;text-anchor:start;font-family:Bitstream Vera Sans;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#d7d7d7;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:16.000000"
+       x="303.91406"
+       y="493.02661"
+       id="text1523"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan1525"
+         x="303.91406"
+         y="493.02661">Next &gt;</tspan></text>
+  </g>
+</svg>

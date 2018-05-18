@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../instrumentation-java"/>
+	<lib name="junit.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../instrumentation-java/lib/junit.jar!/"/>
+	</lib>
+	<lib name="InstrumenterProviderTestJar.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../instrumentation-java/lib/InstrumenterProviderTestJar.jar!/"/>
+	</lib>
+</component>

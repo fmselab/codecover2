@@ -1,0 +1,10 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="component-name" value="model" />
+  <property name="classpath" value="lib/svnkit.jar" />
+  <property name="junit-classpath" value="src" />
+  <property name="unittest-class-name" value="org.codecover.model.AllTests" />
+  <property name="componenttest-class-name" value="org.codecover.componenttest.model.AllTests" />
+  
+  <import file="build-common.xml" />
+</project>

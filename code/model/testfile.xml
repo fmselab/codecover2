@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1185377866179" TestSessionContainerId="cf5413db-c800-422b-bb54-069e1259e8de" version="1.0">
+<SrcFileList>
+<SrcFile Content="public class TestClass {&#13; public static void main(String[] args) {&#13;    if (something || nothing) {&#13;      foo();&#13;    } else {&#13;      bar();&#13;    }&#13;    &#13;    while (!bar()) {&#13;      i++;&#13;      j++;&#13;    }&#13;  }&#13;}" Filename="Example.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="1" Intrnl_Id="2" Name="not">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="0" Value="true"/>
+<MapEntry BoolAssgnmnt="1" Value="false"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+<BoolOp Arity="2" Intrnl_Id="3" Name="shortCircuitOr">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="01" Value="true"/>
+<MapEntry BoolAssgnmnt="00" Value="false"/>
+<MapEntry BoolAssgnmnt="12" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="5"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="2" HierarchyLvlTypeId="4" Intrnl_Id="6" Name="Test Class">
+<Header>
+<Loc EndOffset="22" SrcFileId="1" StartOffset="0"/>
+</Header>
+<LocList>
+<Loc EndOffset="203" SrcFileId="1" StartOffset="0"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="1" HierarchyLvlTypeId="5" Intrnl_Id="7" Name="main method">
+<Header>
+<Loc EndOffset="64" SrcFileId="1" StartOffset="26"/>
+</Header>
+<LocList>
+<Loc EndOffset="202" SrcFileId="1" StartOffset="26"/>
+</LocList>
+<StmntSeq Intrnl_Id="8">
+<LocList>
+<Loc EndOffset="197" SrcFileId="1" StartOffset="71"/>
+</LocList>
+<CondStmnt CovItemId="S6" CovItemPrefix="TestClass" Intrnl_Id="9">
+<Branch CovItemId="B1" CovItemPrefix="TestClass" Implct="false" Intrnl_Id="10">
+<Cond>
+<Loc EndOffset="73" SrcFileId="1" StartOffset="71"/>
+</Cond>
+<LocList>
+<Loc EndOffset="117" SrcFileId="1" StartOffset="97"/>
+</LocList>
+<StmntSeq Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="111" SrcFileId="1" StartOffset="105"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="TestClass" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="111" SrcFileId="1" StartOffset="105"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="TestClass" Implct="false" Intrnl_Id="13">
+<Cond>
+<Loc EndOffset="123" SrcFileId="1" StartOffset="118"/>
+</Cond>
+<LocList>
+<Loc EndOffset="143" SrcFileId="1" StartOffset="123"/>
+</LocList>
+<StmntSeq Intrnl_Id="14">
+<LocList>
+<Loc EndOffset="137" SrcFileId="1" StartOffset="131"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="TestClass" Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="137" SrcFileId="1" StartOffset="131"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="73" SrcFileId="1" StartOffset="71"/>
+<LocList>
+<Loc EndOffset="143" SrcFileId="1" StartOffset="71"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="TestClass" Intrnl_Id="16">
+<OpTerm BooleanOpId="3" Intrnl_Id="17">
+<BasicBoolTerm Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="84" SrcFileId="1" StartOffset="75"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="95" SrcFileId="1" StartOffset="88"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="87" SrcFileId="1" StartOffset="85"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<LoopStmnt CovItemId="S3" CovItemPrefix="TestClass" Intrnl_Id="20" MltplExecId="L-2" MltplExecPrefix="TestClass" NvrExecId="L-0" NvrExecPrefix="TestClass" OnceExecutedId="L-1" OnceExecutedPrefix="TestClass" OptBodyExec="true">
+<StmntSeq Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="192" SrcFileId="1" StartOffset="176"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="TestClass" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="180" SrcFileId="1" StartOffset="176"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="TestClass" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="191" SrcFileId="1" StartOffset="187"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="158" SrcFileId="1" StartOffset="153"/>
+<LocList>
+<Loc EndOffset="201" SrcFileId="1" StartOffset="153"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="TestClass" Intrnl_Id="24">
+<OpTerm BooleanOpId="2" Intrnl_Id="25">
+<BasicBoolTerm Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="166" SrcFileId="1" StartOffset="161"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="161" SrcFileId="1" StartOffset="160"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+<TestSession Comment="42" Date="1185377866184" Name="TestSession0">
+<TestCase Comment="0" Date="1185377866191" Name="e1245">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="40"/>
+<MapEntry BoolAssgnmnt="1" Value="53"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="31"/>
+<MapEntry BoolAssgnmnt="12" Value="81"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="42" Date="1185377866194" Name="c234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="64"/>
+<MapEntry BoolAssgnmnt="1" Value="48"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="55"/>
+<MapEntry BoolAssgnmnt="12" Value="44"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="84" Date="1185377866195" Name="d123">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="42"/>
+<MapEntry BoolAssgnmnt="1" Value="55"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="88"/>
+<MapEntry BoolAssgnmnt="12" Value="98"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData2">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData2">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="126" Date="1185377866195" Name="f24">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="67"/>
+<MapEntry BoolAssgnmnt="1" Value="21"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="38"/>
+<MapEntry BoolAssgnmnt="12" Value="3"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData3">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData3">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="168" Date="1185377866196" Name="a23">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="89"/>
+<MapEntry BoolAssgnmnt="1" Value="100"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="58"/>
+<MapEntry BoolAssgnmnt="12" Value="21"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData4">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData4">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="210" Date="1185377866196" Name="b1234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="54"/>
+<MapEntry BoolAssgnmnt="1" Value="54"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="46"/>
+<MapEntry BoolAssgnmnt="12" Value="100"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData5">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData5">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXNyABBqYXZhLnV0aWwuVmVjdG9y2Zd9W4A7rwEDAANJABFjYXBhY2l0eUluY3JlbWVudEkA&#10;DGVsZW1lbnRDb3VudFsAC2VsZW1lbnREYXRhdAATW0xqYXZhL2xhbmcvT2JqZWN0O3hwAAAAAAAA&#10;AAR1cgATW0xqYXZhLmxhbmcuT2JqZWN0O5DOWJ8QcylsAgAAeHAAAAAKdAACNDJ0AAIyM3QAAjQ3&#10;dAADNjY2cHBwcHBweA=="/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestSession>
+<TestSession Comment="42" Date="1185377866197" Name="TestSession1">
+<TestCase Comment="0" Date="1185377866197" Name="e1245">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="56"/>
+<MapEntry BoolAssgnmnt="1" Value="100"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="69"/>
+<MapEntry BoolAssgnmnt="12" Value="97"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="42" Date="1185377866197" Name="c234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="13"/>
+<MapEntry BoolAssgnmnt="1" Value="11"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="2"/>
+<MapEntry BoolAssgnmnt="12" Value="74"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="84" Date="1185377866198" Name="d123">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="18"/>
+<MapEntry BoolAssgnmnt="1" Value="19"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="50"/>
+<MapEntry BoolAssgnmnt="12" Value="63"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData2">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData2">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="126" Date="1185377866198" Name="f24">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="57"/>
+<MapEntry BoolAssgnmnt="1" Value="78"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="19"/>
+<MapEntry BoolAssgnmnt="12" Value="6"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData3">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData3">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="168" Date="1185377866198" Name="a23">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="41"/>
+<MapEntry BoolAssgnmnt="1" Value="52"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="59"/>
+<MapEntry BoolAssgnmnt="12" Value="49"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData4">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData4">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="210" Date="1185377866199" Name="b1234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="2"/>
+<MapEntry BoolAssgnmnt="1" Value="81"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="53"/>
+<MapEntry BoolAssgnmnt="12" Value="90"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData5">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData5">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXNyABBqYXZhLnV0aWwuVmVjdG9y2Zd9W4A7rwEDAANJABFjYXBhY2l0eUluY3JlbWVudEkA&#10;DGVsZW1lbnRDb3VudFsAC2VsZW1lbnREYXRhdAATW0xqYXZhL2xhbmcvT2JqZWN0O3hwAAAAAAAA&#10;AAR1cgATW0xqYXZhLmxhbmcuT2JqZWN0O5DOWJ8QcylsAgAAeHAAAAAKdAACNDJ0AAIyM3QAAjQ3&#10;dAADNjY2cHBwcHBweA=="/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestSession>
+<TestSession Comment="42" Date="1185377866199" Name="TestSession2">
+<TestCase Comment="0" Date="1185377866199" Name="e1245">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S5" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="66"/>
+<MapEntry BoolAssgnmnt="1" Value="71"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="93"/>
+<MapEntry BoolAssgnmnt="12" Value="24"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="42" Date="1185377866199" Name="c234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="39"/>
+<MapEntry BoolAssgnmnt="1" Value="57"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="52"/>
+<MapEntry BoolAssgnmnt="12" Value="35"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="84" Date="1185377866200" Name="d123">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="10"/>
+<MapEntry BoolAssgnmnt="1" Value="10"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="6"/>
+<MapEntry BoolAssgnmnt="12" Value="30"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData2">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData2">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="126" Date="1185377866200" Name="f24">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="59"/>
+<MapEntry BoolAssgnmnt="1" Value="93"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="20"/>
+<MapEntry BoolAssgnmnt="12" Value="61"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData3">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData3">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="168" Date="1185377866201" Name="a23">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="36"/>
+<MapEntry BoolAssgnmnt="1" Value="22"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="37"/>
+<MapEntry BoolAssgnmnt="12" Value="49"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData4">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData0">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData4">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData0">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<TestCase Comment="210" Date="1185377866201" Name="b1234">
+<CovList>
+<CovPrefix CovItemPrefix="TestClass">
+<Cov CovItemId="B1" Value="1"/>
+<Cov CovItemId="B2" Value="1"/>
+<Cov CovItemId="L-0" Value="1"/>
+<Cov CovItemId="L-1" Value="1"/>
+<Cov CovItemId="L-2" Value="1"/>
+<Cov CovItemId="S1" Value="1"/>
+<Cov CovItemId="S2" Value="1"/>
+<Cov CovItemId="S3" Value="1"/>
+<Cov CovItemId="S4" Value="1"/>
+<Cov CovItemId="S6" Value="1"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="TestClass">
+<AssgnmntListEntry Length="1" RootTermCovItemId="C1">
+<MapEntry BoolAssgnmnt="0" Value="70"/>
+<MapEntry BoolAssgnmnt="1" Value="88"/>
+</AssgnmntListEntry>
+<AssgnmntListEntry Length="2" RootTermCovItemId="C2">
+<MapEntry BoolAssgnmnt="00" Value="19"/>
+<MapEntry BoolAssgnmnt="12" Value="79"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList>
+<ObjMetaDataListEntry MetaDataObjId="6" Name="ObjectMetaData5">
+<MetaData Base64="rO0ABXNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51&#10;bWJlcoaslR0LlOCLAgAAeHAAAAAAAAAAKg=="/>
+</ObjMetaDataListEntry>
+<ObjMetaDataListEntry MetaDataObjId="10" Name="ObjectMetaData1">
+<MetaData Base64="rO0ABXNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cgAQamF2YS5sYW5n&#10;Lk51bWJlcoaslR0LlOCLAgAAeHAAAAAq"/>
+</ObjMetaDataListEntry>
+</ObjMetaDataList>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData1">
+<MetaData Base64="rO0ABXQACGRhdGFUZXN0"/>
+</MetaDataListEntry>
+<MetaDataListEntry Name="MetaData5">
+<MetaData Base64="rO0ABXQACHRlc3REYXRh"/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestCase>
+<MetaDataList>
+<MetaDataListEntry Name="MetaData2">
+<MetaData Base64="rO0ABXNyABBqYXZhLnV0aWwuVmVjdG9y2Zd9W4A7rwEDAANJABFjYXBhY2l0eUluY3JlbWVudEkA&#10;DGVsZW1lbnRDb3VudFsAC2VsZW1lbnREYXRhdAATW0xqYXZhL2xhbmcvT2JqZWN0O3hwAAAAAAAA&#10;AAR1cgATW0xqYXZhLmxhbmcuT2JqZWN0O5DOWJ8QcylsAgAAeHAAAAAKdAACNDJ0AAIyM3QAAjQ3&#10;dAADNjY2cHBwcHBweA=="/>
+</MetaDataListEntry>
+</MetaDataList>
+</TestSession>
+</TestSessionContainer>

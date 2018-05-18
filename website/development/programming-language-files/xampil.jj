@@ -1,0 +1,273 @@
+options {
+  UNICODE_INPUT = true;
+  ERROR_REPORTING = true;
+  USER_CHAR_STREAM = true;
+  STATIC = false;
+  JDK_VERSION = "1.5";
+  FORCE_LA_CHECK = true;
+}
+
+PARSER_BEGIN(XampilParser)
+package org.codecover.instrumentation.xampil.parser;
+
+public class XampilParser
+{
+    
+}
+
+PARSER_END(XampilParser)
+
+/*
+ * TOKENS
+ */
+SPECIAL_TOKEN :
+{
+    < SPACE_CHAR: " " | "\t" | "\f" >
+}
+
+SPECIAL_TOKEN :
+{
+    < SINGLE_LINE_COMMENT: "//" (~["\n", "\r"])* ("\n" | "\r" | "\n\r")? >
+}
+
+TOKEN :
+{
+    < EOL: ("\n" | "\r" | "\n\r") ("\n" | "\r" | "\n\r" | " " | "\t" | "\f")* >
+}
+
+TOKEN :
+{
+    < DECLARATION: "DECLARATION" >
+  | < PROGRAM: "PROGRAM" >
+  | < ENDPROGRAM: "ENDPROGRAM" >
+
+  | < BOOLEAN: "BOOLEAN" >
+  | < INTEGER: "INTEGER" >
+  | < STRING: "STRING" >
+
+  | < IF: "IF" >
+  | < THEN: "THEN" >
+  | < ELSE: "ELSE" >
+  | < ENDIF: "ENDIF" >
+  | < WHILE: "WHILE" >
+  | < DO: "DO" >
+  | < ENDWHILE: "ENDWHILE" >
+  | < SWITCH: "SWITCH" >
+  | < CASE: "CASE" >
+  | < CASE_DEFAULT: "DEFAULT" >
+  | < ENDCASE: "ENDCASE" >
+  | < ENDSWITCH: "ENDSWITCH" >
+  | < FILE: "FILE" >
+  | < OVERWRITE: "OVERWRITE" >
+  | < APPEND: "APPEND" >
+
+  | < AND: "AND" >
+  | < OR: "OR" >
+  | < NOT: "NOT" >
+  | < TRUE: "TRUE" >
+  | < FALSE: "FALSE" >
+}
+
+TOKEN :
+{
+    < LPAREN: "(" >
+  | < RPAREN: ")" >
+  | < COLON: ":" >
+
+  | < ASSIGN: ":=" >
+
+  | < EQ: "=" >
+  | < NEQ: "<>" >
+  | < LT: "<" >
+  | < GT: ">" >
+  | < LE: "<=" >
+  | < GE: ">=" >
+
+  | < PLUS: "+" >
+  | < MINUS: "-" >
+  | < STAR: "*" >
+  | < SLASH: "/" >
+}
+
+TOKEN :
+{
+    < IDENTIFIER: ( ["a"-"z"] | ["A"-"Z"] ) 
+                  ( ["a"-"z"] | ["A"-"Z"] | ["0"-"9"] | "_" )* >
+}
+
+TOKEN :
+{
+    < INTEGER_LITERAL: ( ( <MINUS> )? ["1"-"9"] (["0"-"9"])* ) | "0" >
+
+  | < STRING_LITERAL:
+      "\""
+      (   ( ~["\"","\\","\n","\r"] )
+        | ( "\\" ["n", "t", "b", "r", "f", "\\", "'", "\""] )
+      )*
+      "\""
+    >
+}
+
+/* 
+ * SYNTAX
+ */
+void CompilationUnit():
+{}
+{
+  Declaration()
+  Program()
+  ( <EOL> )?
+  <EOF>
+}
+
+void Declaration():
+{}
+{
+    <DECLARATION> <EOL>
+    ( SimpleDeclaration() )*
+}
+
+void SimpleDeclaration():
+{}
+{
+    (   
+        <BOOLEAN>
+      | <INTEGER>
+      | <STRING>
+    ) <IDENTIFIER>
+
+    (
+      <ASSIGN> (   <INTEGER_LITERAL>
+                 | <STRING_LITERAL>
+                 | <TRUE>
+                 | <FALSE> )
+    ) ?
+    <EOL>
+}
+
+void Program():
+{}
+{
+    <PROGRAM> <EOL>
+    ( Statement() )*
+    <ENDPROGRAM>
+    ( <EOL> )?
+}
+
+void Statement():
+{}
+{
+    AssignmentStatement()
+  | IfStatement()
+  | WhileStatement()
+  | SwitchStatement()
+  | FileStatement()
+}
+
+void AssignmentStatement():
+{}
+{
+    <IDENTIFIER> <ASSIGN> Expression() <EOL>
+}
+
+void IfStatement():
+{}
+{
+    <IF> Expression() <THEN> <EOL>
+        ( Statement() )*
+    (
+      <ELSE> <EOL>
+        ( Statement() )*
+    )?
+    <ENDIF> <EOL>
+}
+
+void WhileStatement():
+{}
+{
+    <WHILE> Expression() <DO> <EOL>
+        ( Statement() )*
+    <ENDWHILE> <EOL>
+}
+
+void SwitchStatement():
+{}
+{
+    <SWITCH> <IDENTIFIER> <EOL>
+    (
+        <CASE> Expression() <COLON> ( <EOL> )?
+        ( Statement() )*
+        <ENDCASE> <EOL>
+    )+
+    (
+        <CASE_DEFAULT> <COLON> ( <EOL> )?
+        ( Statement() )*
+        <ENDCASE> <EOL>
+    )?
+    <ENDSWITCH> <EOL>
+}
+
+void FileStatement():
+{}
+{
+    <FILE> ( <OVERWRITE> | <APPEND> ) (<STRING_LITERAL> | <IDENTIFIER>) Expression() <EOL>
+}
+
+void Expression():
+{}
+{
+   OrExpression()
+}
+
+void OrExpression():
+{}
+{
+    AndExpression() ( <OR> AndExpression() )*
+}
+
+void AndExpression():
+{}
+{
+    NotExpression() ( <AND> NotExpression() )*
+}
+
+void NotExpression():
+{}
+{
+    ( <NOT> )? EqualityExpression()
+}
+
+void EqualityExpression():
+{}
+{
+    RelationalExpression() ( ( <EQ> | <NEQ> ) RelationalExpression() ) ?
+}
+
+void RelationalExpression():
+{}
+{
+    AdditiveExpression() ( ( <LT> | <GT> | <LE> | <GE> ) AdditiveExpression() )?
+}
+
+void AdditiveExpression():
+{}
+{
+    MultiplicativeExpression() ( ( <PLUS> | <MINUS> ) MultiplicativeExpression() )*
+}
+
+void MultiplicativeExpression():
+{}
+{
+   BasicExpression() ( ( <STAR> | <SLASH> ) BasicExpression() )*
+}
+
+void BasicExpression():
+{}
+{
+    <IDENTIFIER>
+  | <INTEGER_LITERAL>
+  | <STRING_LITERAL>
+  | <TRUE>
+  | <FALSE>
+  | <LPAREN> Expression() <RPAREN>
+}

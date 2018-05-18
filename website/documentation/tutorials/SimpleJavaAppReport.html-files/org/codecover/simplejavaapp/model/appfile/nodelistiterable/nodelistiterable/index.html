@@ -1,0 +1,195 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>NodeListIterable - livenotificationrun - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        livenotificationrun
+    </div>
+    <div class="sessionDate">
+        measured on November 5, 2007 4:04:16 PM CET
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../../../SimpleJavaAppReport.html">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../../../index.html">
+        org</a>
+    .
+    <a href="../../../../../index.html">
+        codecover</a>
+    .
+    <a href="../../../../index.html">
+        simplejavaapp</a>
+    .
+    <a href="../../../index.html">
+        model</a>
+    .
+    <a href="../../index.html">
+        AppFile</a>
+    .
+    <a href="../index.html">
+        NodeListIterable</a>
+    .
+    NodeListIterable
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Strict Condition Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    public NodeListIterable(NodeList nodeList)
+            </td>  
+                                    <td class="methodInfo">
+                        2&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                                            <td class="methodInfo">
+                        0&nbsp;/&nbsp;0
+                </td>
+                <td class="methodInfo">
+                        ---
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="grey"></div>
+                </td>  
+                                                <td class="methodInfo">
+                        2&nbsp;/&nbsp;3
+                </td>
+                <td class="methodInfo">
+                        66&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:66%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        1&nbsp;/&nbsp;1
+                </td>
+                <td class="methodInfo">
+                        100&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:100%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">AppFile.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L296">
+             <td class="code lineNumber">
+                  <a href="#L296">296</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public NodeListIterable(NodeList nodeList) {
+              </td>
+          </tr>
+                      <tr class="code" id="L297">
+             <td class="code lineNumber">
+                  <a href="#L297">297</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">this.list = new LinkedList&lt;Node&gt;();</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L298">
+             <td class="code lineNumber">
+                  <a href="#L298">298</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L299">
+             <td class="code lineNumber">
+                  <a href="#L299">299</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered partlyCovered Loop_Coverage" title="Missing execution(s): ZERO time(s).">for</span> (int i = 0; <span class="covered fullyCovered Strict_Condition_Coverage">i &lt; nodeList.getLength()</span>; i++) {
+              </td>
+          </tr>
+                      <tr class="code" id="L300">
+             <td class="code lineNumber">
+                  <a href="#L300">300</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered fullyCovered Statement_Coverage">this.list.add(nodeList.item(i));</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L301">
+             <td class="code lineNumber">
+                  <a href="#L301">301</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L302">
+             <td class="code lineNumber">
+                  <a href="#L302">302</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on November 17, 2007 7:07:00 PM CET with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

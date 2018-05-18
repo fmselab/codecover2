@@ -1,0 +1,16 @@
+START TEST CASE "CodeExampleBranchCoverage"
+finaldesign.CodeExampleBranchCoverage
+B1 1
+B2 2
+B3 38
+B4 2
+B5 1
+B9 1
+B10 1
+B13 1
+B14 1
+B15 1
+B16 1
+B17 1
+B18 1
+END TEST CASE "CodeExampleBranchCoverage"

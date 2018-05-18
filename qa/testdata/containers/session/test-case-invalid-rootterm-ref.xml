@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSessionContainer Date="1180195831932" TestSessionContainerId="cdd5ec29-b282-4769-8efa-f5ad8bb7b711" version="1.0" xmlns="http://www.codecover.org/xml/testsession-container">
+<SrcFileList>
+<SrcFile Content="package org.codecover.tests;&#10;import java.util.List;&#10;&#10;public class TestClass1 { &#10;&#9;&#10;&#9;private boolean x;&#10;&#9;private int k;&#10;&#9;&#10;&#9;private static String A_MESSAGE;&#10;&#9;&#10;&#9;static {&#10;&#9;&#9;A_MESSAGE = &quot;I am a message&quot;; // S1&#10;&#9;}&#10;&#9;&#10;&#9;{&#10;&#9;&#9;k = 0; // S2&#10;&#9;}&#10;&#9;&#10;&#9;public TestClass1() {&#10;&#9;&#9;x = true; // S3&#10;&#9;}&#10;&#9;&#10;&#9;public void canGoWrong() throws Exception {&#10;&#9;&#9;if (x) { // S4 C1 B1 B2&#10;&#9;&#9;&#9;throw new Exception();&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void helloWorld() {&#10;&#9;&#9;System.out.println(&quot;Hello world!&quot;); // S5&#10;&#9;}&#10;&#9;&#10;&#9;public void doSomething() {&#10;&#9;&#9;canGoWrong();&#9;// S6&#9;&#10;&#9;&#9;if (x) { // S7 C2 B3 B4&#10;&#9;&#9;&#9;for (int i = 0; i &lt; 10; i++) { // S8  C3&#10;&#9;&#9;&#9;&#9;k += i; // S9&#10;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;x = !x; // S10&#10;&#9;&#9;}&#10;&#9;&#9;while (k &gt; 0) { // S11 C4&#10;&#9;&#9;&#9;k = k - 6; // S12&#10;&#9;&#9;}&#10;&#9;&#9;&#10;&#9;&#9;do {  // S13&#10;&#9;&#9;&#9;k = k * 3 + 1; //S14&#10;&#9;&#9;} while (k % 2 != 0); // C5&#10;&#9;&#9;&#10;&#9;&#9;if (k &lt; 0 &amp;&amp; x) { // S15 C6 B5&#10;&#9;&#9;&#9;k = -k; // S16&#10;&#9;&#9;} else { // B6&#10;&#9;&#9;&#9;k = k / 2; // S17&#10;&#9;&#9;&#9;x = !x; // S18&#10;&#9;&#9;}&#10;&#9;&#9;&#9;&#10;&#9;&#9;canGoWrong(); // S19&#10;&#9;}&#10;&#9;&#10;&#9;public static void main() {&#10;&#9;&#9;helloWorld(); // S20&#10;&#9;&#9;doSomething(); // S21&#10;&#9;&#9;doSomething(); // S22 &#10;&#9;}&#10;&#9;&#10;/*&#10;&#9;public void assignment() { &#10;&#9;&#9;int i, j;&#10;&#9;&#9;i = 0;&#10;&#9;}&#10;&#9;&#10;&#9;public void initializingAssignment() { &#10;&#9;&#9;int i = 0;&#10;&#9;}&#10;&#9;&#10;&#9;public void forLoop() {&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++) {&#10;&#9;&#9;&#9;k++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#10;&#9;public void emptyForLoop() {&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;for (int i = 0; i &lt; 10; i++) {&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void whileLoop() {&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;while (i &lt; 10) {&#10;&#9;&#9;&#9;k++;&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void emptyWhileLoop() {&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;while (i &lt; 10) {&#10;&#9;&#9;&#9;k++;&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void foreachLoop()  {&#10;&#9;&#9;int[] a = new int[] {0, 1, 2, 3, 4};&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;for (int i : a) {&#10;&#9;&#9;&#9;k++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void emptyForeachLoop()  {&#10;&#9;&#9;int[] a = new int[] {0, 1, 2, 3, 4};&#10;&#9;&#9;int k = 0;&#10;&#9;&#9;for (int i : a) {&#10;&#9;&#9;&#9;k++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void ifThen() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void ifThenElse() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;} else {&#10;&#9;&#9;&#9;i--;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void ifEmptyThen() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#10;&#9;public void ifThenEmptyElse() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;} else {&#9;&#9;&#9;&#10;&#9;&#9;}&#10;&#9;}&#10;&#9;&#9;&#10;&#9;public void ifThenEmptyThen() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;} else {&#9;&#9;&#9;&#10;&#9;&#9;&#9;i++;&#10;&#9;&#9;}&#10;&#9;}&#10;&#10;&#9;public void ifEmptyThenEmptyElse() {&#10;&#9;&#9;boolean x = true;&#10;&#9;&#9;int i = 0;&#10;&#9;&#9;if (x) {&#10;&#9;&#9;} else {&#9;&#9;&#9;&#10;&#9;&#9;}&#9;&#9;&#10;&#9;}&#10;&#9;&#10;&#9;public static void main(String[] args) {&#10;&#9;&#9;TestClass tc = new TestClass();&#10;&#9;&#9;tc.assignment();&#10;&#9;&#9;tc.initializingAssignment();&#10;&#9;&#9;tc.foreachLoop();&#10;&#9;&#9;tc.emptyForeachLoop();&#10;&#9;&#9;tc.forLoop();&#10;&#9;&#9;tc.emptyForLoop();&#10;&#9;&#9;tc.whileLoop();&#10;&#9;&#9;tc.emptyWhileLoop();&#10;&#9;&#9;tc.ifThen();&#10;&#9;}&#10;*/&#10;}" Filename="TestClass1.java" Intrnl_Id="1"/>
+<SrcFile Content="package org.codecover.tests;&#10;import java.io.File;&#10;&#10;public class TestClass2 { &#10;&#9;&#10;&#9;private int someInt;&#10;&#9;Worker worker;&#10;&#9;&#10;&#9;public TestClass2(int someInt) {&#10;&#9;&#9;this.someInt = someInt; //S1&#10;&#9;}&#10;&#9;&#10;&#9;public void makeWorker() {&#10;&#9;&#9;worker = new DefaultWorkerImpl(); //S2&#10;&#9;}&#10;&#9;&#10;&#9;public void botherWorker(int i) {&#10;&#9;&#9;do { // S3&#10;&#9;&#9;&#9;try { // S4 B1&#10;&#9;&#9;&#9;&#9;worker.doWork(i); // S5&#10;&#9;&#9;&#9;} catch (Exception e) { //B2&#10;&#9;&#9;&#9;&#9;System.exit(255); // S6&#10;&#9;&#9;&#9;}&#10;&#9;&#9;} while (!worker.isWorkReallyDone()); // C1&#10;&#9;}&#10;&#9;&#10;&#9;protected static interface Worker {&#10;&#9;&#9;public void doWork(int x) throws Exception;&#10;&#9;&#9;public boolean isWorkReallyDone();&#10;&#9;}&#10;&#9;&#10;&#9;protected static class DefaultWorkerImpl implements Worker {&#10;&#9;&#9;&#10;&#9;&#9;private int internalX = 0;  // S7&#10;&#9;&#9;private boolean workIsDone = false; //S8&#10;&#9;&#9;&#10;&#9;&#9;public void doWork(int x) {&#10;&#9;&#9;&#9;if (workIsDone || x == 0) // S9 C2 B3 B4&#10;&#9;&#9;&#9;&#9;internalX = x; // S10&#10;&#9;&#9;&#9;internalX--; //S11&#10;&#9;&#9;&#9;workIsDone = internalX &lt;= 0; //S12&#10;&#9;&#9;}&#10;&#9;&#9;&#10;&#9;&#9;public boolean isWorkReallyDone() {&#10;&#9;&#9;&#9;return workIsDone;&#10;&#9;&#9;}&#10;&#9;}&#10;}" Filename="TestClass2.java" Intrnl_Id="2"/>
+</SrcFileList>
+<CritList>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.StatementCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.ConditionCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.BranchCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.LoopCoverage"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="2" Intrnl_Id="66" Name="conditional and (&amp;&amp;)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="10" Value="false"/>
+<MapEntry BoolAssgnmnt="02" Value="false"/>
+<MapEntry BoolAssgnmnt="11" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+<BoolOp Arity="1" Intrnl_Id="95" Name="not (!)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="1" Value="false"/>
+<MapEntry BoolAssgnmnt="0" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+<BoolOp Arity="2" Intrnl_Id="115" Name="conditional or (||)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="01" Value="true"/>
+<MapEntry BoolAssgnmnt="12" Value="true"/>
+<MapEntry BoolAssgnmnt="00" Value="false"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="15"/>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="6"/>
+<HierarchyLvlType EnglishName="interface" IntrnlName="interface" Intrnl_Id="98"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="10"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="241" HierarchyLvlTypeId="4" Intrnl_Id="3" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="240" HierarchyLvlTypeId="6" Intrnl_Id="5" Name="org">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="239" HierarchyLvlTypeId="6" Intrnl_Id="7" Name="codecover">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="238" HierarchyLvlTypeId="6" Intrnl_Id="8" Name="tests">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="227" HierarchyLvlTypeId="10" Intrnl_Id="9" Name="TestClass1">
+<Header>
+<Loc EndOffset="76" SrcFileId="1" StartOffset="53"/>
+</Header>
+<LocList>
+<Loc EndOffset="2605" SrcFileId="1" StartOffset="53"/>
+</LocList>
+<StmntSeq Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="197" SrcFileId="1" StartOffset="168"/>
+<Loc EndOffset="220" SrcFileId="1" StartOffset="214"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="197" SrcFileId="1" StartOffset="168"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="220" SrcFileId="1" StartOffset="214"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="222" HierarchyLvlTypeId="15" Intrnl_Id="14" Name="TestClass1">
+<Header>
+<Loc EndOffset="252" SrcFileId="1" StartOffset="233"/>
+</Header>
+<LocList>
+<Loc EndOffset="275" SrcFileId="1" StartOffset="233"/>
+</LocList>
+<StmntSeq Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="266" SrcFileId="1" StartOffset="257"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="266" SrcFileId="1" StartOffset="257"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="223" HierarchyLvlTypeId="15" Intrnl_Id="18" Name="canGoWrong">
+<Header>
+<Loc EndOffset="320" SrcFileId="1" StartOffset="279"/>
+</Header>
+<LocList>
+<Loc EndOffset="381" SrcFileId="1" StartOffset="279"/>
+</LocList>
+<StmntSeq Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="378" SrcFileId="1" StartOffset="325"/>
+</LocList>
+<CondStmnt CovItemId="S4" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="24">
+<Branch CovItemId="B1" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="false" Intrnl_Id="20">
+<Cond/>
+<LocList>
+<Loc EndOffset="378" SrcFileId="1" StartOffset="332"/>
+</LocList>
+<StmntSeq Intrnl_Id="21">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="true" Intrnl_Id="22">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="23">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="327" SrcFileId="1" StartOffset="325"/>
+<LocList>
+<Loc EndOffset="378" SrcFileId="1" StartOffset="325"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="25">
+<BasicBoolTerm Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="330" SrcFileId="1" StartOffset="329"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="224" HierarchyLvlTypeId="15" Intrnl_Id="27" Name="helloWorld">
+<Header>
+<Loc EndOffset="409" SrcFileId="1" StartOffset="385"/>
+</Header>
+<LocList>
+<Loc EndOffset="458" SrcFileId="1" StartOffset="385"/>
+</LocList>
+<StmntSeq Intrnl_Id="28">
+<LocList>
+<Loc EndOffset="449" SrcFileId="1" StartOffset="414"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="449" SrcFileId="1" StartOffset="414"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="225" HierarchyLvlTypeId="15" Intrnl_Id="30" Name="doSomething">
+<Header>
+<Loc EndOffset="487" SrcFileId="1" StartOffset="462"/>
+</Header>
+<LocList>
+<Loc EndOffset="896" SrcFileId="1" StartOffset="462"/>
+</LocList>
+<StmntSeq Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="505" SrcFileId="1" StartOffset="492"/>
+<Loc EndOffset="627" SrcFileId="1" StartOffset="515"/>
+<Loc EndOffset="680" SrcFileId="1" StartOffset="630"/>
+<Loc EndOffset="746" SrcFileId="1" StartOffset="686"/>
+<Loc EndOffset="866" SrcFileId="1" StartOffset="758"/>
+<Loc EndOffset="886" SrcFileId="1" StartOffset="873"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="505" SrcFileId="1" StartOffset="492"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S7" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="43">
+<Branch CovItemId="B3" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="false" Intrnl_Id="33">
+<Cond/>
+<LocList>
+<Loc EndOffset="627" SrcFileId="1" StartOffset="522"/>
+</LocList>
+<StmntSeq Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="605" SrcFileId="1" StartOffset="542"/>
+<Loc EndOffset="616" SrcFileId="1" StartOffset="609"/>
+</LocList>
+<LoopStmnt CovItemId="S8" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="37" MltplExecId="L1-2" MltplExecPrefix="org.codecover.tests.TestClass1.java" NvrExecId="L1-0" NvrExecPrefix="org.codecover.tests.TestClass1.java" OnceExecutedId="L1-1" OnceExecutedPrefix="org.codecover.tests.TestClass1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="594" SrcFileId="1" StartOffset="587"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="594" SrcFileId="1" StartOffset="587"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="545" SrcFileId="1" StartOffset="542"/>
+<LocList>
+<Loc EndOffset="605" SrcFileId="1" StartOffset="542"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="38">
+<BasicBoolTerm Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="564" SrcFileId="1" StartOffset="558"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="616" SrcFileId="1" StartOffset="609"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="true" Intrnl_Id="41">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="42">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="517" SrcFileId="1" StartOffset="515"/>
+<LocList>
+<Loc EndOffset="627" SrcFileId="1" StartOffset="515"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="44">
+<BasicBoolTerm Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="520" SrcFileId="1" StartOffset="519"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<LoopStmnt CovItemId="S11" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="48" MltplExecId="L2-2" MltplExecPrefix="org.codecover.tests.TestClass1.java" NvrExecId="L2-0" NvrExecPrefix="org.codecover.tests.TestClass1.java" OnceExecutedId="L2-1" OnceExecutedPrefix="org.codecover.tests.TestClass1.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="669" SrcFileId="1" StartOffset="659"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="47">
+<LocList>
+<Loc EndOffset="669" SrcFileId="1" StartOffset="659"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="635" SrcFileId="1" StartOffset="630"/>
+<LocList>
+<Loc EndOffset="680" SrcFileId="1" StartOffset="630"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="49">
+<BasicBoolTerm Intrnl_Id="50">
+<LocList>
+<Loc EndOffset="642" SrcFileId="1" StartOffset="637"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<LoopStmnt CovItemId="S13" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="53" MltplExecId="L3-2" MltplExecPrefix="org.codecover.tests.TestClass1.java" NvrExecId="L3-0" NvrExecPrefix="org.codecover.tests.TestClass1.java" OnceExecutedId="L3-1" OnceExecutedPrefix="org.codecover.tests.TestClass1.java" OptBodyExec="false">
+<StmntSeq Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="716" SrcFileId="1" StartOffset="702"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="716" SrcFileId="1" StartOffset="702"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="688" SrcFileId="1" StartOffset="686"/>
+<LocList>
+<Loc EndOffset="746" SrcFileId="1" StartOffset="686"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="54">
+<BasicBoolTerm Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="744" SrcFileId="1" StartOffset="734"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<CondStmnt CovItemId="S15" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="63">
+<Branch CovItemId="B5" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="false" Intrnl_Id="56">
+<Cond/>
+<LocList>
+<Loc EndOffset="810" SrcFileId="1" StartOffset="774"/>
+</LocList>
+<StmntSeq Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="799" SrcFileId="1" StartOffset="792"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="799" SrcFileId="1" StartOffset="792"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="org.codecover.tests.TestClass1.java" Implct="false" Intrnl_Id="59">
+<Cond>
+<Loc EndOffset="815" SrcFileId="1" StartOffset="811"/>
+</Cond>
+<LocList>
+<Loc EndOffset="866" SrcFileId="1" StartOffset="816"/>
+</LocList>
+<StmntSeq Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="837" SrcFileId="1" StartOffset="827"/>
+<Loc EndOffset="855" SrcFileId="1" StartOffset="848"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="837" SrcFileId="1" StartOffset="827"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S18" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="855" SrcFileId="1" StartOffset="848"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="760" SrcFileId="1" StartOffset="758"/>
+<LocList>
+<Loc EndOffset="866" SrcFileId="1" StartOffset="758"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="64">
+<OpTerm BooleanOpId="66" Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="767" SrcFileId="1" StartOffset="762"/>
+<Loc EndOffset="772" SrcFileId="1" StartOffset="771"/>
+</LocList>
+<BasicBoolTerm Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="767" SrcFileId="1" StartOffset="762"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="68">
+<LocList>
+<Loc EndOffset="772" SrcFileId="1" StartOffset="771"/>
+</LocList>
+</BasicBoolTerm>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S19" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="886" SrcFileId="1" StartOffset="873"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="226" HierarchyLvlTypeId="15" Intrnl_Id="70" Name="main">
+<Header>
+<Loc EndOffset="925" SrcFileId="1" StartOffset="900"/>
+</Header>
+<LocList>
+<Loc EndOffset="1002" SrcFileId="1" StartOffset="900"/>
+</LocList>
+<StmntSeq Intrnl_Id="71">
+<LocList>
+<Loc EndOffset="943" SrcFileId="1" StartOffset="930"/>
+<Loc EndOffset="967" SrcFileId="1" StartOffset="953"/>
+<Loc EndOffset="991" SrcFileId="1" StartOffset="977"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="72">
+<LocList>
+<Loc EndOffset="943" SrcFileId="1" StartOffset="930"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="967" SrcFileId="1" StartOffset="953"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="org.codecover.tests.TestClass1.java" Intrnl_Id="74">
+<LocList>
+<Loc EndOffset="991" SrcFileId="1" StartOffset="977"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="237" HierarchyLvlTypeId="10" Intrnl_Id="75" Name="TestClass2">
+<Header>
+<Loc EndOffset="74" SrcFileId="2" StartOffset="51"/>
+</Header>
+<LocList>
+<Loc EndOffset="981" SrcFileId="2" StartOffset="51"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="228" HierarchyLvlTypeId="15" Intrnl_Id="76" Name="TestClass2">
+<Header>
+<Loc EndOffset="151" SrcFileId="2" StartOffset="121"/>
+</Header>
+<LocList>
+<Loc EndOffset="187" SrcFileId="2" StartOffset="121"/>
+</LocList>
+<StmntSeq Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="179" SrcFileId="2" StartOffset="156"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="78">
+<LocList>
+<Loc EndOffset="179" SrcFileId="2" StartOffset="156"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="229" HierarchyLvlTypeId="15" Intrnl_Id="79" Name="makeWorker">
+<Header>
+<Loc EndOffset="215" SrcFileId="2" StartOffset="191"/>
+</Header>
+<LocList>
+<Loc EndOffset="261" SrcFileId="2" StartOffset="191"/>
+</LocList>
+<StmntSeq Intrnl_Id="80">
+<LocList>
+<Loc EndOffset="253" SrcFileId="2" StartOffset="220"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="81">
+<LocList>
+<Loc EndOffset="253" SrcFileId="2" StartOffset="220"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="230" HierarchyLvlTypeId="15" Intrnl_Id="82" Name="botherWorker">
+<Header>
+<Loc EndOffset="296" SrcFileId="2" StartOffset="265"/>
+</Header>
+<LocList>
+<Loc EndOffset="471" SrcFileId="2" StartOffset="265"/>
+</LocList>
+<StmntSeq Intrnl_Id="83">
+<LocList>
+<Loc EndOffset="462" SrcFileId="2" StartOffset="301"/>
+</LocList>
+<LoopStmnt CovItemId="S3" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="92" MltplExecId="L1-2" MltplExecPrefix="org.codecover.tests.TestClass2.java" NvrExecId="L1-0" NvrExecPrefix="org.codecover.tests.TestClass2.java" OnceExecutedId="L1-1" OnceExecutedPrefix="org.codecover.tests.TestClass2.java" OptBodyExec="false">
+<StmntSeq Intrnl_Id="84">
+<LocList>
+<Loc EndOffset="422" SrcFileId="2" StartOffset="315"/>
+</LocList>
+<CondStmnt CovItemId="S4" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="91">
+<Branch CovItemId="B1" CovItemPrefix="org.codecover.tests.TestClass2.java" Implct="false" Intrnl_Id="85">
+<Cond/>
+<LocList>
+<Loc EndOffset="362" SrcFileId="2" StartOffset="319"/>
+</LocList>
+<StmntSeq Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="351" SrcFileId="2" StartOffset="334"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="87">
+<LocList>
+<Loc EndOffset="351" SrcFileId="2" StartOffset="334"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="org.codecover.tests.TestClass2.java" Implct="false" Intrnl_Id="88">
+<Cond>
+<Loc EndOffset="382" SrcFileId="2" StartOffset="363"/>
+</Cond>
+<LocList>
+<Loc EndOffset="422" SrcFileId="2" StartOffset="383"/>
+</LocList>
+<StmntSeq Intrnl_Id="89">
+<LocList>
+<Loc EndOffset="411" SrcFileId="2" StartOffset="394"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="90">
+<LocList>
+<Loc EndOffset="411" SrcFileId="2" StartOffset="394"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="318" SrcFileId="2" StartOffset="315"/>
+<LocList>
+<Loc EndOffset="422" SrcFileId="2" StartOffset="315"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="303" SrcFileId="2" StartOffset="301"/>
+<LocList>
+<Loc EndOffset="462" SrcFileId="2" StartOffset="301"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="93">
+<OpTerm BooleanOpId="95" Intrnl_Id="94">
+<LocList>
+<Loc EndOffset="460" SrcFileId="2" StartOffset="435"/>
+</LocList>
+<BasicBoolTerm Intrnl_Id="96">
+<LocList>
+<Loc EndOffset="460" SrcFileId="2" StartOffset="435"/>
+</LocList>
+</BasicBoolTerm>
+</OpTerm>
+</RootTerm>
+</LoopStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="233" HierarchyLvlTypeId="98" Intrnl_Id="97" Name="Worker">
+<Header>
+<Loc EndOffset="508" SrcFileId="2" StartOffset="475"/>
+</Header>
+<LocList>
+<Loc EndOffset="596" SrcFileId="2" StartOffset="475"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="231" HierarchyLvlTypeId="15" Intrnl_Id="99" Name="doWork">
+<Header>
+<Loc EndOffset="555" SrcFileId="2" StartOffset="513"/>
+</Header>
+<LocList>
+<Loc EndOffset="556" SrcFileId="2" StartOffset="513"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="232" HierarchyLvlTypeId="15" Intrnl_Id="100" Name="isWorkReallyDone">
+<Header>
+<Loc EndOffset="592" SrcFileId="2" StartOffset="559"/>
+</Header>
+<LocList>
+<Loc EndOffset="593" SrcFileId="2" StartOffset="559"/>
+</LocList>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="236" HierarchyLvlTypeId="10" Intrnl_Id="101" Name="DefaultWorkerImpl">
+<Header>
+<Loc EndOffset="658" SrcFileId="2" StartOffset="600"/>
+</Header>
+<LocList>
+<Loc EndOffset="979" SrcFileId="2" StartOffset="600"/>
+</LocList>
+<StmntSeq Intrnl_Id="102">
+<LocList>
+<Loc EndOffset="692" SrcFileId="2" StartOffset="666"/>
+<Loc EndOffset="737" SrcFileId="2" StartOffset="702"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="103">
+<LocList>
+<Loc EndOffset="692" SrcFileId="2" StartOffset="666"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="104">
+<LocList>
+<Loc EndOffset="737" SrcFileId="2" StartOffset="702"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="234" HierarchyLvlTypeId="15" Intrnl_Id="105" Name="doWork">
+<Header>
+<Loc EndOffset="773" SrcFileId="2" StartOffset="748"/>
+</Header>
+<LocList>
+<Loc EndOffset="909" SrcFileId="2" StartOffset="748"/>
+</LocList>
+<StmntSeq Intrnl_Id="106">
+<LocList>
+<Loc EndOffset="838" SrcFileId="2" StartOffset="779"/>
+<Loc EndOffset="861" SrcFileId="2" StartOffset="849"/>
+<Loc EndOffset="899" SrcFileId="2" StartOffset="871"/>
+</LocList>
+<CondStmnt CovItemId="S9" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="112">
+<Branch CovItemId="B3" CovItemPrefix="org.codecover.tests.TestClass2.java" Implct="false" Intrnl_Id="107">
+<Cond/>
+<LocList>
+<Loc EndOffset="838" SrcFileId="2" StartOffset="824"/>
+</LocList>
+<StmntSeq Intrnl_Id="108">
+<LocList>
+<Loc EndOffset="838" SrcFileId="2" StartOffset="824"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="838" SrcFileId="2" StartOffset="824"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="org.codecover.tests.TestClass2.java" Implct="true" Intrnl_Id="110">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="111">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="781" SrcFileId="2" StartOffset="779"/>
+<LocList>
+<Loc EndOffset="838" SrcFileId="2" StartOffset="779"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="113">
+<OpTerm BooleanOpId="115" Intrnl_Id="114">
+<LocList>
+<Loc EndOffset="793" SrcFileId="2" StartOffset="783"/>
+<Loc EndOffset="803" SrcFileId="2" StartOffset="797"/>
+</LocList>
+<BasicBoolTerm Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="793" SrcFileId="2" StartOffset="783"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="117">
+<LocList>
+<Loc EndOffset="803" SrcFileId="2" StartOffset="797"/>
+</LocList>
+</BasicBoolTerm>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="861" SrcFileId="2" StartOffset="849"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="org.codecover.tests.TestClass2.java" Intrnl_Id="119">
+<LocList>
+<Loc EndOffset="899" SrcFileId="2" StartOffset="871"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="235" HierarchyLvlTypeId="15" Intrnl_Id="120" Name="isWorkReallyDone">
+<Header>
+<Loc EndOffset="948" SrcFileId="2" StartOffset="915"/>
+</Header>
+<LocList>
+<Loc EndOffset="976" SrcFileId="2" StartOffset="915"/>
+</LocList>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+<TestSession Comment="test session 1" Date="946724400000" Name="ts1">
+<MetaDataList/>
+</TestSession>
+<TestSession Comment="test session 2" Date="946728000000" Name="ts2">
+<TestCase Comment="test case 1" Date="946728001000" Name="tc1">
+<CovList/>
+<AssgnmntList/>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<TestCase Comment="test case 2" Date="946728002000" Name="tc2">
+<CovList>
+<CovPrefix CovItemPrefix="org.codecover.tests.TestClass2.java">
+<Cov CovItemId="S7" Value="5"/>
+<Cov CovItemId="S8" Value="10"/>
+</CovPrefix>
+</CovList>
+<AssgnmntList>
+<AssgnmntPrefix RootTermCovItemPrefix="org.codecover.tests.TestClass2.java">
+<AssgnmntListEntry Length="2" RootTermCovItemId="C22222">
+<MapEntry BoolAssgnmnt="10" Value="1"/>
+<MapEntry BoolAssgnmnt="00" Value="1"/>
+</AssgnmntListEntry>
+</AssgnmntPrefix>
+</AssgnmntList>
+<ObjMetaDataList/>
+<MetaDataList/>
+</TestCase>
+<MetaDataList/>
+</TestSession>
+</TestSessionContainer>

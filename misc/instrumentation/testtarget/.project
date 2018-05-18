@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>OST-WeST Instrumentation - release testtarget</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/org/codecover/instrumentation/java15/measurement</name>
+			<type>2</type>
+			<location>C:/Dokumente und Einstellungen/ahija/Eigene Dateien/dokumente/Studium/S05/StuPro A/subversion/trunk/code/instrumentation/src/org/codecover/instrumentation/java15/measurement</location>
+		</link>
+		<link>
+			<name>testtarget</name>
+			<type>2</type>
+			<location>C:/Dokumente und Einstellungen/ahija/Eigene Dateien/dokumente/Studium/S05/StuPro A/subversion/trunk/code/instrumentation/testtarget</location>
+		</link>
+		<link>
+			<name>src/org/codecover/instrumentation/measurement</name>
+			<type>2</type>
+			<location>C:/Dokumente und Einstellungen/ahija/Eigene Dateien/dokumente/Studium/S05/StuPro A/subversion/trunk/code/instrumentation/src/org/codecover/instrumentation/measurement</location>
+		</link>
+	</linkedResources>
+</projectDescription>

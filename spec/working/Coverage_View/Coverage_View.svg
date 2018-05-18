@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="Coverage_View.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="192.11000px"
+   width="600.83752px">
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient4503"
+       inkscape:collect="always">
+      <stop
+         id="stop4505"
+         offset="0"
+         style="stop-color:#d8d8d8;stop-opacity:1;" />
+      <stop
+         id="stop4507"
+         offset="1"
+         style="stop-color:#d8d8d8;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="112.42995"
+       x2="31.498465"
+       y1="207.95898"
+       x1="31.498468"
+       gradientTransform="matrix(4.820197,0.000000,0.000000,0.347097,-6.661056,-17.02634)"
+       id="linearGradient4513"
+       xlink:href="#linearGradient4503"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="112.42995"
+       x2="31.498465"
+       y1="207.95898"
+       x1="31.498468"
+       gradientTransform="matrix(1.389332,0.000000,0.000000,0.347097,278.9559,-17.04061)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient4521"
+       xlink:href="#linearGradient4503"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="112.42995"
+       x2="31.498465"
+       y1="207.95898"
+       x1="31.498468"
+       gradientTransform="matrix(1.369499,0.000000,0.000000,0.347097,359.1029,-17.01173)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient4525"
+       xlink:href="#linearGradient4503"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="112.42995"
+       x2="31.498465"
+       y1="207.95898"
+       x1="31.498468"
+       gradientTransform="matrix(1.361973,0.000000,0.000000,0.347097,437.5587,-16.98923)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient4529"
+       xlink:href="#linearGradient4503"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="112.42995"
+       x2="31.498465"
+       y1="207.95898"
+       x1="31.498468"
+       gradientTransform="matrix(1.335853,0.000000,0.000000,0.347097,516.1771,-17.01208)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient4533"
+       xlink:href="#linearGradient4503"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1280"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="126.61566"
+     inkscape:cx="302.20753"
+     inkscape:zoom="1.9798990"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <image
+       y="0.011891559"
+       x="0.77154887"
+       id="image1487"
+       height="29.000000"
+       width="599.00000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/Coverage_head_line.png"
+       xlink:href="Coverage_head_line.png" />
+    <rect
+       y="29.293434"
+       x="5.0447125"
+       height="19.619225"
+       width="276.73050"
+       id="rect1449"
+       style="fill:url(#linearGradient4513);fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:0.62086809;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <text
+       id="text4515"
+       y="42.933125"
+       x="8.0683594"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="42.933125"
+         x="8.0683594"
+         id="tspan4517"
+         sodipodi:role="line">Element</tspan></text>
+    <rect
+       y="29.279167"
+       x="282.32983"
+       height="19.619225"
+       width="79.762459"
+       id="rect4519"
+       style="fill:url(#linearGradient4521);fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:0.33332673;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="29.308037"
+       x="362.42841"
+       height="19.619225"
+       width="78.623795"
+       id="rect4523"
+       style="fill:url(#linearGradient4525);fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:0.33093891;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="29.330536"
+       x="440.86572"
+       height="19.619225"
+       width="78.191628"
+       id="rect4527"
+       style="fill:url(#linearGradient4529);fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:0.33002815;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="29.307701"
+       x="519.42126"
+       height="19.619225"
+       width="76.692169"
+       id="rect4531"
+       style="fill:url(#linearGradient4533);fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a4a4a4;stroke-width:0.32684836;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+    <text
+       id="text4535"
+       y="42.93346"
+       x="288.35156"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="42.933460"
+         x="288.35156"
+         id="tspan4537"
+         sodipodi:role="line">Statement</tspan></text>
+    <text
+       id="text4539"
+       y="43.22057"
+       x="366.90234"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="43.220570"
+         x="366.90234"
+         id="tspan4541"
+         sodipodi:role="line">Branch</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text4543"
+       y="43.433445"
+       x="445.57227"
+       style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       xml:space="preserve"><tspan
+         id="tspan1399"
+         sodipodi:role="line"
+         y="43.433445"
+         x="445.57227">Condition</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text4547"
+       y="43.607288"
+       x="523.82227"
+       style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
+       xml:space="preserve"><tspan
+         id="tspan1401"
+         sodipodi:role="line"
+         y="43.607288"
+         x="523.82227">Loop</tspan></text>
+    <image
+       y="28.583012"
+       x="0.72071242"
+       id="image4722"
+       height="135.00000"
+       width="4.0000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/linie_links.png"
+       xlink:href="linie_links.png" />
+    <image
+       y="27.098240"
+       x="595.76147"
+       id="image4786"
+       height="135.00000"
+       width="4.0000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/linie_rechts.png"
+       xlink:href="linie_rechts.png" />
+    <image
+       y="49.103382"
+       x="5.2460938"
+       id="image4850"
+       height="27.000000"
+       width="36.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/jpackage_open.png"
+       xlink:href="jpackage_open.png" />
+    <text
+       id="text4853"
+       y="67.220566"
+       x="48.068359"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="67.220566"
+         x="48.068359"
+         id="tspan4855"
+         sodipodi:role="line">Project 2</tspan></text>
+    <image
+       y="78.103378"
+       x="5.2460938"
+       id="image4941"
+       height="27.000000"
+       width="52.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/package_folder_open.png"
+       xlink:href="package_folder_open.png" />
+    <text
+       id="text4944"
+       y="96.824081"
+       x="64.447266"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="96.824081"
+         x="64.447266"
+         id="tspan4946"
+         sodipodi:role="line">src</tspan></text>
+    <image
+       y="106.50941"
+       x="5.2460938"
+       id="image5009"
+       height="27.000000"
+       width="68.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/package_open.png"
+       xlink:href="package_open.png" />
+    <text
+       id="text5012"
+       y="124.60728"
+       x="78.583984"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="124.60728"
+         x="78.583984"
+         id="tspan5014"
+         sodipodi:role="line">de.project2.controller</tspan></text>
+    <image
+       y="55.583012"
+       x="0.65535951"
+       id="image5016"
+       height="135.00000"
+       width="4.0000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/linie_links.png"
+       xlink:href="linie_links.png" />
+    <image
+       y="55.583012"
+       x="595.75116"
+       id="image5018"
+       height="135.00000"
+       width="4.0000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/linie_rechts.png"
+       xlink:href="linie_rechts.png" />
+    <image
+       y="135.10338"
+       x="4.7232561"
+       id="image5081"
+       height="27.000000"
+       width="84.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/java_file_open.png"
+       xlink:href="java_file_open.png" />
+    <text
+       id="text5084"
+       y="153.22057"
+       x="93.572266"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="153.22057"
+         x="93.572266"
+         id="tspan5086"
+         sodipodi:role="line">CMainController</tspan></text>
+    <image
+       y="163.58301"
+       x="5.2460938"
+       id="image5213"
+       height="27.000000"
+       width="116.00000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/public_method.png"
+       xlink:href="public_method.png" />
+    <text
+       id="text5216"
+       y="181.60728"
+       x="124.22852"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="181.60728"
+         x="124.22852"
+         id="tspan5218"
+         sodipodi:role="line">exampleMethod()</tspan></text>
+    <image
+       y="56.404171"
+       x="367.69034"
+       id="image5281"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_64,1.png" />
+    <text
+       id="text5284"
+       y="64.009636"
+       x="391.4082"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="64.009636"
+         x="391.40820"
+         id="tspan5286"
+         sodipodi:role="line">64,1 %</tspan></text>
+    <image
+       y="88.404167"
+       x="367.71094"
+       id="image5288"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_64,1.png" />
+    <text
+       id="text5290"
+       y="96.009644"
+       x="391.4288"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="96.009644"
+         x="391.42880"
+         id="tspan5292"
+         sodipodi:role="line">64,1 %</tspan></text>
+    <image
+       y="116.40415"
+       x="367.71094"
+       id="image5294"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_64,1.png" />
+    <text
+       id="text5296"
+       y="124.00963"
+       x="391.4288"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="124.00963"
+         x="391.42880"
+         id="tspan5298"
+         sodipodi:role="line">64,1 %</tspan></text>
+    <image
+       y="146.70494"
+       x="367.69034"
+       id="image5300"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_64,1.png" />
+    <text
+       id="text5302"
+       y="154.31041"
+       x="391.4082"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="154.31041"
+         x="391.40820"
+         id="tspan5304"
+         sodipodi:role="line">64,1 %</tspan></text>
+    <image
+       y="173.70494"
+       x="367.71094"
+       id="image5306"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_64,1.png" />
+    <text
+       id="text5308"
+       y="181.31041"
+       x="391.4288"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="181.31041"
+         x="391.42880"
+         id="tspan5310"
+         sodipodi:role="line">64,1 %</tspan></text>
+    <image
+       y="56.404171"
+       x="285.71378"
+       id="image5312"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_84,6.png" />
+    <text
+       id="text5314"
+       y="64.009636"
+       x="309.43164"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="64.009636"
+         x="309.43164"
+         id="tspan5316"
+         sodipodi:role="line">84,6 %</tspan></text>
+    <image
+       y="88.404160"
+       x="285.73438"
+       id="image5318"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_84,6.png" />
+    <text
+       id="text5320"
+       y="96.009628"
+       x="309.45224"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="96.009628"
+         x="309.45224"
+         id="tspan5322"
+         sodipodi:role="line">84,6 %</tspan></text>
+    <image
+       y="116.40415"
+       x="285.73438"
+       id="image5324"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_84,6.png" />
+    <text
+       id="text5326"
+       y="124.00963"
+       x="309.45224"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="124.00963"
+         x="309.45224"
+         id="tspan5328"
+         sodipodi:role="line">84,6 %</tspan></text>
+    <image
+       y="146.70494"
+       x="285.71378"
+       id="image5330"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_84,6.png" />
+    <text
+       id="text5332"
+       y="154.31041"
+       x="309.43164"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="154.31041"
+         x="309.43164"
+         id="tspan5334"
+         sodipodi:role="line">84,6 %</tspan></text>
+    <image
+       y="173.70494"
+       x="285.73438"
+       id="image5336"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_84,6.png" />
+    <text
+       id="text5338"
+       y="181.31041"
+       x="309.45224"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="181.31041"
+         x="309.45224"
+         id="tspan5340"
+         sodipodi:role="line">84,6 %</tspan></text>
+    <image
+       y="56.802601"
+       x="524.24609"
+       id="image5342"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_34,6.png" />
+    <text
+       id="text5344"
+       y="64.408066"
+       x="547.96399"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="64.408066"
+         x="547.96399"
+         id="tspan5346"
+         sodipodi:role="line">34,6 %</tspan></text>
+    <image
+       y="88.802597"
+       x="524.26672"
+       id="image5348"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_34,6.png" />
+    <text
+       id="text5350"
+       y="96.408073"
+       x="547.98456"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="96.408073"
+         x="547.98456"
+         id="tspan5352"
+         sodipodi:role="line">34,6 %</tspan></text>
+    <image
+       y="116.80260"
+       x="524.26672"
+       id="image5354"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_34,6.png" />
+    <text
+       id="text5356"
+       y="124.40807"
+       x="547.98456"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="124.40807"
+         x="547.98456"
+         id="tspan5358"
+         sodipodi:role="line">34,6 %</tspan></text>
+    <image
+       y="147.10338"
+       x="524.24609"
+       id="image5360"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_34,6.png" />
+    <text
+       id="text5362"
+       y="154.70885"
+       x="547.96399"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="154.70885"
+         x="547.96399"
+         id="tspan5364"
+         sodipodi:role="line">34,6 %</tspan></text>
+    <image
+       y="174.10338"
+       x="524.26672"
+       id="image5366"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_34,6.png" />
+    <text
+       id="text5368"
+       y="181.70885"
+       x="547.98456"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="181.70885"
+         x="547.98456"
+         id="tspan5370"
+         sodipodi:role="line">34,6 %</tspan></text>
+    <image
+       y="56.404163"
+       x="446.20490"
+       id="image5372"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_45,7.png" />
+    <text
+       id="text5374"
+       y="64.009628"
+       x="469.92279"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="64.009628"
+         x="469.92279"
+         id="tspan5376"
+         sodipodi:role="line">45,7 %</tspan></text>
+    <image
+       y="88.404160"
+       x="446.22552"
+       id="image5378"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_45,7.png" />
+    <text
+       id="text5380"
+       y="96.009644"
+       x="469.94336"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="96.009644"
+         x="469.94336"
+         id="tspan5382"
+         sodipodi:role="line">45,7 %</tspan></text>
+    <image
+       y="116.40415"
+       x="446.22552"
+       id="image5384"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_45,7.png" />
+    <text
+       id="text5386"
+       y="124.00963"
+       x="469.94336"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="124.00963"
+         x="469.94336"
+         id="tspan5388"
+         sodipodi:role="line">45,7 %</tspan></text>
+    <image
+       y="146.70494"
+       x="446.20490"
+       id="image5390"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_45,7.png" />
+    <text
+       id="text5392"
+       y="154.31041"
+       x="469.92279"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="154.31041"
+         x="469.92279"
+         id="tspan5394"
+         sodipodi:role="line">45,7 %</tspan></text>
+    <image
+       y="173.70494"
+       x="446.22552"
+       id="image5396"
+       height="7.0000000"
+       width="15.000000"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/percent.png"
+       xlink:href="percent_45,7.png" />
+    <text
+       id="text5398"
+       y="181.31041"
+       x="469.94336"
+       style="font-size:12.000000;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="181.31041"
+         x="469.94336"
+         id="tspan5400"
+         sodipodi:role="line">45,7 %</tspan></text>
+    <image
+       xlink:href="open_package.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/open_package.png"
+       width="15.000000"
+       height="12.000000"
+       id="image1482"
+       x="489.00000"
+       y="7.6175804" />
+    <image
+       xlink:href="open_project.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/open_project.png"
+       width="16.000000"
+       height="12.000000"
+       id="image1546"
+       x="463.00000"
+       y="7.6074257" />
+    <image
+       xlink:href="package.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/package.png"
+       width="13.000000"
+       height="13.000000"
+       id="image1610"
+       x="515.00000"
+       y="7.1125031" />
+    <image
+       xlink:href="classes.png"
+       sodipodi:absref="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Coverage_View/classes.png"
+       width="16.000000"
+       height="14.000000"
+       id="image1674"
+       x="538.00000"
+       y="6.6175804" />
+    <path
+       style="fill:#000000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
+       d="M 265.84941,36.135760 L 270.80625,41.059477 L 275.73038,36.165778 L 265.84941,36.135760 z "
+       id="path1405" />
+  </g>
+</svg>

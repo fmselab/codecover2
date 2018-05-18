@@ -1,0 +1,120 @@
+format 29
+
+activitynodecanvas 128020 activitynode_ref 128020 // initial
+  xyz 35 5 2000
+activitynodecanvas 128148 activitynode_ref 128148 // activity_final
+  xyz 33 366 2000
+activityactioncanvas 128276 activityaction_ref 128020 // activity action User selects instrumentable item(s)
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 281 94 2000 222 50
+end
+activitynodecanvas 128404 activitynode_ref 128276 // decision
+  xyz 33 57 2000
+activitynodecanvas 128522 activitynode_ref 135050 // merge
+  xyz 380 382 2004
+activitynodecanvas 129172 activitynode_ref 128404 // decision
+  xyz 246 58 2000
+activityactioncanvas 129812 activityaction_ref 128148 // activity action User opens context menu on selected instrumentable item(s)
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 288 162 2000 207 71
+end
+activityactioncanvas 130196 activityaction_ref 128276 // activity action Mark selected items recursively for instrumentation
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 203 295 2000 178 85
+end
+activityactioncanvas 130324 activityaction_ref 128404 // activity action Unmark selected items recursively for instrumentation
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 403 298 2000 176 85
+end
+activitynodecanvas 130580 activitynode_ref 128660 // decision
+  xyz 378 254 2005
+activityactioncanvas 131092 activityaction_ref 128532 // activity action Save instrumentation status of the selected instrumentable items
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 271 438 2000 245 71
+end
+flowcanvas 128532 flow_ref 128020 // <flow>
+  
+  from ref 128020 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128650 flow_ref 148490 // <flow>
+  geometry VH
+  
+  from ref 130196 z 1999 to point 289 398
+  line 130058 z 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128778 flow_ref 148618 // <flow>
+  geometry HVr
+  
+  from ref 130324 z 1999 to point 488 398
+  line 130186 z 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128906 flow_ref 148746 // <flow>
+  
+  from ref 128522 z 1999 to ref 131092
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129044 flow_ref 128276 // Project not opened
+  
+  from ref 128404 z 1999 label "Project not opened" xyz 6 106 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129300 flow_ref 128404 // Project opened
+  
+  from ref 128404 z 1999 label "Project opened" xyz 93 54 1999 to ref 129172
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129428 flow_ref 128532 // Project contains at least one instrumentable item
+  geometry HV
+  
+  from ref 129172 z 1999 label "Project contains at least one instrumentable item" xyz 217 49 1999 to point 389 74
+  line 130570 z 1999 to ref 128276
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129556 flow_ref 128660 // Project contains no instrumentable items
+  geometry VHV unfixed
+  
+  from ref 129172 z 1999 label "Project contains no instrumentable items" xyz 66 148 1999 to point 256 244
+  line 130698 z 1999 to point 43 244
+  line 130826 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129940 flow_ref 128788 // <flow>
+  
+  from ref 128276 z 1999 to ref 129812
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130708 flow_ref 129044 // <flow>
+  
+  from ref 129812 z 1999 to ref 130580
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130836 flow_ref 129172 // <flow>
+  geometry VHr
+  
+  from ref 130580 z 1999 to point 289 270
+  line 129930 z 1999 to ref 130196
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130964 flow_ref 129300 // <flow>
+  geometry HV
+  
+  from ref 130580 z 1999 to point 488 270
+  line 130442 z 1999 to ref 130324
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131476 flow_ref 129684 // <flow>
+  geometry VHr
+  
+  from ref 131092 z 1999 to point 43 471
+  line 129802 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+end

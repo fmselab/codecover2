@@ -1,0 +1,62 @@
+format 29
+
+classcanvas 128010 class_ref 129162 // MetricProvider
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 358 20 2000
+classcanvas 128020 class_ref 135572 // CoverageMetric
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 34 241 2000
+classcanvas 128148 class_ref 135700 // CoverageResult
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 34 20 2000
+classcanvas 128266 class_ref 129290 // Metric
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 187 114 2000
+classcanvas 128276 class_ref 135828 // AbstractCoverageMetric
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 34 406 2000
+classcanvas 128532 class_ref 135956 // StatementCoverage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 34 585 2000
+classcanvas 128660 class_ref 136084 // BranchCoverage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 50 662 2000
+classcanvas 128788 class_ref 136212 // LoopCoverage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 344 662 2000
+classcanvas 128916 class_ref 136340 // ConditionalCoverage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 344 585 2000
+relationcanvas 128394 relation_ref 128906 // <generalisation>
+  from ref 128020 z 1999 to ref 128266
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128404 relation_ref 134164 // <realization>
+  from ref 128276 z 1999 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129044 relation_ref 134292 // <generalisation>
+  geometry HV
+  from ref 128532 z 1999 to point 297 608
+  line 129162 z 1999 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129172 relation_ref 134420 // <generalisation>
+  geometry HV
+  from ref 128660 z 1999 to point 297 685
+  line 130186 z 1999 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129300 relation_ref 134548 // <generalisation>
+  geometry VHr
+  from ref 128788 z 1999 to point 297 685
+  line 129546 z 1999 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129428 relation_ref 134676 // <generalisation>
+  geometry VHr
+  from ref 128916 z 1999 to point 297 608
+  line 129418 z 1999 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

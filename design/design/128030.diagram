@@ -1,0 +1,189 @@
+format 29
+
+activitynodecanvas 128030 activitynode_ref 128030 // initial
+  xyz 38 24 2000
+activityactioncanvas 128158 activityaction_ref 128030 // activity action User positions cursor at desired start of test case
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 94 7 2000 169 59
+end
+activityactioncanvas 128286 activityaction_ref 128158 // activity action User opens context menu: Source > gbt² > Test Case Notification > Start Test Case With Name and Comment
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 1 94 2000 292 76
+end
+activityactioncanvas 128414 activityaction_ref 128286 // activity action User opens context menu: Source > gbt² > Test Case Notification > Start Test Case With Name
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 297 96 2000 291 74
+end
+activitynodecanvas 128542 activitynode_ref 128158 // decision
+  xyz 278 56 2000
+activityactioncanvas 128778 activityaction_ref 136458 // activity action Insert statement into source code at the specified location
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 174 226 2000 239 67
+end
+activitynodecanvas 129802 activitynode_ref 136586 // decision
+  xyz 281 308 2000
+activitynodecanvas 129930 activitynode_ref 136714 // merge
+  xyz 276 173 2000
+activityactioncanvas 130974 activityaction_ref 128414 // activity action User positions cursor at desired end of test case
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 171 502 2000 239 49
+end
+activityactioncanvas 131230 activityaction_ref 128542 // activity action User opens context menu: Source > gbt² > Test Case Notification > End Test Case With Name
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 141 559 2000 308 67
+end
+activityactioncanvas 131466 activityaction_ref 136586 // activity action Insert end test case statement into source code at the specified location
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 154 637 2010 283 48
+end
+activitynodecanvas 132766 activitynode_ref 128542 // activity_final
+  xyz 59 764 2000
+activitynodecanvas 133662 activitynode_ref 128798 // merge
+  xyz 283 757 2000
+activityactioncanvas 135838 activityaction_ref 128670 // activity action User enters name into inserted start test case method call
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 293 352 2000 259 61
+end
+activityactioncanvas 135966 activityaction_ref 128798 // activity action User enters name and comment into inserted start test case method call
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 39 351 2000 242 60
+end
+activitynodecanvas 138910 activitynode_ref 129950 // decision
+  xyz 276 456 2005
+activityactioncanvas 139678 activityaction_ref 128926 // activity action User enters name into inserted end test case method call
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 165 696 2005 262 49
+end
+activitynodecanvas 140190 activitynode_ref 130078 // merge
+  xyz 275 411 2000
+flowcanvas 128266 flow_ref 153866 // <flow>
+  
+  from ref 133662 z 1999 to ref 132766
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128670 flow_ref 128030 // <flow>
+  geometry HV
+  
+  from ref 128542 z 1999 to point 440 72
+  line 129054 z 1999 to ref 128414
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128798 flow_ref 128158 // <flow>
+  geometry VHr
+  
+  from ref 128542 z 1999 to point 144 72
+  line 129310 z 1999 to ref 128286
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128926 flow_ref 128286 // <flow>
+  geometry HV
+  
+  from ref 128158 z 1999 to point 288 34
+  line 131850 z 1999 to ref 128542
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130058 flow_ref 154634 // <flow>
+  
+  from ref 129930 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 154762 // <flow>
+  geometry HVr
+  
+  from ref 128414 z 1999 to point 440 189
+  line 130954 z 1999 to ref 129930
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130314 flow_ref 154890 // <flow>
+  geometry VH
+  
+  from ref 128286 z 1999 to point 144 189
+  line 130826 z 1999 to ref 129930
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 155018 // <flow>
+  
+  from ref 128778 z 1999 to ref 129802
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130570 flow_ref 155146 // <flow>
+  geometry VHr
+  
+  from ref 129802 z 1999 to point 157 324
+  line 131082 z 1999 to ref 135966
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 155274 // <flow>
+  geometry HV
+  
+  from ref 129802 z 1999 to point 420 324
+  line 131210 z 1999 to ref 135838
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131358 flow_ref 128926 // <flow>
+  
+  from ref 130974 z 1999 to ref 131230
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131594 flow_ref 155402 // <flow>
+  
+  from ref 131230 z 1999 to ref 131466
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131722 flow_ref 155530 // <flow>
+  
+  from ref 131466 z 2004 to ref 139678
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139038 flow_ref 132638 // <flow>
+  
+  from ref 138910 z 1999 to point 495 472
+  line 128650 z 1999 to point 495 772
+  line 131978 z 1999 to ref 133662
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139422 flow_ref 132894 // <flow>
+  
+  from ref 138910 z 1999 to ref 130974
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139934 flow_ref 133150 // <flow>
+  
+  from ref 139678 z 1999 to ref 133662
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140446 flow_ref 133534 // <flow>
+  geometry VH
+  
+  from ref 135966 z 1999 to point 157 427
+  line 128138 z 1999 to ref 140190
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140574 flow_ref 133662 // <flow>
+  
+  from ref 140190 z 1999 to ref 138910
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140830 flow_ref 133790 // <flow>
+  geometry HVr
+  
+  from ref 135838 z 1999 to point 420 427
+  line 128010 z 1999 to ref 140190
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140958 flow_ref 133918 // <flow>
+  
+  from ref 128030 z 1999 to ref 128158
+  show_infonote default drawing_language default write_horizontally default
+end
+end

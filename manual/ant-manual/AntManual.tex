@@ -1,0 +1,95 @@
+\documentclass[twoside,a4paper]{article}
+\usepackage{ifthen}
+%\usepackage{geometry}
+%\usepackage{ngerman}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage[cmyk]{xcolor}
+\usepackage{amsmath}
+\usepackage[
+  %plainpages=false,
+  %pdfpagelabels,
+  %colorlinks=true,
+  pdfborder={0 0 0},
+  %urlcolor=blue,
+  %linkcolor=blue,
+  bookmarksopen=true,
+  %pdfstartpage=3,
+  unicode,
+]{hyperref}
+\hypersetup{
+  pdftitle={CodeCover - Manual},
+  pdfsubject={CodeCover - Manual},
+  pdfauthor={Stefan Franke, Robert Hanussek, Benjamin Keil, Steffen Kieß, Johannes Langauf, Christoph Marian Müller, Igor Podolskiy, Tilmann Scheller, Michael Starzmann, Markus Wittlinger},
+  pdfkeywords={CodeCover, Manual},
+}
+% hypcap is needed for correct links to figures, see specification Bug 2
+\usepackage[all]{hypcap}
+\usepackage{svnkw}
+\usepackage[USenglish]{isodate}
+\usepackage{titlesec}
+% provides \ul,  allows line breaking for underlined text (static methods...)
+\usepackage{listings} % for the source code in the tex document
+\lstset{numbers=left,%
+        numberstyle=\small,%
+        keywordstyle=\textbf,%
+        numbersep=5pt}
+\usepackage{soul}
+%\makeatletter
+
+\usepackage{anysize}
+\marginsize{1.5 cm}{1.5 cm}{1.5 cm}{1.5 cm}
+
+% depth of the headlines that are numbered
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\newcommand{\OSTWeST}{\textit{OSTWeST}\xspace}
+\newcommand{\codecover}{\textit{CodeCover}\xspace}
+\newcommand{\software}{\textit{DeepThought}\xspace}
+\newcommand{\eclui}{\textsf}
+\newcommand{\code}{\texttt}
+\newcommand{\todo}[1]{\bgroup\color{TodoColor}\textsc{\textbf{TODO:} #1}\egroup}
+\newcommand{\BIG}{\fontsize{48}{48}\selectfont}
+\newcommand{\linkwithfootnote}[2]{\href{#1}{#2}\footnote{\url{#1}}}
+\newcommand{\email}[1]{\href{mailto:#1}{#1}}
+
+\xdefinecolor{ClassColor}         {rgb}{0.0, 1.0, 0.0}
+\xdefinecolor{ClassAbstractColor} {rgb}{0.0, 1.0, 0.0}
+\xdefinecolor{ObjectColor}        {rgb}{0.31, 0.58, 0.84}
+\xdefinecolor{InterfaceColor}     {rgb}{1.0, 0.0, 1.0} % that's magenta NOT pink, OK? ;-)
+\xdefinecolor{ImplementerColor}   {rgb}{0.4, 0.2, 0.6}
+\xdefinecolor{FieldColor}         {rgb}{0.9, 0.5, 0.0}
+
+\newcommand{\pkg}[1]{\texttt{#1}}
+\newcommand{\cls}[1]{\texorpdfstring{{\color{ClassColor}\texttt{#1}}}{#1}}
+\newcommand{\clsab}[1]{\texorpdfstring{{\color{ClassAbstractColor}\textit{\texttt{#1}}}}{#1}}
+\newcommand{\obj}[1]{\texorpdfstring{{\color{ObjectColor}\texttt{#1}}}{#1}}
+\newcommand{\itf}[1]{\texorpdfstring{{\color{InterfaceColor}\texttt{#1}}}{#1}}
+\newcommand{\imp}[1]{\texorpdfstring{{\color{ImplementerColor}\texttt{#1}}}{#1}}
+\newcommand{\mtd}[1]{\texttt{#1}}
+\newcommand{\mtdst}[1]{\texorpdfstring{\ul{\texttt{#1}}}{#1}}
+\newcommand{\mtdab}[1]{\texorpdfstring{\textit{\texttt{{#1}}}}{#1}}
+\newcommand{\fld}[1]{{\color{FieldColor}\texttt{#1}}}
+\newcommand{\namespace}[1]{\begin{description}\item[Namespace:]#1\end{description}}
+\newcommand{\rootpkg}{org.gbt2}
+
+\newcommand{\codepageflag}{iscodecontainer}
+
+% needed for the Function Point tables
+\newcommand{\x}{\textbullet}
+
+\begin{document}
+
+\include{Content}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% End:

@@ -1,0 +1,79 @@
+<project default="create-report">
+  <property name="codecoverDir" value="codecover" />
+  <property name="sourceDir" value="src" />
+  <property name="instrumentedSourceDir" value="instrumented" />
+  <property name="mainClassName" value="Test" />
+  <property name="mainClassName2" value="Test2" />
+  
+  <taskdef name="codecover"
+           classname="org.codecover.ant.CodecoverTask"
+           classpath="${codecoverDir}/lib/codecover-ant.jar" />
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="*.clf"/>
+    </delete>
+    <delete file="codecover.xml" />
+    <delete file="report.html" />
+    <delete dir="report.html-files" />
+  </target>
+
+  <target name="instrument-sources" depends="clean">
+    <codecover>
+      <instrument containerId="c" language="java" destination="${instrumentedSourceDir}"
+                  charset="utf-8" copyUninstrumented="yes">
+        <source dir="${sourceDir}">
+          <include name="**/*.java" />
+        </source>
+      </instrument>
+      <save containerId="c" filename="codecover.xml" />
+    </codecover>
+  </target>
+
+  <target name="compile-instrumented" depends="instrument-sources">
+    <javac srcdir="${instrumentedSourceDir}"
+           destdir="${instrumentedSourceDir}"
+           encoding="utf-8"
+           target="1.5"
+           debug="true"
+           classpath="${codecoverDir}/lib/codecover-instrumentation-java.jar"
+           includeAntRuntime="false">
+    </javac>
+  </target>
+  
+  <target name="run-instrumented" depends="compile-instrumented">
+    <java classpath="${instrumentedSourceDir}:${codecoverDir}/lib/codecover-instrumentation-java.jar"
+          fork="true"
+          failonerror="true"
+          classname="${mainClassName}">
+      <jvmarg value="-Dorg.codecover.coverage-log-file=test.clf" />
+    </java>
+  </target>
+    
+  <target name="run-instrumented2" depends="compile-instrumented">
+    <java classpath="${instrumentedSourceDir}:${codecoverDir}/lib/codecover-instrumentation-java.jar"
+          fork="true"
+          failonerror="true"
+          classname="${mainClassName2}">
+      <jvmarg value="-Dorg.codecover.coverage-log-file=test2.clf" />
+    </java>
+  </target>
+    
+  <target name="create-report" depends="run-instrumented,run-instrumented2">
+    <codecover>
+      <load containerId="c" filename="codecover.xml" />
+      <analyze containerId="c" coverageLog="test.clf" name="Test Session" />
+      <analyze containerId="c" coverageLog="test2.clf" name="Test Session 2" />
+      <save containerId="c" filename="codecover.xml" />
+      
+      <report containerId="c" destination="report.html"
+              template="${codecoverDir}/report-templates/HTML_Report_hierarchic.xml">
+        <testCases>
+          <testSession pattern=".*">
+            <testCase pattern=".*" />
+          </testSession>
+        </testCases>
+      </report>
+    </codecover>
+  </target>
+</project>

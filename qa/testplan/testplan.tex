@@ -1,0 +1,2781 @@
+\documentclass[a4paper,12pt,liststotoc,DIV12]{scrartcl}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xr-hyper}
+\usepackage[
+  %plainpages=false,
+  %pdfpagelabels,
+  %colorlinks=true,
+  pdfborder={0 0 0},
+  %urlcolor=blue,
+  %linkcolor=blue,
+  pdftitle={OST-WeST - Test Plan},
+  pdfsubject={OST-WeST - Test Plan},
+  pdfauthor={Stefan Franke, Robert Hanussek, Benjamin Keil, Steffen Kieß, Johannes Langauf, Christoph Marian Müller, Igor Podolskiy, Tilmann Scheller, Michael Starzmann, Markus Wittlinger},
+  pdfkeywords={OST-WeST, CodeCover, Test Plan, Test, Plan},
+  bookmarksopen=true,
+  %pdfstartpage=3,
+  %unicode,
+]{hyperref}
+\usepackage{nameref}
+\usepackage{svnkw}
+\usepackage[USenglish]{isodate}
+\usepackage{titlesec}
+
+\externaldocument[SPEC:]{Specification}{spec}
+\externaldocument[DES:]{Design}{design}
+
+\makeatletter
+
+% some TeX voodoo to extract the date from SVN ID
+% which can be processed by isodate 
+\def\svn@dateonly#1 #2Z{#1}
+\def\svndateonly#1{%
+\ifx#1\empty1970-01-01\else
+\expandafter\svn@dateonly#1\fi}
+
+% Two-level figure & table numbering
+\@addtoreset{table}{section}
+\@addtoreset{figure}{section}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\newcommand{\exref}[2]{#1 \ref{#1:#2}}
+
+% alternate 
+%\titleformat{\paragraph}{\bfseries\large\sffamily}{\theparagraph}{1em}{}
+%\titleformat{\subparagraph}{\bfseries\sffamily}{\thesubparagraph}{1em}{}
+%\titlespacing{\paragraph}{0pt}{\parskip}{-0.5\parskip}{}
+%\titlespacing{\subparagraph}{0pt}{\parskip}{-0.5\parskip}{}
+
+\svnid{$Id: testplan.tex 1 2007-12-12 17:37:26Z t-scheller $}
+
+\parindent0mm
+\parskip2mm
+%\geometry{textwidth=160mm, textheight=230mm, inner=30mm}
+
+%\xdefinecolor{TodoColor}{rgb}{1.0, 0.0, 0.0}
+
+\newcommand{\ffont}[1]{\textsf{\textbf{#1}}}
+\newcommand{\env}[1]{%
+\\ \ffont{Environments}: #1%
+}
+
+\newcommand{\lang}[1]{%
+\hskip 1em plus 1fill minus 0pt \ffont{Languages}:  #1 %
+}
+
+\newenvironment{preconditions}{\par\ffont{Preconditions}\vspace{-0.5\baselineskip}\begin{enumerate}
+}{\end{enumerate}}
+
+\newenvironment{results}{\par\ffont{Expected Results \hspace{0.5em plus0.5em
+      minus0em}}\indent \par}{\par}
+
+\newenvironment{teststeps}{
+\par\ffont{Test Steps}\vspace{-0.5\baselineskip}
+\begin{enumerate}
+}{\end{enumerate}}
+
+\newenvironment{references}{\par\ffont{References \hspace{0.5em plus0.5em minus0em}}}{\par}
+\newenvironment{testcase}[3]{%
+%\@startsection {NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE} 
+%            optional * [ALTHEADING]{HEADING}
+%\testcasesec{#1: #2}
+%\@startsection {subsubsection}{100}{\z@}{-3.25ex plus
+%-1ex minus -.2ex}{AFTERSKIP}{STYLE} 
+%            optional * [ALTHEADING]{HEADING}
+\subsubsection*{#1: #2}\label{testcase:#1}
+%\rule{\textwidth}{.5pt}
+\parskip0ex plus0ex minus0ex
+\topsep0ex plus0ex minus0ex
+\parsep0ex plus0ex minus0ex
+\itemsep0ex plus0ex minus0ex
+\ffont{ID: } #1 \hskip 1em plus 1fill minus 0pt%
+\ffont{Type: } #3
+%\vspace{3mm}
+}{%
+}
+
+% depth of the headlines that are numbered
+\setcounter{secnumdepth}{7}
+\setcounter{tocdepth}{2}
+
+\newcommand{\OSTWeST}{\textit{OSTWeST}}
+\newcommand{\gbt}{\textit{CodeCover}}
+\newcommand{\eclui}{\textsf}
+\newcommand{\code}{\texttt}
+\newcommand{\fs}{\texttt}
+\newcommand{\todo}[1]{\bgroup\color{TodoColor}\textsc{\textbf{TODO:} #1}\egroup}
+\newcommand{\BIG}{\fontsize{48}{48}\selectfont}
+\newcommand{\linkwithfootnote}[2]{\href{#1}{#2}\footnote{\url{#1}}}
+\newcommand{\x}{\textbullet}
+
+
+\usepackage[tight]{minitoc}
+\setcounter{secttocdepth}{4}
+%\nostcrule
+\setlength{\stcindent}{0pt}
+
+
+\begin{document}
+
+% --- title page --- %
+\pagestyle{empty}
+\begin{titlepage}
+ \vspace*{38mm}
+ \begin{center}
+ \fontsize{24}{24}\selectfont
+ Test Plan\\
+ \vspace*{12mm}
+ \fontsize{48}{48}\selectfont
+ 
+ \gbt
+ %
+ \\
+ \fontfamily{\familydefault}\fontsize{32}{38}\selectfont
+ Glass Box Testing Tool\\
+ \vspace*{12mm}
+ \fontsize{16}{20}\selectfont
+ Student Project A ``OST-WeST''\\
+ University of Stuttgart
+
+ \vspace{2cm}
+ {\small 
+   Version: 0.7.1 \\
+   {Last changed on \printdate{\svndateonly{\svndate}} (SVN Revision \svnrev)}}
+   \end{center}
+   \vspace{3cm}
+   \hspace{40mm}
+   \normalsize
+\end{titlepage}
+
+% --- Header and version history --- %
+
+\cleardoublepage
+\fancyhf{}
+\fancyhead[RE,LO]{\textit{\gbt\ - Test Plan}}
+\fancyhead[RO,LE]{\thepage}
+\pagestyle{fancyplain}
+
+% -- Version History -- %
+%\include{VersionHistory}
+% \cleardoublepage
+
+% --- Table of contents --- %
+
+\dosecttoc
+
+\parskip1mm
+\tableofcontents
+\parskip2mm
+
+\pagestyle{fancyplain}
+\renewcommand{\baselinestretch}{1.25}\normalsize
+\section{Introduction}
+\label{sec:introduction}
+
+
+\subsection{Overview}
+\label{sec:overview}
+This document describes the tests that are carried out during the development
+of \gbt\ to ensure the quality of the software. There are four kinds of tests
+in the \gbt\ development: 
+
+\begin{description}
+\item[Integration Tests] are derived directly from the use case descriptions
+  (section \ref{SPEC:fr:Use case description} of the Specification). Their
+  purpose is to check the functionality of the software ``from the user's
+  point of view''.
+\item[Component Tests] are performed for each component using its public
+  interfaces as defined in the Design Document.
+\item[Performance Tests] are performed both component-wise and for the
+  entire software product, where applicable. Performance tests are based on
+  the non-functional requirements defined in the section
+  \ref{SPEC:nf:Performance requirements} of the Specification.
+\item[Unit Tests] are created by the component developers to test internal
+  behavior of the component's parts. Unit tests are not described in this
+  document. 
+\end{description}
+
+The structure of this document follows this classification. Component tests
+are additionally grouped by component.
+
+\subsection{Test Case Descriptions}
+\label{sec:test-case-descr}
+
+The test case descriptions contain following items:
+
+\begin{description}
+\item[ID] An unique alphanumeric identifier of the test case.
+\item[Type] The type of the test case (see section \ref{sec:test-case-types}).
+\item[Environment] The environments in which the test case must be executed.
+  If no environment is stated, the test case may be considered
+  environment-independent.
+\item[Language] The languages of the target System Under Test for which the test case must be executed.
+\item[Preconditions] The specific conditions which must be satisfied prior to the execution of the test steps.
+\item[Test Steps] The steps to be executed comprising the test case.
+\item[Expected Results] The conditions expected after an error-free execution of the test steps.
+\item[References] Pointers to the relevant sections in other documents.
+\end{description}
+
+\subsection{Test Case Types}
+\label{sec:test-case-types}
+
+Following test case types are described in this test plan:
+
+\begin{description}
+\item[Shell] Test cases to be executed using a command line shell.
+  Shell test cases can be executed both manually or by means of a
+  shell script; however, the decision whether the test result is
+  positive or negative can require manual examination of the test output.
+\item[Eclipse] Test cases to be executed using the Eclipse GUI to CodeCover.
+  Eclipse test cases are normally executed manually. If feasible, they may also
+  be executed by a automated GUI control tool, however, tool compatibility is
+  not prioritized while designing these test cases.
+\item[JUnit] Test cases to be implemented and executed as JUnit test cases.
+  The decision whether the test result is positive or negative can still
+  require manual examination of the test output.
+\end{description}
+
+\subsection{Test Data}
+\label{sec:test-data}
+
+The test data (e.g. original source code) is provided by the QA and
+can be obtained from project file shares and/or web pages. The exact
+location of the test data is announced on the project mailing list.
+
+The test data is oriented on the definitions in the section
+\ref{SPEC:nf:Quantity requirements}, ``Quantity requirements'' of the \gbt\ specification.
+
+\subsection{Contact Person}
+\label{sec:contact-person}
+
+The contact person for this document is Igor Podolskiy
+(Project QA, \texttt{podolsir@studi.informatik.uni-stuttgart.de}).
+
+\section{Integration Tests}
+\label{sec:integration-tests}
+
+\subsection{Instrumentation}
+\label{sec:it-instrumentation}
+
+\begin{testcase}{IT0001}{Instrumentation -- All Criteria}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+   There is a folder named \fs{out} which contains the instrumented source code.
+  
+   There is a file named \fs{data.xml} which contains static data
+   collected during the instrumentation. The data must contain
+   information sufficient for a later computation of all supported coverage criteria. 
+   
+   The instrumented source code can be compiled without errors and warnings.
+   
+   The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0002}{Instrumentation -- Statement Coverage}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i st -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+  There is a folder named \fs{out} which contains the instrumented source code.
+  
+  There is a file named data.xml which contains static data collected during the instrumentation. The data must contain
+   information sufficient for a later computation of statement coverage, i. e. information about all discovered statements. 
+  
+   The instrumented source code can be compiled without errors and warnings.
+  
+The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0003}{Instrumentation -- Branch Coverage}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i br -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+  There is a folder named \fs{out} which contains the instrumented source code.
+  
+  There is a file named data.xml which contains static data collected during the instrumentation. The data must contain
+   information sufficient for a later computation of branch coverage.
+  
+   The instrumented source code can be compiled without errors and warnings.
+  
+The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0004}{Instrumentation -- Condition Coverage}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i co -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+  There is a folder named \fs{out} which contains the instrumented source code.
+  
+  There is a file named data.xml which contains static data collected during the instrumentation. The data must contain
+   information sufficient for a later computation of condition coverage.
+  
+   The instrumented source code can be compiled without errors and warnings.
+  
+The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0005}{Instrumentation -- Loop Coverage}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i lo -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+  There is a folder named \fs{out} which contains the instrumented source code.
+  
+  There is a file named data.xml which contains static data collected during the instrumentation. The data must contain
+   information sufficient for a later computation of loop coverage.
+  
+   The instrumented source code can be compiled without errors and warnings.
+  
+The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0006}{Instrumentation -- Branch and Loop Coverage}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \item If there is a test suite for the original source code, the test results of this suite in the particular test environment are known.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i br -i lo -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \item Compile the source code in the \fs{out} folder.
+  \item Execute the test suite shipped with the original source code using the compiled instrumented code.
+  \end{teststeps}
+  \begin{results}
+  There is a folder named \fs{out} which contains the instrumented source code.
+  
+  There is a file named data.xml which contains static data collected during the instrumentation. The data must contain
+   information sufficient for a later computation of barnch and loop coverage.
+  
+   The instrumented source code can be compiled without errors and warnings.
+  
+The original test suite yields the same results with both instrumented and original source code (this does not apply to performance tests such as mesuerement of time needed for execution of a particular test).
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0007}{Instrumentation -- Invalid Code}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with \emph{syntactically invalid} source code is present and accessible to \gbt. Syntactically invalid means that the code does not comply to the grammar of the currently tested language; this does not include errors that cannot be discovered by a parser (for example, references to undefined variables). 
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i all -d out -l <lang> -c data.xml 
+\end{verbatim}
+  \end{teststeps}
+  \begin{results}
+  The software exits properly with an error message and without throwing unhandled exceptions.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IT0008}{Instrumentation -- Particular Files}{Shell}
+\env{Linux, Windows}\lang{Java, COBOL}
+  \begin{preconditions}
+  \item A folder named \fs{src} with valid source code is present and accessible to \gbt.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Choose a single file in the source folder to be instrumented.
+  \item Run the following command at a shell command prompt:
+\begin{verbatim}
+   codecover instrument -r src -i all -d out -l <lang> -o <file> -c data.xml 
+\end{verbatim}
+  \item Compile the newly generated file.
+  \end{teststeps}
+  \begin{results}
+  There is an \fs{out} folder containing the single instrumented file. The relative path to this file from the \fs{out} must be identical to the relative path to the original file in the \fs{src} directory.
+  
+  There is a file named \fs{data.xml} which contains information collected during instrumentation. The file contains only information about the single instrumented file.
+
+  The instrumented source code file can be compiled without errors and warnings.
+  \end{results}
+\end{testcase}
+
+
+\subsection{Report}
+\label{sec:it-report}
+
+The succesful execution of test case IR0001 is a precondition for all test
+cases except IR0001 itself.
+
+\begin{testcase}{IR0001}{Report - generate report}{Shell}
+  \begin{preconditions}
+  \item The test session container \fs{report1.xml} from the \fs{report}
+    directory is copied into the current directory.
+  \item The report template \fs{HTML\_Report\_hierarchic.xml} is copied into the
+    current directory.
+  \item There is at least 5 MB free space on the filesystem on which the
+    current directory resides.
+  \item Note the date and time of the report generation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Execute the following command:
+    \begin{verbatim}
+      > codecover report -c report1.xml -s ts2 -d IR0001.html
+                  -t HTML_Report_hierarchic.xml  
+    \end{verbatim}
+  \end{teststeps}
+  \begin{results}
+    The execution of the command passes without exceptions or errors. 
+    
+    During the execution, a progress indicator is visible.
+
+    The current directory contains a file named \fs{IR0001.html} and a
+    directory named  \fs{IR0001.html-files}.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0002}{Report - general properties}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Check the information contained in the footer and the header of the
+    displayed page.
+  \end{teststeps}
+  \begin{results}
+    The header of the displayed page contains the session name ``ts2'',
+    session date of 01.01.2000 13:00:00 CET (the actual date format must be
+    correct for the report language), and the test session description ``test
+    session 2''.
+
+    The footer contains the correct date of the report generation which is
+    formatted correctly for the report language, and a link to the \gbt\
+    project home page.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0003}{Report - report structure}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate through the structure of the selection pages down to the leaves.
+  \end{teststeps}
+  \begin{results}
+    The selection and code pages comprise a tree structure displayed in the
+    figure \ref{fig:IR0003-tree}.
+
+    On every page, the path to current page (``breadcrumbs navigation'') is
+    displayed in the header of the page, as well as the link to the title page. 
+
+    The selection pages display only links and summarized coverage for their
+    subelements. 
+
+    The code pages display summarized coverage results for the
+    code they describe and the highlighted code.
+
+\begin{figure}[htbp]
+\centering
+\hrule\vspace{3mm}
+\begin{verbatim}
+<index page>
+  |- org
+     |- codecover
+        |- tests
+           |- TestClass1
+           |  |- TestClass1()
+           |  |- canGoWrong() throws Exception
+           |  |- helloWorld()
+           |  |- doSomething()
+           |  |- main()
+           |
+           |- TestClass2
+              |- TestClass2(int someInt)
+              |- makeWorker()
+              |- botherWorker(int i)
+              |- Worker
+                 |- doWork(int x) throws Exception
+                 |- isWorkReallyDone()
+              |- DefaultWorkerImpl
+                 |- doWork(int x) throws Exception
+                 |- isWorkReallyDone()
+\end{verbatim}
+\vspace{2mm}\hrule
+      \caption{Expected report structure for \hyperref[testcase:IR0003]{IR0003}}
+      \label{fig:IR0003-tree}
+    \end{figure}
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0004}{Report - coverage data}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate through the structure of the selection pages down to the
+    leaves and check the coverage data displayed for the different items.
+  \end{teststeps}
+  \begin{results}
+The expected coverage results for this container are summarized in the
+table \ref{tab:IR0004-results} in terms of absolute coverage (covered items
+against total items). 
+
+The percentages and the red/green bars are consistent with the absolute
+coverage.
+
+\emph{Note: the coverage results in the \fs{report1.xml} container are
+  deliberately inconsistent (i.e. such constellation of different metrics
+  results is impossible) to simplify the testing.}
+    \begin{longtable}{|p{0.6\textwidth}|c|c|c|c|}
+      \hline
+\textbf{Item} & \textbf{SC} & \textbf{BC} & \textbf{LC} & \textbf{SCC} \\
+      \hline\hline
+\endhead
+\hspace{0em}\code{org} & 21/25 & 7/10 & 4/10 & 6/10\\\hline
+\hspace{1em}\code{codecover} & 21/25 & 7/10 & 4/10 & 6/10\\\hline
+\hspace{2em}\code{tests} & 21/25 & 7/10 & 4/10 & 6/10\\\hline
+\hspace{3em}\code{TestClass1} & 13/16 & 4/6 & 3/8 & 3/7\\\hline
+\hspace{4em}\code{TestClass1()} & 1/1 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{4em}\code{canGoWrong()} & 0/0 & 1/2 & 0/0 & 0/1\\\hline
+\hspace{4em}\code{helloWorld()} & 0/1 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{4em}\code{doSomething()} & 8/9 & 3/4 & 3/8 & 3/6\\\hline
+\hspace{4em}\code{main()} & 3/3 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{3em}\code{TestClass2} & 8/9 & 3/4 & 1/2 & 3/3\\\hline
+\hspace{4em}\code{TestClass2()} & 1/1 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{4em}\code{makeWorker()} & 1/1 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{4em}\code{botherWorker()} & 1/2 & 1/2 & 1/2 & 1/1\\\hline
+\hspace{4em}\code{Worker} & 0/0 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{5em}\code{doWork()} & 0/0 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{5em}\code{isWorkReallyDone()} & 0/0 & 0/0 & 0/0 & 0/0\\\hline
+\hspace{4em}\code{DefaultWorkerImpl} & 5/5 & 2/2 & 0/0 & 2/2\\\hline
+\hspace{5em}\code{doWork()} & 3/3 & 2/2 & 0/0 & 2/2\\\hline
+\hspace{5em}\code{isWorkReallyDone()} & 0/0 & 0/0 & 0/0 & 0/0\\\hline
+\caption{Expected coverage results for \hyperref[testcase:IR0004]{IR0004}}
+\label{tab:IR0004-results}
+\end{longtable}
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0005}{Report -- source code display}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate to the code pages and check whether the code displayed in the
+    code pages is consistent with the original source files. 
+
+    You can find the source files in the \code{sources/report/report1}
+    directory in the test data directory. The files in test data directory
+    have line numbers prepended to each line for your convenience but are
+    identical otherwise to code files used for instrumentation.
+  \end{teststeps}
+  \begin{results}
+    The source code and line numbers displayed are consistent with original
+    source code.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0006}{Report -- highlighting -- statement coverage}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate to the code pages and check the source code highlighting for
+    basic statements and the number of executions.
+  \end{teststeps}
+  \begin{results}
+    The highlighting for covered statements is consistent with the \emph{Basic
+      Statements} part of the specification section \ref{SPEC:ui:Source code
+      highlighting}.
+
+    Table \ref{tab:IR0006-coverage} lists the basic statements covered according to the
+    container, grouped by code part. The S\textit{x} markers can be
+    found in the source as \code{//}-comments on the end of each line. Unless
+    stated otherwise, the statements appear to be executed 1 time.
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Code part} & \textbf{Statements covered}\\
+      \hline\hline
+\endhead
+\multicolumn{2}{|l|}{\code{TestClass1}} \\\hline
+\hspace{1em}\code{TestClass1()}       & S3 \\\hline
+\hspace{1em}\code{canGoWrong()}       & n/a \\\hline
+\hspace{1em}\code{helloWorld()}       & none \\\hline
+\hspace{1em}\code{doSomething()}      & S6, S9 (10 times), S10, S14, S16, S17,
+S18, S19 \\\hline
+\hspace{1em}\code{main()}             & S20, S21, S22 \\\hline
+%
+\multicolumn{2}{|l|}{\code{TestClass2}}\\\hline
+\hspace{1em}\code{TestClass2()}       & S1 (5 times) \\\hline
+\hspace{1em}\code{makeWorker()}       & S2 \\\hline
+\hspace{1em}\code{botherWorker()}     & S5 \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{Worker}}\\\hline
+\hspace{2em}\code{doWork()}           & n/a \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{DefaultWorkerImpl}}\\\hline
+\hspace{2em}\code{doWork()}           & S10, S11, S12 \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+      \caption{Expected covered statements for \hyperref[testcase:IR0006]{IR0006}}
+      \label{tab:IR0006-coverage}
+\end{longtable}
+    
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0007}{Report -- highlighting -- branch coverage}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate to the code pages and check the source code highlighting for
+    branches.
+  \end{teststeps}
+  \begin{results}
+    The highlighting for covered branches is consistent with the
+    \emph{Conditional Statements} part of the specification section
+    \ref{SPEC:ui:Source code highlighting}.
+
+    Table \ref{tab:IR0007-coverage} lists the basic statements covered according to the
+    container, grouped by code part. The B\textit{x} markers can be
+    found in the source as \code{//}-comments on the end of each line. Unless
+    stated otherwise, the statements appear to be executed 1 time.
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Code part} & \textbf{Branches covered}\\
+      \hline\hline
+\endhead
+\multicolumn{2}{|l|}{\code{TestClass1}} \\\hline
+\hspace{1em}\code{TestClass1()}       & n/a \\\hline
+\hspace{1em}\code{canGoWrong()}       & B2 (implicit \code{else} branch) \\\hline
+\hspace{1em}\code{helloWorld()}       & n/a \\\hline
+\hspace{1em}\code{doSomething()}      & B3 (\code{then} branch), B5, B6\\\hline
+\hspace{1em}\code{main()}             & n/a \\\hline
+%
+\multicolumn{2}{|l|}{\code{TestClass2}}\\\hline
+\hspace{1em}\code{TestClass2()}       & n/a \\\hline
+\hspace{1em}\code{makeWorker()}       & n/a \\\hline
+\hspace{1em}\code{botherWorker()}     & B1 (successful \code{try} branch) \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{Worker}}\\\hline
+\hspace{2em}\code{doWork()}           & n/a \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{DefaultWorkerImpl}}\\\hline
+\hspace{2em}\code{doWork()}           & B3, B4 \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+      \caption{Expected covered branches for \hyperref[testcase:IR0007]{IR0007}}
+      \label{tab:IR0007-coverage}
+\end{longtable}
+
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IR0008}{Report -- highlighting -- condition coverage}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate to the code pages and check the source code highlighting for
+    boolean conditions.
+  \end{teststeps}
+  \begin{results}
+    The highlighting for covered statements is consistent with the \emph{Conditional
+      Statements} part of the specification section \ref{SPEC:ui:Source code
+      highlighting}.
+
+    Table \ref{tab:IR0008-coverage} lists the terms covered according to the
+    container, grouped by code part. The C\textit{x} markers can be
+    found in the source as \code{//}-comments on the end of each line. Unless
+    stated otherwise, all terms of the conditions stated in the table are covered.
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Code part} & \textbf{Terms covered}\\
+      \hline\hline
+\endhead
+\multicolumn{2}{|l|}{\code{TestClass1}} \\\hline
+\hspace{1em}\code{TestClass1()}       & n/a \\\hline
+\hspace{1em}\code{canGoWrong()}       & none \\\hline
+\hspace{1em}\code{helloWorld()}       & n/a \\\hline
+\hspace{1em}\code{doSomething()}      & C3, C5, C6 (first basic boolean term only) \\\hline
+\hspace{1em}\code{main()}             & n/a \\\hline
+%
+\multicolumn{2}{|l|}{\code{TestClass2}}\\\hline
+\hspace{1em}\code{TestClass2()}       & n/a \\\hline
+\hspace{1em}\code{makeWorker()}       & n/a \\\hline
+\hspace{1em}\code{botherWorker()}     & C1 \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{Worker}}\\\hline
+\hspace{2em}\code{doWork()}           & n/a \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{DefaultWorkerImpl}}\\\hline
+\hspace{2em}\code{doWork()}           & C2 \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+      \caption{Expected covered terms/conditions for \hyperref[testcase:IR0008]{IR0008}}
+      \label{tab:IR0008-coverage}
+\end{longtable}
+
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{IR0009}{Report -- highlighting -- loop coverage}{Manual}
+  \begin{teststeps}
+  \item Open the file \fs{IROOO1.html} in your Web browser.
+  \item Navigate to the code pages and check the source code highlighting for
+    loops.
+  \end{teststeps}
+  \begin{results}
+    The highlighting for covered statements is consistent with the
+    \emph{Looping Statements} part of the specification section
+    \ref{SPEC:ui:Source code highlighting}.
+
+    Table \ref{tab:IR0009-coverage} lists the loops covered according to the
+    container, grouped by code part. The L\textit{x} markers can be
+    found in the source as \code{//}-comments on the end of each line. 
+
+\begin{longtable}{|p{0.45\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Code part} & \textbf{Loops covered}\\
+      \hline\hline
+\endhead
+\multicolumn{2}{|l|}{\code{TestClass1}} \\\hline
+\hspace{1em}\code{TestClass1()}       & n/a \\\hline
+\hspace{1em}\code{canGoWrong()}       & n/a \\\hline
+\hspace{1em}\code{helloWorld()}       & n/a \\\hline
+\hspace{1em}\code{doSomething()}      & L1 (multiple), L2 (never, once) \\\hline
+\hspace{1em}\code{main()}             & n/a \\\hline
+%
+\multicolumn{2}{|l|}{\code{TestClass2}}\\\hline
+\hspace{1em}\code{TestClass2()}       & n/a \\\hline
+\hspace{1em}\code{makeWorker()}       & n/a \\\hline
+\hspace{1em}\code{botherWorker()}     & S3 (once) \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{Worker}}\\\hline
+\hspace{2em}\code{doWork()}           & n/a \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+\multicolumn{2}{|l|}{\hspace{1em}\code{DefaultWorkerImpl}}\\\hline
+\hspace{2em}\code{doWork()}           & n/a \\\hline
+\hspace{2em}\code{isWorkReallyDone()} & n/a \\\hline
+      \caption{Expected covered loops for \hyperref[testcase:IR0009]{IR0009}}
+      \label{tab:IR0009-coverage}
+\end{longtable}
+
+  \end{results}
+\end{testcase}
+
+\subsection{Eclipse Plugin}
+\label{sec:comp-eclipse-plugin}
+
+All Eclipse Plugin test cases have following preconditions:
+\begin{itemize}
+\item The CodeCover Eclipse plugin has been properly installed into an Eclipse
+  3.2 instance.
+\item Eclipse is running.
+\item A Java project containing some instrumentable items is open.
+\end{itemize}
+
+\subsubsection{Selecting coverage criteria and instrumentable items}
+\label{sec:select-cover-crit}
+
+\begin{testcase}{IES0001}{Select project for coverage measurement}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item No project has been selected for coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the project properties for a Java project.
+    view.
+  \item Open the ``CodeCover'' properties page.
+  \item Check the ``Use CodeCover with this project'' check box.
+  \item Confirm the Properties dialog. 
+  \end{teststeps}
+  \begin{results}
+    The project has been selected for coverage measurement.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0002}{Select project for coverage measurement -- non-Java project}{Eclipse}
+  \lang{Java}
+  \begin{teststeps}
+  \item Open the project properties for a non-Java project.
+  \end{teststeps}
+  \begin{results}
+    There is no ``CodeCover'' properties page.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0003}{Select instrumentable items -- project not selected for coverage measurement}{Eclipse}
+  \lang{Java}
+  \begin{teststeps}
+  \item Open the context menu of a Java project which has \emph{not} been
+    selected for coverage measurement.
+  \end{teststeps}
+  \begin{results}
+    There is no ``Use for coverage measurement'' menu item in the context
+    menu, or it is disabled.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0004}{Select instrumentable items -- class}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of a class in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \item Repeat steps 1 and 2 for the same class.
+  \end{teststeps}
+  \begin{results}
+    After step 2, the class is selected for coverage measurement. This is
+    indicated by appropriately decorated class icon as described in the
+    Specification section \ref{SPEC:ui:Package and file states}
+    ``\nameref{SPEC:ui:Package and file states}''.
+
+    After step 3, the class is not selected for coverage measurement.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0005}{Select instrumentable items - package}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item There is a package in the project which contains some classes and at
+    least one subpackage which in turn also contains some classes.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of a package in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \item Repeat steps 1 and 2 for the same package.
+  \end{teststeps}
+  \begin{results}
+    After step 2, all classes contained in the selected package and its
+    subpackages are selected for coverage measurement. This is indicated by
+    appropriately decorated item icons as described in the Specification
+    section \ref{SPEC:ui:Package and file states} ``\nameref{SPEC:ui:Package
+      and file states}''.
+
+    After step 3, no classes contained in the selected package and its
+    subpackages are selected for coverage measurement.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0006}{Select instrumentable items - package and another class}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of a package in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \item Open the context menu of a class that is \emph{not} contained in the
+    package from step 1 and select the menu item ``Use for coverage
+    measurement''.
+  \item Repeat step 3 for the same class.
+  \end{teststeps}
+  \begin{results}
+    After step 3, both all classes contained in the selected package and its
+    subpackage and the single class from step 3 are selected for coverage
+    measurement.
+
+    After step 4, the class from step 3 is not selected for coverage
+    measurement but the package is.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0007}{Select instrumentable items - package and contained class}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of a package in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \item Open the context menu of a class that is contained in the
+    package from step 1 and select the menu item ``Use for coverage
+    measurement''.
+  \item Repeat step 1 and 2 for the same package;
+  \end{teststeps}
+  \begin{results}
+    After step 3, all classes in the package from step 1 and its subpackages are selected
+    for coverage measurement except from the class from step 3.
+    
+    After step 4, no classes contained in the selected package and its
+    subpackages are selected for coverage measurement.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0008}{Select instrumentable items - new class}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of a package in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \item Create a new class in the package.
+  \end{teststeps}
+  \begin{results}
+    The newly created class is selected for coverage measurement, too.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0009}{Select instrumentable items - empty package}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of an empty package in the Package Explorer view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \end{teststeps}
+  \begin{results}
+    The state of the package does not change.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0010}{Select instrumentable items - phantom package with non-java files only}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \item There is a ``phantom'' package in the project, i.e. a folder beneath a java source
+    folder that contains only non-java files.
+  \item No instrumentable items in the project are selected for instrumentation.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the context menu of the phantom package in the Package Explorer
+    view.
+  \item Select the menu item ``Use for coverage measurement''.
+  \end{teststeps}
+  \begin{results}
+    The state of the phantom package does not change.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0011}{Select coverage criteria}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the project properties of a project, and select the ``CodeCover''
+    properties page.
+  \item Deselect the condition coverage criterion and confirm the properties dialog.
+  \item Repeat step 1.
+  \end{teststeps}
+  \begin{results}
+    The condition coverage criterion is deselected.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0012}{Select coverage criteria -- project not selected for coverage measurement}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item No project has been selected for coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the project properties of a project, and select the ``CodeCover''
+    properties page.
+  \end{teststeps}
+  \begin{results}
+  The coverage criteria check boxes are disabled.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0013}{Select coverage criteria -- deselect all coverage criteria}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A project has been selected for coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the project properties of a project, and select the ``CodeCover''
+    properties page.
+  \item Deselect all coverage criteria.
+  \end{teststeps}
+  \begin{results}
+    The properties dialog cannot be confirmed. Alternatively, CodeCover may
+    prevent you from unchecking the last checked criterion check box.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IES0014}{Set project preferences -- non-JDT perspective}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item An Eclipse perspective that does not belong to JDT is open (e.g. the Resource perspective).
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the project properties.
+  \end{teststeps}
+  \begin{results}
+    There is the CodeCover entry in the project properties.
+  \end{results}
+\end{testcase}
+
+\subsubsection{Build and Run}
+\label{sec:eclipse-build-run}
+
+\begin{testcase}{IEBR0001}{Build a Java project with coverage measurement}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Start the project build manually.
+  \item Open the Test Sessions view and check the Test Session Container drop down box.
+  \item Select the newly created test session container.
+  \end{teststeps}
+  \begin{results}
+    The project was built successfully.
+
+    There is a new entry in the test session container list in the
+    Test Sessions view for the newly created test session
+    container. The test session container does not contain any test
+    sessions or test cases according to the test sessions view.
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{IEBR0002}{Build a Java project with errors with coverage measurement}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project \emph{cannot} be
+    successfully built by Eclipse/JDT if not selected for coverage
+    measurement.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Start the project build manually.
+  \item Open the Test Sessions view and check the Test Session Container drop down box.
+  \item Select the newly created test session container.
+  \end{teststeps}
+  \begin{results}
+    The project was not built successfully.
+
+    No new test session container is created.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0003}{Subsequent builds, unchanged project}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Start the project build manually.
+  \item Start a build again without changing any of the project files.  
+  \item Open the Test Sessions view and check the Test Session Container drop down box.
+  \end{teststeps}
+  \begin{results}
+    At most one new test session container was created, i.e. the second build did not cause creation of a new test session container.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0004}{Subsequent builds, changed project}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Start the project build manually.
+  \item Change a statement in the source code of a class selected for coverage measurement.
+  \item Rebuild the project.
+  \item Open the Test Sessions view and check the Test Session Container drop down box.
+  \end{teststeps}
+  \begin{results}
+    A second test session container was created afteer the second build.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0005}{Subsequent builds, changes to files not selected for coverage measuerement}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item At least one class in the project has \emph{not} been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Start the project build manually.
+  \item Change a statement in the source code of a class \emph{not} selected for coverage measurement.
+  \item Rebuild the project.
+  \item Open the Test Sessions view and check the Test Session Container drop down box.
+  \end{teststeps}
+  \begin{results}
+    No test session container was created after the second build.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0006}{Run the instrumented project - previously built}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item The project is built.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the project and wait before the program completes, or terminate it.
+  \item Open the Test Sessions view, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    There is a new test session in the latest test session container which contains a single test case named ``UNNAMED TEST CASE''.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0007}{Subsequent runs without rebuilding}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item The project is built.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Run the project and wait before the program completes, or terminate it.
+  \item Run the project again without rebuilding it.
+  \item Open the Test Sessions view, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    There are two new test sessions in the latest test session container. Each of these contains a test case named ``UNNAMED TEST CASE''.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0009}{Change and run without explicit building}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item The project is built.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Change a statement in a class that has been selected for coverage measurement and save changes to the file.
+  \item Run the project \emph{without} explicitly building it.
+  \item Open the Test Sessions view, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    A new test session container has been created, which contains a single test session with a single test case named ``UNNAMED TEST CASE''.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0010}{Change and run without explicit building}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Change a statement in a class that has been selected for coverage measurement and save changes to the file.
+  \item Run the project \emph{without} explicitly building it.
+  \item Open the Test Sessions view, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    A new test session container has been created, which contains a single test session with a single test case named ``UNNAMED TEST CASE''.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0011}{Project cleaning}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item There are some test session containers and/or coverage log files belonging to this project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Clean the project.
+  \item Open the Test Sessions View, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    The test session containers and/or coverage log files are retained and can still be selected in the Test Sessions View.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEBR0012}{Project cleaning and immediate rebuilding}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item A Java project is open. The project can be successfully built and run
+    by Eclipse/JDT if not selected for coverage measurement.
+  \item The project does not contain any Test Case Notification calls.
+  \item Automatic building is deactivated.
+  \item At least one class in the project has been selected for
+    coverage measurement.
+  \item There are some test session containers and/or coverage log files belonging to this project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Clean the project.
+  \item Rebuild the project.
+  \item Open the Test Sessions View, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    No new test session containers are created.
+  \end{results}
+\end{testcase}
+
+\subsubsection{Data Management}
+\label{sec:eclipse-data-management}
+
+\begin{testcase}{IEDM0001}{Delete a test session container}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There are some test session containers and/or coverage log files belonging to the open Java project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Test Sessions view, if not yet open.
+  \item Select a test session container.
+  \item Delete the test session container using the controls of the Test Sessions view. When asked for confirmation, confirm the deletion. 
+  \end{teststeps}
+  \begin{results}
+    The test session container is removed from the list in the Test
+    Sessions view. The test session container file is deleted.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0002}{Delete a test session container -- no confirmation}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There are some test session containers and/or coverage log files belonging to the open Java project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Test Sessions view, if not yet open.
+  \item Select a test session container.
+  \item Delete the test session container using the controls of the
+    Test Sessions view. When asked for confirmation, \emph{do not}
+    confirm the deletion.
+  \end{teststeps}
+  \begin{results}
+    The project state is unchanged, i.e. the test session container is not deleted.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0003}{Delete a test session container -- no permission}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There are some test session containers and/or coverage log files belonging to the open Java project.
+  \item There is a test session container file which cannot be deleted
+    from Eclipse (e.g. due to lack of file system permissions).
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Test Sessions view, if not yet open.
+  \item Select a test session container which corresponding file cannot be deleted as described in precondition 2.
+  \item Delete the test session container using the controls of the
+    Test Sessions view. When asked for confirmation,
+    confirm the deletion.
+  \end{teststeps}
+  \begin{results}
+    An error message is shown. Nevertheless, the test session container reference may be removed from the Test Session View.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0004}{Import test session container}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container which belongs to the
+    currently open Java project and is not known to the CodeCover
+    Eclipse Plugin.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Test Session Container item from the CodeCover group.
+  \item Select the test session container file to be imported and confirm the dialog.
+  \item Open the Test Sessions view, if not yet open, and check the components of the test session container.
+  \end{teststeps}
+  \begin{results}
+    The test session container has been imported in Eclipse and can be
+    examined using the Test Sessions view. The test sessions and test
+    cases of the test session container are displayed correctly.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0005}{Import invalid test session container}{Eclipse}
+  \lang{Java}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Test Session Container item from the CodeCover group.
+  \item Select an arbitrary file which is not a valid CodeCover test session container. 
+  \end{teststeps}
+  \begin{results}
+    An error message is shown. The state of the Test Sessions view is unchanged.   
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0006}{Import and delete test session container}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container which belongs to the
+    currently open Java project and is not known to the CodeCover
+    Eclipse Plugin.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Test Session Container item from the CodeCover group.
+  \item Select the test session container file to be imported and confirm the dialog.
+  \item Delete the test session container using the Test Session view controls.
+  \end{teststeps}
+  \begin{results}
+    The original file from which the test session container has been imported is unchanged.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0007}{Import a coverage log file}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an active and up-to-date test session container in
+    the currently open Java project.
+  \item There is a coverage log file generated by a run of the
+    instrumented SUT represented by the current Java project. The
+    coverage log file is not integrated in the test session container.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Coverage Log File item from the CodeCover group.
+  \item Select the coverage log file to be imported and confirm the dialog.
+  \item Examine the test session container in the Test Sessions View.
+  \end{teststeps}
+  \begin{results}
+    The active test session container contains a new test session with the data from the imported coverage log file.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0008}{Import an invalid coverage log file}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an active and up-to-date test session container in
+    the currently open Java project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Coverage Log File item from the CodeCover group.
+  \item Select an arbitrary file which \emph{does not} conform to the CodeCOver coverage log file format and confirm the dialog.
+  \item Examine the test session container in the Test Sessions View.
+  \end{teststeps}
+  \begin{results}
+    An error message is shown.
+
+    The active test session container is unchanged.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0009}{Import a coverage log file from another TSC}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an active and up-to-date test session container in
+    the currently open Java project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Import dialog, and select the Coverage Log File item from the CodeCover group.
+  \item Select a coverage log file which does not belong to the selected test session container and confirm the dialog.
+  \item Examine the test session container in the Test Sessions View.
+  \end{teststeps}
+  \begin{results}
+    An error message is shown.
+
+    The active test session container is unchanged.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0010}{Export a test session container}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Eclipse Export dialog, and select the Coverage Result item from the CodeCover group.
+  \item Select a file name and CodeCover Test Session Container as format, and confirm the dialog.
+  \item Compare the exported file and the information displayed by the Test Sessions view.
+  \end{teststeps}
+  \begin{results}
+    The exported file is consistent with the information displayed in the Test Session view.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0011}{Delete test session}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project which contains at least one test sessions.
+  \item The test session to be deleted contains at least one test case.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the the Test Sessions view, if not yet open.
+  \item Select a test session by clicking on it.
+  \item Choose the Delete selected test sessions/test cases command using the Test Session view controls.
+  \item Confirm the deletion dialog.
+  \end{teststeps}
+  \begin{results}
+    The originally selected test session is preselected in the deletion dialog.
+
+    The selected test session and its test cases are deleted from the test session container. The other test sessions and test cases are preserved. 
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0012}{Delete test session -- no confirmation}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project which contains at least two test sessions.
+  \item The test session to be deleted contains at least one test case.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the the Test Sessions view, if not yet open.
+  \item Select a test session by clicking on it.
+  \item Choose the Delete selected test sessions/test cases command using the Test Session view controls.
+  \item \emph{Cancel} the deletion dialog.
+  \end{teststeps}
+  \begin{results}
+    No test sessions or test cases are deleted.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0013}{Delete test session -- change selection}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project which contains at least one test session.
+  \item The test session to be deleted contains at least one test case.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the the Test Sessions view, if not yet open.
+  \item Select a test session by clicking on it.
+  \item Choose the Delete selected test sessions/test cases command using the Test Session view controls.
+  \item Deselect the preselected test session and select another test session. 
+  \item Confirm the deletion dialog.
+  \end{teststeps}
+  \begin{results}
+    The originally selected test session is preselected in the deletion dialog.
+
+    After the confirmation of the dialog, the test session selected
+    later in the deletion dialog and its test cases is deleted from
+    the test session container. The originally selected test session is retained.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0014}{Delete test cases}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project which contains at least one test session.
+  \item The test session to be deleted contains at least one test case.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the the Test Sessions view, if not yet open.
+  \item Select a test case by clicking on it.
+  \item Choose the Delete selected test sessions/test cases command using the Test Sessions view controls.
+  \item Confirm the deletion dialog.
+  \end{teststeps}
+  \begin{results}
+    The originally selected test cases is preselected in the deletion
+    dialog. The test session the selected test case belongs to is not
+    selected.
+
+    The selected test case is deleted. The test session it belonged to is retained.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IEDM0015}{Delete test cases -- no confirmation}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is a test session container in the currently open Java project which contains at least one test session.
+  \item The test session to be deleted contains at least one test case.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the the Test Sessions view, if not yet open.
+  \item Select a test case by clicking on it.
+  \item Choose the Delete selected test sessions/test cases command using the Test Sessions view controls.
+  \item \emph{Cancel} the deletion dialog.
+  \end{teststeps}
+  \begin{results}
+    No test sessions or test cases are deleted.
+  \end{results}
+\end{testcase}
+
+\subsubsection{Coverage Display}
+\label{sec:eclipse-cov-display}
+\begin{testcase}{IECD0001}{Coverage View -- no test cases activated}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item No test cases are activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \end{teststeps}
+  \begin{results}
+    The Coverage view contains no entries.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0002}{Coverage View -- activate a test case}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least one test case.
+  \item No test cases are activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open both Coverage and Test Sessions views, if not yet open.
+  \item Activate a test case.
+  \end{teststeps}
+  \begin{results}
+    The Coverage view contains entries which correspond to projects, packages, classes
+    and methods of the test case. The coverage percentages are consistent with the items
+    covered by the test case.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0003}{Coverage View -- activate a test case}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least one test case.
+  \item A single test case is activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open both Coverage and Test Sessions views, if not yet open.
+  \item Deactivate a test case.
+  \end{teststeps}
+  \begin{results}
+    The Coverage view contains no entries.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0004}{Coverage View -- activate a test session}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item No test case is activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open both Coverage and Test Sessions views, if not yet open.
+  \item Activate the complete test session.
+  \end{teststeps}
+  \begin{results}
+    The Coverage view contains entries which correspond to projects, packages,
+    classes and methods covered by all test cases of the test session. The
+    coverage percentages are consistent with the items covered by the test
+    case.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0005}{Coverage View -- deactivate a test session}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case of a single test session is activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open both Coverage and Test Sessions views, if not yet open.
+  \item Deactivate the complete test session.
+  \end{teststeps}
+  \begin{results}
+    The Coverage view contains no entries.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0006}{Coverage View -- sorting}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Sort the coverage view on each of the four coverage criteria by
+    clicking on the column headings.
+  \end{teststeps}
+  \begin{results}
+    The entries in the coverage view are sorted correctly.
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{IECD0007}{Coverage View -- grouping}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Select projects, packages, classes and methods to be the group
+    criteria using the view controls. 
+  \end{teststeps}
+  \begin{results}
+    The entries in the coverage view are grouped correctly.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0008}{Coverage View -- filtering}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item Projects are selected to be the grouping root of the Coverage view.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Select Statement Coverage as filter criterion.
+  \item Adjust the operator and the comparison value so that \emph{no} entries
+    satisfy the filter condition.
+  \item Adjust the operator and the comparison value so that \emph{some, but
+      not all} entries satisfy the filter condition.
+  \item Adjust the operator and the comparison value so that \emph{all} entries satisfy the filter criterion.
+  \item Repeat the last 3 steps for the other coverage criteria.
+  \end{teststeps}
+  \begin{results}
+    The entries in the coverage view are grouped correctly.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0009}{Coverage View -- open class in editor}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item Class or higher level grouping is selected.
+  \item No editor is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Double click a class in the Coverage view.
+  \end{teststeps}
+  \begin{results}
+    An editor with the corresponding class source is open.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0010}{Coverage View -- open method in editor}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item No editor is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Double click a method in the Coverage view.
+  \end{teststeps}
+  \begin{results}
+    An editor with the corresponding class source is open at the location of the
+    selected method.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0011}{Coverage View -- open class in existing editor}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item The editor with a class source is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Double click the class whose source is open in an editor in the Coverage view.
+  \end{teststeps}
+  \begin{results}
+    The already open editor for the class source is brought to front. 
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0012}{Coverage View -- open method in existing editor}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item The editor with a class source is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open the Coverage view, if not yet open.
+  \item Double click a method of a class whose source is open in the editor in the Coverage view.
+  \end{teststeps}
+  \begin{results}
+    The already open editor for the class source is brought to front. The
+    location of the editor is set to the location of the selected method.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0013}{Code Highlighting -- no coverage}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item The editor with a class source is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open a class source which is \emph{not} covered by any active test
+    case. 
+  \end{teststeps}
+  \begin{results}
+    All coverable items are highlighted red.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{IECD0014}{Code Highlighting}{Eclipse}
+  \lang{Java}
+  \begin{preconditions}
+  \item There is an up-to-date test session container in the currently open Java project
+    which contains at least one test session. The test session contains at
+    least two test cases.
+  \item At least one test case is activated.
+  \item The editor with a class source is open.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Open a class source which is covered by some active test
+    case. 
+  \end{teststeps}
+  \begin{results}
+    The coverable items are highlighted according to the Specification section
+    \ref{SPEC:ui:Source code highlighting}.
+  \end{results}
+\end{testcase}
+
+\subsubsection{Live Notification}
+\label{sec:eclipse-ln}
+
+\clearpage
+
+\section{Component Tests}
+\label{sec:component-tests}
+\secttoc
+%\subsection{Instrumentation}
+%\label{sec:instrumentation}
+
+%\subsection{Batch}
+%\label{sec:batch}
+
+\subsection{Data Model}
+\label{sec:data-model}
+
+\subsubsection{Test Session Container}
+\label{sec:test-sess-cont}
+
+The tests regarding the test session container (abbreviated as TSC in the
+following sections) handling are categorized in several suites:
+\begin{description}
+\item[Load/Save] Loading and Saving TSCs from/to XML files
+\item[Static Information] Working with static information collected from
+  the SUT
+\item[Test Session Housekeeping] Obtaining, adding, and merging test sessions
+\end{description}
+
+The test data (XML containers) mentioned in the test cases can be found in the
+\fs{containers} directory of \fs{/trunk/qa/testdata} tree in SVN. All paths
+are given relative to the \fs{containers} directory. 
+
+\paragraph{Load/Save}
+\label{sec:tsc-load-save}
+
+\begin{testcase}{CDLS0001}{Load from a valid XML file}{JUnit}
+  \env{Linux, Windows}
+  \begin{preconditions}
+  \item There exists a valid XML test session container \code{f}.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Use the \code{o.c.m.TestSessionContainer.load()} method to obtain a TSC
+    instance from the file \code{f}.
+
+    This step must be executed for all \code{load()} overloads.
+  \end{teststeps}
+  \begin{results}
+    The instance is created successfully, no exceptions are thrown.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0002}{Load from an invalid file}{JUnit}
+  \env{Linux, Windows}
+  \begin{preconditions}
+  \item There exists a file \code{f} that is \emph{not} a \gbt\ test session container.
+  \end{preconditions}
+  \begin{teststeps}
+  \item Use the \code{o.c.m.TestSessionContainer.load()} method to obtain a TSC
+    instance from the file \code{f}.
+
+    This step must be executed for all \code{load()} overloads.
+  \end{teststeps}
+  \begin{results}
+    A \code{o.c.m.e.FileLoadException} is thrown.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0003}{Load from a non-existent file}{JUnit}
+  \env{Linux, Windows}
+  \begin{teststeps}
+  \item Use the \code{o.c.m.TestSessionContainer.load()} method to obtain a TSC
+    instance from a non-existent file.
+
+    This step must be executed for all \code{load()} overloads.
+  \end{teststeps}
+  \begin{results}
+    A o.c.m.e.FileLoadException is thrown.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0004}{Save to a XML file}{JUnit}
+  \env{Linux, Windows}
+  \begin{preconditions}
+  \item There exists an instance of file \code{f} that is a valid \gbt\ test session container.
+  \item A file named \code{g} does not exist.
+  \end{preconditions}
+  \begin{teststeps}
+    \item Use the \code{o.c.m.TestSessionContainer.load()} methods to obtain a TSC
+    instance.
+    \item Use the \code{o.c.m.TestSessionContainer.save()} methods to save a TSC into
+      a file \code{g}.
+
+      This step must be executed for all \code{save()} overloads. 
+
+      File \code{g} must reside on a filesystem that is
+      different from the filesystem where the system temporary directory
+      (determined by \code{java.io.tmpdir} system property) is located. 
+  \end{teststeps}
+  \begin{results}
+    The files \code{f} and \code{g} are semantically equivalent, i.e. only
+    elements like internal IDs may be different for this test case to pass.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0005}{Overwrite an existing XML file}{JUnit}
+  \env{Linux, Windows}
+  \begin{preconditions}
+  \item There exists an instance of file \code{f} that is a valid \gbt\ test
+    session container.
+  \item There exists a file \code{g} which contains some data.
+  \end{preconditions}
+  \begin{teststeps}
+    \item Use the \code{o.c.m.TestSessionContainer.load()} methods to obtain a TSC
+    instance.
+    \item Use the \code{o.c.m.TestSessionContainer.save()} methods to save a TSC into
+      a file \code{g}.
+
+      This step must be executed for all \code{save()} overloads. 
+
+      File \code{g} must reside on a filesystem that is
+      different from the filesystem where the system temporary directory
+      (determined by \code{java.io.tmpdir} system property) is located. 
+  \end{teststeps}
+  \begin{results}
+    The file \code{g} is overwritten with the TSC information.
+    
+    The files \code{f} and \code{g} are semantically equivalent, i.e. only
+    elements like internal IDs may be different for this test case to pass.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0006}{Save to a XML file, target location inaccessible}{JUnit}
+  \env{Linux, Windows}
+  \begin{preconditions}
+  \item There exists an instance of file \code{f} that is a valid \gbt\ test session container.
+  \end{preconditions}
+  \begin{teststeps}
+    \item Use the \code{o.c.m.TestSessionContainer.load()} methods to obtain a TSC
+    instance.
+    \item Use the \code{o.c.m.TestSessionContainer.save()} methods to save a TSC into
+      a file \code{g}, for which the current process has no permission to
+      write to.
+
+      This step must be executed for all \code{save()} overloads. 
+  \end{teststeps}
+  \begin{results}
+    A \code{o.c.m.e.FileSaveException} is thrown.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0007}{Update -- add a test session}{JUnit}
+  \env{Linux, Windows}
+  \begin{teststeps}
+  \item Load the \fs{statement.xml} container from the \fs{singlefile}  directory.
+  \item Add a new test session with the name ``ts1'', comment ``test session
+    1'' and the current date.
+  \item Save the TSC into the file \fs{statement-with-session.xml}.
+  \end{teststeps}
+  \begin{results}
+    The file \fs{statement-with-session.xml} contains the information about the new
+    test session.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0011}{Load -- single empty test session}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{empty-session.xml} container from the \fs{session}
+    directory.
+  \item Check whether the loaded TSC contains the test sessions named ``ts1''
+    with comment ``test session 1'' and creation date of 2000-01-01
+    11:00:00 GMT.
+  \item Get list of test sessions in the TSC.
+  \item Get the list of test cases from the obtained test session object. 
+  \end{teststeps}
+  \begin{results}
+    The TSCs contains the session specified in step 2. The TSC does not
+    contain any other sessions. The test session contains no test cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0012}{Load -- multiple empty test sessions}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{two-empty-sessions.xml} container from the \fs{session}
+    directory.
+  \item Check whether the loaded TSC contains the test sessions named ``ts1''
+    with comment ``test session 1'' and creation date of 2000-01-01
+    11:00:00 GMT.  
+  \item Check whether the loaded TSC contains the test sessions named ``ts2''
+    with comment ``test session 2'' and creation date of 2000-01-01
+    12:00:00 GMT.
+  \item Get the list of test sessions in the TSC.
+  \item Get the lists of test cases from the obtained test session objects. 
+  \end{teststeps}
+  \begin{results}
+    The TSCs contains the sessions specified in step 2 and 3. The TSC does not
+    contain any other sessions. Both sessions don't contain any test cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0013}{Load -- test session with a single empty test case}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{empty-test-case.xml} container from the \fs{session}
+    directory.
+  \item Get the test session ``ts2'' from the TSC.
+  \item Check whether the test session contains a test case named ``tc1'' with
+    comment ``test case 1'' and creation date of 2000-01-01 12:00:01 GMT.
+  \item Get the list of test cases in the test session.
+  \end{teststeps}
+  \begin{results}
+    The test session contains the test case specified in step 3. The test
+    session does not contains any other test cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0014}{Load -- test session with multiple empty test cases}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{two-empty-test-cases.xml} container from the \fs{session}
+    directory.
+  \item Get the test session ``ts2'' from the TSC.
+  \item Check whether the test session contains a test case named ``tc1'' with
+    comment ``test case 1'' and creation date of 2000-01-01 12:00:01 GMT.
+  \item Check whether the test session contains a test case named ``tc2'' with
+    comment ``test case 2'' and creation date of 2000-01-01 12:00:02 GMT.
+  \item Get the list of test cases in the test session.
+  \end{teststeps}
+  \begin{results}
+    The test session contains the test cases specified in step 3 and 4. The test
+    session does not contains any other test cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0015}{Load -- valid test case}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{test-case.xml} container from the \fs{session}
+    directory.
+  \item Get the test session ``ts2'' from the TSC.
+  \item Get the test case ``tc2'' from the test session.
+  \item Get the coverage count for the coverable item with prefix
+    ``org.codecover.tests.TestClass2.java'' and ID ``S8''.
+  \item Get the assignment count for the root term with prefix
+    ``org.codecover.tests.TestClass2.java'' and ID ``C2''.
+  \end{teststeps}
+  \begin{results}
+    The coverage count for the coverable item with prefix
+    ``org.codecover.tests.TestClass2.java'' and ID ``S8'' is 10.
+
+    The assignment counts for the root term with prefix
+    ``org.codecover.tests.TestClass2.java'' and ID ``C2''  are 1 for
+    \code{(TRUE, FALSE)} and 1 for \code{(FALSE, FALSE)}.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDLS0016}{Load -- invalid test cases}{JUnit}
+  \begin{teststeps}
+  \item Load the \fs{test-case-invalid-item-ref.xml} container from the \fs{session}
+    directory. This container contains a test case which references a
+    non-existent coverable item.
+  \item Load the \fs{test-case-invalid-rootterm-ref.xml} container from the
+    \fs{session} directory. This container contains a test case which references a
+    non-existent root term.
+  \item Load the \fs{test-case-invalid-rootterm-arity.xml} container from the
+    \fs{session} directory. This container contains a test case which includes
+    assignment data for a root term that exists but has a different arity.
+  \item Load the \fs{test-case-inconsistent-arity.xml} container from the
+    \fs{session} directory. This container contains a test case which includes
+    assignment data has a different arity than specified in the length
+    attribute of the assignment map.
+  \end{teststeps}
+  \begin{results}
+    A \code{o.c.m.e.FileLoadParseException} is thrown after every test step.
+  \end{results}
+\end{testcase}
+
+\paragraph{Static Information}
+\label{sec:tsc-static}
+
+\begin{testcase}{CDP0001}{Supported criteria of a test session container}{JUnit}
+  \env{Linux, Windows}
+  \begin{teststeps}
+    \item Load the containers in the \fs{multiplefile} directory.
+    \item Get the criteria supported by the TSC using the \code{getCriteria()} method.
+  \end{teststeps}
+  \begin{results}
+    The expected criteria for the different files are summarized here:
+    
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+      TSC          & Statement & Branch & Loop & Condition \\
+\hline
+      no-criteria  &           &        &      &           \\
+\hline
+      statement    &    \x     &        &      &           \\
+\hline
+      branch       &           &   \x   &      &           \\
+\hline
+      statement-branch 
+                   &     \x    &   \x   &      &           \\
+\hline
+      loop         &           &        &  \x  &           \\
+\hline
+      condition    &           &        &      &    \x       \\
+\hline
+      all          &     \x    &   \x   &  \x  &    \x     \\
+\hline
+    \end{tabular}
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDP0002}{Source files -- single file}{JUnit}
+  \begin{teststeps}
+    \item Load the containers in the \fs{singlefile} directory.
+    \item Get the source files supported by the TSC using the \code{getFiles()} method.
+    \item Get the file names and content lengths from all returned \code{SourceFile} objects.
+  \end{teststeps}
+  \begin{results}
+    Every test container should contain a \emph{single} source file named
+    \fs{TestClass1.java} with content length being 2614 characters.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDP0003}{Source files -- multiple files}{JUnit}
+  \begin{teststeps}
+    \item Load the containers in the \fs{multiplefile} directory.
+    \item Get the source files supported by the TSC using the \code{getFiles()} method.
+    \item Get the file names and content lengths from all returned SourceFile objects.
+  \end{teststeps}
+  \begin{results}
+    Every test container should contain \emph{two} source files named
+    \code{TestClass1.java} (2614 characters) and \code{TestClass2.java} (984 characters), respectively.
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{CDP0004}{TSC date}{JUnit}
+  \begin{teststeps}
+    \item Set the timezone for the current process to UTC.
+    \item Load the statement.xml container from the \fs{singlefile} directory.
+    \item Get the date of the test session container using the \code{getDate()}
+      method.
+    \item Compare the date to the date found in the XML file.
+  \end{teststeps}
+  \begin{results}
+    The container creation date should be exactly equal to the one
+    specified in the \fs{statement.utctime} text file in the
+    \fs{singlefile} directory.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDP0005}{Compatibility -- reflexivity, symmetry}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container (\code{tsc1}) from the \fs{singlefile} directory.
+    \item Create another TSC (\code{tsc2}) from the \fs{statement.xml} file from the \fs{singlefile} directory.
+    \item Call \code{tsc1.isCompatible(tsc2)} and \code{tsc2.isCompatible(tsc1)}.
+  \end{teststeps}
+  \begin{results}
+    Both calls return \code{true}.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDP0006}{Compatibility -- same criteria, different code}{JUnit}
+  \begin{teststeps}
+    \item Load the statement.xml container (\code{tsc1}) from the \fs{singlefile} directory.
+    \item Create another TSC (\code{tsc2}) from the statement.xml file from the \fs{multifile} directory.
+    \item Call \code{tsc1.isCompatible(tsc2)} and \code{tsc2.isCompatible(tsc1)}.
+  \end{teststeps}
+  \begin{results}
+    Both calls return \code{false}.
+  \end{results}
+\end{testcase}
+
+\paragraph{Test Session Housekeeping}
+\label{sec:tsc-test-sessions}
+
+\begin{testcase}{CDTS0001}{No Test Sessions}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory.
+    \item Obtain the TSC's test sessions using the \code{getTestSessions()} method.
+    \item Obtain the TSC's test session names using the \code{getTestSessionNames()}
+      method.
+    \item Check for the test sessions ``foobar'' and ``'' (empty string) using the \code{containsTestSessionWithName()} method.
+    \item Get the test sessions ``foobar'' and ``'' (empty string)
+      using the \code{getTestSessionWithName()} method.
+  \end{teststeps}
+  \begin{results}
+    Both list return values (steps 2 and 3) are empty lists.
+    
+    The \code{getTestSessionWithName()} method returns \code{null} in both cases.
+    
+    The check from step 4 returns \code{false} in both cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDTS0002}{Creating Test Sessions}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory.
+    \item Create a test session with the name ``ts1'', comment ``test
+      session1'' and the current date and save the returned value.
+    \item Obtain the TSC's test session names list using the \code{getTestSessionNames()}
+      method.
+    \item Obtain the TSC's test sessions list using the \code{getTestSessions()} method.
+    \item Obtain the test session object with the name ``ts1'' using the
+      \code{getTestSessionWithName()} method.
+    \item Get the name, comment, date and the TSC reference both of the test session
+      object and the first item of the list obtained in step 4 using
+      appropriate getter methods of the \code{TestSession} class.
+    \item Check for existence of the test sessions named ``ts1'' and
+      ``ts2'' using the \code{containsTestSessionWithName} method.
+    \end{teststeps}
+  \begin{results}
+    Both test session list and test session names list should contain exactly one
+    element. 
+
+    The name of the test session object must be equal to the first item of the
+    names list and the name of both the first element of the test sessions
+    list and the return value of the \code{createSession()} method.
+
+    The comment and the date of the test session object must be equal to the
+    corresponding properties of the first element of the test sessions list
+    and the return value of the \code{createSession()} method. The
+    respective TSCs of the test session objects are identical
+    (as in the semantics of the \code{==} operator) to the TSC that
+    created them.
+
+    The check for the test sessions ``ts1'' and ``ts2'' returns
+    \code{true} and \code{false}, respectively.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDTS0003}{Merging empty Test Sessions}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory.
+    \item Create a test session with the name ``ts1'', comment ``test
+      session1'' and the current date and save the returned value.
+    \item Create a test session with the name ``ts2'', comment ``test
+      session2'' and the current date and save the returned value.
+    \item Merge both test sessions to a session with the name ``ts3'', comment
+      ``merged test sessions 3'' using the \code{mergeTestSessions()}
+      method.
+    \item Check for the test sessions named ``ts1'', ``ts2'' and
+      ``ts3'' using the \code{containsTestSessionWithName} method.
+  \end{teststeps}
+  \begin{results}
+    The returned test session has the name ``ts3'',  comment ``merged test
+      sessions 3'' and the date of its creation.
+
+    The returned test session does not contain any test cases.
+
+    The TSC does \emph{not} contain any session with the name ``ts3'' and
+    still contains sessions ``ts1'' and ``ts2''. The TSC reference of
+    the test session ``ts3'' is \code{null}.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDTS0004}{Merging empty Test Sessions from incompatible TSCs}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory.
+    \item Create a test session with the name ``ts1'', comment ``test
+      session1'' and the current date and save the returned value.
+    \item Load the \fs{statement-branch.xml} container from the \fs{singlefile} directory.
+    \item Create a test session with the name ``ts2'', comment ``test
+      session2'' and the current date and save the returned value.
+    \item Merge both test sessions to a session with the name ``ts3'', comment
+      ``merged test sessions 3'' using the \code{mergeTestSessions()} method.
+  \end{teststeps}
+  \begin{results}
+    A \code{o.c.m.e.MergeException} is thrown.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDTS0005}{Merging empty Test Sessions from compatible TSCs}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory.
+    \item Create a test session with the name ``ts1'', comment ``test
+      session1'' and the current date and save the returned value.
+    \item Load the \fs{statement.xml} container from the \fs{singlefile} directory
+      into another TSC instance.
+    \item Create a test session with the name ``ts2'', comment ``test
+      session2'' in the second TSC instance and the current date and save the returned value.
+    \item Merge both test sessions to a session with the name ``ts3'', comment
+      ``merged test sessions 3'' using the \code{mergeTestSessions()} method.
+  \end{teststeps}
+  \begin{results}
+    The returned test session has the name ``ts3'',  comment ``merged test
+    sessions 3'' and the date of its creation.
+
+    The returned test session does not contain any test cases.    
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CDTS0006}{Merging an empty list of Test Sessions}{JUnit}
+  \begin{teststeps}
+  \item Attempt to merge an empty list of test sessions into a session with
+    the name ``ts3'', comment ``merged test sessions 3'' using the
+    \code{mergeTestSessions()} method.
+  \end{teststeps}
+  \begin{results}
+    A \code{o.c.m.e.MergeException} is thrown.
+  \end{results}
+\end{testcase}
+
+\subsubsection{Test Sessions}
+\label{sec:ts-test-sessions}
+
+As the getter methods for the name, comment, date and TSC properties
+of the Test Sessions have been tested extensively in the TSC Test
+Session Housekeeping (section \ref{sec:tsc-test-sessions}) suite and
+loading and saving is also only possible on TSCs, only
+the Test Case Housekeeping aspect of the TestSession as well as
+deletíng test session is tested here. 
+
+\begin{testcase}{CDTT0001}{Deleting empty test sessions}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Create an empty test session named ``ts1'' in it.
+    \item Delete the test session using the \code{delete()} method.
+    \item Check the presence of the session in the TSCs using the
+      getTestSessionNames(), getTestSessionWithName(),
+      containsTestSessionWithName() and getTestSessions() methods.
+    \item Attempt to get the TSC reference from the test session object.
+  \end{teststeps}
+\end{testcase}
+\begin{results}
+  The test session is deleted, i.e. all checks on the TSC show that
+  there are no sessions in the TSC and particularly no session named
+  ``ts1''.
+
+  The attempt to get the TSC reference results in an
+  \code{java.lang.IllegalStateException}.
+\end{results}
+
+\begin{testcase}{CDTT0002}{Empty test sessions}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Create an empty test session named ``ts1'' in it.
+    \item Get the test case and the test case name lists with the
+      \code{getTestCases()} and \code{getTestCaseNames()} methods.
+    \item Get and check the test cases named ``foobar'' and ``'' (empty
+      string) with the \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods.
+  \end{teststeps}
+\end{testcase}
+\begin{results}
+  Both test case list and the test case names list are empty.
+
+  The return values of the \code{getTestCaseWithName()} method are
+  \code{null}, those of the \code{containsTestCaseWithName()} method
+  are \code{false} in all cases.
+\end{results}
+
+\begin{testcase}{CDTT0003}{Creating test cases}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Create an empty test session named ``ts1'' in it.
+    \item Create a test case with name ``tc1'', comment ``test case
+      1'', current date and empty maps for both coverage data and
+      assignments in this test session.
+    \item Get the test case and the test case name lists with the
+      \code{getTestCases()} and \code{getTestCaseNames()} methods.
+    \item Get and check the test case named ``tc1'' with the
+      \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods.
+  \end{teststeps}
+\begin{results}
+  Both test case list and the test case name list contain exactly one
+  element.
+
+  The test session contains the test case named ``tc1''.
+
+  The only element of the test case names list is the string ``tc1''.
+
+  The test case obtained both directly and as the first element of the
+  test case list has the name ``tc1'', the comment ``test case 1'' and
+  the correct date of its creation. The test session of the test case
+  is identical to the test session that created it. 
+\end{results}
+\end{testcase}
+
+
+\begin{testcase}{CDTT0004}{Copy test case}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Load another instance of the \fs{statement} container from the
+      \fs{directory}.
+    \item Create an empty test session named ``ts1'' in the first TSC instance and
+      an empty test session named ``ts2'' in the second TSC instance.
+    \item Create a test case with name ``tc1'', comment ``test case 1'',
+      creation date of 01.01.1970 00:00:01 and empty maps for both coverage
+      data and assignments in the test session ``ts1'' and an analogous test
+      case with the name ``tc2'', comment ``test case 2'' and the current date
+      in the test session ``ts2''.
+    \item Copy the test case ``tc2'' into the session ``ts1'' using the
+      \code{copyTestCaseIntoTestSession()} method.
+    \item Get and check the test case named ``tc2'' from the test session
+      ``ts1'' with the \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods.
+    \item Get the test session references from both ``tc2'' test cases using
+      the \code{getTestSession()} method.
+  \end{teststeps}
+\begin{results}
+  The test session ``ts1'' contains a test case named ``tc2'' with the comment
+  ``test case 2'' and the creation date of 01.01.1970 00:00:01. The test session
+  references obtained from the test case objects are identical to their
+  respective sessions.
+\end{results}
+\end{testcase}
+
+\begin{testcase}{CDTT0005}{Copy and rename test case}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Load another instance of the \fs{statement} container from the
+      \fs{directory}.
+    \item Create an empty test session named ``ts1'' in the first TSC instance and
+      an empty test session named ``ts2'' in the second TSC instance.
+    \item Create a test case with name ``tc1'', comment ``test case
+      1'', date 01.01.1970 00:00:01 and empty maps for both coverage data and
+      assignments in the test session ``ts1'' and an analogous test case with
+      the same name, comment and date in the test session ``ts2''. 
+    \item Copy the test case ``tc1'' from the session ``ts2'' into the session
+      ``ts1'' using the \code{copyTestCaseIntoTestSession(TestCase, String)} method
+      renaming it into ``tc1a''.
+    \item Get and check the test case named ``tc1a'' from the test session
+      ``ts1'' with the \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods. Get
+  \end{teststeps}
+\begin{results}
+  The test session ``ts1'' contains a test case named ``tc1a'' with the comment
+  ``test case 1'' and the creation date of 01.01.1970 00:00:01. The test session
+  references obtained from the test case objects are identical to their
+  respective sessions.
+\end{results}
+\end{testcase}
+
+\begin{testcase}{CDTT0006}{Copy identical test case from other session}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Load another instance of the \fs{statement} container from the
+      \fs{directory}.
+    \item Create an empty test session named ``ts1'' in the first TSC instance and
+      an empty test session named ``ts2'' in the second TSC instance.
+    \item Create a test case with name ``tc1'', comment ``test case
+      1'', date 01.01.1970 00:00:01 and empty maps for both coverage data and
+      assignments in the test session ``ts1'' and an analogous test case with
+      the same name, comment and date in the test session ``ts2''. 
+    \item Copy the test case ``tc1'' from the session ``ts2'' into the session
+      ``ts1'' using the \code{copyTestCaseIntoTestSession(TestCase)} method.
+    \item Get the test case list.
+    \item Get and check the test case named ``tc1'' from the test session
+      ``ts1'' with the \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods.
+  \end{teststeps}
+\begin{results}
+  The test session ``ts1'' still contains a \emph{single} test case named ``tc1a'' with the comment
+  ``test case 1'' and the creation date of 01.01.1970 00:00:01.
+\end{results}
+\end{testcase}
+
+\begin{testcase}{CDTT0007}{Copy test case with rename making it identical}{JUnit}
+  \begin{teststeps}    
+    \item Load the \fs{statement.xml} container from the
+      \fs{singlefile} directory.
+    \item Load another instance of the \fs{statement} container from the
+      \fs{directory}.
+    \item Create an empty test session named ``ts1'' in the first TSC instance and
+      an empty test session named ``ts2'' in the second TSC instance.
+    \item Create a test case with name ``tc1'', comment ``test case
+      1'', date 01.01.1970 00:00:01 and empty maps for both coverage data and
+      assignments in the test session ``ts1'' and an analogous test case with
+      the comment and date but the name ``tc2'' in the test session ``ts2''. 
+    \item Copy the test case ``tc2'' from the session ``ts2'' into the session
+      ``ts1'' using the \code{copyTestCaseIntoTestSession(TestCase, String)} method,
+      renaming it to ``tc1''.
+    \item Get the test case list.
+    \item Get and check the test case named ``tc1'' from the test session
+      ``ts1'' with the \code{getTestCaseWithName()} and
+      \code{containsTestCaseWithName()} methods.
+  \end{teststeps}
+\begin{results}
+  The test session ``ts1'' still contains a \emph{single} test case namde
+  ``tc1a'' with the comment ``test case 1'' and the creation date of
+  01.01.1970 00:00:01.
+\end{results}
+\end{testcase}
+
+\subsubsection{Test Cases}
+\label{sec:test-cases}
+
+\begin{testcase}{CDTC0001}{Deleting test cases}{JUnit}
+  \begin{teststeps}
+    \item Load the \fs{test-case.xml} container from the
+      \fs{sessions} directory.
+    \item Obtain the test case object for the test case ``tc1'' from the test
+      session ``ts2''.
+    \item Delete this test case using the test case's \code{delete()} method.
+    \item Check the session for the test case using the test session's
+      \code{containsTestCaseWithName()} method.
+    \item Attempt to get the test session reference from the test case using the
+      \code{getTestSession()} method.
+  \end{teststeps}
+  \begin{results}
+    The test session doesn't contain a test case named ``tc1''.
+    
+    The attempt to get the test case's test session reference results in an
+    \code{java.lang.IllegalStateException}.
+  \end{results}
+\end{testcase}
+%\subsection{Report}
+%\label{sec:report}
+
+\subsection{Metrics}
+\label{sec:metrics}
+\begin{testcase}{CM0001}{Determining total items}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-no-coverage.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the total coverable items from each metric using the
+    \code{getTotalItems()} method.
+  \end{teststeps}
+  \begin{results}
+    The expected number of total coverable items for each metric is summarized in the
+    following table: \\
+
+    \begin{tabular}{|l|c|}
+      \hline
+      \textbf{Metric} & \textbf{Number of items} \\
+      \hline
+      \code{StatementCoverage} & 10 \\
+      \hline
+      \code{BranchCoverage} & 8 \\
+      \hline
+      \code{StrictConditionCoverage} & 7 \\
+      \hline
+      \code{LoopCoverage} & 3 \\
+      \hline
+    \end{tabular}
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0002}{No coverage}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-no-coverage.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The expected number of covered items is 0 for each metric.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0003}{Statement coverage}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-statement.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 2 for \code{StatementCoverage} metric, and
+    0 for all other metrics.
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{CM0004}{Statement coverage by method}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-statement.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method \emph{for every hierarchy level} below the
+      level designating the class TestClass1, i.e. for every method of this class.
+  \end{teststeps}
+  \begin{results}
+    For the \code{StatementCoverage} metric, the the number of covered items
+    is as follows:
+    \begin{itemize}
+    \item 1 for the \code{assignment()} method
+    \item 1 for the \code{whileLoop()} method
+    \item 0 in all other cases.
+    \end{itemize}
+    For the all other metrics, the number of covered items is 0 in all cases. 
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0005}{Branch coverage}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-branch.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 3 for both \code{StatementCoverage} and
+    \code{BranchCoverage} metrics, and 0 for all other metrics.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0006}{Branch coverage by method}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-branch.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method \emph{for every hierarchy level} below the
+      level designating the class TestClass1, i.e. for every method of this class.
+  \end{teststeps}
+  \begin{results}
+    For both \code{StatementCoverage} and \code{BranchCoverage} metric, the
+    the number of covered items is as follows:
+    \begin{itemize}
+    \item 1 for the \code{ifbranch()} method
+    \item 1 for the \code{complexIfAnd()} method
+    \item 1 for the \code{emptyElseBranch()} method
+    \item 0 in all other cases.
+    \end{itemize}
+    For the all other metrics, the number of covered items is 0 in all cases. 
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{CM0007}{Condition coverage -- all terms in an expression covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-condition-full.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 5 for the \code{StrictConditionCoverage}
+    metric, and 0 for all other metrics\footnote{This is indeed an
+      inconsistent state since the branches controlled by the conditions
+      appear not to be covered. This is by design of the test case as this
+      would overcomplicate the creation of the test containers for no good
+      reason, as the metrics don't depend on each other (or at least should not)}.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0008}{Condition coverage by method -- all terms in an expression covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-condition-full.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method \emph{for every hierarchy level} below the
+      level designating the class TestClass1, i.e. for every method of this class.
+  \end{teststeps}
+  \begin{results}
+    For the \code{StrictConditionCoverage} metric, the number of covered
+    items is as follows:
+    \begin{itemize}
+    \item 1 for the \code{ifbranch()} method
+    \item 2 for the \code{complexIfAnd()} method
+    \item 2 for the \code{complexIfOr()} method
+    \item 0 in all other cases.
+    \end{itemize}
+  \end{results}
+\end{testcase}
+
+
+\begin{testcase}{CM0009}{Condition coverage -- first term in an expression covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-condition-first.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 2 for the \code{StrictConditionCoverage}
+    metric, and 0 for all other metrics.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0010}{Condition coverage by method -- first term in an expression covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-condition-first.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method \emph{for every hierarchy level} below the
+      level designating the class TestClass1, i.e. for every method of this class.
+  \end{teststeps}
+  \begin{results}
+    For the \code{StrictConditionCoverage} metric, the number of covered
+    items is as follows:
+    \begin{itemize}
+    \item 1 for the \code{complexIfAnd()} method
+    \item 1 for the \code{complexIfOr()} method
+    \item 0 in all other cases.
+    \end{itemize}
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0011}{Condition coverage -- some terms evaluated but
+    none covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-condition-none.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 0 in all cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0012}{Loop coverage -- fully covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-loop-full.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 3 for the \code{LoopCoverage} metric and 0
+    in all other cases.
+  \end{results}
+\end{testcase}
+
+\begin{testcase}{CM0013}{Loop coverage -- partially covered}{JUnit}
+  \begin{teststeps}
+  \item Get all test cases of the test session named ``ts1'' from the
+    \fs{metrics-loop-partial.xml} container in the \fs{metrics} directory.
+  \item Obtain instances of all supported coverage metrics.
+  \item Get the covered items from each metric using the
+    \code{getCoveredItems()} method for the topmost hierarchy level.
+  \end{teststeps}
+  \begin{results}
+    The number of covered items is 2 for the \code{LoopCoverage} metric and 0
+    in all other cases.
+  \end{results}
+\end{testcase}
+
+\section{Performance Tests}
+\label{sec:performance-tests}
+In this early version, no performance tests are defined yet.
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% End:

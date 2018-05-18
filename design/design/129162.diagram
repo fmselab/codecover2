@@ -1,0 +1,205 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 140426 // initial
+  xyz 33 2 2000
+activitynodecanvas 128138 activitynode_ref 140554 // activity_final
+  xyz 28 753 2000
+activitynodecanvas 128266 activitynode_ref 140682 // decision
+  xyz 29 35 2000
+activityactioncanvas 128650 activityaction_ref 139018 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 145 68 2000 175 59
+end
+activitynodecanvas 129034 activitynode_ref 140810 // decision
+  xyz 219 145 2000
+activityactioncanvas 129674 activityaction_ref 139146 // activity action User clicks the "Export" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 297 178 2000 160 82
+end
+activityactioncanvas 130058 activityaction_ref 139274 // activity action Open the "Export" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 81 182 2000 135 76
+end
+activitynodecanvas 130314 activitynode_ref 140938 // decision
+  xyz 137 279 2000
+activityactioncanvas 130570 activityaction_ref 139402 // activity action User chooses additional sessions
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 55 330 2000 194 53
+end
+activitynodecanvas 130826 activitynode_ref 141066 // merge
+  xyz 140 396 2000
+activityactioncanvas 131466 activityaction_ref 139530 // activity action User changes "Type" to "Report"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 82 453 2000 145 60
+end
+activityactioncanvas 131722 activityaction_ref 139658 // activity action User chooses destination folder
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 248 458 2000 152 50
+end
+activityactioncanvas 131978 activityaction_ref 139786 // activity action User clicks the "Next" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 420 460 2000 166 51
+end
+activityactioncanvas 132234 activityaction_ref 139914 // activity action Open the "Report" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 440 525 2000 125 56
+end
+activityactioncanvas 132490 activityaction_ref 140042 // activity action User choose template
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 268 531 2000 116 50
+end
+activitynodecanvas 132874 activitynode_ref 141194 // decision
+  xyz 314 597 2000
+activityactioncanvas 133386 activityaction_ref 140170 // activity action Generate report according to the template
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 411 641 2000 172 51
+end
+activityactioncanvas 133898 activityaction_ref 140298 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 279 707 2000 127 62
+end
+activitynodecanvas 134026 activitynode_ref 141322 // decision
+  xyz 328 648 2005
+flowcanvas 128394 flow_ref 169482 // Project not opened
+  
+  from ref 128266 z 1999 label "Project not opened" xyz 1 95 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128522 flow_ref 169610 // <flow>
+  
+  from ref 128010 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128778 flow_ref 169738 // Project opened
+  geometry HV
+  
+  from ref 128266 z 1999 label "Project opened" xyz 87 26 1999 to point 230 51
+  line 128906 z 1999 to ref 128650
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129162 flow_ref 169866 // <flow>
+  
+  from ref 128650 z 1999 to ref 129034
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129418 flow_ref 169994 // No session selected
+  geometry VHr
+  
+  from ref 129034 z 1999 label "No session selected" xyz 72 141 1999 to point 38 161
+  line 129546 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 170122 // Session selected
+  geometry HV
+  
+  from ref 129034 z 1999 label "Session selected" xyz 266 140 1999 to point 374 161
+  line 129930 z 1999 to ref 129674
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 170250 // <flow>
+  
+  from ref 129674 z 1999 to ref 130058
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 170378 // <flow>
+  
+  from ref 130058 z 1999 to ref 130314
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 170506 // <flow>
+  
+  from ref 130314 z 1999 to ref 130570
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130954 flow_ref 170634 // <flow>
+  
+  from ref 130570 z 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131082 flow_ref 170762 // <flow>
+  
+  from ref 130314 z 1999 to point 252 294
+  line 131210 z 1999 to point 252 412
+  line 131338 z 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131594 flow_ref 170890 // <flow>
+  
+  from ref 130826 z 1999 to ref 131466
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131850 flow_ref 171018 // <flow>
+  
+  from ref 131466 z 1999 to ref 131722
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132106 flow_ref 171146 // <flow>
+  
+  from ref 131722 z 1999 to ref 131978
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132362 flow_ref 171274 // <flow>
+  
+  from ref 131978 z 1999 to ref 132234
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132618 flow_ref 171402 // <flow>
+  
+  from ref 132234 z 1999 to ref 132490
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133002 flow_ref 171530 // <flow>
+  
+  from ref 132490 z 1999 to ref 132874
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133130 flow_ref 171658 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 132874 z 1999 label "User clicks the \"Cancel\" button" xyz 64 591 1999 to point 38 613
+  line 133258 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 171786 // User clicks the "Finish" button
+  geometry HV
+  
+  from ref 132874 z 1999 label "User clicks the \"Finish\" button" xyz 349 596 1999 to point 494 613
+  line 133770 z 1999 to ref 133386
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134154 flow_ref 171914 // <flow>
+  
+  from ref 133386 z 1999 to ref 134026
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134282 flow_ref 172042 // Errors whilst generating
+  
+  from ref 134026 z 1999 label "Errors whilst generating" xyz 269 684 1999 to ref 133898
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134410 flow_ref 172170 // No errors whilst generating
+  geometry VHr
+  
+  from ref 134026 z 1999 label "No errors whilst generating" xyz 90 645 1999 to point 38 664
+  line 134538 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134666 flow_ref 172298 // <flow>
+  geometry VHr
+  
+  from ref 133898 z 1999 to point 38 735
+  line 134922 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+end

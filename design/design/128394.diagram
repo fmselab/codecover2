@@ -1,0 +1,88 @@
+format 29
+
+activitynodecanvas 130698 activitynode_ref 130442 // initial
+  xyz 32 -1 2000
+activitynodecanvas 130826 activitynode_ref 130570 // activity_final
+  xyz 29 467 2000
+activitynodecanvas 131082 activitynode_ref 130826 // decision
+  xyz 225 176 2000
+activityactioncanvas 132490 activityaction_ref 130826 // activity action Select the test cases
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 308 219 2000 100 60
+end
+activitynodecanvas 132746 activitynode_ref 130954 // decision
+  xyz 344 304 2000
+activityactioncanvas 133002 activityaction_ref 130954 // activity action Refresh source code highlighting and the "Coverage" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 254 386 2000 203 78
+end
+activitynodecanvas 133898 activitynode_ref 138122 // decision
+  xyz 30 55 2000
+activityactioncanvas 135434 activityaction_ref 137866 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 153 90 2000 169 60
+end
+flowcanvas 131594 flow_ref 135434 // No test cases in session
+  geometry VHr
+  
+  from ref 131082 z 1999 label "No test cases in session" xyz 67 174 1999 to point 39 192
+  line 134538 z 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132874 flow_ref 135818 // <flow>
+  
+  from ref 132490 z 1999 to ref 132746
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133130 flow_ref 135946 // Selection invalidates previous visualizations
+  
+  from ref 132746 z 1999 label "Selection invalidates previous visualizations" xyz 241 352 1999 to ref 133002
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 136074 // No visual update necessary
+  geometry VHr
+  
+  from ref 132746 z 1999 label "No visual update necessary" xyz 98 300 1999 to point 39 320
+  line 134666 z 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133770 flow_ref 136202 // <flow>
+  geometry VHr
+  
+  from ref 133002 z 1999 to point 39 422
+  line 134794 z 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134026 flow_ref 161034 // <flow>
+  
+  from ref 130698 z 1999 to ref 133898
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134154 flow_ref 161162 // Project not opened
+  
+  from ref 133898 z 1999 label "Project not opened" xyz 1 120 1999 to ref 130826
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136714 flow_ref 162314 // Project opened
+  geometry HV
+  
+  from ref 133898 z 1999 label "Project opened" xyz 104 48 1999 to point 235 71
+  line 136842 z 1999 to ref 135434
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136970 flow_ref 162442 // <flow>
+  
+  from ref 135434 z 1999 to ref 131082
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137098 flow_ref 162570 // At least one test case in session
+  geometry HV
+  
+  from ref 131082 z 1999 label "At least one test case in session" xyz 255 173 1999 to point 355 192
+  line 137226 z 1999 to ref 132490
+  show_infonote default drawing_language default write_horizontally default
+end
+end

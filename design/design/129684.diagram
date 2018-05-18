@@ -1,0 +1,48 @@
+format 29
+
+classcanvas 128020 class_ref 133524 // InstrumenterFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 21 139 2000
+classcanvas 128064 class_ref 128064 // InstrumenterDescriptor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 503 467 2000
+classcanvas 128148 class_ref 134036 // Instrumenter
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz -54 760 2000
+classcanvas 128192 class_ref 128192 // InstrumenterProvider
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 174 12 2000
+classcanvas 128276 class_ref 134548 // DefaultInstrumenterFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 18 375 2000
+classcanvas 128660 class_ref 133908 // Criterion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode package auto_label_position default shadow default
+  xyz 104 596 2000
+relationcanvas 128576 relation_ref 132628 // <unidirectional association>
+  geometry VHr
+  from ref 128276 z 1999 to point 226 466
+  line 129856 z 1999 to ref 128660
+  role_a_pos 238 575 3000 no_role_b
+  multiplicity_a_pos 200 575 3000 no_multiplicity_b
+relationcanvas 129216 relation_ref 128704 // <unidirectional association>
+  geometry HVH unfixed
+  from ref 128148 z 1999 to point 815 936
+  line 131776 z 1999 to point 815 566
+  line 131904 z 1999 to ref 128064
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129428 relation_ref 132500 // <realization>
+  geometry VHV unfixed
+  from ref 128276 z 1999 to point 247 358
+  line 132032 z 1999 to point 250 358
+  line 132160 z 1999 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129940 relation_ref 132372 // <unidirectional association>
+  geometry VHV
+  from ref 128148 z 1999 to point 248 701
+  line 130368 z 1999 to point 226 701
+  line 130496 z 1999 to ref 128660
+  role_a_pos 238 653 3000 no_role_b
+  multiplicity_a_pos 200 653 3000 no_multiplicity_b
+end

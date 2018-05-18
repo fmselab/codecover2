@@ -1,0 +1,57 @@
+format 29
+
+iconcanvas 128020 classdiagram_ref 129812 // report
+  xyz 94 54 2000
+textcanvas 128148 "report"
+  xyzwh 80 24 2000 42 18
+iconcanvas 128660 classdiagram_ref 129290 // html
+  xyz 96 85 2000
+textcanvas 128788 "html"
+  xyzwh 87 119 2005 39 22
+iconcanvas 128916 classdiagram_ref 129418 // analysis
+  xyz 353 136 2000
+textcanvas 129044 "analysis"
+  xyzwh 332 158 2000 57 18
+iconcanvas 129172 classdiagram_ref 129428 // batch
+  xyz 158 165 2000
+textcanvas 129300 "batch"
+  xyzwh 201 164 2000 53 26
+iconcanvas 129428 classdiagram_ref 129300 // eclipse
+  xyz 156 192 2000
+textcanvas 129556 "eclipse"
+  xyzwh 182 193 2000 53 19
+iconcanvas 129684 classdiagram_ref 128296 // model
+  xyz 192 24 2000
+textcanvas 129812 "model"
+  xyzwh 213 20 2000 44 18
+iconcanvas 129940 classdiagram_ref 129044 // ast
+  xyz 197 54 2000
+textcanvas 130068 "ast"
+  xyzwh 221 58 2000 22 18
+iconcanvas 130196 classdiagram_ref 128424 // utils
+  xyz 193 79 2000
+textcanvas 130324 "utils"
+  xyzwh 217 92 2000 28 18
+iconcanvas 130452 classdiagram_ref 129684 // instrument diagram
+  xyz 343 26 2000
+textcanvas 130580 "instrumentation"
+  xyzwh 366 38 2000 111 18
+line 128276 -_-_
+  from ref 128148 z 1999 to ref 128020
+line 130708 -_-_
+  from ref 128660 z 1999 to ref 128788
+line 130836 -_-_
+  from ref 128916 z 1999 to ref 129044
+line 130964 -_-_
+  from ref 129172 z 1999 to ref 129300
+line 131092 -_-_
+  from ref 129428 z 1999 to ref 129556
+line 131220 -_-_
+  from ref 130196 z 1999 to ref 130324
+line 131348 -_-_
+  from ref 129940 z 1999 to ref 130068
+line 131476 -_-_
+  from ref 129684 z 1999 to ref 129812
+line 131604 -_-_
+  from ref 130452 z 1999 to ref 130580
+end

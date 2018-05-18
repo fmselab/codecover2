@@ -1,0 +1,96 @@
+format 29
+
+classcanvas 128020 class_ref 133524 // InstrumenterFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz -68 204 2000
+classcanvas 128064 class_ref 128064 // InstrumenterDescriptor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 35 -79 2000
+classcanvas 128148 class_ref 134036 // Instrumenter
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 404 167 2000
+classcanvas 128276 class_ref 134548 // DefaultInstrumenterFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 44 444 2000
+classcanvas 128404 class_ref 135060 // Java1_5Instrumenter
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 350 567 2000
+classcanvas 128532 class_ref 135316 // Cobol85Instrumenter
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 623 567 2000
+classcanvas 128660 class_ref 133908 // Criterion
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 313 468 2000
+classcanvas 128788 class_ref 134164 // InstrumentExeption
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 148 710 2000
+classcanvas 128916 class_ref 134420 // JavaParser
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 520 655 2000
+classcanvas 129044 class_ref 134932 // JavaParser
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 378 780 2000
+classcanvas 129172 class_ref 135188 // JavaParser
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 655 790 2004
+classcanvas 129300 class_ref 133396 // IStatementManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 111 568 2000
+note 130836 "CoverableItem gets counter and ID
+coverage log is plain text
+test case information
+reference to instrumentation log"
+  xyzwh 38 860 2000 362 203
+relationcanvas 128320 relation_ref 128448 // <unidirectional association>
+  from ref 128064 z 1999 to ref 128660
+  role_a_pos 372 438 3000 no_role_b
+  multiplicity_a_pos 316 438 3000 no_multiplicity_b
+relationcanvas 128448 relation_ref 128576 // <association>
+  from ref 128064 z 1999 to ref 128148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129428 relation_ref 132500 // <realization>
+  from ref 128276 z 1999 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129556 relation_ref 133268 // <realization>
+  from ref 128404 z 1999 to ref 128148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129684 relation_ref 133780 // <realization>
+  from ref 128532 z 1999 to ref 128148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129812 relation_ref 132628 // <unidirectional association>
+  from ref 128276 z 1999 to ref 128660
+  role_a_pos 245 462 3000 no_role_b
+  multiplicity_a_pos 270 500 3000 no_multiplicity_b
+relationcanvas 129940 relation_ref 132372 // <unidirectional association>
+  from ref 128148 z 1999 to ref 128660
+  role_a_pos 422 428 3000 no_role_b
+  multiplicity_a_pos 420 466 3000 no_multiplicity_b
+relationcanvas 130068 relation_ref 133396 // <unidirectional association>
+  from ref 128404 z 1999 to ref 128916
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130196 relation_ref 133908 // <unidirectional association>
+  from ref 128532 z 1999 to ref 128916
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130324 relation_ref 133524 // <unidirectional association>
+  from ref 128404 z 1999 to ref 129044
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130452 relation_ref 133140 // <generalisation>
+  from ref 129044 z 1999 to ref 128916
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130580 relation_ref 133652 // <generalisation>
+  from ref 129172 z 1999 to ref 128916
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130708 relation_ref 134036 // <unidirectional association>
+  from ref 128532 z 1999 to ref 129172
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

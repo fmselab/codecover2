@@ -1,0 +1,22 @@
+format 29
+
+classcanvas 128010 class_ref 128778 // ProgressHandler
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 275 16 2000
+classcanvas 128020 class_ref 136724 // ChangeListener<T>
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 183 144 2000
+classcanvas 128040 class_ref 128424 // Disposable
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 16 16 2000
+classcanvas 128148 class_ref 136852 // ChangeType
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 159 16 2000
+classcanvas 128276 class_ref 136980 // ListenerHandle
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 10 154 2005
+relationcanvas 128404 relation_ref 134932 // <generalisation>
+  from ref 128276 z 1999 to ref 128040
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

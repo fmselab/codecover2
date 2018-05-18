@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="do-while_green.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Source_Code_Highlighting/do-while"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="33.200000pt"
+   width="104.40000pt">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1280"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="17.960419"
+     inkscape:cx="55.981922"
+     inkscape:zoom="7.9195959"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       y="26.755075"
+       x="72.511398"
+       height="11.494924"
+       width="36.488598"
+       id="rect3583"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="14.809248"
+       x="0.49492371"
+       height="11.440752"
+       width="56.957504"
+       id="rect3581"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="26.755075"
+       x="14.494923"
+       height="11.494924"
+       width="37.505077"
+       id="rect2063"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text1291"
+       y="11.262182"
+       x="1.04825"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:FreeMono;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"><tspan
+         y="11.262182"
+         x="1.0482500"
+         id="tspan1293"
+         sodipodi:role="line">do {</tspan><tspan
+         y="23.262182"
+         x="1.0482500"
+         id="tspan1299"
+         sodipodi:role="line">  doB();</tspan><tspan
+         y="35.262182"
+         x="1.0482500"
+         id="tspan1301"
+         sodipodi:role="line">} while ( isA() );</tspan></text>
+  </g>
+</svg>

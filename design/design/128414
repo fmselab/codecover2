@@ -1,0 +1,210 @@
+format 29
+"Component Diagrams"
+  revision 13
+  modified_by 10 "Markus"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  classview 128158 "Dummy Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    comment "This diagram is needed to define the interface for the \"Overview\" component diagram."
+    classdiagram 128158 "Dummy Classes"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A4
+    end
+
+    class 128158 "Instrumentation"
+       stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 128286 "Model"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 128414 "Metrics"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 128542 "Report"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+
+    class 128670 "IO"
+       stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+    end
+  end
+
+  componentview 128158 "Overview"
+    //component diagram settings
+    package_name_in_tab default show_context default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    componentdiagram 128286 "Overview"
+      package_name_in_tab default show_context default auto_label_position default shadow default
+      draw_component_as_icon default show_component_req_prov default show_component_rea default
+      size A4
+    end
+
+    component 128158 "Eclipse-Plugin"
+      required_classes
+	class_ref 128414 // Metrics
+	class_ref 128286 // Model
+	class_ref 128158 // Instrumentation
+	class_ref 128670 // IO
+	class_ref 128542 // Report
+      end
+    end
+
+    component 128286 "Batch"
+      required_classes
+	class_ref 128414 // Metrics
+	class_ref 128286 // Model
+	class_ref 128158 // Instrumentation
+	class_ref 128670 // IO
+	class_ref 128542 // Report
+      end
+    end
+
+    component 128414 "Model"
+      provided_classes
+	class_ref 128286 // Model
+      end
+    end
+
+    component 128542 "Report"
+      provided_classes
+	class_ref 128542 // Report
+      end
+      required_classes
+	class_ref 128286 // Model
+      end
+    end
+
+    component 128798 "Instrumentation"
+      associated_diagram componentdiagram_ref 128286 // Overview
+      required_classes
+	class_ref 128158 // Instrumentation
+      end
+    end
+
+    component 128926 "Java Instrumentation"
+      provided_classes
+	class_ref 128158 // Instrumentation
+      end
+      required_classes
+	class_ref 128286 // Model
+      end
+    end
+
+    component 129054 "Cobol Instrumentation"
+      provided_classes
+	class_ref 128158 // Instrumentation
+      end
+      required_classes
+	class_ref 128286 // Model
+      end
+    end
+
+    component 129182 "Metrics"
+      provided_classes
+	class_ref 128414 // Metrics
+      end
+      required_classes
+	class_ref 128286 // Model
+      end
+    end
+  end
+
+  deploymentview 128010 "package overview"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    deploymentdiagram 129674 "package overview"
+      package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+      draw_component_as_icon default show_component_req_prov default show_component_rea default
+      size A4
+    end
+  end
+end

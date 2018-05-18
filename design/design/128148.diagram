@@ -1,0 +1,47 @@
+format 29
+
+usecasecanvas 128020 usecase_ref 128660 // analyze coverage log
+  xyzwh 280 60 3005 64 32 label_xy 236 92
+usecasecanvas 128148 usecase_ref 128788 // associate test case
+  xyzwh 460 126 3005 64 32 label_xy 429 158
+usecasecanvas 128276 usecase_ref 128916 // configure measurement
+  xyzwh 505 229 3005 64 32 label_xy 452 261
+usecasecanvas 128404 usecase_ref 129044 // select coverage criteria
+  xyzwh 340 301 3005 64 32 label_xy 290 333
+usecasecanvas 128532 usecase_ref 129172 // select instrumentable items
+  xyzwh 132 245 3005 64 32 label_xy 66 277
+usecasecanvas 128660 usecase_ref 129300 // instrument instrumentable items
+  xyzwh 118 150 3005 64 32 label_xy 35 182
+classcanvas 128788 class_ref 128404 // GenericUser
+  xyz 321 175 3005 label_xy 296 215
+classcanvas 129684 class_ref 128276 // EclipseUser
+  xyz 201 533 3005 label_xy 181 576
+usecasecanvas 129812 usecase_ref 128148 // measure coverage
+  xyzwh 446 403 3005 64 32 label_xy 411 435
+usecasecanvas 129940 usecase_ref 128660 // analyze coverage log
+  xyzwh 375 544 3005 64 32 label_xy 331 576
+usecasecanvas 130068 usecase_ref 129300 // instrument instrumentable items
+  xyzwh 113 447 3005 64 32 label_xy 30 479
+line 128916 ----
+  from ref 128020 z 3004 to ref 128788
+line 129044 ----
+  from ref 128788 z 3004 to ref 128148
+line 129172 ----
+  from ref 128788 z 3004 to ref 128276
+line 129300 ----
+  from ref 128788 z 3004 to ref 128404
+line 129428 ----
+  from ref 128788 z 3004 to ref 128532
+line 129556 ----
+  from ref 128788 z 3004 to ref 128660
+line 130196 ----
+  from ref 129684 z 3004 to ref 130068
+line 130324 ----
+  from ref 129684 z 3004 to ref 129940
+line 130452 ----
+  from ref 129684 z 3004 to ref 129812
+simplerelationcanvas 130580 simplerelation_ref 128020
+  from ref 129812 z 3004 stereotype "<<include>>" xyz 394 488 3000 to ref 129940
+simplerelationcanvas 130708 simplerelation_ref 128148
+  from ref 129812 z 3004 stereotype "<<include>>" xyz 265 438 3000 to ref 130068
+end

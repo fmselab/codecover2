@@ -1,0 +1,339 @@
+\documentclass[a4paper,12pt,liststotoc,DIV12]{scrartcl}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[
+  %plainpages=false,
+  %pdfpagelabels,
+  %colorlinks=true,
+  pdfborder={0 0 0},
+  %urlcolor=blue,
+  %linkcolor=blue,
+  pdftitle={OST-WeST - Coding Guidelines},
+  pdfsubject={OST-WeST - Coding Guidelines},
+  pdfauthor={Stefan Franke, Robert Hanussek, Benjamin Keil, Steffen Kieß, Johannes Langauf, Christoph Marian Müller, Igor Podolskiy, Tilmann Scheller, Michael Starzmann, Markus Wittlinger},
+  pdfkeywords={OST-WeST, Code, Coding, Guidelines, Styleguide},
+  bookmarksopen=true,
+  %pdfstartpage=3,
+  %unicode,
+]{hyperref}
+\usepackage{svnkw}
+\usepackage[USenglish]{isodate}
+%\usepackage{titlesec}
+
+\makeatletter
+
+% some TeX voodoo to extract the date from SVN ID
+% which can be processed by isodate 
+\def\svn@dateonly#1 #2Z{#1}
+\def\svndateonly#1{%
+\ifx#1\empty1970-01-01\else
+\expandafter\svn@dateonly#1\fi}
+
+% Two-level figure & table numbering
+\@addtoreset{table}{section}
+\@addtoreset{figure}{section}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\makeatother
+
+% alternate 
+%\titleformat{\paragraph}{\bfseries\large\sffamily}{\theparagraph}{1em}{}
+%\titleformat{\subparagraph}{\bfseries\sffamily}{\thesubparagraph}{1em}{}
+%\titlespacing{\paragraph}{0pt}{\parskip}{-0.5\parskip}{}
+%\titlespacing{\subparagraph}{0pt}{\parskip}{-0.5\parskip}{}
+
+\svnid{$Id: coding-sg.tex 1 2007-12-12 17:37:26Z t-scheller $}
+
+\parindent0mm
+\parskip2mm
+%\geometry{textwidth=160mm, textheight=230mm, inner=30mm}
+
+%\xdefinecolor{TodoColor}{rgb}{1.0, 0.0, 0.0}
+
+% depth of the headlines that are numbered
+\setcounter{secnumdepth}{7}
+\setcounter{tocdepth}{2}
+
+\newcommand{\OSTWeST}{\textit{OSTWeST}}
+\newcommand{\gbt}{\textit{gbt$^2$}}
+\newcommand{\eclui}{\textsf}
+\newcommand{\code}{\texttt}
+\newcommand{\todo}[1]{\bgroup\color{TodoColor}\textsc{\textbf{TODO:} #1}\egroup}
+\newcommand{\BIG}{\fontsize{48}{48}\selectfont}
+\newcommand{\linkwithfootnote}[2]{\href{#1}{#2}\footnote{\url{#1}}}
+
+% needed for the Function Point tables
+\newcommand{\x}{\textbullet}
+
+\begin{document}
+
+% --- title page --- %
+\pagestyle{empty}
+\begin{titlepage}
+ \vspace*{38mm}
+ \begin{center}
+ \fontsize{24}{24}\selectfont
+ Coding Guidelines\\
+ \vspace*{12mm}
+ \fontsize{48}{48}\selectfont
+ 
+ % gross hack to generate the a big fancy gbt-squared appearance
+ \textit{gbt}$\fontsize{32}{32}\fontfamily{ptm}\selectfont ^\textit{2}$
+ %
+ \\
+ \fontfamily{\familydefault}\fontsize{32}{38}\selectfont
+ Glass Box Testing Tool\\
+ \vspace*{12mm}
+ \fontsize{16}{20}\selectfont
+ Student Project A ``OST-WeST''\\
+ University of Stuttgart
+
+ \vspace{2cm}
+ {\small 
+   Version: 1.2 \\
+   {Last changed on \printdate{\svndateonly{\svndate}} (SVN Revision \svnrev)}}
+   \end{center}
+   \vspace{3cm}
+   \hspace{40mm}
+   \normalsize
+\end{titlepage}
+
+% --- Header and version history --- %
+
+\cleardoublepage
+\fancyhf{}
+\fancyhead[RE,LO]{\textit{\gbt\ - Coding Guidelines}}
+\fancyhead[RO,LE]{\thepage}
+\pagestyle{fancyplain}
+
+% -- Version History -- %
+%\include{VersionHistory}
+% \cleardoublepage
+
+% --- Table of contents --- %
+
+\parskip1mm
+\tableofcontents
+\parskip2mm
+
+\pagestyle{fancyplain}
+\renewcommand{\baselinestretch}{1.25}\normalsize
+\section{Introduction}
+\label{sec:introduction}
+
+This document specifies the coding guidelines for the development of \gbt. It
+is intended primarily for Java source code but also for other files like XML
+descriptors that depend on the code and are distributed with the source code.
+
+\subsection{Conventions}
+\label{sec:conventions}
+
+The emphasized key words \emph{must}, \emph{must not}, \emph{required},
+\emph{shall}, \emph{shall not}, \emph{should}, \emph{should not}, \emph{may},
+\emph{recommended} and \emph{optional} are to be interpreted as described in
+\linkwithfootnote{http://rfc.net/rfc2119.html}{RFC 2119}.
+
+
+\subsection{Contact Person}
+\label{sec:contact-person}
+
+The contact person for this document is Igor Podolskiy
+(\texttt{podolsir@studi.informatik.uni-stuttgart.de}).
+
+\section{General Guidelines}
+\label{sec:general-guidelines}
+
+
+\subsection{Sun Code Conventions}
+\label{sec:general:sun}
+Any Java source code \emph{must} follow the general
+\linkwithfootnote{http://java.sun.com/docs/codeconv/}{Sun Code Conventions for
+  the Java Programming Language}.
+
+\subsection{Language}
+\label{sec:javadoc:language}
+All comments (Javadoc as well as non-Javadoc) \emph{must} be written in English.
+
+All identifiers that are based on natural language \emph{must} use
+English as their base language.
+
+\subsection{Spaces, No Tabs}
+\label{sec:general:spaces-no-tabs}
+All source code and code-like files (e.g. XML plugin descriptors) \emph{must}
+use spaces instead of tabs for indentation to ensure portability between
+platforms and editors.
+
+\subsection{Subversion \texttt{\$Id\$} keyword}
+\label{sec:general:subversion-id}
+All text files of a format supporting comments \emph{must} contain a comment
+with Subversion \$Id\$ keyword at the beginning of the file. The
+\texttt{svn:keyword} property of the file \emph{must} be set to \texttt{Id} in
+Subversion.
+
+\subsection{No Spaces in Filenames}
+File and directory names \emph{must not} contain any whitespace (spaces, tabs,
+\verb!\r!, \verb!\n! and alike).
+
+\subsection{Naming Rules}
+\label{sec:general:naming-rules}
+
+\subsubsection{General Naming Rules}
+\label{sec:general-naming-rules}
+Java identifiers \emph{must not} contain any characters other than basic Latin
+letters (A-Z in upper or lower case) digits (0-9) and underscores
+(\texttt{\_}).
+
+\subsubsection{Packages}
+\label{sec:naming:packages}
+Java package names \emph{must not} contain any character other than lower
+case characters and digits.
+
+\subsection{Javadoc}
+\label{sec:general:javadoc}
+
+\subsubsection{Classes}
+\label{sec:general:javadoc:classes}
+All Java classes \emph{must} have a Javadoc comment.
+
+\texttt{@author} and \texttt{@version} tags are \emph{required}. The
+\texttt{@author} tag \emph{must} contain the full name(s) of the main author(s)
+of the class. The \texttt{@version} tag \emph{must} contain a logical version
+and \emph{should} contain Subversion \texttt{\$Id\$} information enclosed in
+parentheses, for example:
+
+\begin{verbatim}
+   /**
+    * [...]
+    * @author Igor Podolskiy
+    * @version 1.0 ($Id: coding-sg.tex 1 2007-12-12 17:37:26Z t-scheller $) 
+    */
+\end{verbatim}
+
+\subsubsection{Members}
+All public and protected members \emph{must} have a Javadoc
+comment.
+
+Package visible and private members \emph{should} have a Javadoc comment.
+
+The \texttt{@param}, \texttt{@returns}, \texttt{@throws} and \texttt{@since}
+tags are \emph{required} where applicable.
+
+The \texttt{@author} tag \emph{should} be specififed if the author of the
+specific method is different from the author of the class.
+
+\subsubsection{Packages}
+\label{sec:general:javadoc:packages}
+
+All packages \emph{must} have a Javadoc comment in the
+\texttt{package-info.java} file.
+
+\subsubsection{Unit Tests}
+\label{sec:unit-tests}
+
+Unit test classes \emph{must} be named according to the widely used
+pattern
+
+\begin{verbatim}
+    <ClassOrTopicBeingTested>Test
+\end{verbatim}
+
+If a unit test tests a single particular class, its class \emph{must}
+be placed in the same Java package as the respective class under test.
+
+If a unit test tests a specific topic or feature, it \emph{must} be named
+accordingly and reside in the main component package.
+
+For example, a unit test for the
+
+\begin{quote}
+  \texttt{org.gbt2.instrumentation.java.JavaInstrumenter}
+\end{quote}
+
+class would
+have the fully qualified name
+
+\begin{quote}
+  \texttt{org.gbt2.instrumentation.java.JavaInstrumenterTest}
+\end{quote}
+
+A unit
+test in the same component which is testing the COBOL statement
+instrumentation would have the fully qualified name
+\begin{quote}
+  \texttt{org.gbt2.instrumentation.COBOLStatementTest}
+\end{quote}
+
+\subsection{File System Layout}
+\label{sec:fs-layout}
+
+Every component (as specified by the Design document) has its
+directory in the source code repository named after the component. The
+generic layout of a component directory is as follows:
+
+\begin{tabular}{ll}
+  \verb!instrumentation/! & name of the component\\
+  \verb!   src/! & source folder with the main Java source files\\
+  \verb!   junit/! & source folder with the unit test source files (see also \ref{sec:unit-tests})\\
+  \verb!   bin/! & contains Java \texttt{.class} files (not CM controlled)\\
+  \verb!   .project! & Eclipse project file\\
+  \verb!   build.xml! & Ant build file (see \ref{sec:ant-build-files} for details)\\  
+\end{tabular}
+
+The \texttt{src} and \texttt{junit} directories \emph{must} directly contain
+the package hierarchy.
+
+\subsection{Ant Build Files}
+\label{sec:ant-build-files}
+
+The Ant build files \texttt{must} contain at least the follwing targets:
+
+\begin{tabular}{ll}
+  \texttt{compile} & compile the particular component\\
+  \texttt{jar} & build the component \texttt{jar} file\\
+  \texttt{test} & compile (if needed) and run unit tests\\
+  \texttt{clean} & delete automatically generated (i.e. compiled) files\\
+\end{tabular}
+
+
+\section{Guidelines for Specific Components}
+\label{sec:specific-components}
+
+\subsection{Eclipse Plugins}
+\label{sec:specific:eclipse-plugins}
+
+\subsubsection{Interface Naming}
+\label{sec:eclipse:interface-naming}
+
+Interfaces that are part of Eclipse plugins \emph{must} have their name
+starting with \texttt{I}, for example \texttt{IMyInterface} instead of
+\texttt{MyInterface}, as this is the standard Eclipse coding practice.
+
+\subsection{External Components Conformance Exception}
+\label{sec:specific:external-components}
+
+External components of which substantial parts (e.g. packages or multiple
+classes) are used as a basis for further development within the scope of the
+\gbt\ project \emph{may} be non-conformant to the rules specified in this
+document. However, it is \emph{recommended} to modify the code to adhere to
+these rules.
+
+Please note that if only a small part code is adopted (e.g. a single method),
+this exceptional regulation explicitly \emph{does not} apply. In such cases,
+the code \emph{must} be modified to conform to these guidelines.
+
+% --- List of figures --- %
+
+%\newpage
+%\listoffigures
+%\addcontentsline{toc}{section}{List of figures}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% End:

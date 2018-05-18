@@ -1,0 +1,5 @@
+<plugin xmlns="http://www.codecover.org/xml/plugin-descriptor-1.0"
+        name="example.metric" version="4.2"
+        class="example.metric.MetricPlugin">
+  <depends name="org.codecover" version="0.1" />
+</plugin>

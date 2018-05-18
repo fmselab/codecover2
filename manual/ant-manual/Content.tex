@@ -1,0 +1,54 @@
+% \lstinputlisting{build-codecover.xml}
+
+\section*{Anleitung zur Verwendung von CodeCover im SoPra}
+
+%CodeCover ist ein Werkzeug zur Ermittlung von Überdeckungsdaten.
+
+Diese Anleitung enhält eine Beschreibung zur Verwendung im Zusammenhang mit
+\linkwithfootnote{http://ant.apache.org/}{Apache~ANT}.
+Als Vorlagen für ANT-Build-Dateien existieren die Dateien
+\code{build-codecover.xml} und \code{build-codecover2.xml}.
+\code{build-codecover.xml} ist ein einfaches Beispiel das den Quellcode
+instrumentiert, compiliert, ausführt und einen Report erzeugt.
+Bei \code{build-codecover2.xml} wird der kompilierte Code zweimal ausgeführt
+und das Ergebnis der beiden Ausführungen in einen Report geschrieben.
+
+Zur Verwendung muß nur noch der Kopf der Dateien angepasst werden.
+
+\begin{verbatim}
+  <property name="codecoverDir" value="codecover" />
+  <property name="sourceDir" value="src" />
+  <property name="instrumentedSourceDir" value="instrumented" />
+  <property name="mainClassName" value="Test" />
+\end{verbatim}
+
+Die Eigenschaft \code{codecoverDir} muß auf das CodeCover-Verzeichnis gesetzt
+werden (also auf das Verzeichnis, das das Unterverzeichnis \code{lib} und darin
+Dateien wie \code{codecover-core.jar} enthält).
+
+Die Eigenschaft \code{sourceDir} muß auf das Verzeichnis gesetzt werden, das
+die Java-Quellcode-Dateien enthält.
+
+Die Eigenschaft \code{instrumentedSourceDir} muß auf das Verzeichnis gesetzt
+werden, das später die instrumentierten Quellcode-Dateien und die kompilierten
+Dateien enthält. Der Standardwert \code{instrumented} dürfte in den meisten
+Fällen passen.
+
+Die Eigenschaft \code{mainClassName} muß auf den Namen der Klasse gesetzt
+werden, die ausgeführt werden soll.
+
+
+Wenn also beispielweise CodeCover in \code{/home/foo/codecover} liegt,
+die Quelldateien im Unterverzeichnis \code{src} im gleichen Verzeichnis wie
+die Datei \code{build-codecover.xml} liegt und die Hauptklasse
+\code{foo.Bar} heißt sollte der Kopf danach folgendermaßen aussehen:
+
+\begin{verbatim}
+  <property name="codecoverDir" value="/home/foo/codecover" />
+  <property name="sourceDir" value="src" />
+  <property name="instrumentedSourceDir" value="instrumented" />
+  <property name="mainClassName" value="foo.Bar" />
+\end{verbatim}
+
+Danach kann das Build-Skript mit \code{ant -f build-codecover.xml} genutzt
+werden.

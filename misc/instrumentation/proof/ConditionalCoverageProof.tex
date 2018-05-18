@@ -1,0 +1,215 @@
+\documentclass[a4paper,12pt,DIV12]{scrartcl}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{xspace}
+\usepackage[cmyk]{xcolor}
+\usepackage{amsmath}
+\usepackage[
+  pdfborder={0 0 0},
+  pdftitle={OST-WeST - Formal Proof Of Conditional Coverage Instrumentation},
+  pdfsubject={OST-WeST - Formal Proof Of Conditional Coverage Instrumentation},
+  pdfauthor={Christoph Marian Müller},
+  pdfkeywords={OST-WeST, Formal Proof Of Conditional Coverage Instrumentation},
+  bookmarksopen=true,
+]{hyperref}
+\usepackage{svnkw}
+\usepackage[USenglish]{isodate}
+\usepackage{titlesec}
+
+\parindent0mm
+\parskip2mm
+
+\xdefinecolor{UnInstrumentedColor}{rgb}{0.9, 0.2, 0.0}
+\xdefinecolor{DepthA}{rgb}{0.0, 0.0, 0.9}
+\xdefinecolor{DepthB}{rgb}{0.0, 0.3, 0.6}
+\xdefinecolor{DepthC}{rgb}{0.0, 0.6, 0.3}
+\xdefinecolor{DepthD}{rgb}{0.0, 0.9, 0.0}
+
+% depth of the headlines that are numbered
+\setcounter{secnumdepth}{0}
+
+\newcommand{\OSTWeST}{\textit{OSTWeST}\xspace}
+\newcommand{\gbt}{\textit{gbt$^2$}\xspace}
+\newcommand{\linkwithfootnote}[2]{\href{#1}{#2}\footnote{\url{#1}}}
+\newcommand{\uic}[1]{\textcolor{UnInstrumentedColor}{#1}\xspace}
+\newcommand{\depAo}{\textcolor{DepthA}{(}}
+\newcommand{\depAc}{\textcolor{DepthA}{)}}
+\newcommand{\depBo}{\textcolor{DepthB}{(}}
+\newcommand{\depBc}{\textcolor{DepthB}{)}}
+\newcommand{\depCo}{\textcolor{DepthC}{(}}
+\newcommand{\depCc}{\textcolor{DepthC}{)}}
+\newcommand{\depDo}{\textcolor{DepthD}{(}}
+\newcommand{\depDc}{\textcolor{DepthD}{)}}
+
+
+
+\begin{document}
+
+\fancyhf{}
+\fancyhead[RE,LO]{\textit{\gbt - Formal Proof Of Conditional Coverage Instrumentation}}
+\fancyhead[RO,LE]{\thepage}
+\pagestyle{fancyplain}
+
+\renewcommand{\baselinestretch}{1.25}\normalsize
+
+\subsection{Formal Proof Of Conditional Coverage Instrumentation}
+\subsubsection{Java Language Specification}
+\par This small paper is a part of the design documentation of \gbt. \gbt is a testing software for measuring the coverage in glass box tests. It is developed in the students project called \OSTWeST.
+\par We have created source code examples in Java and have instrumented them \textit{by hand}. Especially the instrumentation for the conditional coverage is very tricky. Therefore we want to proof, that the semantic of the boolean terms is not effected and is equal to the instrumented boolean terms.
+\par First there are quotations of the \linkwithfootnote{http://java.sun.com/docs/books/jls/third_edition/html/j3TOC.html}{Java Language Specification---Third Edition}.
+\begin{quote}
+\textbf{§15.22.2}\\
+For \textbf{\&}, the result value is true if both operand values are true; otherwise, the result is false.\\
+For \textbf{|} , the result value is false if both operand values are false; otherwise, the result is true.
+\end{quote}
+
+\begin{quote}
+\textbf{§15.23}\\
+The \textbf{\&\&} operator is like \&, but evaluates its right-hand operand only if the value of its left-hand operand is true. [..] At run time, the left-hand operand expression is evaluated first; if the resulting value is false, the value of the conditional-and expression is false and the right-hand operand expression is not evaluated. If the value of the left-hand operand is true, then the right-hand expression is evaluated; the resulting value becomes the value of the conditional-and expression.
+\end{quote}
+
+\begin{quote}
+\textbf{§15.24}\\
+The \textbf{||} operator is like | , but evaluates its right-hand operand only if the value of its left-hand operand is false. [..] At run time, the left-hand operand expression is evaluated first; if the resulting value is true, the value of the conditional-or expression is true and the right-hand operand expression is not evaluated. If the value of the left-hand operand is false, then the right-hand expression is evaluated; the resulting value becomes the value of the conditional-or expression.
+\end{quote}
+
+\subsubsection{Predefinitions}
+Lets now discuss a number of functions that transform boolean terms. We use $\phi$ for the boolean environment, that assigns every boolean expression either true or false.
+
+\begin{equation}\label{eqn_f}\begin{split}
+f(T) := (T \: \&\& \: U), \phi(U) = true\\
+\phi(f(T)) = \phi(T)
+\end{split}\end{equation}
+According to §15.23, first the value of $T$ is evaluated. Only if $\phi(T)$ is true, then $U$ is evaluated (to true). Moreover $\phi(f(T))$ is true if, and only if, $\phi(T)$ is true (without any proof).
+
+\begin{equation}\label{eqn_g}\begin{split}
+g_{L}(T) := (S \:\&\: T), \phi(S) = true\\
+g_{R}(T) := (T \:\&\: U), \phi(U) = true\\
+\phi(g_{L}(T)) = \phi(g_{R}(T)) = \phi(T)
+\end{split}\end{equation}
+According to §15.22.2, the result of an \& operation is true if, and only if, both operands are true. For that reason $\phi(g_{L}(T))$ and $\phi(g_{R}(T))$ are each true, if, and only if, $\phi(T)$ is true.
+
+\begin{equation}\label{eqn_h}\begin{split}
+h(T) := g_{L} \circ f(T) = g_{L}(f(T)) = (S \: \& \: (T \: \&\& \: U)), \phi(S) = \phi(U) = true\\
+\phi(h(T)) \stackrel{\text{def. of $h$}}{=} \phi(g_{L}(f(T))) \stackrel{eq.~\eqref{eqn_g}}{=} \phi(f(T)) \stackrel{eq.~\eqref{eqn_f}}{=} \phi(T)
+\end{split}\end{equation}
+Using equation~\eqref{eqn_f} and equation~\eqref{eqn_g} we can conclude that $\phi(h(T))$ is true if, and only if, $\phi(T)$ is true.
+
+\begin{equation}\label{eqn_i}\begin{split}
+i(T) := g_{R} \circ g_{L}(T) = g_{R}(g_{L}(T)) = ((S \: \& \: T) \: \& \: U), \phi(S) = \phi(U) = true\\
+\phi(i(T)) \stackrel{\text{def. of $i$}}{=} \phi(g_{R}(g_{L}(T))) \stackrel{eq.~\eqref{eqn_g}}{=} \phi(g_{L}(T)) \stackrel{eq.~\eqref{eqn_g}}{=} \phi(T)
+\end{split}\end{equation}
+According to §15.22.2, the result of an \& operation is true if, and only if, both operands are true. For that reason and the usage of equation~\eqref{eqn_g}, $\phi(i(T))$ is true, if, and only if, $\phi(T)$ is true.
+
+Using Java syntax, we can evaluate some terms:
+\begin{equation}\label{eqn_5}\begin{split}
+\text{INITIAL} := (((\text{intBitMask} \: = 0) == 0) \: | \: true)\\
+\phi(\text{INITIAL}) = true\\
+\text{USAGE} := ((\text{intBitMask} \: |= 1 == 0) \: | \: true)\\
+\phi(\text{USAGE}) = true\\
+\text{RESULT} := ((\text{intBitMask} \: |= 2 == 0) \: | \: true)\\
+\phi(\text{RESULT}) = true
+\end{split}\end{equation}
+The evaluation of the left operands is true for the first exapamle and false for the second and third example. But as §15.22.2 says, for the right operands evaluating to true, $\phi(\text{INITIAL})$, $\phi(\text{USAGE})$ and $\phi(\text{RESULT})$ are true too.
+
+Last but not least we need a description of a Java method:
+\begin{verbatim}
+    public boolean add(int intBitMask) {
+        [..]
+        return true;
+    }
+\end{verbatim}
+
+\subsubsection{Consideration Of The Instrumentation I}
+\gbt will instrument every condition of \texttt{if}, \texttt{while} and \texttt{for} statements. Every basic boolean term of these conditions is intrumented by using function $h$ (see equation~\eqref{eqn_h}). The terms $S$ and $U$ are replaced by $\text{USAGE}$ and $\text{RESULT}$. Two examples will illustrate the instrumentation.
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (position == 0)}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}\depDo{}(intBitMask1 |= 1 == 0) | true\depDc{} &
+     \depCo{}(\uic{position == 0}) &&
+      \depDo{}(intBitMask1 |= 2 == 0) | true\depDc{}\depCc{}\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if ((position == 0) ||}
+  \uic{list.isEmpty())}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}\depBo{}\depDo{}(intBitMask2 |= 1 == 0) | true\depDc{} &
+      \depCo{}(\uic{position == 0}) &&
+       \depDo{}(intBitMask2 |= 2 == 0) | true\depDc{}\depCc{}\depBc{} \uic{||}
+     \depBo{}\depDo{}(intBitMask2 |= 4 == 0) | true\depDc{} &
+      \depCo{}(\uic{list.isEmpty()}) &&
+       \depDo{}(intBitMask2 |= 8 == 0) | true\depDc{}\depCc{}\depBc{}\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+As discussed after equation~\eqref{eqn_h}, the semantik of the basic boolean terms is not changed. In addition to that, the bitmask is used to get to know, whether an basic boolean term is evaluated or not. Moreover the result of the evaluation can be stored in the bitmask too.
+
+\subsubsection{Consideration Of The Instrumentation II}
+Unfortunately we need to add more instrumentation tags. This is needed because we want to have the full evaluation of the conditional terms within the \texttt{if}, \texttt{while} or \texttt{for} statements. Two examples illustrate these extensions.
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (position == 0)}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}(\depDo{}((intBitMask1 = 0) == 0) | true\depDc &
+     \depAo{}\depDo{}(intBitMask1 |= 1 == 0) | true\depDc{} &
+      \depCo{}(\uic{position == 0}) &&
+       \depDo{}(intBitMask1 |= 2 == 0) | true\depDc{}\depCc{}\depAc{}) &
+     counter1.add(intBitMask1)\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if ((position == 0) ||}
+  \uic{list.isEmpty())}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}(\depDo{}((intBitMask2 = 0) == 0) | true\depDc &
+     \depAo{}\depBo{}\depDo{}(intBitMask2 |= 1 == 0) | true\depDc{} &
+      \depCo{}(\uic{position == 0}) &&
+       \depDo{}(intBitMask2 |= 2 == 0) | true\depDc{}\depCc{}\depBc{} \uic{||}
+     \depBo{}\depDo{}(intBitMask2 |= 4 == 0) | true\depDc{} &
+      \depCo{}(\uic{list.isEmpty()}) &&
+       \depDo{}(intBitMask2 |= 8 == 0) | true\depDc{}\depCc{}\depBc{}\depAc{}) &
+     counter2.add(intBitMask2)\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+As shown in the last paragraph, the wrapping of each basic boolean term using the function $h$ does not change its semantic. Likewise the wrapping of the whole conditional term using function $i$ does not change the semantic either.
+
+\vfill{}
+by Christoph Müller, \today
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% End:

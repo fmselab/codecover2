@@ -1,0 +1,388 @@
+// This javacc grammar has been written for the
+// the so-called coverage log file. Such a file
+// is used by the tool codecover to save the
+// coverage counter of a tested program.
+// The parser generated out of this grammar is
+// used by codecover to load the coverage log
+// file.
+//
+// Author: Stefan Franke, Christoph Müller
+// Version: 1.8 ($Id: coverage_log.jj 2296 2007-11-03 22:25:04Z muellecr $)
+//
+// 1.1: removed any reference to a specific
+//      coverage criteria from the grammar
+//
+// 1.2: parse the StringLiterals using testParseStringLiteral
+//
+// 1.3: use a TestSessionContainerUID
+//      added CoverageLogParser(File source) constructor
+//
+// 1.4: removed \\u?? support for literals
+//      .trim() for names
+//      check if TestSessionContainerUID is the expected
+//
+// 1.5: removed some unused parameters
+//      moved spacechar from special token to token
+//      inserted spacechars in productions
+//      code base definition can be appeared before start test case now
+//
+// 1.6: code base definition must appear before start test case and nowhere else
+//      CODE_BASE -> TestSessionContainer
+//
+// 1.7: END_TEST_CASE has a resultComment
+//
+// 1.8: LOOKAHEAD(2) for the timestamp in start and end testcase
+//
+// 1.9: - added a feature to just get the first UID
+//      - added enum ParseMode to decide, in which mode we are parsing
+
+/////////////////////////////////////////////////
+// options
+/////////////////////////////////////////////////
+
+options {
+  IGNORE_CASE = false;
+  UNICODE_INPUT = true;
+}
+
+/////////////////////////////////////////////////
+// parser
+/////////////////////////////////////////////////
+
+PARSER_BEGIN(CoverageLogParser)
+package org.codecover.instrumentation.measurement.parser;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+
+import org.codecover.instrumentation.measurement.CoverageResultLog;
+import org.codecover.instrumentation.measurement.NullCoverageLog;
+import org.codecover.model.utils.StringUtil;
+
+import static org.codecover.instrumentation.measurement.MeasurementConstants.CHARSET;
+
+@SuppressWarnings("all")
+public class CoverageLogParser {
+    public enum ParseMode {
+        CHECK_UID,
+        DO_NOT_CHECK_UID,
+        GET_UID,
+        UNKNOWN
+    }
+    
+    private String testSessionContainerUID = null;
+
+    private ParseMode parseMode = ParseMode.UNKNOWN;
+
+    public CoverageLogParser(File source, Charset charset) throws IOException {
+        this(new BufferedReader(
+                 new InputStreamReader(new FileInputStream(source), charset)));
+    }
+
+    public CoverageLogParser(File source) throws IOException {
+        this(source, CHARSET);
+    }
+
+    /**
+     * Gets the first TestSessionContainerUID of this coverage log file.<br>
+     * <br>
+     * <b>Do not reuse this CoverageLogParser after this check!</b>
+     * @return the first TestSessionContainerUID, <code>null</code> if no 
+     * TestSessionContainerUID is found
+     * 
+     * @throws TokenMgrError: This is a {@link TokenMgrError}, that is produced
+     * by javacc stating, that the input could not be transformed into tokens.
+     */
+    public String getUID() throws ParseException, TokenMgrError {
+        try {
+          // start parsing with the "GET_UID" mode 
+          this.parseMode = ParseMode.GET_UID;
+          CompilationUnit(NullCoverageLog.INSTANCE, null);
+
+          // no UID was found
+          return null;
+        } catch (UIDFoundException e) {
+          // a UID was found
+          return this.testSessionContainerUID;
+        }
+    }
+}
+
+PARSER_END(CoverageLogParser)
+
+/////////////////////////////////////////////////
+// special tokens
+/////////////////////////////////////////////////
+
+SPECIAL_TOKEN :
+{
+  <COMMENT: "//" (~["\n", "\r"])* ( "\n" | "\r" | "\r\n" )?>
+}
+
+TOKEN :
+{
+  <SPACECHAR: " " >
+}
+
+TOKEN :
+{
+  <EOL : "\n" | "\r" | "\r\n" >
+}
+
+/////////////////////////////////////////////////
+// reserved words
+/////////////////////////////////////////////////
+
+TOKEN :
+{
+  < END_TEST_CASE: "END_TEST_CASE" >
+| < HYPHEN: "-" >
+| < TEST_SESSION_CONTAINER: "TEST_SESSION_CONTAINER" >
+| < START_TEST_CASE: "START_TEST_CASE" >
+| < START_SECTION: "START_SECTION" >
+}
+
+/////////////////////////////////////////////////
+// literals
+/////////////////////////////////////////////////
+
+TOKEN :
+{
+  < COUNTER_LITERAL: (["a"-"z","A"-"Z"])+ >
+| < INTEGER_LITERAL: (["0"-"9"])+ >
+| < STRING_LITERAL:
+      "\""
+      (   (~["\"","\\","\n","\r"])
+        | ("\\" ["n","t","b","r","f","\\","'","\""])
+      )*
+      "\""
+  >
+}
+
+/////////////////////////////////////////////////
+// compilation unit, with test cases and sections
+/////////////////////////////////////////////////
+
+/**
+ * Parses a coverage log file and writes all found test cases and counters to
+ * the {@link CoverageResultLog} c.
+ *
+ * If the <code>expectedTestSessionContainerUID</code> is not <code>null</code>, it is checked,
+ * whether the TestSessionContainerUID of this coverage log file is equal or not. If there is
+ * a mismatch, a {@link WrongUIDException} is thrown
+ * 
+ * @throws TokenMgrError: This is a {@link TokenMgrError}, that is produced
+ * by javacc stating, that the input could not be transformed into tokens.
+ */
+void CompilationUnit(CoverageResultLog c, String expectedTestSessionContainerUID) throws TokenMgrError :
+{
+  if (this.parseMode != ParseMode.GET_UID) {
+    // we want to do the parsing with or without ID
+    if (expectedTestSessionContainerUID != null) {
+      this.parseMode = ParseMode.CHECK_UID;
+    } else {
+      this.parseMode = ParseMode.DO_NOT_CHECK_UID;
+    }
+  }
+  c.startLog();
+}
+{
+  ( TestCase(c, expectedTestSessionContainerUID) )+
+  { c.closeLog(); }
+  ( <EOL> )*
+  <EOF>
+}
+
+void TestCase(CoverageResultLog c, String expectedTestSessionContainerUID) :
+{}
+{
+  TestSessionContainer(c, expectedTestSessionContainerUID)
+  StartTestCase(c, this.testSessionContainerUID)
+  [ Section(c) ]
+  EndTestCase(c)
+}
+
+String TestSessionContainer(CoverageResultLog c, String expectedTestSessionContainerUID) :
+{
+  String tempUID = null;
+}
+{
+  <TEST_SESSION_CONTAINER> <SPACECHAR>
+  tempUID = TestSessionContainerUID()
+  {
+    switch (this.parseMode) {
+      case CHECK_UID :
+        if (!tempUID.equals(expectedTestSessionContainerUID)) {
+          throw new WrongUIDException(expectedTestSessionContainerUID, tempUID);
+        }
+      case DO_NOT_CHECK_UID:
+      case UNKNOWN:
+        if (this.testSessionContainerUID != null) {
+          // we have found another UID before -> check for equation
+          if (!this.testSessionContainerUID.equals(tempUID)) {
+            throw new DifferentUIDException(this.testSessionContainerUID, tempUID);
+          }
+        } else {
+          // this is the first UID, we have found -> set it
+          this.testSessionContainerUID = tempUID;
+        }
+        break;
+      case GET_UID:
+        this.testSessionContainerUID = tempUID;
+        throw new UIDFoundException();
+        break;
+    }
+  }
+  <EOL>
+  { return this.testSessionContainerUID; }
+}
+
+String TestSessionContainerUID() :
+{
+  String testSessionContainerUID = null;
+}
+{
+  testSessionContainerUID = StringLiteral() { return testSessionContainerUID.trim(); }
+}
+
+void Section(CoverageResultLog c) :
+{}
+{
+  ( NamedSection(c) )+ | UnnamedSection(c)
+}
+
+void NamedSection(CoverageResultLog c) :
+{}
+{
+  StartSection(c) ( Counter(c) )*
+}
+
+void UnnamedSection(CoverageResultLog c) :
+{}
+{
+  ( Counter(c) )+
+}
+
+void StartTestCase(CoverageResultLog c, String foundTestSessionContainerUID) :
+{
+  String testCaseName = null;
+  long timeStamp = -1;
+  String testCaseComment = null;
+}
+{
+  <START_TEST_CASE> <SPACECHAR>
+  testCaseName = TestCaseName()
+  [LOOKAHEAD(2) <SPACECHAR> timeStamp = TimeStamp() ]
+  [<SPACECHAR> testCaseComment = TestCaseComment() ]
+  { c.startTestCase(foundTestSessionContainerUID, testCaseName, timeStamp, testCaseComment); }
+  <EOL>
+}
+
+void EndTestCase(CoverageResultLog c) :
+{
+  String testCaseName = null;
+  long timeStamp = -1;
+  String resultComment = null;
+}
+{
+  <END_TEST_CASE> <SPACECHAR>
+  testCaseName = TestCaseName()
+  [LOOKAHEAD(2) <SPACECHAR> timeStamp = TimeStamp() ]
+  [<SPACECHAR> resultComment = TestCaseComment() ]
+  { c.endTestCase(testCaseName, timeStamp, resultComment); }
+  <EOL>
+}
+
+String TestCaseName() :
+{
+  String testCaseName;
+}
+{
+  testCaseName = StringLiteral() { return testCaseName.trim(); }
+}
+
+long TimeStamp() :
+{
+  long timeStamp;
+}
+{
+  timeStamp = IntegerLiteral() { return timeStamp; }
+}
+
+String TestCaseComment() :
+{
+  String testCaseComment;
+}
+{
+  testCaseComment = StringLiteral() { return testCaseComment.trim(); }
+}
+
+void StartSection(CoverageResultLog c) :
+{
+  String sectionName;
+}
+{
+  <START_SECTION> <SPACECHAR>
+  sectionName = SectionName()
+  { c.startNamedSection(sectionName); }
+  <EOL>
+}
+
+String SectionName() :
+{
+  String sectionName;
+}
+{
+  sectionName = StringLiteral() { return sectionName.trim(); }
+}
+
+long IntegerLiteral() :
+{
+  Token integerLiteral;
+}
+{
+  integerLiteral = <INTEGER_LITERAL> { return Long.parseLong(integerLiteral.toString());}
+}
+
+String StringLiteral() :
+{
+  Token stringLiteral;
+}
+{
+  stringLiteral = <STRING_LITERAL> { return StringUtil.parseStringLiteral(stringLiteral.toString()); }
+}
+
+/////////////////////////////////////////////////
+// counter
+/////////////////////////////////////////////////
+
+void Counter(CoverageResultLog c) :
+{
+  String counterID;
+  long counterValue;
+}
+{
+  counterID = CounterID() <SPACECHAR>
+  counterValue = IntegerLiteral()
+  { c.passCounter(counterID.toString(), counterValue); }
+  <EOL>
+}
+
+String CounterID() :
+{
+  String counterID;
+  Token token;
+}
+{
+  token = <COUNTER_LITERAL> { counterID = token.toString(); }
+  token = <INTEGER_LITERAL> { counterID = counterID + token.toString(); }
+  (
+    token = <HYPHEN> { counterID = counterID + token.toString(); }
+    token = <INTEGER_LITERAL> { counterID = counterID + token.toString(); }
+  )*
+  { return counterID; }
+}

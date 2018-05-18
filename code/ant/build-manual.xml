@@ -1,0 +1,19 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="component-name" value="ant" />
+  <property name="classpath" value="../model/model.jar:../metrics/metrics.jar:../report/report.jar:../instrumentation/instrumentation.jar:../utils/utils.jar:lib/ant-1.6.jar" />
+  <property name="junit-classpath" value="../model/bin" />
+  <property name="unittest-class-name" value="org.codecover.ant.AllTests" />
+  <property name="custom-test-target" value="call-ant-test" />
+  
+  <import file="build-common.xml" />
+  
+  <target name="call-ant-test">
+    <mkdir dir="plugins" />
+    <copy todir="plugins">
+      <fileset dir="../release/lib/plugins" />
+    </copy>
+    <ant dir="ant-test" target="test" inheritAll="false" />
+    <delete dir="plugins" />
+  </target>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../ant"/>
+	<lib name="ant-1.6.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/../ant/lib/ant-1.6.5-src.zip!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/../ant/lib/ant-1.6.5-src.zip!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../ant/lib/ant-1.6.jar!/"/>
+	</lib>
+	<lib name="junit.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../ant/lib/junit.jar!/"/>
+	</lib>
+</component>

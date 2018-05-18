@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="perform_wtb_yellow.svg"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Source_Code_Highlighting/perform"
+   inkscape:version="0.41.1"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="40.200000pt"
+   width="229.40000pt">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:window-height="743"
+     inkscape:window-width="1280"
+     showgrid="true"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="13.466869"
+     inkscape:cx="143.54753"
+     inkscape:zoom="3.9597980"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <rect
+       y="26.948404"
+       x="0.43686536"
+       height="10.301596"
+       width="88.563133"
+       id="rect2065"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="2.2500000"
+       x="222.51140"
+       height="10.484771"
+       width="59.488602"
+       id="rect3583"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="14.809248"
+       x="0.49492371"
+       height="10.440752"
+       width="81.958778"
+       id="rect3581"
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
+    <rect
+       y="2.3621826"
+       x="0.49492371"
+       height="10.887817"
+       width="52.505077"
+       id="rect2063"
+       style="stroke-opacity:1.0000000;stroke-dashoffset:0.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-miterlimit:4.0000000;stroke-width:1.0000000;stroke:none;fill-rule:evenodd;fill-opacity:1.0000000;fill:#ffff00" />
+    <text
+       sodipodi:linespacing="100%"
+       id="text1291"
+       y="11.262182"
+       x="1.04825"
+       style="line-height:100%;writing-mode:lr;text-anchor:start;font-family:FreeMono;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000px;stroke:none;fill-opacity:1.0000000;fill:#000000;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:12.000000"
+       xml:space="preserve"><tspan
+         id="tspan1357"
+         sodipodi:role="line"
+         y="11.262182"
+         x="1.0482500">PERFORM WITH TEST BEFORE UNTIL A = &quot;10&quot;</tspan><tspan
+         id="tspan1359"
+         sodipodi:role="line"
+         y="23.262182"
+         x="1.0482500">  DISPLAY A</tspan><tspan
+         id="tspan1361"
+         sodipodi:role="line"
+         y="35.262182"
+         x="1.0482500">  ADD 1 TO A</tspan><tspan
+         id="tspan1363"
+         sodipodi:role="line"
+         y="47.262182"
+         x="1.0482500">END-PERFORM.</tspan><tspan
+         id="tspan1365"
+         sodipodi:role="line"
+         y="59.262182"
+         x="1.0482500"></tspan></text>
+  </g>
+</svg>

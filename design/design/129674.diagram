@@ -1,0 +1,96 @@
+format 29
+
+packagecanvas 128138 
+  package_ref 129684 // report
+  name_in_tab yes  xyzwh 312 217 2000 140 96
+packagecanvas 128266 
+  package_ref 128650 // html
+  name_in_tab yes  xyzwh 479 216 2000 93 95
+packagecanvas 128394 
+  package_ref 129812 // metrics
+  name_in_tab yes  xyzwh 312 324 2000 141 96
+packagecanvas 128522 
+  package_ref 130196 // batch
+  name_in_tab yes  xyzwh 312 541 2000 121 95
+packagecanvas 128650 
+  package_ref 129556 // eclipse
+  name_in_tab yes  xyzwh 312 428 2000 147 95
+packagecanvas 128778 
+  package_ref 128138 // views
+  name_in_tab yes  xyzwh 641 656 2000 117 95
+packagecanvas 128906 
+  package_ref 128266 // controls
+  name_in_tab yes  xyzwh 641 530 2000 163 95
+packagecanvas 129034 
+  package_ref 128394 // actions
+  name_in_tab yes  xyzwh 641 311 2005 151 95
+packagecanvas 129162 
+  package_ref 128522 // dialogs
+  name_in_tab yes  xyzwh 641 421 2005 147 95
+packagecanvas 129290 
+  package_ref 129172 // model
+  name_in_tab yes  xyzwh 312 671 2000 127 95
+packagecanvas 129418 
+  package_ref 129300 // ast
+  name_in_tab yes  xyzwh 474 640 2000 73 95
+packagecanvas 129546 
+  package_ref 128168 // utils
+  name_in_tab yes  xyzwh 474 741 2000 91 95
+packagecanvas 129674 
+  package_ref 129044 // gbt2
+  name_in_tab yes  xyzwh 129 324 2000 97 95
+packagecanvas 129802 
+  package_ref 128916 // org
+  name_in_tab yes  xyzwh 21 324 2005 81 95
+packagecanvas 131978 
+  package_ref 130068 // instrumentation
+  name_in_tab yes  xyzwh 312 119 2000 235 75
+packagecanvas 132106 
+  package_ref 131092 // java15
+  name_in_tab yes  xyzwh 636 35 2000 111 75
+packagecanvas 132234 
+  package_ref 131220 // cobol85
+  name_in_tab yes  xyzwh 636 114 2000 131 75
+packagecanvas 132362 
+  package_ref 128064 // criteria
+  name_in_tab yes  xyzwh 636 196 2000 113 75
+simplerelationcanvas 129930 simplerelation_ref 128010
+  from ref 129674 z 1999 to ref 129802
+simplerelationcanvas 130058 simplerelation_ref 128138
+  from ref 128266 z 1999 to ref 128138
+simplerelationcanvas 130186 simplerelation_ref 128266
+  from ref 128138 z 1999 to point 277 261
+  line 133386 z 1999 to ref 129674
+simplerelationcanvas 130314 simplerelation_ref 128394
+  from ref 128394 z 1999 to ref 129674
+simplerelationcanvas 130442 simplerelation_ref 128522
+  from ref 129034 z 1999 to ref 128650
+simplerelationcanvas 130570 simplerelation_ref 128650
+  from ref 129162 z 1999 to ref 128650
+simplerelationcanvas 130698 simplerelation_ref 128778
+  from ref 128906 z 1999 to ref 128650
+simplerelationcanvas 131210 simplerelation_ref 128906
+  from ref 128778 z 1999 to ref 128650
+simplerelationcanvas 131338 simplerelation_ref 129034
+  from ref 128522 z 1999 to point 277 584
+  line 133770 z 1999 to ref 129674
+simplerelationcanvas 131466 simplerelation_ref 129162
+  from ref 128650 z 1999 to point 288 473
+  line 133898 z 1999 to ref 129674
+simplerelationcanvas 131594 simplerelation_ref 129290
+  from ref 129418 z 1999 to ref 129290
+simplerelationcanvas 131722 simplerelation_ref 129418
+  from ref 129546 z 1999 to ref 129290
+simplerelationcanvas 131850 simplerelation_ref 129546
+  from ref 129290 z 1999 to point 268 715
+  line 133642 z 1999 to ref 129674
+simplerelationcanvas 132490 simplerelation_ref 129674
+  from ref 131978 z 1999 to point 287 154
+  line 133130 z 1999 to ref 129674
+simplerelationcanvas 132618 simplerelation_ref 129802
+  from ref 132106 z 1999 to ref 131978
+simplerelationcanvas 132746 simplerelation_ref 129930
+  from ref 132234 z 1999 to ref 131978
+simplerelationcanvas 132874 simplerelation_ref 130058
+  from ref 132362 z 1999 to ref 131978
+end

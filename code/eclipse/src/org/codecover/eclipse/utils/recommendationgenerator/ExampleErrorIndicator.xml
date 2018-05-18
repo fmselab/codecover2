@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<errorIndicator name="20% most error-prone modules" source="expert-knowledge">
+	<file path="acsintern/src/de/mailacs/entities/Member.java" value="18" />
+	<file path="acsintern/src/de/mailacs/entities/Aircraft.java" value="33" />
+	<file path="acsintern/src/de/mailacs/entities/Membership.java" value="3" />
+	<file path="acsintern/src/de/mailacs/entities/Email.java" value="0" />
+	
+	<file class="de.mailacs.intern.actions.MemberActions" value="18" />
+	<file class="de.mailacs.intern.actions.MembershipActions" value="33" />
+	<file class="de.mailacs.intern.actions.WorkeffortActions" value="3" />
+	<file class="de.mailacs.intern.actions.EmailActions" value="0" />
+
+	<line path="acsintern/src/de/mailacs/entities/Email.java" lineFrom="13" lineTo="18" severity="error" />
+	<line path="acsintern/src/de/mailacs/entities/Email.java" lineFrom="20" lineTo="20" severity="warning" />
+	<line path="acsintern/src/de/mailacs/entities/Member.java" lineFrom="2" lineTo="5" severity="error" />
+	<line path="acsintern/src/de/mailacs/entities/Membership.java" lineFrom="1" lineTo="3" severity="warning" />
+</errorIndicator>

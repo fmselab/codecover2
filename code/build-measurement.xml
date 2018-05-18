@@ -1,0 +1,246 @@
+<!-- $Id: build-measurement.xml 22 2008-05-25 20:08:53Z ahija $ -->
+<project default="all">
+    <property name="relase-dir" value="release/" />
+    <property name="relase-lib" value="${relase-dir}lib/" />
+
+        <property name="testsource" value="instrumentation-java/testsource/" />
+        <property name="testtarget" value="instrumentation-java/testtarget/" />
+        <property name="container-mast" value="${testtarget}codeExampleTestSessionContainer_MAST_only.xml" />
+        <property name="container-counters" value="${testtarget}codeExampleTestSessionContainer.xml" />
+        <property name="cc-classpath" value="${relase-lib}codecover-core.jar:${relase-lib}codecover-instrumentation-cobol.jar:${relase-lib}codecover-instrumentation-java.jar:${relase-lib}codecover-batch.jar" />
+        <property name="report-template" value="release/report-templates/HTML_Report_hierarchic.xml" />
+        <property name="report-template2" value="release/report-templates/CSV_Report.xml" />
+        <property name="report-target" value="report-html/testreport/" />
+        <property name="report-target-file" value="${report-target}index.html" />
+        <property name="report-target2" value="report-csv/testreport/" />
+        <property name="report-target-file2" value="${report-target2}report.csv" />
+        <property name="main-session" value="All test session: 1,3,4" />
+
+    <target name="jar-all">
+        <ant target="jar" inheritAll="false" />
+        <antcall target="all" />
+    </target>
+
+    <target name="all">
+        <antcall target="clean" />
+
+        <antcall target="instrument" />
+
+        <antcall target="compile" />
+
+        <antcall target="execute1" />
+        <antcall target="execute3" />
+        <antcall target="execute4" />
+
+        <antcall target="merge" />
+
+        <antcall target="report" />
+        <antcall target="report2" />
+    </target>
+
+    <target name="clean">
+        <delete includeemptydirs="true">
+            <fileset dir="."
+                     includes="${testtarget}**/*"
+                     excludes=".svn" />
+        </delete>
+        <delete includeemptydirs="true">
+            <fileset dir="."
+                     includes="${report-target}**/*"
+                     excludes=".svn" />
+        </delete>
+        <delete includeemptydirs="true">
+            <fileset dir="."
+                     includes="${report-target2}**/*"
+                     excludes=".svn" />
+        </delete>
+    </target>
+
+    <target name="instrument">
+        <java classname="org.codecover.batch.Batch"
+              classpath="${cc-classpath}"
+                  fork="true"
+                  failonerror="true">
+
+                <arg line="in" />
+                <arg line="--no-progress-bar" />
+                <arg line="-r ${testsource}" />
+                <arg line="-d ${testtarget}" />
+                <arg line="-c ${container-mast}" />
+                <arg line="-a UTF-8" />
+                <arg line="-l java" />
+                <arg line="-I CodeCover_Java_1.5" />
+                <arg line="-i TestClass.java" />
+                <arg line="-i org\\codecover\\instrumentation\\java15\\test\\**\\*.java" />
+                <arg line="-e **\\bugs\\*.java" />
+                <arg line="-e **\\test8\\*.java" />
+                <arg line="-e **\\test10\\*.java" />
+                <arg line="-D &quot;CoverageLogPath=${testtarget}coverage_log1.clf&quot;" />
+                <arg line="-v" />
+        </java>
+
+        <copy file="${container-mast}" tofile="${container-counters}"/>
+    </target>
+
+  <target name="compile">
+    <javac compiler="modern"
+           srcdir="${testtarget}"
+           destdir="${testtarget}"
+           excludes="**\\test8\\*.java"
+           encoding="UTF-8"
+           debug="true"
+           target="1.5"
+           failonerror="true"
+           includeJavaRuntime="true"
+           nowarn="yes"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:{-deprecation,unchecked}" />
+    </javac>
+  </target>
+
+  <target name="analyse">
+                <tstamp>
+                        <format property="timestamp"
+                                        pattern="dd.MM.yyyy HH:mm:ss"
+                                        locale="Germany"/>
+                </tstamp>
+                <echo message="testsession: ${testsession} (${timestamp})" />
+
+        <java classname="org.codecover.batch.Batch"
+              classpath="${cc-classpath}"
+                  fork="true"
+                  failonerror="true">
+
+                <arg line="an" />
+                <arg line="-c ${container-counters}" />
+                <arg line="-g ${coverage-log-to-use}" />
+                <arg line="-n '${testsession}'" />
+                <arg line="-m '${timestamp}'" />
+                <arg line="-v" />
+        </java>
+  </target>
+
+  <target name="execute1">
+        <!-- We expect a RuntimeException -->
+        <java classname="org.codecover.instrumentation.java15.test.test1.TestClass"
+          failonerror="false"
+                  fork="yes"
+                  dir="${testtarget}"
+          classpath="${testtarget}" >
+          <jvmarg value="-Dorg.codecover.coverage-log-overwrite=yes" />
+    </java>
+
+        <antcall target="analyse">
+          <param name="testsession" value="test1 - TestClass"/>
+      <param name="coverage-log-to-use" value="${testtarget}coverage_log1.clf"/>
+        </antcall>
+  </target>
+
+  <target name="execute3">
+        <java classname="org.codecover.instrumentation.java15.test.test3.CodeExample"
+          failonerror="true"
+                  fork="yes"
+                  dir="${testtarget}"
+          classpath="${testtarget}">
+          <jvmarg value="-Dorg.codecover.coverage-log-file=../../${testtarget}coverage_log3.clf" />
+          <jvmarg value="-Dorg.codecover.coverage-log-overwrite=yes" />
+    </java>
+
+        <antcall target="analyse">
+          <param name="testsession" value="test3 - CodeExample"/>
+      <param name="coverage-log-to-use" value="${testtarget}coverage_log3.clf"/>
+        </antcall>
+  </target>
+
+  <target name="execute4">
+        <java classname="TestClass"
+          failonerror="true"
+                  fork="yes"
+                  dir="${testtarget}"
+          classpath="${testtarget}">
+                <arg line="arg1 arg2 arg3" />
+                <jvmarg value="-Dorg.codecover.coverage-log-file=../../${testtarget}coverage_log4.clf" />
+        <jvmarg value="-Dorg.codecover.coverage-log-overwrite=yes" />
+          <jvmarg value="-Dcom.sun.management.jmxremote" />
+          <jvmarg value="-Dcom.sun.management.jmxremote.port=1234" />
+          <jvmarg value="-Dcom.sun.management.jmxremote.ssl=false" />
+          <jvmarg value="-Dcom.sun.management.jmxremote.authenticate=false" />
+        </java>
+
+        <antcall target="analyse">
+          <param name="testsession" value="test4 - TestClass"/>
+          <param name="coverage-log-to-use" value="${testtarget}coverage_log4.clf"/>
+        </antcall>
+  </target>
+
+  <target name="merge">
+        <tstamp>
+                <format property="timestamp"
+                                pattern="dd.MM.yyyy HH:mm:ss"
+                                locale="Germany"/>
+        </tstamp>
+
+    <java classname="org.codecover.batch.Batch"
+          classpath="${cc-classpath}"
+          fork="true"
+          failonerror="true">
+
+        <arg line="ms" />
+        <arg line="-c ${container-counters}" />
+        <arg line="-n '${main-session}'" />
+        <arg line="-m '${timestamp}'" />
+        <arg line="-s 'test1 - TestClass'" />
+        <arg line="-s 'test3 - CodeExample'" />
+        <arg line="-s 'test4 - TestClass'" />
+        <arg line="-v" />
+    </java>
+  </target>
+
+  <target name="snapshotTestdata" depends="all">
+      <copy file="${container-counters}" tofile="instrumentation/testsource/codeExampleTestSessionContainer.snapshot.xml" />
+  </target>
+
+
+  <target name="report">
+        <mkdir dir="${report-target}" />
+
+    <java classname="org.codecover.batch.Batch"
+          classpath="${cc-classpath}"
+          fork="true"
+          failonerror="true">
+
+        <arg line="re" />
+        <arg line="--no-progress-bar" />
+        <arg line="-c ${container-counters}" />
+        <arg line="-t ${report-template}" />
+        <arg line="-s '${main-session}'" />
+        <arg line="-d ${report-target-file}" />
+        <arg line="-v" />
+    </java>
+  </target>
+
+  <target name="report2">
+        <mkdir dir="${report-target2}" />
+
+    <java classname="org.codecover.batch.Batch"
+          classpath="${cc-classpath}"
+          fork="true"
+          failonerror="true">
+
+        <arg line="re" />
+        <arg line="--no-progress-bar" />
+        <arg line="-c ${container-counters}" />
+        <arg line="-t ${report-template2}" />
+        <arg line="-s '${main-session}'" />
+        <arg line="-d ${report-target-file2}" />
+        <arg line="-v" />
+    </java>
+  </target>
+  
+  <target name="all-and-validate" depends="all">
+    <exec failonerror="true" executable="sh">
+      <arg value="-c" />
+      <arg value='find report-html/testreport \( -name "*.html" ! -path "*/.svn/*" -type f \) -print0 | xargs -0 -- validate &amp;&amp; echo "Validation successfull."' />
+    </exec>
+  </target>
+</project>

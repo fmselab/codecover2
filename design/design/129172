@@ -1,0 +1,653 @@
+format 29
+"model"
+  revision 20
+  modified_by 40 "steffen"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  java_dir "org/gbt2/model"
+  java_package "org.gbt2.model"
+  classview 128168 "model"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    classdiagram 128296 "model"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+      size A3-Landscape
+    end
+
+    class 128296 "Database"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128040 "open"
+	class_operation public return_type class_ref 128296 // Database
+	nparams 1
+	  param in name "filename" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 128552 // <realization>
+	relation 128552 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128552 // <realization>
+	  b parent class_ref 128424 // Disposable
+      end
+
+      operation 128296 "dispose"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      attribute 128424 "filename"
+	const_attribute private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 128680 // codeBases (<association>)
+	relation 128680 ----
+	  a role_name "codeBases" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128680 // codeBases (<association>)
+	  b role_name "database" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128808 // database (<association>)
+      end
+
+      operation 128010 "createSourceFile"
+	public return_type class_ref 129428 // SourceFile
+	nparams 2
+	  param in name "fileName" explicit_type "string"
+	  param inout name "content" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128138 "createLocation"
+	public return_type class_ref 129300 // Location
+	nparams 3
+	  param inout name "file" type class_ref 129428 // SourceFile
+	  param inout name "startOffset" explicit_type "int"
+	  param inout name "endOffset" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128266 "createBasicStatement"
+	public return_type class_ref 128660 // BasicStatement
+	nparams 3
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "coverableItem" type class_ref 130068 // CoverableItem
+	  param inout name "rootTerms" explicit_type "List<RootTerm>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128394 "createLocationList"
+	public return_type class_ref 128010 // LocationList
+	nparams 1
+	  param inout name "locations" explicit_type "List<Location>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128522 "createCoverableItem"
+	public return_type class_ref 130068 // CoverableItem
+	nparams 1
+	  param inout name "id" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128650 "createBranch"
+	public return_type class_ref 130196 // Branch
+	nparams 5
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "coverableItem" type class_ref 130068 // CoverableItem
+	  param inout name "statementSequence" type class_ref 130324 // StatementSequence
+	  param inout name "implicit" explicit_type "bool"
+	  param inout name "condition" type class_ref 128010 // LocationList
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128778 "createConditionalStatement"
+	public return_type class_ref 128916 // ConditionalStatement
+	nparams 3
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "branches" explicit_type "List<Branch>"
+	  param inout name "keyword" type class_ref 128010 // LocationList
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128906 "createLoopingStatement"
+	public return_type class_ref 129044 // LoopingStatement
+	nparams 6
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "neverExecutedItem" type class_ref 130068 // CoverableItem
+	  param inout name "onceExecutedItem" type class_ref 130068 // CoverableItem
+	  param inout name "multipleExecutedItem" type class_ref 130068 // CoverableItem
+	  param inout name "keyword" type class_ref 128010 // LocationList
+	  param inout name "optionalBodyExecution" explicit_type "bool"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129034 "createStatementSequence"
+	public return_type class_ref 130324 // StatementSequence
+	nparams 2
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "statements" explicit_type "List<Statement>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129162 "createHierarchyLevelType"
+	public return_type class_ref 128168 // HierarchyLevelType
+	nparams 2
+	  param inout name "englishName" explicit_type "string"
+	  param inout name "internalName" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129290 "createHierarchyLevel"
+	public return_type class_ref 128040 // HierarchyLevel
+	nparams 5
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "header" type class_ref 128010 // LocationList
+	  param inout name "children" explicit_type "List<HierarchyLevel>"
+	  param inout name "sequences" explicit_type "List<StatementSequence>"
+	  param inout name "type" type class_ref 128168 // HierarchyLevelType
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129418 "createBasicBooleanTerm"
+	public return_type class_ref 130580 // BasicBooleanTerm
+	nparams 1
+	  param inout name "location" type class_ref 128010 // LocationList
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129546 "createBooleanOperator"
+	public return_type class_ref 130964 // BooleanOperator
+	nparams 3
+	  param inout name "arity" explicit_type "int"
+	  param inout name "possibleAssignments" explicit_type "Map<BooleanAssignment,Boolean>"
+	  param inout name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129674 "createOperatorTerm"
+	public return_type class_ref 130836 // OperatorTerm
+	nparams 3
+	  param inout name "location" type class_ref 128010 // LocationList
+	  param inout name "operator" type class_ref 130964 // BooleanOperator
+	  param inout name "operands" explicit_type "List<BooleanTerm>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 129802 "createRootTerm"
+	public return_type class_ref 130708 // RootTerm
+	nparams 2
+	  param inout name "term" type class_ref 130452 // BooleanTerm
+	  param inout name "results" explicit_type "Map<BooleanAssignment,CoverableItem>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 133780 "createCodeBase"
+	public return_type class_ref 128552 // CodeBase
+	nparams 1
+	  param inout name "code" type class_ref 128040 // HierarchyLevel
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134676 "addCodeBaseListener"
+	public return_type class_ref 136980 // ListenerHandle
+	nparams 1
+	  param inout name "listener" explicit_type "ChangeListener<CodeBase>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134804 "addTestSessionListener"
+	public return_type class_ref 136980 // ListenerHandle
+	nparams 1
+	  param inout name "listener" explicit_type "ChangeListener<TestSession>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134932 "addTestCaseListener"
+	public return_type class_ref 136980 // ListenerHandle
+	nparams 1
+	  param inout name "listener" explicit_type "ChangeListener<TestCase>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 128552 "CodeBase"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128808 // database (<association>)
+	relation_ref 128680 // <association>
+      end
+
+      classrelation 128936 // code (<unidirectional association>)
+	relation 128808 --->
+	  a role_name "code" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128936 // code (<unidirectional association>)
+	  b parent class_ref 128040 // HierarchyLevel
+      end
+
+      classrelation 129192 // <association>
+	relation_ref 128936 // <association>
+      end
+
+      classrelation 129576 // files (<unidirectional association>)
+	relation 129192 --->
+	  a role_name "files" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129576 // files (<unidirectional association>)
+	  b parent class_ref 129428 // SourceFile
+      end
+
+      attribute 132372 "date"
+	const_attribute private explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      operation 133908 "delete"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134036 "createTestSession"
+	public return_type class_ref 128680 // TestSession
+	nparams 3
+	  param inout name "name" explicit_type "string"
+	  param inout name "comment" explicit_type "string"
+	  param inout name "date" explicit_type "Date"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 128680 "TestSession"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129064 // codeBase (<association>)
+	relation 128936 ----
+	  a role_name "codeBase" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129064 // codeBase (<association>)
+	  b role_name "sessions" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129192 // <association>
+      end
+
+      attribute 128552 "name"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 128680 "date"
+	const_attribute private explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 128808 "comment"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      classrelation 129448 // <association>
+	relation_ref 129064 // <association>
+      end
+
+      classrelation 129960 // <realization>
+	relation 129576 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129960 // <realization>
+	  b parent class_ref 128936 // MetaDataProvider
+      end
+
+      operation 134164 "delete"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134292 "createTestCase"
+	public return_type class_ref 128808 // TestCase
+	nparams 4
+	  param inout name "name" explicit_type "string"
+	  param inout name "comment" explicit_type "string"
+	  param inout name "date" explicit_type "Date"
+	  param inout name "coverageData" explicit_type "Map<Integer,Long>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 128808 "TestCase"cpp_decl ""
+      java_decl "${comment}${@}${public}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129320 // session (<association>)
+	relation 129064 ----
+	  a role_name "session" multiplicity "" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129320 // session (<association>)
+	  b role_name "testCases" multiplicity "*" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129448 // <association>
+      end
+
+      attribute 128936 "name"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 129064 "date"
+	const_attribute private explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      attribute 129192 "comment"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	idl_decl ""
+      end
+
+      operation 128424 "getCoverageCount"
+	public explicit_return_type "long"
+	nparams 1
+	  param in name "item" type class_ref 130068 // CoverableItem
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      classrelation 129832 // <realization>
+	relation 129448 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129832 // <realization>
+	  b parent class_ref 128936 // MetaDataProvider
+      end
+
+      operation 128808 "setObjectMetaData"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "name" explicit_type "string"
+	  param inout name "object" type class_ref 129192 // MetaDataObject
+	  param inout name "value" explicit_type "Object"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 128936 "getObjectMetaData"
+	public explicit_return_type "Object"
+	nparams 2
+	  param inout name "name" explicit_type "string"
+	  param inout name "object" type class_ref 129192 // MetaDataObject
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+
+      operation 134420 "delete"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 128936 "MetaDataProvider"
+      abstract  stereotype "interface"
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      classrelation 129704 // <generalisation>
+	relation 129320 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129704 // <generalisation>
+	  b parent class_ref 129064 // ReadOnlyMetaDataProvider
+      end
+
+      operation 129064 "setMetaData"
+	public explicit_return_type "void"
+	nparams 2
+	  param inout name "name" explicit_type "string"
+	  param inout name "value" explicit_type "Object"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+
+    class 129064 "ReadOnlyMetaDataProvider"
+      abstract  stereotype "interface"
+      cpp_decl ""
+      public java_decl "${comment}${@}${public}interface ${name}${extends} {
+${members}}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128552 "getMetaData"
+	public explicit_return_type "Object"
+	nparams 1
+	  param in name "name" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+      end
+    end
+  end
+
+  package_ref 129300 // ast
+
+  package_ref 128168 // utils
+
+  simplerelation 129546
+    -_->
+      on 
+      package_ref 129044 // gbt2
+  end
+end

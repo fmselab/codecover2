@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="errorIndicator" type="errorIndicatorType"/>
+  <xsd:complexType name="fileType">
+    <xsd:simpleContent>
+      <xsd:extension base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xsd:attribute type="xs:string" name="path" use="optional"/>
+        <xsd:attribute type="xs:byte" name="value" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="lineType">
+    <xsd:simpleContent>
+      <xsd:extension base="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xsd:attribute type="xs:string" name="path" use="optional"/>
+        <xsd:attribute type="xs:string" name="class" use="optional"/>
+        <xsd:attribute type="xs:byte" name="lineFrom" use="optional"/>
+        <xsd:attribute type="xs:byte" name="lineTo" use="optional"/>
+        <xsd:attribute type="xs:string" name="severity" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="errorIndicatorType">
+    <xsd:sequence>
+      <xsd:element type="fileType" name="file" maxOccurs="unbounded" minOccurs="0"/>
+      <xsd:element type="lineType" name="line" maxOccurs="unbounded" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute type="xs:string" name="name" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+    <xsd:attribute type="xs:string" name="source" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+  </xsd:complexType>
+</xsd:schema>

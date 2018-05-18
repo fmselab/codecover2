@@ -1,0 +1,83 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 133898 // initial
+  xyz 43 11 2000
+activitynodecanvas 128138 activitynode_ref 134026 // activity_final
+  xyz 46 447 2000
+activityactioncanvas 128266 activityaction_ref 138378 // activity action User opens "Preferences" dialog in the "Window" menu
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 35 47 2000 189 61
+end
+activityactioncanvas 128522 activityaction_ref 138506 // activity action User selects the "gbt²" entry
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 47 132 2000 168 50
+end
+activityactioncanvas 128778 activityaction_ref 138634 // activity action Open the configuration page for the plugin
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 32 206 2000 199 61
+end
+activityactioncanvas 129162 activityaction_ref 138762 // activity action Customize the colors used for the source code highlighting
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 29 288 2000 207 57
+end
+activitynodecanvas 129418 activitynode_ref 140298 // decision
+  xyz 119 368 2000
+activityactioncanvas 129546 activityaction_ref 138890 // activity action Save changes
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 146 430 2000 100 60
+end
+flowcanvas 128394 flow_ref 168458 // <flow>
+  geometry HV
+  
+  from ref 128010 z 1999 to point 127 18
+  line 131466 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128650 flow_ref 168586 // <flow>
+  
+  from ref 128266 z 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128906 flow_ref 168714 // <flow>
+  
+  from ref 128522 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129290 flow_ref 168842 // <flow>
+  
+  from ref 128778 z 1999 to ref 129162
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129674 flow_ref 168970 // <flow>
+  
+  from ref 129162 z 1999 to ref 129418
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 169098 // User clicks the "OK" button
+  geometry HV
+  
+  from ref 129418 z 1999 label "User clicks the \"OK\" button" xyz 142 366 1999 to point 193 384
+  line 130442 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129930 flow_ref 169226 // User clicks the "Cancel" button
+  geometry HVH
+  
+  from ref 129418 z 1999 label "User clicks the \"Cancel\" button" xyz 12 413 1999 to point 92 384
+  line 131210 z 1999 to point 92 457
+  line 131338 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130570 flow_ref 169354 // <flow>
+  geometry VHr
+  
+  from ref 129546 z 1999 to point 56 457
+  line 130954 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+end

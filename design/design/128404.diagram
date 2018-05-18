@@ -1,0 +1,59 @@
+format 29
+
+classcanvas 128020 class_ref 128404 // GenericUser
+  xyz 398 232 3005 label_xy 377 279
+classcanvas 128148 class_ref 128276 // EclipseUser
+  xyz 268 562 3005 label_xy 246 602
+usecasecanvas 128276 usecase_ref 129940 // import session
+  xyzwh 423 509 3005 64 32 label_xy 403 541
+usecasecanvas 128404 usecase_ref 130068 // export session
+  xyzwh 429 580 3005 64 32 label_xy 409 612
+usecasecanvas 128788 usecase_ref 128148 // measure coverage
+  xyzwh 357 128 3005 64 32 label_xy 323 160
+usecasecanvas 128916 usecase_ref 130196 // create session
+  xyzwh 449 22 3005 64 32 label_xy 429 54
+usecasecanvas 129044 usecase_ref 130324 // create session file
+  xyzwh 124 56 3005 64 32 label_xy 92 88
+usecasecanvas 129172 usecase_ref 128788 // associate test case
+  xyzwh 588 118 3005 64 32 label_xy 551 150
+usecasecanvas 129940 usecase_ref 130452 // merge sessions
+  xyzwh 88 220 3005 64 32 label_xy 64 252
+usecasecanvas 130068 usecase_ref 130580 // drop session
+  xyzwh 165 301 3005 64 32 label_xy 152 333
+usecasecanvas 130196 usecase_ref 130708 // edit session properties
+  xyzwh 294 344 3005 64 32 label_xy 246 376
+usecasecanvas 130324 usecase_ref 130836 // edit test case properties
+  xyzwh 499 342 3005 64 32 label_xy 445 374
+usecasecanvas 130452 usecase_ref 130964 // drop test case
+  xyzwh 610 292 3005 64 32 label_xy 591 324
+usecasecanvas 130580 usecase_ref 131092 // merge test cases
+  xyzwh 714 219 3005 64 32 label_xy 684 251
+line 128532 ----
+  from ref 128148 z 3004 to ref 128276
+line 128660 ----
+  from ref 128148 z 3004 to ref 128404
+simplerelationcanvas 129300 simplerelation_ref 128276
+  from ref 128788 z 3004 stereotype "<<include>>" xyz 243 79 3000 to ref 129044
+simplerelationcanvas 129428 simplerelation_ref 128404
+  from ref 128788 z 3004 stereotype "<<include>>" xyz 440 84 3000 to ref 128916
+line 129556 ----
+  from ref 128020 z 3004 to ref 128788
+line 129684 ----
+  from ref 128020 z 3004 to ref 129172
+line 130708 ----
+  from ref 128020 z 3004 to ref 129940
+line 130836 ----
+  from ref 128020 z 3004 to ref 130068
+line 130964 ----
+  from ref 128020 z 3004 to ref 130196
+line 131092 ----
+  from ref 128020 z 3004 to ref 130324
+line 131220 ----
+  from ref 128020 z 3004 to ref 130452
+line 131348 ----
+  from ref 128020 z 3004 to ref 130580
+simplerelationcanvas 131476 simplerelation_ref 128532
+  from ref 130068 z 1999 stereotype "<<include>>" xyz 383 405 3000 to point 194 423
+  line 131604 z 1999 to point 642 424
+  line 131732 z 1999 to ref 130452
+end

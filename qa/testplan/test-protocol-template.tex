@@ -1,0 +1,33 @@
+% $Id: test-protocol-template.tex 1 2007-12-12 17:37:26Z t-scheller $
+\documentclass[a4paper]{scrartcl}
+\usepackage[%
+left=15mm,
+right=10mm,
+top=20mm,
+bottom=30mm
+]{geometry}
+\usepackage{longtable}
+\newcommand{\x}{\textbullet}
+\begin{document}
+\section*{CodeCover -- Test Protocol}
+\noindent
+\textbf{Test Plan Version:} %TESTPLANVERSION 
+\quad \textbf{CodeCover Revision:} \hrulefill
+
+\noindent
+\textbf{Tester:} \hrulefill \quad \textbf{Date:} \hrulefill
+
+\noindent
+\begin{longtable}{|l|l|l|p{0.5\textwidth}|c|c|c|c|}
+\hline
+\textbf{ID} & \textbf{Lang} & \textbf{Env} & \textbf{Description} & \textbf{P} & \textbf{F} & \textbf{I} & \textbf{N} \\
+\hline
+\endhead
+\hline\hline
+\multicolumn{8}{|l|}
+{Results: P = Passed, F = Failed, I = Inconclusive, N = Not Executed}\\
+\hline
+\endfoot
+%TESTCASES
+\end{longtable}
+\end{document}

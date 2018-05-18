@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<errorIndicator name="" source="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="errorIndicator.xsd">
+  <file path="" value="0">file</file>
+  <line lineFrom="0" lineTo="0" path="" severity="">line</line>
+</errorIndicator>

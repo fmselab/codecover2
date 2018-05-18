@@ -1,0 +1,128 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 136842 // decision
+  xyz 29 54 2000
+activitynodecanvas 128040 activitynode_ref 128808 // initial
+  xyz 31 4 2000
+activityactioncanvas 128522 activityaction_ref 136714 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 135 43 2000 147 62
+end
+activityactioncanvas 128680 activityaction_ref 129064 // activity action User clicks the "Merge Test Cases" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 326 291 2000 148 87
+end
+activitynodecanvas 128778 activitynode_ref 136970 // decision
+  xyz 195 138 2000
+activitynodecanvas 129064 activitynode_ref 128936 // decision
+  xyz 389 563 2000
+activityactioncanvas 129290 activityaction_ref 136842 // activity action Call activity "select test cases"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 319 123 2000 159 68
+end
+activityactioncanvas 129320 activityaction_ref 129192 // activity action Save changes to the session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 333 481 2000 137 60
+end
+activitynodecanvas 129546 activitynode_ref 137098 // decision
+  xyz 386 215 2000
+activityactioncanvas 129576 activityaction_ref 129320 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 342 635 2000 121 54
+end
+activitynodecanvas 129960 activitynode_ref 129064 // activity_final
+  xyz 29 694 2000
+activityactioncanvas 130442 activityaction_ref 136970 // activity action Merge the test cases
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 346 400 2000 113 56
+end
+flowcanvas 128138 flow_ref 155658 // Project not opened
+  
+  from ref 128010 z 1999 label "Project not opened" xyz 2 105 1999 to ref 129960
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128266 flow_ref 155786 // <flow>
+  
+  from ref 128040 z 1999 to ref 128010
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128650 flow_ref 155914 // Project opened
+  
+  from ref 128010 z 1999 label "Project opened" xyz 48 51 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128906 flow_ref 156042 // <flow>
+  
+  from ref 128522 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129034 flow_ref 156170 // No session selected
+  geometry VHr
+  
+  from ref 128778 z 1999 label "No session selected" xyz 63 137 1999 to point 39 154
+  line 129162 z 1999 to ref 129960
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129418 flow_ref 156298 // Session selected
+  
+  from ref 128778 z 1999 label "Session selected" xyz 218 137 1999 to ref 129290
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129674 flow_ref 156426 // <flow>
+  
+  from ref 129290 z 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129704 flow_ref 130600 // <flow>
+  
+  from ref 129320 z 1999 to ref 129064
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 156554 // Less than two test cases selected
+  geometry VHr
+  
+  from ref 129546 z 1999 label "Less than two test cases selected" xyz 77 210 1999 to point 39 231
+  line 130186 z 1999 to ref 129960
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129832 flow_ref 130728 // Errors whilst saving
+  
+  from ref 129064 z 1999 label "Errors whilst saving" xyz 408 607 1999 to ref 129576
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130088 flow_ref 130856 // No errors whilst saving
+  geometry VHr
+  
+  from ref 129064 z 1999 label "No errors whilst saving" xyz 130 559 1999 to point 39 579
+  line 130826 z 1999 to ref 129960
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130216 flow_ref 130984 // <flow>
+  geometry VHr
+  
+  from ref 129576 z 1999 to point 39 659
+  line 131082 z 1999 to ref 129960
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130314 flow_ref 156682 // Two or more test cases selected
+  
+  from ref 129546 z 1999 label "Two or more test cases selected" xyz 401 257 1999 to ref 128680
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130570 flow_ref 156810 // <flow>
+  
+  from ref 128680 z 1999 to ref 130442
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 156938 // <flow>
+  
+  from ref 130442 z 1999 to ref 129320
+  show_infonote default drawing_language default write_horizontally default
+end
+end

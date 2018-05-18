@@ -1,0 +1,411 @@
+IDENTIFICATION DIVISION.
+ PROGRAM-ID. HOZIVER.
+
+ *> ----------------------------------------------------------------*
+ *> Datum: 23.11.2000
+ *> COBOL-Beispielprogramm einer Hotelzimmerverwaltung
+ *> Autor: Wilfried Grupe
+ *> ----------------------------------------------------------------*
+
+ ENVIRONMENT DIVISION.
+ CONFIGURATION SECTION.
+ SPECIAL-NAMES.
+ *>DECIMAL-POINT IS COMMA.
+
+ *> ----------------------------------------------------------------*
+
+ INPUT-OUTPUT SECTION.
+ FILE-CONTROL.
+
+ SELECT SAM-DAT ASSIGN TO "BELEGUNG.SAM"
+ ORGANIZATION IS LINE SEQUENTIAL
+ ACCESS MODE IS SEQUENTIAL.
+
+ SELECT ISAM-DAT ASSIGN TO "BELEGUNG.ISAM"
+ ORGANIZATION IS INDEXED
+ FILE STATUS IS FSTATFELD
+ RECORD DELIMITER IS ISAM-SCHLUESSEL
+ ALTERNATE RECORD KEY IS ISAM-DATUM-ABREISE
+ WITH DUPLICATES
+ ACCESS MODE IS DYNAMIC.
+
+ SELECT ZIMMER-SAM ASSIGN TO "ZIMMER.SAM"
+ ORGANIZATION IS LINE SEQUENTIAL
+ ACCESS MODE IS SEQUENTIAL.
+
+ SELECT SORTDAT ASSIGN TO "SORTWK".
+
+ SELECT ZIMMER-REL ASSIGN TO "ZIMMER.REL"
+ ORGANIZATION IS SEQUENTIAL
+ ACCESS MODE IS DYNAMIC
+ RELATIVE KEY IS SATZNR.
+
+ *> ----------------------------------------------------------------*
+
+ DATA DIVISION.
+ FILE SECTION.
+
+ FD SAM-DAT.
+ 01 SAM-SATZ.
+ 02 SAM-SCHLUESSEL.
+ 05 SAM-ZIMMERNR PIC 9(4).
+ 05 SAM-DATUM-ANREISE PIC X(6).
+ 02 SAM-REST.
+ 05 SAM-DATUM-ABREISE PIC X(6).
+ 05 SAM-ANSCHRIFT PIC X(40).
+ 05 SAM-PREIS PIC 9(4)V99.
+
+ FD ISAM-DAT.
+ 01 ISAM-SATZ.
+ 02 ISAM-SCHLUESSEL.
+ 05 ISAM-ZIMMERNR PIC 9(4).
+ 05 ISAM-DATUM-ANREISE PIC X(6).
+ 02 ISAM-REST.
+ 05 ISAM-DATUM-ABREISE PIC X(6).
+ 05 ISAM-ANSCHRIFT PIC X(40).
+ 05 ISAM-PREIS PIC 9(4)V99.
+
+ FD ZIMMER-SAM.
+ 01 SAM-ZIMMERSATZ.
+ 05 SAM-ZIMMERNR1 PIC 9(4).
+ 05 SAM-AUSSTATTUNG PIC X(20).
+ 05 SAM-ANZAHL-BETTEN PIC 9(2).
+ 05 SAM-PREIS-F PIC 9(4)V99.
+ 05 SAM-PREIS-H PIC 9(4)V99.
+ 05 SAM-PREIS-V PIC 9(4)V99.
+
+ SD SORTDAT.
+ 01 SORT-ZIMMERSATZ.
+ 05 SORT-ZIMMERNR PIC 9(4).
+ 05 SORT-AUSSTATTUNG PIC X(20).
+ 05 SORT-ANZAHL-BETTEN PIC 9(2).
+ 05 SORT-PREIS-F PIC 9(4)V99.
+ 05 SORT-PREIS-H PIC 9(4)V99.
+ 05 SORT-PREIS-V PIC 9(4)V99.
+
+
+ FD ZIMMER-REL.
+ 01 REL-ZIMMERSATZ.
+ 05 REL-ZIMMERNR PIC 9(4).
+ 05 REL-AUSSTATTUNG PIC X(20).
+ 05 REL-ANZAHL-BETTEN PIC 9(2).
+ 05 REL-PREIS-F PIC 9(4)V99.
+ 05 REL-PREIS-H PIC 9(4)V99.
+ 05 REL-PREIS-V PIC 9(4)V99.
+
+
+ WORKING-STORAGE SECTION.
+ 01 ZIMMER-TAB.
+ 02 ZIMMER-ELEMENT PIC X OCCURS 100.
+
+ 77 FSTATFELD PIC 99.
+ 77 SATZNR PIC 9(4).
+ 77 SLS PIC X.
+ 77 ZAEHLER PIC 99.
+ 77 SCH-MENUE PIC XX.
+ 77 ANTWORT PIC X.
+ 77 ISAM-DATUM-ANREISEP PIC X(6).
+ 77 ISAM-DATUM-ABREISEP PIC X(6).
+ 77 ISAM-ZIMMERNRP PIC 9(4).
+
+ *> ----------------------------------------------------------------*
+
+ PROCEDURE DIVISION.
+ STEUERLEISTE.
+ PERFORM UP-START.
+ PERFORM UP-STEUERMENUE.
+ MOVE 99 TO SCH-MENUE.
+ PERFORM UNTIL SCH-MENUE = 99
+ EVALUATE SCH-MENUE
+ WHEN "10" PERFORM ERSTANLAGE
+ WHEN "11" PERFORM ERSTANLAGE-ZIMMER
+ WHEN "12" PERFORM ERSTANLAGE-ZIMMER-SEQ
+ WHEN "13" PERFORM ERSTANLAGE-BELEGUNG
+ WHEN "20" PERFORM ANZEIG1
+ WHEN "21" PERFORM ANZEIG2
+ WHEN "30" PERFORM ANZEIG3
+ WHEN "31" PERFORM HINZU2
+ WHEN "40" PERFORM LOESCH
+ WHEN "99" CONTINUE
+ WHEN OTHER PERFORM UP-MELDUNG
+ END-EVALUATE
+ END-PERFORM.
+ STOP RUN.
+
+ *> ----------------------------------------------------------------*
+ UP-STEUERMENUE.
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY "Was wollen Sie machen?".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY "10 - Erstanlage Kunden- und Belegungsdatei ".
+ DISPLAY "13 - (Erstanlage sequentielle Belegungsdatei)".
+ DISPLAY " ".
+ DISPLAY "11 - Erstanlage Zimmerdatei".
+ DISPLAY "12 - (Erstanlage sequentielle Zimmerdatei)".
+ DISPLAY " ".
+ DISPLAY "20 - Aktuelle Reservierungen anzeigen".
+ DISPLAY "21 - Alle Kunden anzeigen, die heute abreisen".
+ DISPLAY " ".
+ DISPLAY "30 - Anzeigen aktuell freier Termine".
+ DISPLAY "31 - Hinzufuegen einer neuen Reservierung".
+ DISPLAY "40 - Einen Auftrag stornieren".
+ DISPLAY " ".
+ DISPLAY "99 - Programmende".
+ ACCEPT SCH-MENUE.
+
+ *> ---------------------------------------------------------------*
+
+ UP-START.
+ CALL X"E4".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " ".
+ DISPLAY " H H OOO ZZZZZ I V V EEEEE RRRR ".
+ DISPLAY " H H H O O Z I V V E R R".
+ DISPLAY " HHHHH O O Z I V V EEE RRRR".
+ DISPLAY " H H O O Z I V V E R R".
+ DISPLAY " H H OOO ZZZZZ I V EEEEE R R".
+ DISPLAY " ".
+ DISPLAY " ".
+
+ *> ---------------------------------------------------------------*
+
+ ERSTANLAGE.
+ DISPLAY "Erstellen der ISAM-DAT BELEGUNG".
+ *> Erzeugen einer indizierten Datei
+ *> aus einer sequentiellen Datei
+ *> Ziel: Erstanlage Belegungsdatei zur Weiterverarbeitung
+
+ DISPLAY "ISAM-DAT BELEGUNG wird erstellt".
+ DISPLAY " ".
+ OPEN INPUT SAM-DAT.
+ OPEN OUTPUT ISAM-DAT.
+ MOVE "0" TO SLS.
+ READ SAM-DAT AT END MOVE "1" TO SLS.
+ PERFORM UNTIL SLS = "1"
+ MOVE SAM-ZIMMERNR TO ISAM-ZIMMERNR
+ MOVE SAM-DATUM-ANREISE TO ISAM-DATUM-ANREISE
+ MOVE SAM-DATUM-ABREISE TO ISAM-DATUM-ABREISE
+ MOVE SAM-ANSCHRIFT TO ISAM-ANSCHRIFT
+ MOVE SAM-PREIS TO ISAM-PREIS
+ WRITE ISAM-SATZ
+ INVALID KEY
+ DISPLAY "Satz wurde nicht geschrieben ", SAM-SATZ
+ NOT INVALID KEY
+ DISPLAY "Satz wurde geschrieben ", SAM-SATZ
+ END-WRITE
+ READ SAM-DAT AT END MOVE "1" TO SLS
+ END-READ
+ END-PERFORM.
+ CLOSE SAM-DAT ISAM-DAT.
+ DISPLAY " ".
+ DISPLAY "ISAM-DAT Belegung wurde erzeugt.".
+ PERFORM UP-STEUERMENUE.
+
+ *> ---------------------------------------------------------*
+
+ ERSTANLAGE-BELEGUNG.
+ DISPLAY "Erstellen der SAM-DAT BELEGUNG".
+ DISPLAY "ueber eine Perform-Schleife:".
+ DISPLAY "alle Werte erhalten dieselben Daten.".
+ OPEN OUTPUT SAM-DAT.
+ PERFORM VARYING SATZNR FROM 1 BY 1 UNTIL SATZNR > 75
+ MOVE SATZNR TO SAM-ZIMMERNR
+ MOVE 001121 TO SAM-DATUM-ANREISE
+ MOVE 001218 TO SAM-DATUM-ABREISE
+ MOVE " Otto Mops, 33602 Bielefeld " TO SAM-ANSCHRIFT
+ MOVE 0120 TO SAM-PREIS
+ WRITE SAM-SATZ
+ END-PERFORM.
+ DISPLAY " ".
+ DISPLAY "Erstanlage SAM-DAT BELEGUNG ist erstellt.".
+ CLOSE SAM-DAT.
+ PERFORM UP-STEUERMENUE.
+
+ *> --------------------------------------------------------*
+
+ ERSTANLAGE-ZIMMER.
+ *> Erzeugen einer relativen aus einer sequentiellen Datei
+ *> Ziel: Erstanlage Zimmer
+
+ DISPLAY "Beginn Erzeugung relativer Zimmerdatei".
+ SORT SORTDAT ASCENDING SORT-ZIMMERNR
+ USING ZIMMER-SAM GIVING ZIMMER-REL.
+ DISPLAY "Relative Datei Zimmer wurde erzeugt".
+ PERFORM UP-STEUERMENUE.
+
+ *> ----------------------------------------------------------------*
+
+ ERSTANLAGE-ZIMMER-SEQ.
+ *> Erzeugen einer sequentiellen Ursprungsdatei, aus der
+ *> via Cobolsort eine relative Datei erzeugt werden kann.
+
+ OPEN OUTPUT ZIMMER-SAM.
+ PERFORM VARYING SATZNR FROM 1 BY 1 UNTIL SATZNR > 100
+ MOVE SATZNR TO SAM-ZIMMERNR1
+ MOVE " SUITE " TO SAM-AUSSTATTUNG
+ MOVE 03 TO SAM-ANZAHL-BETTEN
+ MOVE 0150 TO SAM-PREIS-F
+ MOVE 0190 TO SAM-PREIS-H
+ MOVE 0210 TO SAM-PREIS-V
+ WRITE SAM-ZIMMERSATZ
+ END-PERFORM.
+ DISPLAY "SAM-ZIMMER wurde erzeugt.".
+ CLOSE ZIMMER-SAM.
+ PERFORM UP-STEUERMENUE.
+
+ *> ----------------------------------------------------------------*
+
+ LOESCH.
+ DISPLAY "Loeschen einer Reservierung / eines ISAM-SATZES".
+ DISPLAY " ".
+ OPEN I-O ISAM-DAT.
+ DISPLAY "Welcher Satz soll geloescht werden?".
+ DISPLAY " ".
+ DISPLAY "Bitte Zimmernummer eingeben, Form: 0001".
+ ACCEPT ISAM-ZIMMERNR.
+ DISPLAY "Anreisedatum eingeben, Form: 001218".
+ ACCEPT ISAM-DATUM-ANREISE.
+ READ ISAM-DAT.
+ DELETE ISAM-DAT
+ INVALID KEY
+ DISPLAY "Keine Reservierung gefunden: ", ISAM-SCHLUESSEL
+ NOT INVALID KEY
+ DISPLAY "Stornierung fuer Zimmer: ", ISAM-SCHLUESSEL.
+ CLOSE ISAM-DAT.
+ DISPLAY " ".
+ DISPLAY "Ende Loeschen einer Reservierung".
+ PERFORM UP-STEUERMENUE.
+
+ *> -----------------------------------------------------------------*
+
+ ANZEIG1.
+ DISPLAY "Anzeigen aller Reservierungen".
+ DISPLAY " ".
+ MOVE 0 TO SLS.
+ OPEN INPUT ISAM-DAT.
+ PERFORM UNTIL SLS = "1"
+ READ ISAM-DAT NEXT RECORD
+ AT END MOVE "1" TO SLS
+ NOT AT END
+ DISPLAY "ISAM-Satz: ", ISAM-SATZ
+ END-READ
+ END-PERFORM.
+ DISPLAY "Ende der Ausgabe.".
+ CLOSE ISAM-DAT.
+ DISPLAY " ".
+ PERFORM UP-STEUERMENUE.
+
+ *> -----------------------------------------------------------------*
+
+ ANZEIG2.
+ DISPLAY "UP ANZEIG2".
+ DISPLAY "Wahlfreier Zugriff auf indizierte Datei ".
+ DISPLAY "Kunden anzeigen, die heute abreisen".
+ DISPLAY " ".
+ OPEN INPUT ISAM-DAT.
+ DISPLAY "Abreisedatum eingeben, Ende bei 999999".
+ ACCEPT ISAM-DATUM-ABREISE.
+ READ ISAM-DAT KEY IS ISAM-DATUM-ABREISE
+ IF FSTATFELD = 23
+ DISPLAY "Heute reist kein Kunde ab"
+ ELSE
+ DISPLAY "Abreise heute: ", ISAM-ANSCHRIFT
+ PERFORM UNTIL FSTATFELD NOT = 02
+ READ ISAM-DAT NEXT RECORD
+ AT END MOVE "1" TO SLS
+ DISPLAY "Abreise heute: ", ISAM-ANSCHRIFT
+ END-PERFORM
+ END-IF.
+ CLOSE ISAM-DAT.
+ PERFORM UP-STEUERMENUE.
+
+ *> --------------------------------------------------------------*
+
+ ANZEIG3.
+ DISPLAY "Ueberpruefung der Zimmer auf Belegung".
+ MOVE ALL "F" TO ZIMMER-TAB.
+ MOVE "0" TO SLS.
+ MOVE 0 TO SATZNR.
+ OPEN INPUT ISAM-DAT.
+ DISPLAY " ".
+ DISPLAY "Anzeigen aller Zimmer, die".
+ DISPLAY "im gewuenschten Zeitraum frei sind.".
+ DISPLAY "Gewuenschtes Anreisedatum - FORM 001218".
+ ACCEPT ISAM-DATUM-ANREISEP.
+ DISPLAY "Gewuenschtes Abreisedatum - FORM 010119".
+ ACCEPT ISAM-DATUM-ABREISEP.
+ READ ISAM-DAT NEXT RECORD AT END MOVE "1" TO SLS.
+ PERFORM UNTIL SLS = "1"
+ IF (ISAM-DATUM-ABREISE >= ISAM-DATUM-ANREISEP
+ OR ISAM-DATUM-ABREISEP >= ISAM-DATUM-ANREISE)
+ MOVE "B" TO ZIMMER-ELEMENT(ISAM-ZIMMERNR)
+ END-IF
+ READ ISAM-DAT NEXT RECORD AT END MOVE "1" TO SLS
+ END-READ
+ END-PERFORM.
+ CLOSE ISAM-DAT.
+
+ DISPLAY "ZUR KONTROLLE".
+ DISPLAY "Anzeigen der Zimmertab: belegte Saetze".
+ PERFORM VARYING SATZNR FROM 1 BY 1 UNTIL SATZNR > 100
+ DISPLAY "Inhalt: ", ZIMMER-ELEMENT(SATZNR)
+ END-PERFORM.
+
+ DISPLAY " ".
+ MOVE 0 TO SATZNR.
+ OPEN INPUT ZIMMER-REL.
+ DISPLAY "Anzeigen aller freien Zimmer".
+ PERFORM VARYING SATZNR FROM 1 BY 1 UNTIL SATZNR > 100
+ IF ZIMMER-ELEMENT(SATZNR) = "F"
+ READ ZIMMER-REL RECORD
+ INVALID KEY DISPLAY "Fehler"
+ NOT INVALID KEY
+ DISPLAY "Zimmer: ", REL-ZIMMERSATZ
+ END-READ
+ END-IF
+ END-PERFORM.
+ CLOSE ZIMMER-REL.
+ PERFORM UP-STEUERMENUE.
+
+ *> ----------------------------------------------------------------*
+
+ HINZU2.
+ DISPLAY "Neue Reservierung hinzufuegen".
+ OPEN I-O ISAM-DAT.
+ DISPLAY " ".
+ DISPLAY "Welches Zimmer soll belegt werden?".
+ ACCEPT ISAM-ZIMMERNR.
+ DISPLAY " ".
+ DISPLAY "ANREISEDATUM: ", ISAM-DATUM-ANREISEP.
+ MOVE ISAM-DATUM-ANREISEP TO ISAM-DATUM-ANREISE.
+ DISPLAY " ".
+ DISPLAY "ABREISEDATUM: ", ISAM-DATUM-ABREISEP.
+ MOVE ISAM-DATUM-ABREISEP TO ISAM-DATUM-ABREISE.
+ DISPLAY " ".
+ DISPLAY "ANSCHRIFT EINGEBEN".
+ ACCEPT ISAM-ANSCHRIFT.
+ DISPLAY " ".
+ DISPLAY "Preis eingeben - Form: 1200,99".
+ ACCEPT ISAM-PREIS.
+ DISPLAY " ".
+ WRITE ISAM-SATZ
+ INVALID KEY
+ DISPLAY "Schreiben nicht moeglich"
+ NOT INVALID KEY
+ DISPLAY "Reservierung wurde hinzugefuegt"
+ END-WRITE.
+ CLOSE ISAM-DAT.
+ PERFORM UP-STEUERMENUE.
+
+ *> ----------------------------------------------------*
+
+ UP-MELDUNG.
+ DISPLAY "Falsche Eingabe, noch einmal".
+ PERFORM UP-STEUERMENUE.

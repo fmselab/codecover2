@@ -1,0 +1,152 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 131082 // initial
+  xyz 32 3 2000
+activitynodecanvas 128138 activitynode_ref 131210 // activity_final
+  xyz 27 674 2000
+activityactioncanvas 128522 activityaction_ref 131210 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 123 94 2000 141 55
+end
+activityactioncanvas 128778 activityaction_ref 131338 // activity action Call activity "select test cases"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 204 218 2000 163 63
+end
+activityactioncanvas 129034 activityaction_ref 131466 // activity action User opens the "Coverage" view of the plugin
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 254 343 2000 233 75
+end
+activityactioncanvas 129674 activityaction_ref 131594 // activity action Expand items to reveal subitems
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 215 500 2000 153 71
+end
+activityactioncanvas 129802 activityaction_ref 131722 // activity action Sort by clicking the column header
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 373 500 2000 153 71
+end
+activitynodecanvas 131210 activitynode_ref 138378 // decision
+  xyz 28 58 2000
+activitynodecanvas 133002 activitynode_ref 138890 // decision
+  xyz 358 449 2000
+activitynodecanvas 133258 activitynode_ref 139018 // merge
+  xyz 359 574 2000
+activitynodecanvas 134794 activitynode_ref 139146 // decision
+  xyz 359 626 2000
+activitynodecanvas 135946 activitynode_ref 139274 // decision
+  xyz 181 168 2000
+activitynodecanvas 136586 activitynode_ref 139402 // decision
+  xyz 273 300 2000
+flowcanvas 131338 flow_ref 162698 // <flow>
+  
+  from ref 128010 z 1999 to ref 131210
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131466 flow_ref 162826 // Project not opened
+  
+  from ref 131210 z 1999 label "Project not opened" xyz 0 105 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131594 flow_ref 162954 // Project opened
+  geometry HV
+  
+  from ref 131210 z 1999 label "Project opened" xyz 86 44 1999 to point 191 74
+  line 131722 z 1999 to ref 128522
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133130 flow_ref 163594 // <flow>
+  
+  from ref 129034 z 1999 to ref 133002
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133386 flow_ref 163722 // <flow>
+  geometry VHr
+  
+  from ref 133002 z 1999 to point 289 465
+  line 133770 z 1999 to ref 129674
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 163850 // <flow>
+  geometry HV
+  
+  from ref 133002 z 1999 to point 447 465
+  line 133642 z 1999 to ref 129802
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133898 flow_ref 163978 // <flow>
+  geometry VH
+  
+  from ref 129674 z 1999 to point 289 590
+  line 134282 z 1999 to ref 133258
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134026 flow_ref 164106 // <flow>
+  geometry HVr
+  
+  from ref 129802 z 1999 to point 447 590
+  line 134154 z 1999 to ref 133258
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134922 flow_ref 164362 // <flow>
+  
+  from ref 133258 z 1999 to ref 134794
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135050 flow_ref 164490 // <flow>
+  
+  from ref 134794 z 1999 to point 540 642
+  line 135178 z 1999 to point 540 432
+  line 135306 z 1999 to point 368 432
+  line 135434 z 1999 to ref 133002
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135562 flow_ref 164618 // <flow>
+  geometry VHr
+  
+  from ref 134794 z 1999 to point 37 642
+  line 135818 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136074 flow_ref 164746 // <flow>
+  
+  from ref 128522 z 1999 to ref 135946
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136202 flow_ref 164874 // No session selected
+  geometry VHr
+  
+  from ref 135946 z 1999 label "No session selected" xyz 59 166 1999 to point 37 184
+  line 136330 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136458 flow_ref 165002 // Session selected
+  geometry HV
+  
+  from ref 135946 z 1999 label "Session selected" xyz 206 166 1999 to point 283 184
+  line 137482 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136714 flow_ref 165130 // No test case selected
+  geometry VHr
+  
+  from ref 136586 z 1999 label "No test case selected" xyz 76 295 1999 to point 37 316
+  line 136970 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137098 flow_ref 165258 // <flow>
+  
+  from ref 128778 z 1999 to ref 136586
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137226 flow_ref 165386 // Test case selected
+  geometry HV
+  
+  from ref 136586 z 1999 label "Test case selected" xyz 301 295 1999 to point 368 316
+  line 137354 z 1999 to ref 129034
+  show_infonote default drawing_language default write_horizontally default
+end
+end

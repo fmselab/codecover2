@@ -1,0 +1,225 @@
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>onQuit - livenotificationrun - CodeCover Report</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../style.css">
+</head>
+<body>
+    <div class="headline">
+        Coverage Report
+    </div>
+    <div class="session">
+        livenotificationrun
+    </div>
+    <div class="sessionDate">
+        measured on November 5, 2007 4:04:16 PM CET
+    </div>
+    <div class="linkToTop">
+          <a href="../../../../../../../SimpleJavaAppReport.html">
+              up to the title page
+          </a>
+    </div>
+    <div class="ancestors">
+    <a href="../../../../../index.html">
+        org</a>
+    .
+    <a href="../../../../index.html">
+        codecover</a>
+    .
+    <a href="../../../index.html">
+        simplejavaapp</a>
+    .
+    <a href="../../index.html">
+        controller</a>
+    .
+    <a href="../index.html">
+        AppController</a>
+    .
+    onQuit
+    </div><div class="methodInfo">
+    <table class="methodInfo">
+    <thead class="methodInfo">
+        <tr class="methodInfo">
+            <th class="methodInfo firstcolumn"></th>
+            <th class="methodInfo" colspan="3">Statement Coverage</th>
+            <th class="methodInfo" colspan="3">Branch Coverage</th>
+            <th class="methodInfo" colspan="3">Loop Coverage</th>
+            <th class="methodInfo" colspan="3">Strict Condition Coverage</th>
+        </tr>
+    </thead>
+    <tbody class="methodInfo">
+        <tr class="methodInfo">
+            <td class="methodInfo firstcolumn">
+                    private void onQuit(String fileId, String[] allFileIds)
+            </td>  
+                                    <td class="methodInfo">
+                        0&nbsp;/&nbsp;1
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        0&nbsp;/&nbsp;2
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        0&nbsp;/&nbsp;3
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                                                <td class="methodInfo">
+                        0&nbsp;/&nbsp;1
+                </td>
+                <td class="methodInfo">
+                        0&nbsp;%
+                </td>
+                <td class="methodInfo coverage">
+                        <div class="red"><div class="green" style="width:0%"></div></div>
+                </td>   
+                        </tr>
+    </tbody>
+    </table></div>
+    <div class="code">
+    <table class="code">
+        <thead class="code">
+        <tr class="code">
+                        <th class="code" colspan="3">AppController.java</th>
+                </tr>
+        </thead>
+        <tbody class="code">
+                      <tr class="code" id="L150">
+             <td class="code lineNumber">
+                  <a href="#L150">150</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; private void onQuit(String fileId, String[] allFileIds) {
+              </td>
+          </tr>
+                      <tr class="code" id="L151">
+             <td class="code lineNumber">
+                  <a href="#L151">151</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Loop_Coverage" title="Missing execution(s): ZERO ONE MANY time(s).">for</span> (String id : allFileIds) {
+              </td>
+          </tr>
+                      <tr class="code" id="L152">
+             <td class="code lineNumber">
+                  <a href="#L152">152</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Branch_Coverage" title="Unexecuted branches: then,  implicit (omitted) branch">if</span> (!<span class="covered notCovered Strict_Condition_Coverage">onCloseWindow(id)</span>) {
+              </td>
+          </tr>
+                      <tr class="code" id="L153">
+             <td class="code lineNumber">
+                  <a href="#L153">153</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;
+              </td>
+          </tr>
+                      <tr class="code" id="L154">
+             <td class="code lineNumber">
+                  <a href="#L154">154</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L155">
+             <td class="code lineNumber">
+                  <a href="#L155">155</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+                      <tr class="code" id="L156">
+             <td class="code lineNumber">
+                  <a href="#L156">156</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  
+              </td>
+          </tr>
+                      <tr class="code" id="L157">
+             <td class="code lineNumber">
+                  <a href="#L157">157</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* All windows were closed so we can exit the application. */
+              </td>
+          </tr>
+                      <tr class="code" id="L158">
+             <td class="code lineNumber">
+                  <a href="#L158">158</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="covered notCovered Statement_Coverage">System.exit(0);</span>
+              </td>
+          </tr>
+                      <tr class="code" id="L159">
+             <td class="code lineNumber">
+                  <a href="#L159">159</a>
+                       </td>
+              <td class="code executions">
+                       &nbsp;
+              </td>
+              <td class="code text">
+                  &nbsp;&nbsp;&nbsp; }
+              </td>
+          </tr>
+            </tbody>
+    </table></div>
+        <div class="creationNote">
+        created on November 17, 2007 7:07:00 PM CET with
+        <a href="http://www.codecover.org">
+            CodeCover
+        </a>
+    </div>    
+</body>
+</html>
+        

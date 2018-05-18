@@ -1,0 +1,130 @@
+format 29
+
+activitynodecanvas 128266 activitynode_ref 128138 // initial
+  xyz 31 1 2000
+activityactioncanvas 128394 activityaction_ref 128010 // activity action User opens the "Project Properties" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 132 77 2000 192 75
+end
+activitynodecanvas 128906 activitynode_ref 128266 // decision
+  xyz 28 39 1994
+activitynodecanvas 133386 activitynode_ref 128394 // activity_final
+  xyz 27 618 2000
+activityactioncanvas 134282 activityaction_ref 128138 // activity action User selects the gbt² item
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 166 163 2000 124 62
+end
+activityactioncanvas 135306 activityaction_ref 128522 // activity action Close dialog window
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 253 469 2000 114 61
+end
+activityactioncanvas 139018 activityaction_ref 128778 // activity action User selects/deselects criteria
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 135 237 2000 187 65
+end
+activitynodecanvas 139274 activitynode_ref 128906 // decision
+  xyz 216 321 2000
+activityactioncanvas 139530 activityaction_ref 128906 // activity action Last criterion is not deselected
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 345 358 2000 134 53
+end
+activitynodecanvas 140042 activitynode_ref 129034 // decision
+  xyz 216 418 2000
+activityactioncanvas 140298 activityaction_ref 129034 // activity action Save the selection
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 105 469 2000 97 53
+end
+activityactioncanvas 141450 activityaction_ref 129162 // activity action Check instrumented items for possible necessary reinstrumentation
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 188 557 2000 246 74
+end
+flowcanvas 129418 flow_ref 128138 // <flow>
+  
+  from ref 128266 z 1999 to ref 128906
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129930 flow_ref 128394 // Project opened
+  geometry HV
+  
+  from ref 128906 z 1993 label "Project opened" xyz 106 34 1993 to point 225 55
+  line 144010 z 1993 to ref 128394
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 128650 // Project not opened
+  
+  from ref 128906 z 1993 label "Project not opened" xyz 1 109 1993 to ref 133386
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134410 flow_ref 128778 // <flow>
+  
+  from ref 128394 z 1999 to ref 134282
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139146 flow_ref 130314 // <flow>
+  
+  from ref 134282 z 1999 to ref 139018
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139402 flow_ref 130442 // <flow>
+  
+  from ref 139018 z 1999 to ref 139274
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 139658 flow_ref 130570 // Tried to deselect the last selected criterion
+  geometry HV
+  
+  from ref 139274 z 1999 label "Tried to deselect the last selected criterion" xyz 240 318 1999 to point 409 337
+  line 142346 z 1999 to ref 139530
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140170 flow_ref 130826 // <flow>
+  
+  from ref 139274 z 1999 to ref 140042
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140426 flow_ref 130954 // User clicks the "OK" button
+  geometry VHr
+  
+  from ref 140042 z 1999 label "User clicks the \"OK\" button" xyz 60 420 1999 to point 151 434
+  line 142602 z 1999 to ref 140298
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140554 flow_ref 131082 // <flow>
+  
+  from ref 140298 z 1999 to ref 135306
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 140682 flow_ref 131210 // User clicks the "Cancel" button
+  geometry HV
+  
+  from ref 140042 z 1999 label "User clicks the \"Cancel\" button" xyz 247 419 1999 to point 307 434
+  line 144266 z 1999 to ref 135306
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 141194 flow_ref 131338 // <flow>
+  geometry VHr
+  
+  from ref 139530 z 1999 to point 226 382
+  line 144138 z 1999 to ref 140042
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 141578 flow_ref 131466 // <flow>
+  
+  from ref 135306 z 1999 to ref 141450
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 141706 flow_ref 131594 // <flow>
+  geometry VHr
+  
+  from ref 141450 z 1999 to point 37 591
+  line 143754 z 1999 to ref 133386
+  show_infonote default drawing_language default write_horizontally default
+end
+end

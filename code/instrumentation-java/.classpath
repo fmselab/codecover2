@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/.svn/**" kind="src" path="src"/>
+	<classpathentry excluding="**/.svn/**|org/codecover/instrumentation/ada2005/|org/codecover/instrumentation/ada95/" kind="src" path="junit"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/InstrumenterProviderTestJar.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/instrumentation"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/instrumentation-java-measurement"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/model"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

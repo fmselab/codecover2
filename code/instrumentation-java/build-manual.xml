@@ -1,0 +1,55 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="component-name" value="instrumentation-java" />
+  <property name="classpath" value="../model/model.jar:../instrumentation/instrumentation.jar:../instrumentation-java-measurement/instrumentation-java-measurement.jar" />
+  <property name="instrumenter-provider-test-jarfile" value="InstrumenterProviderTestJar.jar" />
+  <property name="junit-classpath" value="lib/${instrumenter-provider-test-jarfile}" />
+  <property name="unittest-class-name" value="org.codecover.AllTests" />
+  <property name="componenttest-class-name" value="org.codecover.componenttest.model.AllTests" />
+
+  <property name="testjar-instrumenter-provider-test-dir1" value="org/codecover/instrumentation/ada95/" />
+  <property name="testjar-instrumenter-provider-test-included1" value="${testjar-instrumenter-provider-test-dir1}**" />
+  <property name="testjar-instrumenter-provider-test-excluded1" value="${testjar-instrumenter-provider-test-dir1}**" />
+  <property name="testjar-instrumenter-provider-test-dir2" value="org/codecover/instrumentation/ada2005/" />
+  <property name="testjar-instrumenter-provider-test-included2" value="${testjar-instrumenter-provider-test-dir2}**" />
+  <property name="testjar-instrumenter-provider-test-excluded2" value="${testjar-instrumenter-provider-test-dir2}**" />
+
+  <import file="build-common.xml" />
+
+  <target name="testJar">
+    <javac compiler="modern"
+               srcdir="${unittest-src-dir}"
+               destdir="${bin-dir}"
+               includes="${testjar-instrumenter-provider-test-included1} ${testjar-instrumenter-provider-test-included2}"
+               encoding="UTF-8"
+               classpath="${classpath}"
+               debug="true"
+               target="1.5"
+               failonerror="true"
+               includeJavaRuntime="true"
+               nowarn="yes"
+               includeAntRuntime="false">
+      <compilerarg value="-Xlint:{-deprecation,-unchecked}" />
+    </javac>
+    <!--
+     ! these are two class files, which we need for
+     ! InstrumenterProviderTest
+     !-->
+    <jar destfile="${lib-dir}/${instrumenter-provider-test-jarfile}"
+         compress="true"
+         update="true">
+      <fileset dir="${bin-dir}" includes="${testjar-instrumenter-provider-test-included1}" />
+      <fileset dir="${unittest-src-dir}" includes="${testjar-instrumenter-provider-test-included1}" />
+      <fileset dir="${bin-dir}" includes="${testjar-instrumenter-provider-test-included2}" />
+      <fileset dir="${unittest-src-dir}" includes="${testjar-instrumenter-provider-test-included2}" />
+    </jar>
+
+    <!--
+     ! we have to delete these class files,
+     ! otherwise the InstrumenterProvider would take these from the bin
+     ! instead of having to search in the InstrumenterProviderTestJar.jar
+     !-->
+    <delete dir="${bin-dir}/${testjar-instrumenter-provider-test-dir1}" />
+    <delete dir="${bin-dir}/${testjar-instrumenter-provider-test-dir2}" />
+  </target>
+</project>

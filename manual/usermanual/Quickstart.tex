@@ -1,0 +1,93 @@
+\svnid{$Id: Quickstart.tex 1 2007-12-12 17:37:26Z t-scheller $}
+\section{Quickstart Guide}\label{qsg}
+This section provides you, the aspiring \codecover user, with a step by step instruction set, that, starting with a piece of software, progressing over the instrumentation, compilation of the instrumented software, and its execution, results in an html-report, containing the coverage data measured during the execution. 
+\subsection{General Preconditions}
+\begin{itemize}
+\item The name of the software used in this example is \software
+\item \software is written in Java
+\item \software sources are encoded using UTF-8
+\item \codecover is executed with the \code{codecover} command
+\item \verb$CODECOVER_HOME$ refers to the installation directory of \codecover
+\end{itemize}
+
+\subsection{Instrument}
+The first step lies in the instrumentation of \software with the following command: 
+\begin{verbatim}
+codecover instrument
+    --root-directory DeepThought/src
+    --destination DeepThought/instrumentedSrc 
+    --container DeepThought/test-session-container.xml
+    --language java 
+    --charset UTF-8 
+\end{verbatim}
+\begin{itemize}
+\item The option \code{root-directory} refers to the directory of the software, that holds the top-level package(s) of the to be instrumented code.
+\item The option \code{destination} refers to the directory the instrumented source files are put.
+\item The option \code{container} refers to the test session container, that holds the static information about the instrumented code, as well as the later the collected coverage data.
+\item The option \code{language} refers to the language of the to be instrumented code, which in this case equates to Java.
+\item The option \code{charset} refers to the charset, in which the source files are saved in.
+\end{itemize}
+
+You will commence the instrumentation process with the execution of this command, whose duration depends on the size of the to be instrumented code. As a result of said process a number of new, instrumented source files are created in the specified destination.
+
+\subsection{Compile}
+After the instrumentation of the software follows now the compilation of the instrumented source code. This falls outside the purview of \codecover and your job. It must be noted, that any additional source files created by \codecover must be compiled alongside the instrumented source code.
+
+\subsection{Execute}
+You can now execute the compiled program, which will result in a coverage log file. This file holds, for now, the coverage data measured during the execution and, in the next step, will be entered into the test session container.
+
+\subsection{Analyze}
+The created coverage log file is entered into the test session container with the following command:
+\begin{verbatim}
+codecover analyse 
+    --container DeepThought/test-session-container.xml 
+    --coverage-log DeepThought/coverage_log.clf 
+    --name TestSession1 
+    --comment "The first test session"
+\end{verbatim}
+\begin{itemize}
+\item The option \code{container} refers to the test session container, into which the coverage data is to be entered, ordinarily the test session container created during the instrumentation process. 
+\item The option \code{coverage-log} refers to the coverage log file, whose coverage data is to be entered into the test session container.
+\item The option \code{name} refers to the name of the test session, the coverage data is attributed to.
+\item The option \code{comment} refers to an optional comment, that can be added to a test session.
+\end{itemize}
+You will enter the coverage data of the coverage log file into the test session container with the execution of this command. The coverage log file is no longer needed after the successful completion of the command.
+
+\subsection{Interlude}
+You can now repeat the execution of the software and the analyzing of the resulting coverage log into further test sessions. Since the report can currently be based only on a single test session, provides \codecover you with a command, that can merge existing test sessions into a single test session, that contains all the data of the precursor test sessions. If you didn't create multiple test sessions, or don't want to merge the test sessions, then you can skip the following step and continue on to the creation of the report.
+
+\subsection{Merge test sessions}
+Multiple test sessions can be merged into a single test session, with the following command:
+\begin{verbatim}
+codecover merge-sessions 
+    --container DeepThought/test-session-container.xml 
+    --sessions TestSession1 
+    --sessions TestSession2 
+    --name "TestSession1+2" 
+    --comment "TestSession1 and TestSession2" 
+\end{verbatim}
+\begin{itemize}
+\item The option \code{container} refers to the test session container, which holds the to be merged test sessions.
+\item The option \code{sessions} refers to individual test sessions, that are to be merged. It is assumed here, that you created a second test session with the name "TestSession2".
+\item The option \code{name} refers to the name of the merged test session
+\item The option \code{comment} refers to an optional comment, that can be added to the merged test session.
+\end{itemize}
+Execution of this command creates a new test session with the name "TestSession1+2", that holds all the coverage data of the precursor test sessions.
+
+\subsection{Generate Report}
+Finally \codecover can generate a report of one of the test sessions in the test session container with the following command:
+\begin{verbatim}
+codecover report 
+    --container DeepThought/test-session-container.xml 
+    --destination DeepThought/report/index.html 
+    --session "TestSession1+2" 
+    --template CODECOVER_HOME/report-templates/HTML_Report_hierarchic.xml 
+\end{verbatim}
+
+\begin{itemize}
+\item The option \code{container} refers to the test session container, which holds the test session, from which a report is generated.
+\item The option \code{destination} refers to the directory, in which the report is generated and the top-level html-file of the report. At the moment, this directory must exists prior to the execution of this command.
+\item The option \code{session} refers to the name of the test session, from which a report is generated. In this case it is assumed, that you merged two test sessions into the given one. Was this not the case, simply substitute the name of the test session with one of a test session you want to generate a report about.
+\item The option \code{template} refers to the template used in the generation of the report.
+\end{itemize}
+Execution of this command will generate a report, of the given test session, at the specified location, for you to examine and concludes this guide.

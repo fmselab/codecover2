@@ -1,0 +1,111 @@
+format 29
+
+classcanvas 128064 class_ref 134932 // JavaParser
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 287 465 2000
+classcanvas 128192 class_ref 135060 // Instrumenter
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 49 282 2004
+classcanvas 128448 class_ref 134036 // Instrumenter
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode natural drawing_language default show_context_mode package auto_label_position default shadow default
+  xyz 87 53 2009
+classcanvas 128960 class_ref 128064 // InstrumenterDescriptor
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode package auto_label_position default shadow default
+  xyz 450 6 2019
+classcanvas 129216 class_ref 128320 // InstrumenterDescriptor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 520 284 2000
+classcanvas 129728 class_ref 133908 // Criterion
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode package auto_label_position default shadow default
+  xyz 273 161 3005
+classcanvas 141504 class_ref 129600 // InstrumentationVisitor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 27 719 2000
+classcanvas 142016 class_ref 133396 // StatementManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 122 588 2000
+classcanvas 142144 class_ref 133268 // BranchManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 193 680 2000
+classcanvas 142272 class_ref 133012 // ConditionManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 162 810 2000
+classcanvas 142400 class_ref 133140 // LoopManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 14 813 2000
+relationcanvas 129088 relation_ref 128704 // <unidirectional association>
+  geometry VH
+  from ref 128448 z 1999 to point 199 23
+  line 136128 z 1999 to ref 128960
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129344 relation_ref 128832 // <realization>
+  geometry HVH unfixed
+  from ref 129216 z 1999 to point 830 375
+  line 139968 z 1999 to point 830 23
+  line 140096 z 1999 to ref 128960
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129856 relation_ref 132372 // <unidirectional association>
+  geometry HV
+  from ref 128448 z 1999 to point 395 70
+  line 135744 z 1999 to ref 129728
+  role_a_pos 407 140 3000 no_role_b
+  multiplicity_a_pos 369 140 3000 no_multiplicity_b
+relationcanvas 132416 relation_ref 129088 // <generalisation>
+  geometry HVH unfixed
+  from ref 128192 z 2003 to point 23 313
+  line 140864 z 2003 to point 23 70
+  line 140992 z 2003 to ref 128448
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 136896 relation_ref 129216 // <association>
+  geometry HVH
+  from ref 128192 z 1999 to point 437 313
+  line 137664 z 1999 to point 437 375
+  line 137792 z 1999 to ref 129216
+  role_a_pos 454 357 3000 role_b_pos 369 295 3000
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 137920 relation_ref 129344 // <unidirectional association>
+  geometry VHV
+  from ref 128192 z 1999 to point 202 404
+  line 141248 z 1999 to point 375 404
+  line 141376 z 1999 to ref 128064
+  role_a_pos 387 444 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 138816 relation_ref 130240 // <unidirectional association>
+  geometry HVr
+  from ref 129216 z 1999 to point 664 178
+  line 140736 z 1999 to ref 129728
+  role_a_pos 531 160 3000 no_role_b
+  multiplicity_a_pos 531 187 3000 no_multiplicity_b
+relationcanvas 138944 relation_ref 130368 // <unidirectional association>
+  geometry VH
+  from ref 128192 z 2003 to point 202 178
+  line 141120 z 2003 to ref 129728
+  role_a_pos 225 160 3000 no_role_b
+  multiplicity_a_pos 244 187 3000 no_multiplicity_b
+relationcanvas 141632 relation_ref 130496 // <unidirectional association>
+  geometry VHV unfixed
+  from ref 128192 z 1999 to point 202 405
+  line 141760 z 1999 to point 94 405
+  line 141888 z 1999 to ref 141504
+  role_a_pos 106 698 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 142528 relation_ref 133184 // <unidirectional association>
+  from ref 141504 z 1999 to ref 142016
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 142656 relation_ref 133312 // <unidirectional association>
+  from ref 141504 z 1999 to ref 142144
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 142784 relation_ref 133440 // <unidirectional association>
+  from ref 141504 z 1999 to ref 142272
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 142912 relation_ref 133568 // <unidirectional association>
+  from ref 141504 z 1999 to ref 142400
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

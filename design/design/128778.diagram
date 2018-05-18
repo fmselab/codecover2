@@ -1,0 +1,163 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 132106 // initial
+  xyz 33 0 2000
+activitynodecanvas 128394 activitynode_ref 132490 // decision
+  xyz 30 36 2000
+activityactioncanvas 129034 activityaction_ref 132618 // activity action User clicks on "Drop Session" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 373 217 2000 140 80
+end
+activityactioncanvas 129162 activityaction_ref 132746 // activity action Open dialog to ask user, if he wants to only drop the session from the view or delete it from the file system as well
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 54 213 2000 290 87
+end
+activitynodecanvas 129290 activitynode_ref 132618 // decision
+  xyz 398 415 2000
+activityactioncanvas 129418 activityaction_ref 132874 // activity action Delete from file system
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 141 403 2000 126 61
+end
+activitynodecanvas 129802 activitynode_ref 132746 // decision
+  xyz 192 485 2000
+activityactioncanvas 130698 activityaction_ref 133002 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 82 534 2000 125 59
+end
+activityactioncanvas 131082 activityaction_ref 133130 // activity action Remove session from view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 343 319 2000 133 70
+end
+activityactioncanvas 132234 activityaction_ref 133258 // activity action Close dialog window
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 133 323 2000 139 64
+end
+activitynodecanvas 132362 activitynode_ref 132874 // activity_final
+  xyz 30 702 2000
+activityactioncanvas 134282 activityaction_ref 133386 // activity action Refresh the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 210 646 2000 134 67
+end
+activitynodecanvas 134922 activitynode_ref 133002 // merge
+  xyz 262 584 2000
+activityactioncanvas 136842 activityaction_ref 137994 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 119 78 2000 147 57
+end
+activitynodecanvas 136970 activitynode_ref 139914 // decision
+  xyz 181 165 2000
+flowcanvas 128522 flow_ref 138506 // <flow>
+  
+  from ref 128010 z 1999 to ref 128394
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129546 flow_ref 138634 // "Delete" selected
+  
+  from ref 129290 z 1999 label "\"Delete\" selected" xyz 286 416 1999 to ref 129418
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129930 flow_ref 138762 // <flow>
+  
+  from ref 129418 z 1999 to ref 129802
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130442 flow_ref 139274 // <flow>
+  
+  from ref 129034 z 1999 to ref 129162
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130954 flow_ref 139658 // Errors whilst deleting
+  geometry HV
+  
+  from ref 129802 z 1999 label "Errors whilst deleting" xyz 48 482 1999 to point 142 501
+  line 138506 z 1999 to ref 130698
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132618 flow_ref 140170 // Project not opened
+  
+  from ref 128394 z 1999 label "Project not opened" xyz 3 93 1999 to ref 132362
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133514 flow_ref 140682 // <flow>
+  
+  from ref 129162 z 1999 to ref 132234
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134026 flow_ref 141066 // <flow>
+  
+  from ref 132234 z 1999 to ref 131082
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134154 flow_ref 141194 // <flow>
+  
+  from ref 131082 z 1999 to ref 129290
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135050 flow_ref 141834 // <flow>
+  
+  from ref 134922 z 1999 to ref 134282
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135178 flow_ref 141962 // <flow>
+  geometry HVr
+  
+  from ref 129290 z 1999 to point 408 600
+  line 139146 z 1999 to ref 134922
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135306 flow_ref 142090 // No errors whilst deleting
+  geometry VHr
+  
+  from ref 129802 z 1999 label "No errors whilst deleting" xyz 215 483 1999 to point 272 501
+  line 138122 z 1999 to ref 134922
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135434 flow_ref 142218 // <flow>
+  geometry VHr
+  
+  from ref 130698 z 1999 to point 272 561
+  line 137994 z 1999 to ref 134922
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137098 flow_ref 166666 // <flow>
+  
+  from ref 136842 z 1999 to ref 136970
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137226 flow_ref 166794 // No session selected
+  geometry VHr
+  
+  from ref 136970 z 1999 label "No session selected" xyz 50 161 1999 to point 40 181
+  line 137482 z 1999 to ref 132362
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137610 flow_ref 166922 // Project opened
+  geometry HV
+  
+  from ref 128394 z 1999 label "Project opened" xyz 84 33 1999 to point 190 52
+  line 138890 z 1999 to ref 136842
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 137738 flow_ref 167050 // Session selected
+  geometry HV
+  
+  from ref 136970 z 1999 label "Session selected" xyz 275 161 1999 to point 440 181
+  line 137866 z 1999 to ref 129034
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 138634 flow_ref 167178 // <flow>
+  geometry VHr
+  
+  from ref 134282 z 1999 to point 40 677
+  line 138762 z 1999 to ref 132362
+  show_infonote default drawing_language default write_horizontally default
+end
+end

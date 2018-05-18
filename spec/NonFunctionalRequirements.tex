@@ -1,0 +1,163 @@
+\svnid{$Id: NonFunctionalRequirements.tex 1 2007-12-12 17:37:26Z t-scheller $}
+\section{Non-functional requirements} \label{nf:Non-functional requirements}
+\subsection{Technologies and development environment}
+The following software is used for development:
+\begin{itemize}
+\item Java 5 SE
+\item Eclipse 3.3.x
+\item the customer's COBOL-85 grammar \footnote{bruessel.informatik.uni-stuttgart.de:/home/export/bruessel/projects/stupro06/grammars/cobol.jj}
+\item Subversion 1.3.0 on the server for configuration management
+\item ArgoUML 0.22 for use case diagrams in the \gl[specification]{specification}
+\item BOUML 2.21.5 or compatible for UML diagrams
+
+\end{itemize}
+\par
+The following technologies are used for development:
+\begin{itemize}
+\item LaTeX as document format
+\item UTF-8 for encoding text
+\item XML as the intermediate format for reports
+\item Java and COBOL-85 example programs
+\end{itemize}
+
+\subsection{Requirements to the working environment}
+\subsubsection{Software requirements}
+%requirements to the hard- and software at the users computer
+%JUnit not required but optional: JUnit for JUnit integration ~> no need to mention
+The following programs are required to use the software:
+\begin{itemize}
+\item Java version 5 or later
+\item Eclipse 3.3.x for all GUI functions
+\item \gl[PDF]{PDF} viewer for documentation which supports at least PDF 1.4
+%TODO: which version of JUnit? ; Iteration 3
+\item JUnit for automatic \gl[test case]{test case} recognition
+\item for COBOL support a COBOL-85 preprocessor to prepare code for \gl[instrumentation]{instrumentation} and a compiler to compile the instrumented code
+\end{itemize}
+
+\subsubsection{Hardware requirements} \label{nf:Hardware requirements}
+%NOTE: customer mentioned no clear requirements: basically we may assert recent hardware
+To support a wide installation base moderate hardware should be enough for using the software. Exact minimum requirements must be determined based on the final application.
+\par
+The minimum hardware required is:
+\begin{itemize}
+\item 512 MiB \footnote{1 MiB = $2^{20}$ Bytes} of RAM
+\item a CPU as powerful as an AMD Athlon with 1 GHz clock rate
+\item 100 MiB of free hard disk space for installation with Eclipse already installed, to store working data and for some \gl[session container]{session containers}
+\end{itemize}
+
+The following hardware is recommended:
+\begin{itemize}
+%min 512 MiB is suggested for eclipse
+\item 1 GiB of RAM
+%min 1 GHz is suggested for eclipse
+\item a CPU as powerful as single core AMD Athlon with 2 GHz clock rate
+%normally not mentioned, recent single drives achive 90 MB/s
+%Johannes has ~250MB/s at home if necessary, only with 1.6GHz CPU however. 60MB/s via NFS and a fast dual core CPU could be made available
+\item 60 MiB/s read and write sequential transfer rate measured at file system level
+%would make ~1000 bytes per LOC when analyzing 5 Mio LOC
+\item 10 GiB of free hard disk space to store working data and some coverage results
+\end{itemize}
+
+\subsection{Quantity requirements} \label{nf:Quantity requirements}
+Quantities that have no defined maximum are only limited by the resources of the PC the software runs on.
+
+\subsubsection{Program examples}
+\paragraph{Small program} \label{nf:Small program}
+\linkwithfootnote{http://sourceforge.net/projects/fred}{Fred v1.3.5 RC2} is a small program. All functions of the software that dont' work with it are completely useless.
+\paragraph{Medium program} \label{nf:Medium program}
+\linkwithfootnote{http://tomcat.apache.org/download-55.cgi}{Tomcat 5.5.20} is a medium sized program. All functions of the software must work with it.
+\paragraph{Large program} \label{nf:Large program}
+%is newest archived Version
+\linkwithfootnote{http://archive.eclipse.org/eclipse/downloads/drops/R-3.1.2-200601181600/index.php}{Eclipse SDK 3.1.2} is a large program. Running functions on the large program is sufficient to show that they work for any \gl[project]{project} that must be supported.
+
+\subsubsection{Timestamp}
+Timestamps have a resolution of one minute or finer. The software must use a state of the art representation of timestamps to support a sufficiently wide time period.
+
+\subsubsection{Text value}
+Text values are of arbitrary length and may contain any Unicode characters.
+
+\subsubsection{Test case}
+The name and the comment of a \gl[test case]{test case} are text values. The start time is a time stamp.
+
+\subsubsection{Test session}
+An arbitrary number of \gl[test session]{test sessions} must be supported.
+\par
+The name and the comment of a \gl[test session]{test session} are text values. The start time is a time stamp.
+
+\subsubsection{Code Base}
+An arbitrary number of \gl[code base]{code bases} must be supported. The date and time of the first instrumentation is a time stamp.
+
+\subsection{Performance requirements} \label{nf:Performance requirements}
+All performance requirements must be met on the recommended hardware.
+
+\subsubsection{Batch processing}
+Building and instrumenting a large program (\ref{nf:Large program}) must be possible within 10 hours.
+
+\subsubsection{Eclipse plug-in}
+The following constraints must hold true for a medium program (\ref{nf:Medium program}) and should hold true for a large program (\ref{nf:Large program}).
+\par
+The Eclipse plug-in may not slow down Eclipse significantly.
+\par
+Additionally the following response times must be met. They don't apply to the first call of a function. During the first call initialization routines may add a significant delay.
+\par
+For simple GUI interaction 0.1 s response time is enough while 0.5 s is too slow. Selecting instrumentable items is such a simple GUI interaction.
+\par
+For interaction resulting in complicated rebuilds of the UI components the code highlighting 5 s response time is enough while 30 s is too slow. During this time the Eclipse UI may not respond. An example for such interaction is changing the source code annotations while they are displayed.
+\par
+For loading and saving files as well as processing tasks like building the correlation matrix and generating a report there are no performance requirements. These tasks may not block the Eclipse UI.
+
+\subsection{Availability}
+There are no special availability requirements.
+
+\subsection{Security}
+There are no special security requirements.
+
+\subsection{Robustness and failure behavior} \label{nf:Robustness and failure behavior}
+%how reacts the software if the puts in wrong inputs,
+%e.g. a string in a date field
+%what happens if Prof. Ludewig takes a seat on the keyboard
+File types are detected using a syntax check for plain text files and at least 64 bit long magic numbers for binary files. That syntax check only has to detect wrong file types.
+\par
+The software may show arbitrary behavior when it runs on broken hardware.
+%does not crash if input file is too big but shows errormessage; could be too difficult to catch any Memory Exception; TODO: Really required?
+
+\subsection{Usability} \label{nf:Usability}
+Any string displayed by the Eclipse plug-in is localizable. The default language is English.
+\par
+A \gl[developer]{developer} can install the software easily. The installation procedure may only require unzip and Java. The software must be installable within 5 minutes by a developer after he has found the installation instructions and downloaded the necessary files. %eases testing and spreading of the software
+\par
+All colors used for highlighting can be changed by the user.
+\par
+Internal procedures must be invisible to the user as long as he doesn't want to change their behavior. Where applicable sensible defaults must be preset.
+\par
+An English user's manual is required. Online help is not required.
+\par
+The user interface must be intuitive to the point that on line help is not needed. \linkwithfootnote{http://www.eclipse.org/articles/Article-UI-Guidelines/Index.html}{Eclipse User Interface Guidelines version 2.1} must be followed for the Eclipse plug-in. Additionally per default the user is asked in a confirm dialog before a file with valuable user data is deleted or overwritten. 
+% Such dialogs have a checkbox to remember the answer permanently and not show the dialog again.
+%"valuable user data" - exact enough?- example would be a session container
+
+\subsection{Portability}
+The software must run on all platforms Eclipse 3.2.x runs on.
+\par
+The delivered \gl[instrumentation]{instrumentation} procedure must be compatible with Java 2 version 1.4.x and Java 5 as well as preprocessed COBOL-85. Other languages must be implementable without changing the \gl[session container]{session container's} format.
+\subsection{Maintainability}
+The source code follows a style guide based on Sun's
+\linkwithfootnote{http://java.sun.com/docs/codeconv/}{Code Conventions}. The
+style guide is described in a separate document. 
+\par
+All technical documents made specifically for creating and verifying the software are released to the public.
+
+\subsection{Extensibility} \label{nf:Extensibility}
+The software is written to be highly extensible and documented on a level easy to understand for their target audience. The documentation of the Eclipse plug-in is written for the Eclipse user, the documentation of the batch interface is written for the shell user (see Actors \ref{fr:Actors}) and the documentation to extending the Software is written for \gl[maintenance engineer]{maintenance engineers}. Tutorials for maintenance engineers will show how to extend the software to other programming languages than COBOL and Java, how to add the collecting of metrics during the \gl[instrumentation]{instrumentation} and how to implement further coverage criteria. The tutorials may assume good knowledge of Java, Grammars, JavaCC and the languages that must be supported by the changed software.
+\par
+Reports can be customized using templates, which can be selected in Eclipse using a wizard. It must be easy to add new report formats like \gl[PDF]{PDF} and \gl[DocBook XML]{DocBook XML}, which can be transformed into many formats.
+\par
+To ease external analysis and report generation all data of a \gl[test session]{test session}, except for the boolean values sampled in \gl[conditional statement]{conditional statements}, must be available to easily implement an export to XML. The design team must decide if the \gl[session container]{session container} already has such a format, or if report generation already contains it as an intermediate step.
+\par
+Other coverage criteria should be easy to add for \gl[maintenance engineer]{maintenance engineers} as long as they
+don't depend on execution order. No change to the \gl[instrumentation]{instrumentation}, test case management and highlighting may be necessary to implement another condition coverage criterion.
+\par
+%boolean and coverage analyzer, hot path visualisation and a correlation matrix
+It must be easy to add further analysis of a session container. All evaluation results of boolean expressions and counters must be easily accessible.
+\par
+Based on the TestCaseNotifier class (see \ref{fr:Test sessions and test cases}), functions to define test cases must be added: a live mode with a graphical dialog which allows the user to start and stop test cases during the \gl[SUT]{SUT} execution and automatic test case recognition of JUnit test cases.

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../report-html"/>
+	<lib name="junit.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../report-html/lib/junit.jar!/"/>
+	</lib>
+	<lib name="commons-collections-2.1.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../report-html/lib/commons-collections-2.1.1.jar!/"/>
+	</lib>
+	<lib name="log4j-1.2.13.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../report-html/lib/log4j-1.2.13.jar!/"/>
+	</lib>
+	<lib name="velocity-1.4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/../report-html/lib/velocity-1.4.jar!/"/>
+	</lib>
+</component>

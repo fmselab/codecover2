@@ -1,0 +1,15 @@
+START TEST CASE "CodeExampleConditionCoverage"
+finaldesign.CodeExampleConditionCoverage
+C1-11 1
+C1-10 2
+C2-11 40
+C2-10 2
+C3-11 38
+C3-10 2
+C4-10 1
+C5-111111 1
+C7-11 17
+C7-10 1
+C8-11 262136
+C8-10 19
+END TEST CASE "CodeExampleConditionCoverage"

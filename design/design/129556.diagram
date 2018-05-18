@@ -1,0 +1,87 @@
+format 29
+
+classcanvas 128020 class_ref 133396 // StatementManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 132 36 2000
+classcanvas 128148 class_ref 133268 // BranchManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 556 22 2000
+classcanvas 128276 class_ref 133012 // ConditionManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 140 240 2005
+classcanvas 128404 class_ref 133140 // LoopManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 558 231 2000
+classcanvas 128448 class_ref 129984 // DefaultStatementManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 15 133 2004
+classcanvas 128532 class_ref 134676 // DefaultLoopManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 448 345 2000
+classcanvas 129472 class_ref 130368 // DefaultConditionManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 22 345 2004
+classcanvas 130112 class_ref 130240 // DefaultBranchManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 454 129 2004
+classcanvas 133440 class_ref 130112 // DummyStatementManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 218 129 2004
+classcanvas 133696 class_ref 130496 // DummyBranchManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 645 130 2004
+classcanvas 133952 class_ref 134804 // DummyLoopManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 649 342 2004
+classcanvas 134208 class_ref 130624 // DummyConditionManipulator
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 221 345 2009
+relationcanvas 133568 relation_ref 131264 // <realization>
+  geometry HVr
+  from ref 133440 z 1999 to point 306 63
+  line 137024 z 1999 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 133824 relation_ref 131904 // <realization>
+  geometry HVr
+  from ref 133696 z 1999 to point 724 49
+  line 136384 z 1999 to ref 128148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134080 relation_ref 133012 // <realization>
+  geometry HVr
+  from ref 133952 z 1999 to point 722 258
+  line 136512 z 1999 to ref 128404
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134336 relation_ref 132032 // <realization>
+  geometry HVr
+  from ref 134208 z 1999 to point 306 267
+  line 135232 z 1999 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134464 relation_ref 132672 // <realization>
+  geometry VH
+  from ref 128532 z 1999 to point 519 258
+  line 135488 z 1999 to ref 128404
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134592 relation_ref 132800 // <realization>
+  geometry VH
+  from ref 129472 z 2003 to point 106 267
+  line 135104 z 2003 to ref 128276
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134720 relation_ref 132928 // <realization>
+  geometry VH
+  from ref 130112 z 1999 to point 532 49
+  line 136896 z 1999 to ref 128148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134848 relation_ref 133056 // <realization>
+  geometry VH
+  from ref 128448 z 1999 to point 102 63
+  line 137280 z 1999 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

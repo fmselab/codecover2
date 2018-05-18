@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="94.400000pt"
+   height="91.200000pt"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.41.1"
+   sodipodi:docbase="/home/stefan/studium/StuPro A/Dokumente/Spezifikation/working/Source_Code_Highlighting/if"
+   sodipodi:docname="if_with_else_if_green-yellow.svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.0000000"
+     inkscape:cx="71.405660"
+     inkscape:cy="32.427231"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="743"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         rdf:about=""
+         id="Work6">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           id="type9"
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect1367"
+       width="71.000000"
+       height="11.000000"
+       x="1.0000000"
+       y="75.000000" />
+    <rect
+       style="stroke-opacity:1.0000000;stroke-dashoffset:0.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-miterlimit:4.0000000;stroke-width:1.0000000;stroke:none;fill-rule:evenodd;fill-opacity:1.0000000;fill:#ff0000"
+       id="rect1365"
+       width="30.000000"
+       height="11.000000"
+       x="15.000000"
+       y="63.000000" />
+    <rect
+       style="fill:#ffff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect1426"
+       width="15.000000"
+       height="11.000000"
+       x="15.000000"
+       y="38.740486" />
+    <rect
+       style="fill:#ff0000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect9824"
+       width="36.488598"
+       height="10.939340"
+       x="49.511402"
+       y="38.770817" />
+    <rect
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000 ;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect6649"
+       width="71.000000"
+       height="11.234134"
+       x="1.0000000"
+       y="51.000000" />
+    <rect
+       style="stroke-opacity:1.0000000;stroke-dashoffset:0.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-miterlimit:4.0000000;stroke-width:1.0000000;stroke:none;fill-rule:evenodd;fill-opacity:1.0000000;fill:#00ff00"
+       id="rect5889"
+       width="30.000000"
+       height="11.000000"
+       x="15.000000"
+       y="27.000000" />
+    <rect
+       style="stroke-opacity:1.0000000;stroke-dashoffset:0.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-miterlimit:4.0000000;stroke-width:1.0000000;stroke:none;fill-rule:evenodd;fill-opacity:1.0000000;fill:#00ff00"
+       id="rect3583"
+       width="36.488598"
+       height="12.000000"
+       x="36.511402"
+       y="2.3621826" />
+    <rect
+       style="fill:#00ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000;stroke-miterlimit:4.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000"
+       id="rect3581"
+       width="56.452427"
+       height="11.552935"
+       x="1.0000000"
+       y="14.809248" />
+    <rect
+       style="stroke-opacity:1.0000000;stroke-dashoffset:0.0000000;stroke-dasharray:1.0000000 1.0000000;stroke-miterlimit:4.0000000;stroke-width:1.0000000;stroke:none;fill-rule:evenodd;fill-opacity:1.0000000;fill:#00ff00"
+       id="rect2063"
+       width="15.000000"
+       height="12.000000"
+       x="1.0000000"
+       y="2.3621826" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:FreeMono;text-anchor:start;writing-mode:lr;line-height:100%"
+       x="1"
+       y="11.512002"
+       id="text1291"
+       sodipodi:linespacing="100%"><tspan
+         id="tspan1347"
+         sodipodi:role="line"
+         y="11.512002"
+         x="1.0000000">if ( isA() ) {</tspan><tspan
+         id="tspan1349"
+         sodipodi:role="line"
+         y="23.512002"
+         x="1.0000000">  doB();</tspan><tspan
+         id="tspan1351"
+         sodipodi:role="line"
+         y="35.512002"
+         x="1.0000000">} else {</tspan><tspan
+         id="tspan1353"
+         sodipodi:role="line"
+         y="47.512002"
+         x="1.0000000">  if ( isC() ) {</tspan><tspan
+         id="tspan1355"
+         sodipodi:role="line"
+         y="59.512002"
+         x="1.0000000">    doD();</tspan><tspan
+         id="tspan1357"
+         sodipodi:role="line"
+         y="71.512002"
+         x="1.0000000">  else {</tspan><tspan
+         id="tspan1359"
+         sodipodi:role="line"
+         y="83.512002"
+         x="1.0000000">    doE();</tspan><tspan
+         id="tspan1361"
+         sodipodi:role="line"
+         y="95.512002"
+         x="1.0000000">  }</tspan><tspan
+         id="tspan1363"
+         sodipodi:role="line"
+         y="107.51200"
+         x="1.0000000">}</tspan></text>
+  </g>
+</svg>

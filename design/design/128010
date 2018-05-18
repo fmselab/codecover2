@@ -1,0 +1,2312 @@
+format 29
+"Activity Diagrams"
+  revision 18
+  modified_by 10 "Markus"
+  owner 20 "tilmann"
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  classview 128010 "Activity View"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    activity 128532 "measure coverage"
+      activitydiagram 129172 "measure coverage"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 130708 initial ""
+	flow 134548 "<flow>"
+	  on activitynode_ref 130836 // decision
+	end
+      end
+
+      activitynode 130836 decision ""
+	flow 134676 "Project not opened"
+	  on activitynode_ref 130964 // activity_final
+	end
+
+	flow 134804 "Project opened"
+	  on activitynode_ref 131092 // decision
+	end
+      end
+
+      activitynode 130964 activity_final ""
+      end
+
+      activitynode 131092 decision ""
+	flow 134932 "Project contains no entry point"
+	  on activitynode_ref 130964 // activity_final
+	end
+
+	flow 135060 "Project contains at least one entry point"
+	  on activityaction_ref 131092 // activity action User selects entry point
+	end
+      end
+
+      activityaction 131092 "User selects entry point"
+	opaque_action
+	flow 135188 "<flow>"
+	  on activityaction_ref 131220 // activity action User clicks the "Coverage" button
+	end
+      end
+
+      activityaction 131220 "User clicks the \"Coverage\" button"
+	opaque_action
+	flow 135316 "<flow>"
+	  on activityaction_ref 131348 // activity action Call activity "instrument instrumentable items"
+	end
+      end
+
+      activityaction 131348 "Call activity \"instrument instrumentable items\""
+	call_behavior_action
+	activity_ref 128148 // instrument instrumentable items
+	flow 135444 "<flow>"
+	  on activityaction_ref 131476 // activity action Rebuild project and start SUT at previously selected entry point
+	end
+      end
+
+      activityaction 131476 "Rebuild project and start SUT at previously selected entry point"
+	opaque_action
+	flow 135700 "<flow>"
+	  on activityaction_ref 131604 // activity action Call activity "analyze coverage log"
+	end
+      end
+
+      activityaction 131604 "Call activity \"analyze coverage log\""
+	call_behavior_action
+	activity_ref 128138 // analyze coverage log
+	flow 135956 "<flow>"
+	  on activityaction_ref 131732 // activity action Update "Session" view
+	end
+      end
+
+      activityaction 131732 "Update \"Session\" view"
+	opaque_action
+	flow 136084 "<flow>"
+	  on activitynode_ref 130964 // activity_final
+	end
+      end
+    end
+
+    activity 128404 "export session"
+      activitydiagram 128916 "export session"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 130068 initial ""
+	flow 132884 "<flow>"
+	  on activitynode_ref 130196 // decision
+	end
+      end
+
+      activitynode 130196 decision ""
+	flow 133012 "Project opened"
+	  on activitynode_ref 130324 // decision
+	end
+
+	flow 133140 "Project not opened"
+	  on activitynode_ref 130452 // activity_final
+	end
+      end
+
+      activitynode 130324 decision ""
+	flow 133268 "Project contains no session"
+	  on activitynode_ref 130452 // activity_final
+	end
+
+	flow 145034 "Project contains at least one session"
+	  on activityaction_ref 134538 // activity action User opens the "Session" view of the plugin
+	end
+      end
+
+      activitynode 130452 activity_final ""
+      end
+
+      activityaction 130196 "User selects session in the \"Session\" view"
+	opaque_action
+	flow 144778 "<flow>"
+	  on activityaction_ref 130452 // activity action User clicks the "Export" button
+	end
+      end
+
+      activityaction 130452 "User clicks the \"Export\" button"
+	opaque_action
+	flow 133780 "<flow>"
+	  on activityaction_ref 130580 // activity action Show "Export" dialog
+	end
+      end
+
+      activityaction 130580 "Show \"Export\" dialog"
+	opaque_action
+	flow 133908 "<flow>"
+	  on activityaction_ref 130708 // activity action User chooses destination folder
+	end
+      end
+
+      activityaction 130708 "User chooses destination folder"
+	opaque_action
+	flow 134036 "<flow>"
+	  on activityaction_ref 130836 // activity action User selects session to export
+	end
+      end
+
+      activityaction 130836 "User selects session to export"
+	opaque_action
+	flow 134164 "<flow>"
+	  on activitynode_ref 130580 // decision
+	end
+      end
+
+      activitynode 130580 decision ""
+	flow 133524 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 130452 // activity_final
+	end
+
+	flow 134292 "User clicks the \"Finished\" button"
+	  on activityaction_ref 130964 // activity action Copy file containing the session to the chosen destination folder
+	end
+      end
+
+      activityaction 130964 "Copy file containing the session to the chosen destination folder"
+	opaque_action
+	flow 145546 "<flow>"
+	  on activitynode_ref 134154 // decision
+	end
+      end
+
+      activityaction 134538 "User opens the \"Session\" view of the plugin"
+	opaque_action
+	flow 144906 "<flow>"
+	  on activityaction_ref 130196 // activity action User selects session in the "Session" view
+	end
+      end
+
+      activityaction 134794 "Display error message"
+	opaque_action
+	flow 145930 "<flow>"
+	  on activitynode_ref 130452 // activity_final
+	end
+      end
+
+      activitynode 134154 decision ""
+	flow 145674 "No errors whilst copying"
+	  on activitynode_ref 130452 // activity_final
+	end
+
+	flow 145802 "Errors whilst copying"
+	  on activityaction_ref 134794 // activity action Display error message
+	end
+      end
+    end
+
+    activity 128276 "import session"
+      activitydiagram 128788 "import session"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 129428 initial ""
+	flow 131348 "<flow>"
+	  on activitynode_ref 129556 // decision
+	end
+      end
+
+      activitynode 129556 decision ""
+	flow 131476 "Project opened"
+	  on activityaction_ref 129300 // activity action User opens the "Session" view of the plugin
+	end
+
+	flow 131604 "Project not opened"
+	  on activitynode_ref 129812 // activity_final
+	end
+      end
+
+      activityaction 129300 "User opens the \"Session\" view of the plugin"
+	opaque_action
+	flow 145418 "<flow>"
+	  on activityaction_ref 129428 // activity action User clicks the "Import Session" button
+	end
+      end
+
+      activityaction 129428 "User clicks the \"Import Session\" button"
+	opaque_action
+	flow 131988 "<flow>"
+	  on activityaction_ref 129556 // activity action User chooses the file containing the session
+	end
+      end
+
+      activityaction 129556 "User chooses the file containing the session"
+	opaque_action
+	flow 131860 "<flow>"
+	  on activityaction_ref 129684 // activity action User selects project into which the session file will be imported
+	end
+      end
+
+      activityaction 129684 "User selects project into which the session file will be imported"
+	opaque_action
+	flow 131732 "<flow>"
+	  on activitynode_ref 129940 // decision
+	end
+      end
+
+      activitynode 129812 activity_final ""
+      end
+
+      activitynode 129940 decision ""
+	flow 132244 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 129812 // activity_final
+	end
+
+	flow 146570 "User clicks the \"Finished\" button"
+	  on activitynode_ref 134410 // fork
+	end
+      end
+
+      activityaction 129812 "Import file containing the session"
+	opaque_action
+	flow 146954 "<flow>"
+	  on activitynode_ref 134538 // decision
+	end
+      end
+
+      activityaction 129940 "Select imported session in the \"Session\" view"
+	opaque_action
+	flow 147594 "<flow>"
+	  on activitynode_ref 129812 // activity_final
+	end
+      end
+
+      activityaction 130068 "Copy file containing the session to the plugin's properties folder of the project"
+	opaque_action
+	flow 147082 "<flow>"
+	  on activitynode_ref 134666 // decision
+	end
+      end
+
+      activityaction 134922 "Display error message"
+	opaque_action
+	flow 146442 "<flow>"
+	  on activitynode_ref 129812 // activity_final
+	end
+      end
+
+      activitynode 134410 fork ""
+	flow 146698 "<flow>"
+	  on activityaction_ref 129812 // activity action Import file containing the session
+	end
+
+	flow 146826 "<flow>"
+	  on activityaction_ref 130068 // activity action Copy file containing the session to the plugin's properties folder of the project
+	end
+      end
+
+      activitynode 134538 decision ""
+	flow 147210 "no errors"
+	  on activitynode_ref 134794 // join
+	end
+
+	flow 147850 "error whilst importing"
+	  on activityaction_ref 134922 // activity action Display error message
+	end
+      end
+
+      activitynode 134666 decision ""
+	flow 147338 "no errors"
+	  on activitynode_ref 134794 // join
+	end
+
+	flow 147722 "error whilst copying"
+	  on activityaction_ref 134922 // activity action Display error message
+	end
+      end
+
+      activitynode 134794 join ""
+	flow 147466 "<flow>"
+	  on activityaction_ref 129940 // activity action Select imported session in the "Session" view
+	end
+      end
+    end
+
+    activity 128148 "instrument instrumentable items"
+      activitydiagram 128660 "instrument instrumentable items"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 128788 initial ""
+	flow 129812 "<flow>"
+	  on activitynode_ref 129044 // decision
+	end
+      end
+
+      activitynode 128916 activity_final ""
+      end
+
+      activitynode 129044 decision ""
+	flow 129940 "Project opened"
+	  on activitynode_ref 129172 // decision
+	end
+
+	flow 130068 "Project not opened"
+	  on activitynode_ref 128916 // activity_final
+	end
+      end
+
+      activitynode 129172 decision ""
+	flow 130196 "Project contains no instrumentable item"
+	  on activitynode_ref 128916 // activity_final
+	end
+
+	flow 130324 "Project contains at least one instrumentable item"
+	  on activityaction_ref 128660 // activity action User selects "Instrument Project..." in "Project" menu
+	end
+      end
+
+      activityaction 128660 "User selects \"Instrument Project...\" in \"Project\" menu"
+	opaque_action
+	flow 130452 "<flow>"
+	  on activityaction_ref 128788 // activity action Show instrumentation dialog
+	end
+      end
+
+      activityaction 128788 "Show instrumentation dialog"
+	opaque_action
+	flow 130580 "<flow>"
+	  on activityaction_ref 128916 // activity action User chooses destination folder
+	end
+      end
+
+      activityaction 128916 "User chooses destination folder"
+	opaque_action
+	flow 130708 "<flow>"
+	  on activitynode_ref 129300 // decision
+	end
+      end
+
+      activitynode 129300 decision ""
+	flow 130836 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 128916 // activity_final
+	end
+
+	flow 130964 "User clicks the \"Instrument\" button"
+	  on activityaction_ref 129044 // activity action Show progress bar
+	end
+      end
+
+      activityaction 129044 "Show progress bar"
+	opaque_action
+	flow 131092 "<flow>"
+	  on activityaction_ref 129172 // activity action Perform instrumentation
+	end
+      end
+
+      activityaction 129172 "Perform instrumentation"
+	opaque_action
+	flow 148106 "<flow>"
+	  on activitynode_ref 134922 // decision
+	end
+      end
+
+      activityaction 135050 "Display error message"
+	opaque_action
+	flow 147978 "<flow>"
+	  on activitynode_ref 128916 // activity_final
+	end
+      end
+
+      activitynode 134922 decision ""
+	flow 148234 "No errors whilst instrumenting"
+	  on activitynode_ref 128916 // activity_final
+	end
+
+	flow 148362 "Errors whilst instrumenting"
+	  on activityaction_ref 135050 // activity action Display error message
+	end
+      end
+    end
+
+    activity 128020 "select instrumentable items"
+      activitydiagram 128532 "select instrumentable items"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 128020 initial ""
+	flow 128020 "<flow>"
+	  on activitynode_ref 128276 // decision
+	end
+      end
+
+      activitynode 128148 activity_final ""
+      end
+
+      activityaction 128020 "User selects instrumentable item(s)"
+	opaque_action
+	flow 128788 "<flow>"
+	  on activityaction_ref 128148 // activity action User opens context menu on selected instrumentable item(s)
+	end
+      end
+
+      activitynode 128276 decision ""
+	flow 128276 "Project not opened"
+	  on activitynode_ref 128148 // activity_final
+	end
+
+	flow 128404 "Project opened"
+	  on activitynode_ref 128404 // decision
+	end
+      end
+
+      activitynode 128404 decision ""
+	flow 128532 "Project contains at least one instrumentable item"
+	  on activityaction_ref 128020 // activity action User selects instrumentable item(s)
+	end
+
+	flow 128660 "Project contains no instrumentable items"
+	  on activitynode_ref 128148 // activity_final
+	end
+      end
+
+      activityaction 128148 "User opens context menu on selected instrumentable item(s)"
+	opaque_action
+	flow 129044 "<flow>"
+	  on activitynode_ref 128660 // decision
+	end
+      end
+
+      activityaction 128276 "Mark selected items recursively for instrumentation"
+	opaque_action
+	flow 148490 "<flow>"
+	  on activitynode_ref 135050 // merge
+	end
+      end
+
+      activityaction 128404 "Unmark selected items recursively for instrumentation"
+	opaque_action
+	flow 148618 "<flow>"
+	  on activitynode_ref 135050 // merge
+	end
+      end
+
+      activitynode 128660 decision ""
+	flow 129172 "<flow>"
+	  on activityaction_ref 128276 // activity action Mark selected items recursively for instrumentation
+	end
+
+	flow 129300 "<flow>"
+	  on activityaction_ref 128404 // activity action Unmark selected items recursively for instrumentation
+	end
+      end
+
+      activityaction 128532 "Save instrumentation status of the selected instrumentable items"
+	opaque_action
+	flow 129684 "<flow>"
+	  on activitynode_ref 128148 // activity_final
+	end
+      end
+
+      activitynode 135050 merge ""
+	flow 148746 "<flow>"
+	  on activityaction_ref 128532 // activity action Save instrumentation status of the selected instrumentable items
+	end
+      end
+    end
+
+    activity 128286 "edit test case properties"
+      activitydiagram 128542 "edit test case properties"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 130718 initial ""
+      end
+
+      activityaction 129950 "User clicks the \"Test Case Properties\" button"
+	opaque_action
+	flow 150282 "<flow>"
+	  on activityaction_ref 135306 // activity action Open "Test Case Properties" dialog
+	end
+      end
+
+      activityaction 130078 "User changes name and/or comment"
+	opaque_action
+	flow 135198 "<flow>"
+	  on activitynode_ref 131102 // decision
+	end
+      end
+
+      activityaction 130462 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 148874 "<flow>"
+	  on activityaction_ref 135178 // activity action Call activity "select test cases"
+	end
+
+	flow 149642 "<flow>"
+	  on activitynode_ref 135434 // decision
+	end
+      end
+
+      activitynode 130846 initial ""
+	flow 149130 "<flow>"
+	  on activitynode_ref 135178 // decision
+	end
+      end
+
+      activitynode 130974 activity_final ""
+      end
+
+      activitynode 131102 decision ""
+	flow 150538 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 130974 // activity_final
+	end
+
+	flow 150666 "User clicks the \"OK\" button"
+	  on activityaction_ref 135562 // activity action Save changes to the test case
+	end
+      end
+
+      activityaction 135178 "Call activity \"select test cases\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 149002 "<flow>"
+	  on activityaction_ref 129950 // activity action User clicks the "Test Case Properties" button
+	end
+
+	flow 150026 "<flow>"
+	  on activitynode_ref 135562 // decision
+	end
+      end
+
+      activitynode 135178 decision ""
+	flow 149258 "Project not opened"
+	  on activitynode_ref 130974 // activity_final
+	end
+
+	flow 149770 "Project opened"
+	  on activityaction_ref 130462 // activity action Call activity "select session"
+	end
+      end
+
+      activitynode 135434 decision ""
+	flow 149386 "Session selected"
+	  on activityaction_ref 135178 // activity action Call activity "select test cases"
+	end
+
+	flow 149514 "No session selected"
+	  on activitynode_ref 130974 // activity_final
+	end
+      end
+
+      activitynode 135562 decision ""
+	flow 149898 "No or more than one test cases selected"
+	  on activitynode_ref 130974 // activity_final
+	end
+
+	flow 150154 "Exaclty one test case selected"
+	  on activityaction_ref 129950 // activity action User clicks the "Test Case Properties" button
+	end
+      end
+
+      activityaction 135306 "Open \"Test Case Properties\" dialog"
+	opaque_action
+	flow 150410 "<flow>"
+	  on activityaction_ref 130078 // activity action User changes name and/or comment
+	end
+      end
+
+      activityaction 135562 "Save changes to the test case"
+	opaque_action
+	flow 150794 "<flow>"
+	  on activitynode_ref 135690 // decision
+	end
+      end
+
+      activitynode 135690 decision ""
+	flow 150922 "Error whilst saving"
+	  on activityaction_ref 135690 // activity action Display error message
+	end
+
+	flow 151178 "No errors whilst saving"
+	  on activityaction_ref 135818 // activity action Update the list of test cases in the "Session" view
+	end
+      end
+
+      activityaction 135690 "Display error message"
+	opaque_action
+	flow 151050 "<flow>"
+	  on activitynode_ref 130974 // activity_final
+	end
+      end
+
+      activityaction 135818 "Update the list of test cases in the \"Session\" view"
+	opaque_action
+	flow 151306 "<flow>"
+	  on activitynode_ref 130974 // activity_final
+	end
+      end
+    end
+
+    activity 128158 "edit session properties"
+      activitydiagram 128414 "edit session properties"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 130206 initial ""
+	flow 151690 "<flow>"
+	  on activitynode_ref 135818 // decision
+	end
+      end
+
+      activityaction 129054 "call \"select session\""
+	call_behavior_action
+	no_behavior
+      end
+
+      activityaction 129182 "Open \"Session Properties\" dialog"
+	opaque_action
+	flow 135070 "<flow>"
+	  on activityaction_ref 129438 // activity action User changes name and/or comment
+	end
+      end
+
+      activityaction 129310 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 152202 "<flow>"
+	  on activitynode_ref 135946 // decision
+	end
+      end
+
+      activityaction 129438 "User changes name and/or comment"
+	opaque_action
+	flow 152714 "<flow>"
+	  on activitynode_ref 136074 // decision
+	end
+      end
+
+      activitynode 130590 activity_final ""
+      end
+
+      activitynode 135818 decision ""
+	flow 151946 "Project not opened"
+	  on activitynode_ref 130590 // activity_final
+	end
+
+	flow 152074 "Project opened"
+	  on activityaction_ref 129310 // activity action Call activity "select session"
+	end
+      end
+
+      activitynode 135946 decision ""
+	flow 152330 "No session selected"
+	  on activitynode_ref 130590 // activity_final
+	end
+
+	flow 152458 "Session selected"
+	  on activityaction_ref 135946 // activity action User clicks the "Session Properties" button
+	end
+      end
+
+      activityaction 135946 "User clicks the \"Session Properties\" button"
+	opaque_action
+	flow 152586 "<flow>"
+	  on activityaction_ref 129182 // activity action Open "Session Properties" dialog
+	end
+      end
+
+      activitynode 136074 decision ""
+	flow 152842 "User clicks the \"OK\" button"
+	  on activityaction_ref 136074 // activity action Save changes to the session
+	end
+
+	flow 152970 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 130590 // activity_final
+	end
+      end
+
+      activityaction 136074 "Save changes to the session"
+	opaque_action
+	flow 153098 "<flow>"
+	  on activitynode_ref 136202 // decision
+	end
+      end
+
+      activitynode 136202 decision ""
+	flow 153226 "Errors whilst saving"
+	  on activityaction_ref 136202 // activity action Display error message
+	end
+
+	flow 153738 "No errors whilst saving"
+	  on activityaction_ref 136330 // activity action Update the combobox containing the sessions in the "Session" view
+	end
+      end
+
+      activityaction 136202 "Display error message"
+	opaque_action
+	flow 153482 "<flow>"
+	  on activitynode_ref 130590 // activity_final
+	end
+      end
+
+      activityaction 136330 "Update the combobox containing the sessions in the \"Session\" view"
+	opaque_action
+	flow 153610 "<flow>"
+	  on activitynode_ref 130590 // activity_final
+	end
+      end
+    end
+
+    activity 128030 "associate test case"
+      activitydiagram 128030 "associate test case"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 128030 initial ""
+	flow 133918 "<flow>"
+	  on activityaction_ref 128030 // activity action User positions cursor at desired start of test case
+	end
+      end
+
+      activityaction 128030 "User positions cursor at desired start of test case"
+	opaque_action
+	flow 128286 "<flow>"
+	  on activitynode_ref 128158 // decision
+	end
+      end
+
+      activityaction 128158 "User opens context menu: Source > gbt� > Test Case Notification > Start Test Case With Name and Comment"
+	opaque_action
+	flow 130078 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+
+	flow 130206 "<flow>"
+	  on activitynode_ref 129182 // decision
+	end
+
+	flow 154890 "<flow>"
+	  on activitynode_ref 136714 // merge
+	end
+      end
+
+      activityaction 128286 "User opens context menu: Source > gbt� > Test Case Notification > Start Test Case With Name"
+	opaque_action
+	flow 129950 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+
+	flow 130334 "<flow>"
+	  on activitynode_ref 129054 // decision
+	end
+
+	flow 154762 "<flow>"
+	  on activitynode_ref 136714 // merge
+	end
+      end
+
+      activitynode 128158 decision ""
+	flow 128030 "<flow>"
+	  on activityaction_ref 128286 // activity action User opens context menu: Source > gbt� > Test Case Notification > Start Test Case With Name
+	end
+
+	flow 128158 "<flow>"
+	  on activityaction_ref 128158 // activity action User opens context menu: Source > gbt� > Test Case Notification > Start Test Case With Name and Comment
+	end
+      end
+
+      activityaction 128414 "User positions cursor at desired end of test case"
+	opaque_action
+	flow 128926 "<flow>"
+	  on activityaction_ref 128542 // activity action User opens context menu: Source > gbt� > Test Case Notification > End Test Case With Name
+	end
+      end
+
+      activityaction 128542 "User opens context menu: Source > gbt� > Test Case Notification > End Test Case With Name"
+	opaque_action
+	flow 129054 "<flow>"
+	  on activityaction_ref 128030 // activity action User positions cursor at desired start of test case
+	end
+
+	flow 130718 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+
+	flow 155402 "<flow>"
+	  on activityaction_ref 136586 // activity action Insert end test case statement into source code at the specified location
+	end
+      end
+
+      activitynode 128542 activity_final ""
+      end
+
+      activitynode 128798 merge ""
+	flow 153866 "<flow>"
+	  on activitynode_ref 128542 // activity_final
+	end
+      end
+
+      activitynode 128926 merge ""
+      end
+
+      activitynode 129054 decision ""
+	flow 130462 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+      end
+
+      activitynode 129182 decision ""
+	flow 130590 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+      end
+
+      activityaction 128670 "User enters name into inserted start test case method call"
+	opaque_action
+	flow 133406 "<flow>"
+	  on activitynode_ref 130078 // merge
+	end
+
+	flow 133790 "<flow>"
+	  on activitynode_ref 130078 // merge
+	end
+      end
+
+      activityaction 128798 "User enters name and comment into inserted start test case method call"
+	opaque_action
+	flow 133534 "<flow>"
+	  on activitynode_ref 130078 // merge
+	end
+      end
+
+      activitynode 129310 fork ""
+      end
+
+      activitynode 129950 decision ""
+	flow 132638 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+
+	flow 132894 "<flow>"
+	  on activityaction_ref 128414 // activity action User positions cursor at desired end of test case
+	end
+      end
+
+      activityaction 128926 "User enters name into inserted end test case method call"
+	opaque_action
+	flow 133150 "<flow>"
+	  on activitynode_ref 128798 // merge
+	end
+      end
+
+      activitynode 130078 merge ""
+	flow 133662 "<flow>"
+	  on activitynode_ref 129950 // decision
+	end
+      end
+
+      activityaction 136458 "Insert statement into source code at the specified location"
+	opaque_action
+	flow 155018 "<flow>"
+	  on activitynode_ref 136586 // decision
+	end
+      end
+
+      activitynode 136586 decision ""
+	flow 155146 "<flow>"
+	  on activityaction_ref 128798 // activity action User enters name and comment into inserted start test case method call
+	end
+
+	flow 155274 "<flow>"
+	  on activityaction_ref 128670 // activity action User enters name into inserted start test case method call
+	end
+      end
+
+      activitynode 136714 merge ""
+	flow 154634 "<flow>"
+	  on activityaction_ref 136458 // activity action Insert statement into source code at the specified location
+	end
+      end
+
+      activityaction 136586 "Insert end test case statement into source code at the specified location"
+	opaque_action
+	flow 155530 "<flow>"
+	  on activityaction_ref 128926 // activity action User enters name into inserted end test case method call
+	end
+      end
+    end
+
+    activity 128168 "merge test cases"
+      activitydiagram 128168 "merge test cases"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 128808 initial ""
+	flow 155786 "<flow>"
+	  on activitynode_ref 136842 // decision
+	end
+      end
+
+      activityaction 129064 "User clicks the \"Merge Test Cases\" button"
+	opaque_action
+	flow 156810 "<flow>"
+	  on activityaction_ref 136970 // activity action Merge the test cases
+	end
+      end
+
+      activitynode 128936 decision ""
+	flow 130728 "Errors whilst saving"
+	  on activityaction_ref 129320 // activity action Display error message
+	end
+
+	flow 130856 "No errors whilst saving"
+	  on activitynode_ref 129064 // activity_final
+	end
+      end
+
+      activityaction 129192 "Save changes to the session"
+	opaque_action
+	flow 130600 "<flow>"
+	  on activitynode_ref 128936 // decision
+	end
+      end
+
+      activityaction 129320 "Display error message"
+	opaque_action
+	flow 130984 "<flow>"
+	  on activitynode_ref 129064 // activity_final
+	end
+      end
+
+      activitynode 129064 activity_final ""
+      end
+
+      activitynode 136842 decision ""
+	flow 155658 "Project not opened"
+	  on activitynode_ref 129064 // activity_final
+	end
+
+	flow 155914 "Project opened"
+	  on activityaction_ref 136714 // activity action Call activity "select session"
+	end
+      end
+
+      activityaction 136714 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 156042 "<flow>"
+	  on activitynode_ref 136970 // decision
+	end
+      end
+
+      activitynode 136970 decision ""
+	flow 156170 "No session selected"
+	  on activitynode_ref 129064 // activity_final
+	end
+
+	flow 156298 "Session selected"
+	  on activityaction_ref 136842 // activity action Call activity "select test cases"
+	end
+      end
+
+      activityaction 136842 "Call activity \"select test cases\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 156426 "<flow>"
+	  on activitynode_ref 137098 // decision
+	end
+      end
+
+      activitynode 137098 decision ""
+	flow 156554 "Less than two test cases selected"
+	  on activitynode_ref 129064 // activity_final
+	end
+
+	flow 156682 "Two or more test cases selected"
+	  on activityaction_ref 129064 // activity action User clicks the "Merge Test Cases" button
+	end
+      end
+
+      activityaction 136970 "Merge the test cases"
+	opaque_action
+	flow 156938 "<flow>"
+	  on activityaction_ref 129192 // activity action Save changes to the session
+	end
+      end
+    end
+
+    activity 128040 "merge sessions"
+      activitydiagram 128040 "merge sessions"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 128040 initial ""
+	flow 157194 "<flow>"
+	  on activitynode_ref 137226 // decision
+	end
+      end
+
+      activityaction 128168 "Check whether the sessions can be merged"
+	opaque_action
+	flow 128552 "<flow>"
+	  on activitynode_ref 128296 // decision
+	end
+      end
+
+      activityaction 128296 "Merge sessions"
+	opaque_action
+	flow 129320 "<flow>"
+	  on activityaction_ref 128424 // activity action Save the merged session
+	end
+      end
+
+      activitynode 128296 decision ""
+	flow 128808 "Sessions can be merged"
+	  on activityaction_ref 128296 // activity action Merge sessions
+	end
+
+	flow 128936 "Sessions cannot be merged"
+	  on activityaction_ref 128552 // activity action Display error message
+	end
+      end
+
+      activityaction 128424 "Save the merged session"
+	opaque_action
+	flow 129448 "<flow>"
+	  on activitynode_ref 128552 // decision
+	end
+      end
+
+      activityaction 128552 "Display error message"
+	opaque_action
+	flow 158346 "<flow>"
+	  on activityaction_ref 137482 // activity action User selects sessions
+	end
+      end
+
+      activitynode 128552 decision ""
+	flow 129576 "Errors whilst saving"
+	  on activityaction_ref 128680 // activity action Display error message 
+	end
+
+	flow 129704 "No errors whilst saving"
+	  on activitynode_ref 128680 // activity_final
+	end
+      end
+
+      activityaction 128680 "Display error message "
+	opaque_action
+	flow 129832 "<flow>"
+	  on activitynode_ref 128680 // activity_final
+	end
+      end
+
+      activitynode 128680 activity_final ""
+      end
+
+      activitynode 137226 decision ""
+	flow 157066 "Project not opened"
+	  on activitynode_ref 128680 // activity_final
+	end
+
+	flow 157834 "Project opened"
+	  on activityaction_ref 137226 // activity action User clicks the "Merge Sessions" button
+	end
+      end
+
+      activitynode 137354 decision ""
+	flow 157706 "Two or more session selected"
+	  on activityaction_ref 128168 // activity action Check whether the sessions can be merged
+	end
+
+	flow 159754 "Less than two sessions selected"
+	  on activityaction_ref 128552 // activity action Display error message
+	end
+      end
+
+      activityaction 137226 "User clicks the \"Merge Sessions\" button"
+	opaque_action
+	flow 157962 "<flow>"
+	  on activityaction_ref 137354 // activity action Open "Merge Sessions" dialog
+	end
+      end
+
+      activityaction 137354 "Open \"Merge Sessions\" dialog"
+	opaque_action
+	flow 159114 "<flow>"
+	  on activityaction_ref 137482 // activity action User selects sessions
+	end
+      end
+
+      activityaction 137482 "User selects sessions"
+	opaque_action
+	flow 159242 "<flow>"
+	  on activitynode_ref 137738 // decision
+	end
+      end
+
+      activitynode 137482 decision ""
+	flow 158602 "User clicks the \"OK\" button"
+	  on activitynode_ref 137354 // decision
+	end
+
+	flow 158730 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 128680 // activity_final
+	end
+      end
+
+      activityaction 137610 "User enters name for the merged session"
+	opaque_action
+	flow 159626 "<flow>"
+	  on activitynode_ref 137482 // decision
+	end
+      end
+
+      activitynode 137738 decision ""
+	flow 159370 "<flow>"
+	  on activityaction_ref 137610 // activity action User enters name for the merged session
+	end
+
+	flow 159498 "<flow>"
+	  on activitynode_ref 137482 // decision
+	end
+      end
+    end
+
+    activity 128010 "select coverage criteria"
+      activitydiagram 128010 "select coverage criteria"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	activity_color red 
+	size A5
+      end
+
+      activitynode 128138 initial ""
+	flow 128138 "<flow>"
+	  on activitynode_ref 128266 // decision
+	end
+      end
+
+      activityaction 128010 "User opens the \"Project Properties\" dialog"
+	opaque_action
+	flow 128778 "<flow>"
+	  on activityaction_ref 128138 // activity action User selects the gbt� item
+	end
+      end
+
+      activitynode 128266 decision "Project exists?"
+	flow 128394 "Project opened"
+	  on activityaction_ref 128010 // activity action User opens the "Project Properties" dialog
+	end
+
+	flow 128650 "Project not opened"
+	  on activitynode_ref 128394 // activity_final
+	end
+      end
+
+      activitynode 128394 activity_final ""
+      end
+
+      activityaction 128138 "User selects the gbt� item"
+	opaque_action
+	flow 129418 "<flow>"
+	  on activitynode_ref 128650 // decision
+	end
+
+	flow 130314 "<flow>"
+	  on activityaction_ref 128778 // activity action User selects/deselects criteria
+	end
+      end
+
+      activityaction 128522 "Close dialog window"
+	opaque_action
+	flow 129290 "<flow>"
+	  on activitynode_ref 128394 // activity_final
+	end
+
+	flow 131466 "<flow>"
+	  on activityaction_ref 129162 // activity action Check instrumented items for possible necessary reinstrumentation
+	end
+      end
+
+      activitynode 128650 decision ""
+	flow 129546 "No change"
+	  on activityaction_ref 128522 // activity action Close dialog window
+	end
+
+	flow 129674 "Deselect criterion"
+	  on activitynode_ref 128778 // decision
+	end
+
+	flow 129802 "Select criterion"
+	  on activitynode_ref 128650 // decision
+	end
+      end
+
+      activitynode 128778 decision ""
+	flow 129930 "last selected criterion"
+	  on activityaction_ref 128650 // activity action Criterion is not deselected
+	end
+
+	flow 130058 "not the last selected criterion"
+	  on activitynode_ref 128650 // decision
+	end
+      end
+
+      activityaction 128650 "Criterion is not deselected"
+	opaque_action
+	flow 130186 "<flow>"
+	  on activitynode_ref 128650 // decision
+	end
+      end
+
+      activityaction 128778 "User selects/deselects criteria"
+	opaque_action
+	flow 130442 "<flow>"
+	  on activitynode_ref 128906 // decision
+	end
+      end
+
+      activitynode 128906 decision ""
+	flow 130570 "Tried to deselect the last selected criterion"
+	  on activityaction_ref 128906 // activity action Last criterion is not deselected
+	end
+
+	flow 130698 "<flow>"
+	  on activityaction_ref 128522 // activity action Close dialog window
+	end
+
+	flow 130826 "<flow>"
+	  on activitynode_ref 129034 // decision
+	end
+      end
+
+      activityaction 128906 "Last criterion is not deselected"
+	opaque_action
+	flow 131338 "<flow>"
+	  on activitynode_ref 129034 // decision
+	end
+      end
+
+      activitynode 129034 decision ""
+	flow 130954 "User clicks the \"OK\" button"
+	  on activityaction_ref 129034 // activity action Save the selection
+	end
+
+	flow 131210 "User clicks the \"Cancel\" button"
+	  on activityaction_ref 128522 // activity action Close dialog window
+	end
+      end
+
+      activityaction 129034 "Save the selection"
+	opaque_action
+	flow 131082 "<flow>"
+	  on activityaction_ref 128522 // activity action Close dialog window
+	end
+      end
+
+      activityaction 129162 "Check instrumented items for possible necessary reinstrumentation"
+	opaque_action
+	flow 131594 "<flow>"
+	  on activitynode_ref 128394 // activity_final
+	end
+      end
+    end
+
+    activity 128138 "analyze coverage log"
+      activitydiagram 128138 "analyze coverage log"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 129162 initial ""
+	flow 160138 "<flow>"
+	  on activitynode_ref 137866 // decision
+	end
+      end
+
+      activitynode 129290 activity_final ""
+      end
+
+      activitynode 129418 decision ""
+	flow 131850 "no previous measurement"
+	  on activitynode_ref 129290 // activity_final
+	end
+
+	flow 131978 "<flow>"
+	  on activityaction_ref 129290 // activity action User opens the import dialog in eclipse and chooses the entry "Coverage Log" under "Other"
+	end
+      end
+
+      activityaction 129290 "User opens the import dialog in eclipse and chooses the entry \"Coverage Log\" under \"Other\""
+	opaque_action
+	flow 132106 "<flow>"
+	  on activityaction_ref 129418 // activity action User chooses the files created by the previously done measurement
+	end
+      end
+
+      activityaction 129418 "User chooses the files created by the previously done measurement"
+	opaque_action
+	flow 132234 "<flow>"
+	  on activityaction_ref 129546 // activity action User states the name and a comment for the created session
+	end
+      end
+
+      activityaction 129546 "User states the name and a comment for the created session"
+	opaque_action
+	flow 132362 "<flow>"
+	  on activitynode_ref 129546 // decision
+	end
+      end
+
+      activitynode 129546 decision ""
+	flow 132618 "User clicks the \"Cancel\" button"
+	  on activityaction_ref 129674 // activity action Close dialog window
+	end
+
+	flow 132746 "<flow>"
+	  on activitynode_ref 129546 // decision
+	end
+
+	flow 132874 "User clicks the \"Finish\" button"
+	  on activityaction_ref 129930 // activity action Create new session with given name and comment out of given data
+	end
+      end
+
+      activityaction 129674 "Close dialog window"
+	opaque_action
+	flow 132490 "<flow>"
+	  on activitynode_ref 129290 // activity_final
+	end
+      end
+
+      activityaction 129802 "Select the new session in the \"Session\" view"
+	opaque_action
+	flow 133642 "<flow>"
+	  on activityaction_ref 129674 // activity action Close dialog window
+	end
+      end
+
+      activityaction 129930 "Create new session with given name and comment out of given data"
+	opaque_action
+	flow 133002 "<flow>"
+	  on activitynode_ref 129674 // decision
+	end
+      end
+
+      activityaction 130058 "Store the session in the plugin's properties folder of the project"
+	opaque_action
+	flow 133514 "<flow>"
+	  on activityaction_ref 129802 // activity action Select the new session in the "Session" view
+	end
+      end
+
+      activitynode 129674 decision ""
+	flow 133130 "Errors whilst processing"
+	  on activityaction_ref 130186 // activity action Display error message
+	end
+
+	flow 133386 "No errors whilst processing"
+	  on activityaction_ref 130058 // activity action Store the session in the plugin's properties folder of the project
+	end
+      end
+
+      activityaction 130186 "Display error message"
+	opaque_action
+	flow 133258 "<flow>"
+	  on activityaction_ref 129674 // activity action Close dialog window
+	end
+      end
+
+      activitynode 137866 decision ""
+	flow 159882 "Project not opened"
+	  on activitynode_ref 129290 // activity_final
+	end
+
+	flow 160010 "Project opened"
+	  on activitynode_ref 129418 // decision
+	end
+      end
+    end
+
+    activity 128266 "select session"
+      activitydiagram 128266 "select session"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 129802 initial ""
+	flow 160266 "<flow>"
+	  on activitynode_ref 137994 // decision
+	end
+      end
+
+      activitynode 129930 activity_final ""
+      end
+
+      activitynode 130058 decision ""
+	flow 133898 "No session exists"
+	  on activitynode_ref 129930 // activity_final
+	end
+
+	flow 162186 "Session exists"
+	  on activityaction_ref 130442 // activity action User selects the session using the combobox
+	end
+      end
+
+      activityaction 130314 "User opens the \"Session\" view of the plugin"
+	opaque_action
+	flow 162058 "<flow>"
+	  on activitynode_ref 130058 // decision
+	end
+      end
+
+      activityaction 130442 "User selects the session using the combobox"
+	opaque_action
+	flow 160650 "<flow>"
+	  on activityaction_ref 137738 // activity action Display the data of the session in the "Session" view
+	end
+      end
+
+      activitynode 137994 decision ""
+	flow 160394 "Project not opened"
+	  on activitynode_ref 129930 // activity_final
+	end
+
+	flow 161930 "Project opened"
+	  on activityaction_ref 130314 // activity action User opens the "Session" view of the plugin
+	end
+      end
+
+      activityaction 137738 "Display the data of the session in the \"Session\" view"
+	opaque_action
+	flow 160778 "<flow>"
+	  on activitynode_ref 129930 // activity_final
+	end
+      end
+    end
+
+    activity 128394 "select test cases"
+      activitydiagram 128394 "select test cases"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 130442 initial ""
+	flow 161034 "<flow>"
+	  on activitynode_ref 138122 // decision
+	end
+      end
+
+      activitynode 130570 activity_final ""
+      end
+
+      activitynode 130826 decision ""
+	flow 135434 "No test cases in session"
+	  on activitynode_ref 130570 // activity_final
+	end
+
+	flow 162570 "At least one test case in session"
+	  on activityaction_ref 130826 // activity action Select the test cases
+	end
+      end
+
+      activityaction 130826 "Select the test cases"
+	opaque_action
+	flow 135818 "<flow>"
+	  on activitynode_ref 130954 // decision
+	end
+      end
+
+      activitynode 130954 decision ""
+	flow 135946 "Selection invalidates previous visualizations"
+	  on activityaction_ref 130954 // activity action Refresh source code highlighting and the "Coverage" view
+	end
+
+	flow 136074 "No visual update necessary"
+	  on activitynode_ref 130570 // activity_final
+	end
+      end
+
+      activityaction 130954 "Refresh source code highlighting and the \"Coverage\" view"
+	opaque_action
+	flow 136202 "<flow>"
+	  on activitynode_ref 130570 // activity_final
+	end
+      end
+
+      activitynode 138122 decision ""
+	flow 161162 "Project not opened"
+	  on activitynode_ref 130570 // activity_final
+	end
+
+	flow 162314 "Project opened"
+	  on activityaction_ref 137866 // activity action Call activity "select session"
+	end
+      end
+
+      activityaction 137866 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 162442 "<flow>"
+	  on activitynode_ref 130826 // decision
+	end
+      end
+    end
+
+    activity 128522 "show coverage measurement"
+      activitydiagram 128522 "show coverage measurement"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 131082 initial ""
+	flow 162698 "<flow>"
+	  on activitynode_ref 138378 // decision
+	end
+      end
+
+      activitynode 131210 activity_final ""
+      end
+
+      activityaction 131210 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 164746 "<flow>"
+	  on activitynode_ref 139274 // decision
+	end
+      end
+
+      activityaction 131338 "Call activity \"select test cases\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 165258 "<flow>"
+	  on activitynode_ref 139402 // decision
+	end
+      end
+
+      activityaction 131466 "User opens the \"Coverage\" view of the plugin"
+	opaque_action
+	flow 163594 "<flow>"
+	  on activitynode_ref 138890 // decision
+	end
+      end
+
+      activitynode 131466 fork ""
+      end
+
+      activityaction 131594 "Expand items to reveal subitems"
+	opaque_action
+	flow 163978 "<flow>"
+	  on activitynode_ref 139018 // merge
+	end
+      end
+
+      activityaction 131722 "Sort by clicking the column header"
+	opaque_action
+	flow 164106 "<flow>"
+	  on activitynode_ref 139018 // merge
+	end
+      end
+
+      activitynode 138378 decision ""
+	flow 162826 "Project not opened"
+	  on activitynode_ref 131210 // activity_final
+	end
+
+	flow 162954 "Project opened"
+	  on activityaction_ref 131210 // activity action Call activity "select session"
+	end
+      end
+
+      activitynode 138890 decision ""
+	flow 163722 "<flow>"
+	  on activityaction_ref 131594 // activity action Expand items to reveal subitems
+	end
+
+	flow 163850 "<flow>"
+	  on activityaction_ref 131722 // activity action Sort by clicking the column header
+	end
+      end
+
+      activitynode 139018 merge ""
+	flow 164362 "<flow>"
+	  on activitynode_ref 139146 // decision
+	end
+      end
+
+      activitynode 139146 decision ""
+	flow 164490 "<flow>"
+	  on activitynode_ref 138890 // decision
+	end
+
+	flow 164618 "<flow>"
+	  on activitynode_ref 131210 // activity_final
+	end
+      end
+
+      activitynode 139274 decision ""
+	flow 164874 "No session selected"
+	  on activitynode_ref 131210 // activity_final
+	end
+
+	flow 165002 "Session selected"
+	  on activityaction_ref 131338 // activity action Call activity "select test cases"
+	end
+      end
+
+      activitynode 139402 decision ""
+	flow 165130 "No test case selected"
+	  on activitynode_ref 131210 // activity_final
+	end
+
+	flow 165386 "Test case selected"
+	  on activityaction_ref 131466 // activity action User opens the "Coverage" view of the plugin
+	end
+      end
+    end
+
+    activity 128650 "show covered code"
+      activitydiagram 128650 "show covered code"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 131722 initial ""
+	flow 165514 "<flow>"
+	  on activitynode_ref 139530 // decision
+	end
+      end
+
+      activitynode 131850 activity_final ""
+      end
+
+      activityaction 131850 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 165898 "<flow>"
+	  on activitynode_ref 139658 // decision
+	end
+      end
+
+      activityaction 131978 "Call activity \"select test cases\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 137738 "<flow>"
+	  on activitynode_ref 131978 // decision
+	end
+
+	flow 166282 "<flow>"
+	  on activitynode_ref 139786 // decision
+	end
+      end
+
+      activitynode 131978 decision ""
+	flow 137866 "code file changed since measurement"
+	  on activitynode_ref 131850 // activity_final
+	end
+
+	flow 137994 "No changes in code file"
+	  on activityaction_ref 132106 // activity action Highlight the code according to the measurement
+	end
+      end
+
+      activityaction 132106 "Highlight the code according to the measurement"
+	opaque_action
+	flow 138378 "<flow>"
+	  on activitynode_ref 131850 // activity_final
+	end
+      end
+
+      activityaction 132234 "User opens code file, whose measurement is to be displayed"
+	opaque_action
+	flow 138250 "<flow>"
+	  on activitynode_ref 131978 // decision
+	end
+      end
+
+      activitynode 139530 decision ""
+	flow 165642 "Project not opened"
+	  on activitynode_ref 131850 // activity_final
+	end
+
+	flow 165770 "Project opened"
+	  on activityaction_ref 131850 // activity action Call activity "select session"
+	end
+      end
+
+      activitynode 139658 decision ""
+	flow 166026 "No session selected"
+	  on activitynode_ref 131850 // activity_final
+	end
+
+	flow 166154 "Session selected"
+	  on activityaction_ref 131978 // activity action Call activity "select test cases"
+	end
+      end
+
+      activitynode 139786 decision ""
+	flow 166410 "No test case selected"
+	  on activitynode_ref 131850 // activity_final
+	end
+
+	flow 166538 "Test case selected"
+	  on activityaction_ref 132234 // activity action User opens code file, whose measurement is to be displayed
+	end
+      end
+    end
+
+    activity 128778 "drop session"
+      activitydiagram 128778 "drop session"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 132106 initial ""
+	flow 138506 "<flow>"
+	  on activitynode_ref 132490 // decision
+	end
+      end
+
+      activitynode 132490 decision ""
+	flow 140170 "Project not opened"
+	  on activitynode_ref 132874 // activity_final
+	end
+
+	flow 166922 "Project opened"
+	  on activityaction_ref 137994 // activity action Call activity "select session"
+	end
+      end
+
+      activityaction 132618 "User clicks on \"Drop Session\" button"
+	opaque_action
+	flow 139274 "<flow>"
+	  on activityaction_ref 132746 // activity action Open dialog to ask user, if he wants to only drop the session from the view or delete it from the file system as well
+	end
+      end
+
+      activityaction 132746 "Open dialog to ask user, if he wants to only drop the session from the view or delete it from the file system as well"
+	opaque_action
+	flow 138890 "<flow>"
+	  on activitynode_ref 132618 // decision
+	end
+
+	flow 140682 "<flow>"
+	  on activityaction_ref 133258 // activity action Close dialog window
+	end
+      end
+
+      activitynode 132618 decision ""
+	flow 138634 "\"Delete\" selected"
+	  on activityaction_ref 132874 // activity action Delete from file system
+	end
+
+	flow 140298 "<flow>"
+	  on activityaction_ref 133130 // activity action Remove session from view
+	end
+
+	flow 140938 "<flow>"
+	  on activityaction_ref 133130 // activity action Remove session from view
+	end
+
+	flow 141322 "<flow>"
+	  on activityaction_ref 133386 // activity action Refresh the "Session" view
+	end
+
+	flow 141962 "<flow>"
+	  on activitynode_ref 133002 // merge
+	end
+      end
+
+      activityaction 132874 "Delete from file system"
+	opaque_action
+	flow 138762 "<flow>"
+	  on activitynode_ref 132746 // decision
+	end
+      end
+
+      activitynode 132746 decision ""
+	flow 139658 "Errors whilst deleting"
+	  on activityaction_ref 133002 // activity action Display error message
+	end
+
+	flow 140426 "<flow>"
+	  on activityaction_ref 133130 // activity action Remove session from view
+	end
+
+	flow 141450 "<flow>"
+	  on activityaction_ref 133386 // activity action Refresh the "Session" view
+	end
+
+	flow 142090 "No errors whilst deleting"
+	  on activitynode_ref 133002 // merge
+	end
+      end
+
+      activityaction 133002 "Display error message"
+	opaque_action
+	flow 140042 "<flow>"
+	  on activitynode_ref 132874 // activity_final
+	end
+
+	flow 141578 "<flow>"
+	  on activityaction_ref 133386 // activity action Refresh the "Session" view
+	end
+
+	flow 142218 "<flow>"
+	  on activitynode_ref 133002 // merge
+	end
+      end
+
+      activityaction 133130 "Remove session from view"
+	opaque_action
+	flow 140554 "<flow>"
+	  on activityaction_ref 133258 // activity action Close dialog window
+	end
+
+	flow 141194 "<flow>"
+	  on activitynode_ref 132618 // decision
+	end
+      end
+
+      activityaction 133258 "Close dialog window"
+	opaque_action
+	flow 140810 "<flow>"
+	  on activitynode_ref 132618 // decision
+	end
+
+	flow 141066 "<flow>"
+	  on activityaction_ref 133130 // activity action Remove session from view
+	end
+      end
+
+      activitynode 132874 activity_final ""
+      end
+
+      activityaction 133386 "Refresh the \"Session\" view"
+	opaque_action
+	flow 167178 "<flow>"
+	  on activitynode_ref 132874 // activity_final
+	end
+      end
+
+      activitynode 133002 merge ""
+	flow 141834 "<flow>"
+	  on activityaction_ref 133386 // activity action Refresh the "Session" view
+	end
+      end
+
+      activityaction 137994 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 166666 "<flow>"
+	  on activitynode_ref 139914 // decision
+	end
+      end
+
+      activitynode 139914 decision ""
+	flow 166794 "No session selected"
+	  on activitynode_ref 132874 // activity_final
+	end
+
+	flow 167050 "Session selected"
+	  on activityaction_ref 132618 // activity action User clicks on "Drop Session" button
+	end
+      end
+    end
+
+    activity 128906 "drop test case"
+      activitydiagram 128906 "drop test case"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 133130 initial ""
+	flow 142346 "<flow>"
+	  on activitynode_ref 133386 // decision
+	end
+      end
+
+      activitynode 133258 activity_final ""
+      end
+
+      activitynode 133386 decision ""
+	flow 142474 "Project not opened"
+	  on activitynode_ref 133258 // activity_final
+	end
+
+	flow 167306 "Project opened"
+	  on activityaction_ref 138122 // activity action Call activity "select session"
+	end
+      end
+
+      activityaction 133770 "User clicks the \"Delete Test Case(s)\" button"
+	opaque_action
+	flow 143242 "<flow>"
+	  on activityaction_ref 133898 // activity action Open dialog to confirm that the selected test case(s) should be deleted
+	end
+      end
+
+      activityaction 133898 "Open dialog to confirm that the selected test case(s) should be deleted"
+	opaque_action
+	flow 143370 "<flow>"
+	  on activitynode_ref 133642 // decision
+	end
+
+	flow 168330 "<flow>"
+	  on activitynode_ref 133642 // decision
+	end
+      end
+
+      activitynode 133642 decision ""
+	flow 143498 "User clicks the \"Delete\" button"
+	  on activityaction_ref 134026 // activity action Delete test case(s)
+	end
+
+	flow 143626 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 133258 // activity_final
+	end
+      end
+
+      activityaction 134026 "Delete test case(s)"
+	opaque_action
+	flow 143754 "<flow>"
+	  on activitynode_ref 133770 // decision
+	end
+      end
+
+      activitynode 133770 decision ""
+	flow 143882 "Failure"
+	  on activityaction_ref 134154 // activity action Display error message
+	end
+
+	flow 144394 "Success"
+	  on activityaction_ref 134410 // activity action Refresh the "Session" view
+	end
+      end
+
+      activityaction 134154 "Display error message"
+	opaque_action
+	flow 144650 "<flow>"
+	  on activitynode_ref 133258 // activity_final
+	end
+      end
+
+      activityaction 134410 "Refresh the \"Session\" view"
+	opaque_action
+	flow 144266 "<flow>"
+	  on activityaction_ref 134410 // activity action Refresh the "Session" view
+	end
+
+	flow 144522 "<flow>"
+	  on activitynode_ref 133258 // activity_final
+	end
+      end
+
+      activityaction 138122 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 167434 "<flow>"
+	  on activitynode_ref 140042 // decision
+	end
+      end
+
+      activitynode 140042 decision ""
+	flow 167562 "No session selected"
+	  on activitynode_ref 133258 // activity_final
+	end
+
+	flow 167690 "Session selected"
+	  on activityaction_ref 138250 // activity action Call activity "select test cases"
+	end
+      end
+
+      activityaction 138250 "Call activity \"select test cases\""
+	call_behavior_action
+	activity_ref 128394 // select test cases
+	flow 167818 "<flow>"
+	  on activitynode_ref 140170 // decision
+	end
+      end
+
+      activitynode 140170 decision ""
+	flow 167946 "No test case selected"
+	  on activitynode_ref 133258 // activity_final
+	end
+
+	flow 168202 "Test case selected"
+	  on activityaction_ref 133770 // activity action User clicks the "Delete Test Case(s)" button
+	end
+      end
+    end
+
+    activity 129034 "configure preferences"
+      activitydiagram 129034 "configure preferences"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 133898 initial ""
+	flow 168458 "<flow>"
+	  on activityaction_ref 138378 // activity action User opens "Preferences" dialog in the "Window" menu
+	end
+      end
+
+      activitynode 134026 activity_final ""
+      end
+
+      activityaction 138378 "User opens \"Preferences\" dialog in the \"Window\" menu"
+	opaque_action
+	flow 168586 "<flow>"
+	  on activityaction_ref 138506 // activity action User selects the "gbt�" entry
+	end
+      end
+
+      activityaction 138506 "User selects the \"gbt�\" entry"
+	opaque_action
+	flow 168714 "<flow>"
+	  on activityaction_ref 138634 // activity action Open the configuration page for the plugin
+	end
+      end
+
+      activityaction 138634 "Open the configuration page for the plugin"
+	opaque_action
+	flow 168842 "<flow>"
+	  on activityaction_ref 138762 // activity action Customize the colors used for the source code highlighting
+	end
+      end
+
+      activityaction 138762 "Customize the colors used for the source code highlighting"
+	opaque_action
+	flow 168970 "<flow>"
+	  on activitynode_ref 140298 // decision
+	end
+      end
+
+      activitynode 140298 decision ""
+	flow 169098 "User clicks the \"OK\" button"
+	  on activityaction_ref 138890 // activity action Save changes
+	end
+
+	flow 169226 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 134026 // activity_final
+	end
+      end
+
+      activityaction 138890 "Save changes"
+	opaque_action
+	flow 169354 "<flow>"
+	  on activitynode_ref 134026 // activity_final
+	end
+      end
+    end
+
+    activity 129162 "generate report"
+      activitydiagram 129162 "generate report"
+	package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+	show_infonote default drawing_language default
+	size A5
+      end
+
+      activitynode 140426 initial ""
+	flow 169610 "<flow>"
+	  on activitynode_ref 140682 // decision
+	end
+      end
+
+      activitynode 140554 activity_final ""
+      end
+
+      activitynode 140682 decision ""
+	flow 169482 "Project not opened"
+	  on activitynode_ref 140554 // activity_final
+	end
+
+	flow 169738 "Project opened"
+	  on activityaction_ref 139018 // activity action Call activity "select session"
+	end
+      end
+
+      activityaction 139018 "Call activity \"select session\""
+	call_behavior_action
+	activity_ref 128266 // select session
+	flow 169866 "<flow>"
+	  on activitynode_ref 140810 // decision
+	end
+      end
+
+      activitynode 140810 decision ""
+	flow 169994 "No session selected"
+	  on activitynode_ref 140554 // activity_final
+	end
+
+	flow 170122 "Session selected"
+	  on activityaction_ref 139146 // activity action User clicks the "Export" button
+	end
+      end
+
+      activityaction 139146 "User clicks the \"Export\" button"
+	opaque_action
+	flow 170250 "<flow>"
+	  on activityaction_ref 139274 // activity action Open the "Export" dialog
+	end
+      end
+
+      activityaction 139274 "Open the \"Export\" dialog"
+	opaque_action
+	flow 170378 "<flow>"
+	  on activitynode_ref 140938 // decision
+	end
+      end
+
+      activitynode 140938 decision ""
+	flow 170506 "<flow>"
+	  on activityaction_ref 139402 // activity action User chooses additional sessions
+	end
+
+	flow 170762 "<flow>"
+	  on activitynode_ref 141066 // merge
+	end
+      end
+
+      activityaction 139402 "User chooses additional sessions"
+	opaque_action
+	flow 170634 "<flow>"
+	  on activitynode_ref 141066 // merge
+	end
+      end
+
+      activitynode 141066 merge ""
+	flow 170890 "<flow>"
+	  on activityaction_ref 139530 // activity action User changes "Type" to "Report"
+	end
+      end
+
+      activityaction 139530 "User changes \"Type\" to \"Report\""
+	opaque_action
+	flow 171018 "<flow>"
+	  on activityaction_ref 139658 // activity action User chooses destination folder
+	end
+      end
+
+      activityaction 139658 "User chooses destination folder"
+	opaque_action
+	flow 171146 "<flow>"
+	  on activityaction_ref 139786 // activity action User clicks the "Next" button
+	end
+      end
+
+      activityaction 139786 "User clicks the \"Next\" button"
+	opaque_action
+	flow 171274 "<flow>"
+	  on activityaction_ref 139914 // activity action Open the "Report" dialog
+	end
+      end
+
+      activityaction 139914 "Open the \"Report\" dialog"
+	opaque_action
+	flow 171402 "<flow>"
+	  on activityaction_ref 140042 // activity action User choose template
+	end
+      end
+
+      activityaction 140042 "User choose template"
+	opaque_action
+	flow 171530 "<flow>"
+	  on activitynode_ref 141194 // decision
+	end
+      end
+
+      activitynode 141194 decision ""
+	flow 171658 "User clicks the \"Cancel\" button"
+	  on activitynode_ref 140554 // activity_final
+	end
+
+	flow 171786 "User clicks the \"Finish\" button"
+	  on activityaction_ref 140170 // activity action Generate report according to the template
+	end
+      end
+
+      activityaction 140170 "Generate report according to the template"
+	opaque_action
+	flow 171914 "<flow>"
+	  on activitynode_ref 141322 // decision
+	end
+      end
+
+      activityaction 140298 "Display error message"
+	opaque_action
+	flow 172298 "<flow>"
+	  on activitynode_ref 140554 // activity_final
+	end
+      end
+
+      activitynode 141322 decision ""
+	flow 172042 "Errors whilst generating"
+	  on activityaction_ref 140298 // activity action Display error message
+	end
+
+	flow 172170 "No errors whilst generating"
+	  on activitynode_ref 140554 // activity_final
+	end
+      end
+    end
+  end
+end

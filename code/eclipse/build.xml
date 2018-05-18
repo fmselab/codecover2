@@ -1,0 +1,495 @@
+<!-- $Id: build.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="release-dir" value="../release/" />
+  <property name="release-lib" value="${release-dir}lib/" />
+  <property name="release-templates" value="${release-dir}report-templates/" />
+  <property name="release-docs" value="${release-dir}docs/" />
+<!--
+  Eclipse Stuff is now build by Eclipse and is temporarily unsupported
+  from ant CLI.
+-->
+<!--
+  <property name="release-eclipse-site" value="${release-dir}eclipse-site/" />
+  <property name="eclipse-plugin-version" value="0.0.3" />
+-->
+
+
+  <target name="jar">
+    <ant antfile="build-manual.xml" dir="../model" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../metrics" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-measurement" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-junit" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-cobol" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-html" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-csv" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../utils" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../batch" target="jar" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../ant" target="jar" inheritAll="false" />
+    <!--
+        <ant antfile="build-manual.xml" dir="eclipse" target="jar" inheritAll="false" />
+    -->
+    <antcall target="clean-nonrecursive" />
+
+    <mkdir dir="tmp" />
+    <unzip src="../model/model.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <unzip src="../metrics/metrics.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <unzip src="../instrumentation/instrumentation.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <unzip src="../report/report.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <unzip src="../utils/utils.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <!-- get the latest SVN Version -->
+    <antcall target="UpdateCodeCoverInfo" />
+    <jar destfile="${release-lib}codecover-core.jar" basedir="tmp">
+      <manifest>
+        <section name="common">
+          <!-- <attribute name="Asdf" value="Fdsa"/> -->
+        </section>
+      </manifest>
+    </jar>
+    <delete dir="tmp" />
+
+    <mkdir dir="${release-lib}plugins" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../report-html/report-html.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <copy file="../report-html/codecover-plugin.xml" tofile="tmp/codecover-plugin.xml" />
+    <jar destfile="${release-lib}plugins/org.codecover.report.html-0.1.jar" basedir="tmp">
+      <manifest>
+        <attribute name="Class-Path" value="commons-collections-2.1.1.jar log4j-1.2.13.jar velocity-1.4.jar"/>
+      </manifest>
+    </jar>
+    <delete dir="../tmp" />
+
+    <copy file="../report-html/lib/commons-collections-2.1.1.jar" todir="${release-lib}plugins" />
+    <copy file="../report-html/lib/log4j-1.2.13.jar" todir="${release-lib}plugins" />
+    <copy file="../report-html/lib/velocity-1.4.jar" todir="${release-lib}plugins" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../report-csv/report-csv.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <copy file="../report-csv/codecover-plugin.xml" tofile="tmp/codecover-plugin.xml" />
+    <jar destfile="${release-lib}plugins/org.codecover.report.csv-0.1.jar" basedir="tmp" />
+    <delete dir="../tmp" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../instrumentation-java-measurement/instrumentation-java-measurement.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <unzip src="../instrumentation-java/instrumentation-java.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <copy file="../instrumentation-java/src/codecover-plugin.xml" tofile="tmp/codecover-plugin.xml" />
+    <jar destfile="${release-lib}plugins/org.codecover.instrumentation.java15-0.1.jar" basedir="tmp" />
+    <delete dir="../tmp" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../instrumentation-java-junit/instrumentation-java-junit.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <jar destfile="${release-lib}JUnit-TestRunner.jar" basedir="tmp">
+      <manifest>
+        <attribute name="Class-Path" value="codecover-instrumentation-java.jar"/>
+      </manifest>
+    </jar>
+    <delete dir="../tmp" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../instrumentation-cobol/instrumentation-cobol.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <copy file="../instrumentation-cobol/src/codecover-plugin.xml" tofile="tmp/codecover-plugin.xml" />
+    <jar destfile="${release-lib}plugins/org.codecover.instrumentation.cobol85-0.1.jar" basedir="tmp" />
+    <delete dir="../tmp" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../ant/ant.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <copy file="../ant/antlib.xml" tofile="tmp/org/codecover/ant/antlib.xml" />
+    <jar destfile="${release-lib}codecover-ant.jar" basedir="tmp">
+      <manifest>
+        <attribute name="Class-Path" value="codecover-core.jar"/>
+      </manifest>
+    </jar>
+    <delete dir="../tmp" />
+
+    <mkdir dir="../tmp" />
+    <unzip src="../batch/batch.jar" dest="tmp" />
+    <delete file="../tmp/META-INF/MANIFEST.MF" />
+    <jar destfile="${release-lib}codecover-batch.jar" basedir="tmp">
+      <manifest>
+        <attribute name="Main-Class" value="org.codecover.batch.Batch"/>
+        <attribute name="Class-Path" value="codecover-core.jar"/>
+      </manifest>
+    </jar>
+    <delete dir="../tmp" />
+
+    <copy file="../ant/ant.jar" tofile="${release-lib}/codecover-ant.jar" />
+    <copy file="../instrumentation-java-measurement/java-protocol-dummy.jar" todir="${release-lib}" />
+    <copy file="../instrumentation-java-measurement/servlet-live-notification.jar" todir="${release-lib}" />
+    <copy file="../report-html/report-templates/HTML_Report_hierarchic.xml" todir="${release-templates}" />
+    <copy file="../report-html/report-templates/HTML_Report_SingleFile.xml" todir="${release-templates}" />
+    <copy file="../report-csv/report-templates/CSV_Report.xml" todir="${release-templates}" />
+
+    <!-- create bash completion file -->
+    <java jar="${release-lib}codecover-batch.jar" fork="true" failonerror="true">
+      <arg value="create-bash-completion-file" />
+      <arg value="--" />
+      <arg value="${release-dir}bash_completion-codecover" />
+    </java>
+
+<!--
+    <mkdir dir="tmp" />
+    <unzip src="model/model.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="metrics/metrics.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="instrumentation/instrumentation.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="report/lib/commons-collections-2.1.1.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="report/lib/log4j-1.2.13.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="report/lib/velocity-1.4.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="report/report.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="utils/utils.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    -->
+    <!-- get the latest SVN Version -->
+<!--
+    <antcall target="UpdateCodeCoverInfo" />
+    <unzip src="instrumentation-java-measurement/instrumentation-java-measurement.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="instrumentation-java/instrumentation-java.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <unzip src="instrumentation-java-junit/instrumentation-java-junit.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+        <unzip src="eclipse/eclipse.jar" dest="tmp" />
+    <delete file="tmp/META-INF/MANIFEST.MF" />
+    <copy file="eclipse/plugin.xml" todir="tmp" />
+    <copy file="eclipse/src/org/codecover/eclipse/messages.properties" todir="tmp/org/codecover/eclipse" />
+    <copy todir="tmp/icons">
+      <fileset dir="eclipse/icons"/>
+    </copy>
+    <mkdir dir="${release-eclipse-site}/plugins" />
+    <jar destfile="${release-eclipse-site}/plugins/org.codecover.eclipse_${eclipse-plugin-version}.jar" basedir="tmp"
+         manifest="eclipse/META-INF/MANIFEST.MF.release">
+    </jar>
+    <delete dir="tmp" />
+    -->
+
+<!--
+    <mkdir dir="tmp" />
+    <copy file="eclipse/feature.xml" todir="tmp" />
+    <replace file="tmp/feature.xml" value="${eclipse-plugin-version}">
+      <replacetoken>@@VERSION@@</replacetoken>
+    </replace>
+    <mkdir dir="${release-eclipse-site}/features" />
+    <jar destfile="${release-eclipse-site}/features/org.codecover.eclipse.feature_${eclipse-plugin-version}.jar" basedir="tmp" />
+    <delete dir="tmp" />
+
+    <mkdir dir="tmp" />
+    <copy file="eclipse/site.xml" tofile="tmp/site.xml" />
+    <replace file="tmp/site.xml" value="${eclipse-plugin-version}">
+      <replacetoken>@@VERSION@@</replacetoken>
+    </replace>
+    <copy file="tmp/site.xml" tofile="${release-eclipse-site}/site.xml" />
+    <delete dir="tmp" />
+-->
+  </target>
+  <target name="compile">
+    <ant antfile="build-manual.xml" dir="model" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="compile" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="compile" inheritAll="false" />
+        <!--
+    <ant dir="eclipse" target="compile" inheritAll="false" />
+    -->
+  </target>
+
+  <target name="test" depends="jar">
+    <ant antfile="build-manual.xml" dir="model" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="test" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="test" inheritAll="false" />
+        <!--
+    <ant dir="eclipse" target="test" inheritAll="false" />
+    -->
+  </target>
+
+  <target name="clean-nonrecursive">
+    <delete dir="../tmp" />
+    <delete dir="${release-dir}eclipse-site" />
+    <delete file="${release-dir}bash_completion-codecover" />
+    <delete>
+      <fileset dir="${release-lib}" includes="*"/>
+      <fileset dir="${release-templates}" includes="*"/>
+    </delete>
+  </target>
+
+  <target name="clean" depends="clean-javadoc,clean-nonrecursive">
+    <ant antfile="build-manual.xml" dir="../model" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../metrics" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-measurement" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-junit" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-cobol" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-html" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-csv" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../utils" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../batch" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../ant" target="clean" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../eclipse" target="clean" inheritAll="false" />
+  </target>
+
+  <target name="clean-javadoc">
+    <delete includeemptydirs="true">
+      <fileset dir="${release-docs}"
+               includes="**/*"/>
+    </delete>
+  </target>
+
+  <target name="set-svn-properties">
+    <ant antfile="build-manual.xml" dir="../model" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../metrics" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-measurement" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-java-junit" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../instrumentation-cobol" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-html" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../report-csv" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../utils" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../batch" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../ant" target="set-svn-properties" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="../eclipse" target="set-svn-properties" inheritAll="false" />
+    <exec executable="find">
+      <arg value="." />
+      <arg value="-maxdepth" />
+      <arg value="1" />
+      <arg value="(" />
+      <arg value="-name" />
+      <arg value="*.sh" />
+      <arg value="-o" />
+      <arg value="-name" />
+      <arg value="build*.xml" />
+      <arg value=")" />
+      <arg value="-exec" />
+      <arg value="svn" />
+      <arg value="propset" />
+      <arg value="svn:keywords" />
+      <arg value="Id" />
+      <arg value="{}" />
+      <arg value="+" />
+    </exec>
+  </target>
+
+  <!-- We create one big javadoc for everything instead
+       <target name="javadoc">
+         <ant antfile="build-manual.xml" dir="model" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="metrics" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="instrumentation" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="instrumentation-java" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="report" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="report-html" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="report-csv" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="utils" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="batch" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="ant" target="javadoc" inheritAll="false" />
+         <ant antfile="build-manual.xml" dir="eclipse" target="javadoc" inheritAll="false" />
+       </target>
+       -->
+
+  <target name="javadoc">
+    <javadoc destdir="${release-docs}"
+             packagenames="*"
+             classpath="eclipse/lib/org.eclipse.swt_3.3.0.v3346.jar:eclipse/lib/org.eclipse.debug.core_3.3.0.v20070607-1800.jar:eclipse/lib/org.eclipse.jface.text_3.3.0.v20070606-0010.jar:eclipse/lib/org.eclipse.equinox.registry_3.3.0.v20070522.jar:eclipse/lib/org.eclipse.jdt.core_3.3.0.v_771.jar:eclipse/lib/org.eclipse.core.runtime_3.3.100.v20070530.jar:eclipse/lib/org.eclipse.ui.ide_3.3.0.I20070620.jar:eclipse/lib/org.eclipse.text_3.3.0.v20070606-0010.jar:eclipse/lib/org.eclipse.core.contenttype_3.2.100.v20070319.jar:eclipse/lib/org.eclipse.jdt.compiler.apt_1.0.0.v20070510-2000.jar:eclipse/lib/org.eclipse.core.commands_3.3.0.I20070605-0010.jar:eclipse/lib/runtime_registry_compatibility.jar:eclipse/lib/org.eclipse.swt.gtk.linux.x86_3.3.0.v3346.jar:eclipse/lib/org.eclipse.debug.ui_3.3.0.v20070607-1800.jar:eclipse/lib/org.eclipse.ui_3.3.0.I20070614-0800.jar:eclipse/lib/org.eclipse.jdt.junit_3.3.0.v20070606-0010.jar:eclipse/lib/org.eclipse.jface_3.3.0.I20070606-0010.jar:eclipse/lib/org.eclipse.equinox.preferences_3.2.100.v20070522.jar:eclipse/lib/org.eclipse.ui.workbench_3.3.0.I20070608-1100.jar:eclipse/lib/org.eclipse.jdt.launching_3.3.0.v20070510.jar:eclipse/lib/org.eclipse.equinox.app_1.0.0.v20070606.jar:eclipse/lib/org.eclipse.equinox.common_3.3.0.v20070426.jar:eclipse/lib/org.eclipse.osgi_3.3.0.v20070530.jar:eclipse/lib/org.eclipse.ui.workbench.texteditor_3.3.0.v20070606-0010.jar:eclipse/lib/org.eclipse.jdt.compiler.tool_1.0.0.v_771.jar:eclipse/lib/org.eclipse.core.expressions_3.3.0.v20070606-0010.jar:eclipse/lib/org.eclipse.core.jobs_3.3.0.v20070423.jar:eclipse/lib/org.eclipse.ui.views_3.2.100.I20070319-0010.jar:eclipse/lib/org.eclipse.core.resources_3.3.0.v20070604.jar:eclipse/lib/org.eclipse.jdt.ui_3.3.0.v20070607-0010.jar:model/lib/junit.jar:model/lib/svnkit.jar:report-html/lib/commons-collections-2.1.1.jar:report-html/lib/log4j-1.2.13.jar:report-html/lib/velocity-1.4.jar:ant/lib/ant-1.6.jar:instrumentation-java-junit/lib/org.eclipse.jdt.junit.runtime_3.3.0.v20070606-0010.jar:instrumentation-java-junit/lib/junit-4.3.1.jar:instrumentation-java-measurement/lib/servlet-api.jar"
+             encoding="utf-8" docencoding="utf-8" charset="utf-8" >
+      <packageset dir="ant/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="batch/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="instrumentation/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="model/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="metrics/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="report/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="report-html/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="report-csv/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="utils/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="instrumentation-java/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="instrumentation-java-measurement/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="instrumentation-java-junit/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="instrumentation-cobol/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+      <packageset dir="eclipse/src" defaultexcludes="yes">
+        <include name="**"/>
+      </packageset>
+
+      <link offline="true"
+            href="http://java.sun.com/j2se/1.5.0/docs/api/"
+            packagelistLoc="model/package-lists/java.sun.com/j2se/1.5.0/docs/api/" />
+      <link offline="true"
+            href="http://junit.sourceforge.net/javadoc/"
+            packagelistLoc="model/package-lists/junit.sourceforge.net/javadoc/" />
+      <link offline="true"
+            href="http://help.eclipse.org/help33/topic/org.eclipse.platform.doc.isv/reference/api/"
+            packagelistLoc="model/package-lists/help.eclipse.org/help33/topic/org.eclipse.platform.doc.isv/reference/api/" />
+    </javadoc>
+  </target>
+
+  <target name="deletebom">
+    <ant antfile="build-manual.xml" dir="model" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="deletebom" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="eclipse" target="deletebom" inheritAll="false" />
+  </target>
+
+  <target name="compiletest">
+    <ant antfile="build-manual.xml" dir="model" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="compiletest" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="compiletest" inheritAll="false" />
+        <!--
+    <ant dir="eclipse" target="compiletest" inheritAll="false" />
+    -->
+  </target>
+
+  <target name="get-javadoc-package-lists">
+    <ant antfile="build-manual.xml" dir="model" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="get-javadoc-package-lists" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="eclipse" target="get-javadoc-package-lists" inheritAll="false" />
+  </target>
+
+  <target name="showtodo">
+    <ant antfile="build-manual.xml" dir="model" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="metrics" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-measurement" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-java-junit" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="instrumentation-cobol" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="utils" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-html" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="report-csv" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="batch" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="ant" target="showtodo" inheritAll="false" />
+    <ant antfile="build-manual.xml" dir="eclipse" target="showtodo" inheritAll="false" />
+  </target>
+
+  <!--
+      ! Must be called out of the ant target "jar", because the folder tmp is needed
+      ! and some files must be compiled.
+      !-->
+  <target name="UpdateCodeCoverInfo">
+    <mkdir dir="../tmp/tmp-bin" />
+    <copy todir="../tmp/tmp-bin/org/codecover/"
+          file="../model/src/org/codecover/CodeCoverInfo.java"
+          overwrite="yes" />
+
+    <!-- RS, 24.08.12, erstmal raus
+    <java classname="org.codecover.model.utils.SVNRevisionTool"
+          failonerror="true"
+          fork="yes"
+          dir="."
+          classpath="../model/bin/:model/lib/svnkit.jar" >
+      <arg value="." />
+      <arg value="../tmp/tmp-bin/org/codecover/CodeCoverInfo.java" />
+    </java>
+      !-->
+
+    <javac srcdir="../tmp/tmp-bin"
+           destdir="../tmp/tmp-bin"
+           encoding="utf-8"
+           target="1.5"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:all" />
+    </javac>
+
+    <copy todir="../tmp/org/codecover/"
+          file="../tmp/tmp-bin/org/codecover/CodeCoverInfo.class"
+          overwrite="yes" />
+    <delete dir="../tmp/tmp-bin" />
+  </target>
+</project>

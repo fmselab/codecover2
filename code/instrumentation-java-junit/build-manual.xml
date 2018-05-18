@@ -1,0 +1,176 @@
+<!-- $Id: build-manual.xml 52 2009-06-01 10:16:28Z ahija $ -->
+<project default="jar">
+  <property name="component-name" value="instrumentation-java-junit" />
+  <property name="junit3-jarfile" value="lib/junit3.8.1.jar" />
+  <property name="junit4-jarfile" value="lib/junit-4.5.jar" />
+  <property name="jarfile" value="${component-name}.jar" />
+  <property name="classpath" value="../model/model.jar:../instrumentation/instrumentation.jar:../instrumentation-java-measurement/instrumentation-java-measurement.jar:${junit3-jarfile}:${junit4-jarfile}:lib/org.eclipse.jdt.junit.runtime_3.3.0.v20070606-0010.jar" />
+  <property name="unit-classpath" value="bin:${classpath}" />
+  <property name="testrun-classpath3" value="bin:${junit3-jarfile}:../model/model.jar:../instrumentation/instrumentation.jar:../instrumentation-java-measurement/instrumentation-java-measurement.jar" />
+  <property name="testrun-classpath4" value="bin:${junit4-jarfile}:../model/model.jar:../instrumentation/instrumentation.jar:../instrumentation-java-measurement/instrumentation-java-measurement.jar" />
+  <property name="testrun-class-name" value="org.codecover.junit.AllTests" />
+  <property name="testrunner-tester3" value="org.codecover.junit3.AllTests" />
+  <property name="testrunner-tester4" value="org.codecover.junit4.AllTests" />
+
+  <import file="build-common.xml" />
+
+  <target name="jar" depends="compiletest,compile">
+    <jar destfile="${jarfile}">
+      <fileset dir="bin"
+	           excludes="**/classes/** **/*Test.class **/*Test$*.class **/*Tests.class **/*Tests$*.class **/UtilsForTesting*.class">
+        <include name="**/*.class" />
+      </fileset>
+
+      <fileset dir="src">
+        <include name="**/*.java" />
+      </fileset>
+	</jar>
+  </target>
+
+  <target name="test" depends="compiletest">
+    <java classname="junit.textui.TestRunner"
+          classpath="${unit-classpath}"
+          fork="true"
+          failonerror="true">
+      <arg value="${testrun-class-name}" />
+    </java>
+  </target>
+
+  <target name="testgui" depends="compiletest">
+    <!-- first we have to start some TestRunners -->
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="true">
+      <arg value="swing3.8" />
+      <arg value="methods" />
+    </java>
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="true">
+      <arg value="swing3.8" />
+      <arg value="nomethods" />
+    </java>
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="true">
+      <arg value="awt3.8" />
+      <arg value="methods" />
+    </java>
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="true">
+      <arg value="awt3.8" />
+      <arg value="nomethods" />
+    </java>
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="false"
+          outputproperty="dev0">
+      <arg value="text3.8" />
+      <arg value="methods" />
+    </java>
+    <java classname="${testrunner-tester3}"
+          classpath="${testrun-classpath3}"
+          fork="true"
+          failonerror="false"
+          outputproperty="dev0">
+      <arg value="text3.8" />
+      <arg value="nomethods" />
+    </java>
+    <java classname="${testrunner-tester4}"
+          classpath="${testrun-classpath4}"
+          fork="true"
+          failonerror="false"
+          outputproperty="dev0">
+      <arg value="text4.3" />
+      <arg value="methods" />
+    </java>
+    <java classname="${testrunner-tester4}"
+          classpath="${testrun-classpath4}"
+          fork="true"
+          failonerror="false"
+          outputproperty="dev0">
+      <arg value="text4.3" />
+      <arg value="nomethods" />
+    </java>
+
+    <!-- then we check the results -->
+    <java classname="junit.textui.TestRunner"
+          classpath="${unit-classpath}"
+          fork="true"
+          failonerror="true">
+      <arg value="org.codecover.junit.CoverageLogFileTest" />
+    </java>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="bin" />
+    <javac srcdir="src"
+	       target="1.4"
+	       source="1.4"
+           destdir="bin"
+           encoding="utf-8"
+           classpath="${classpath}"
+    	   includes="org/codecover/*.java org/codecover/junit3/**"
+           excludes="**/package-info.java"
+           debug="true"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:{all,-serial,-unchecked}" />
+    </javac>
+    <javac srcdir="src"
+	       target="1.5"
+	       source="1.5"
+           destdir="bin"
+           encoding="utf-8"
+           classpath="${classpath}:bin"
+    	   includes="org/codecover/junit4/** org/codecover/juniteclipse/**"
+           excludes="**/package-info.java"
+           debug="true"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:{all,-serial,-unchecked}" />
+    </javac>
+  </target>
+
+  <target name="compiletest" depends="compile">
+    <javac srcdir="${unittest-src-dir}:testsource"
+	       target="1.5"
+           source="1.5"
+           destdir="bin"
+           encoding="utf-8"
+           classpath="${classpath}:${junit-classpath}:${junit3-jarfile}"
+           debug="true"
+           includeAntRuntime="false">
+      <compilerarg value="-Xlint:all" />
+    </javac>
+  </target>
+
+  <property name="relase-dir" value="../release/" />
+  <property name="relase-lib" value="${relase-dir}lib/" />
+  <property name="cc-classpath" value="${relase-lib}codecover-core.jar:${relase-lib}codecover-instrumentation-cobol.jar:${relase-lib}codecover-instrumentation-java.jar:${relase-lib}codecover-batch.jar" />
+
+  <target name="instrument-test">
+	<delete file="testsource/junit-tests-tsc.xml" />
+
+    <java classname="org.codecover.batch.Batch"
+          classpath="${cc-classpath}"
+    	  fork="true"
+    	  failonerror="true">
+
+    <arg line="in" />
+    <arg line="--no-progress-bar" />
+    <arg line="-r testuninstrumented" />
+    <arg line="-d testsource" />
+    <arg line="-c testsource/junit-tests-tsc.xml" />
+    <arg line="-a UTF-8" />
+    <arg line="-l java" />
+    <arg line="-v" />
+    </java>
+
+	<delete dir="testsource/org/codecover/instrumentation" />
+  </target>
+</project>

@@ -1,0 +1,78 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+	<property name="component-name" value="instrumentation-java-measurement" />
+	<property name="jarfile" value="${component-name}.jar" />
+	<property name="dummy-jar" value="java-protocol-dummy.jar" />
+	<property name="server-jar" value="servlet-live-notification.jar" />
+	<property name="classpath" value="../model/model.jar:../instrumentation/instrumentation.jar:lib/servlet-api.jar" />
+	<property name="unit-classpath" value="" />
+	<property name="unittest-class-name" value="org.codecover.instrumentation.AllTests" />
+
+	<import file="build-common.xml" />
+
+	<target name="jar" depends="compiletest,compile">
+		<jar destfile="${jarfile}">
+			<fileset dir="bin" excludes="**/*Test.class **/*Test$*.class **/*Tests.class **/*Tests$*.class **/UtilsForTesting*.class">
+				<include name="**/*.class" />
+			</fileset>
+
+              <!--
+               ! Needed for the coverage measurement under java
+               ! where we have to copy these java files to the 
+               ! destination too.
+               !-->
+            <fileset dir="src">
+                <include name="**/*.java" />
+                <include name="**/*.java14" />
+            </fileset>
+            
+            <fileset dir="../instrumentation/src">
+                <include name="org/codecover/instrumentation/measurement/CoverageCounterLog.java" />
+                <include name="org/codecover/instrumentation/measurement/CoverageResultLog.java" />
+                <include name="org/codecover/instrumentation/measurement/MeasurementConstants.java" />
+            </fileset>
+		</jar>
+
+		<jar destfile="${dummy-jar}">
+			<fileset dir="bin">
+				<include name="org/codecover/instrumentation/java/measurement/Protocol.class" />
+			</fileset>
+
+			<!--
+         ! Needed for the coverage measurement under java
+         ! where we have to copy these java files to the 
+         ! destination too.
+         !-->
+			<fileset dir="src">
+				<include name="org/codecover/instrumentation/java/measurement/Protocol.java" />
+			</fileset>
+		</jar>
+
+		<jar destfile="${server-jar}">
+			<fileset dir="bin">
+				<include name="org/codecover/instrumentation/java/measurement/jmx/LiveNotificationContextListener.class" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="compiletest" depends="compile">
+		<javac srcdir="${unittest-src-dir}" target="1.4" source="1.4" destdir="bin" encoding="utf-8" classpath="${classpath}:${junit-classpath}:${junit-jarfile}" debug="true" includeAntRuntime="false">
+			<compilerarg value="-Xlint:all" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compiletest">
+		<java classname="junit.textui.TestRunner" classpath="${classpath}:${junit-classpath}:${junit-jarfile}:bin" fork="true" failonerror="true">
+			<arg value="${unittest-class-name}" />
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	    <mkdir dir="bin"/>
+		<delete dir="javadoc" />
+		<delete dir="test" />
+		<delete file="${jarfile}" />
+		<delete file="${dummy-jar}" />
+	</target>
+</project>

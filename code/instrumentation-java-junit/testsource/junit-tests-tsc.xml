@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TestSessionContainer Date="1190547203606" TestSessionContainerId="e9754141-dfa8-41f5-8e14-02f5795fc346" version="1.0" xmlns="http://www.codecover.org/xml/testsession-container">
+<SrcFileList>
+<SrcFile Content="/******************************************************************************&#10; * Copyright (c) 2007 Stefan Franke, Robert Hanussek, Benjamin Keil,          *&#10; *                    Steffen Kieß, Johannes Langauf,                         *&#10; *                    Christoph Marian Müller, Igor Podolskiy,                *&#10; *                    Tilmann Scheller, Michael Starzmann, Markus Wittlinger  *&#10; * All rights reserved. This program and the accompanying materials           *&#10; * are made available under the terms of the Eclipse Public License v1.0      *&#10; * which accompanies this distribution, and is available at                   *&#10; * http://www.eclipse.org/legal/epl-v10.html                                  *&#10; ******************************************************************************/&#10;&#10;package org.codecover.classes;&#10;&#10;/**&#10; * Usage: To be instrumented for TestRunner tests by build.xml, target &lt;code&gt;instrument-test&lt;/code&gt;&#10; * &#10; * @author Christoph Müller&#10; * &#10; * @version 1.0 ($Id: junit-tests-tsc.xml 1936 2007-09-23 11:44:43Z muellecr $)&#10; */&#10;public class ExamplePerson {&#10;&#10;    private String familyName;&#10;&#10;    private String givenName;&#10;&#10;    private double salary;&#10;&#10;    private int accessCount = 0;&#10;&#10;    public String getFamilyName() {&#10;        access();&#10;        return this.familyName;&#10;    }&#10;&#10;    public void setFamilyName(String familyName) {&#10;        access();&#10;        this.familyName = familyName;&#10;    }&#10;&#10;    public String getGivenName() {&#10;        access();&#10;        return this.givenName;&#10;    }&#10;&#10;    public void setGivenName(String givenName) {&#10;        access();&#10;        this.givenName = givenName;&#10;    }&#10;&#10;    public double getSalary() {&#10;        access();&#10;        return this.salary;&#10;    }&#10;&#10;    public void setSalary(double salary) {&#10;        access();&#10;        this.salary = salary;&#10;    }&#10;    &#10;    protected void access() {&#10;        this.accessCount++;&#10;    }&#10;}&#10;" Filename="ExamplePerson.java" Intrnl_Id="1"/>
+<SrcFile Content="/******************************************************************************&#10; * Copyright (c) 2007 Stefan Franke, Robert Hanussek, Benjamin Keil,          *&#10; *                    Steffen Kieß, Johannes Langauf,                         *&#10; *                    Christoph Marian Müller, Igor Podolskiy,                *&#10; *                    Tilmann Scheller, Michael Starzmann, Markus Wittlinger  *&#10; * All rights reserved. This program and the accompanying materials           *&#10; * are made available under the terms of the Eclipse Public License v1.0      *&#10; * which accompanies this distribution, and is available at                   *&#10; * http://www.eclipse.org/legal/epl-v10.html                                  *&#10; ******************************************************************************/&#10;&#10;package org.codecover.classes;&#10;&#10;/**&#10; * Usage: To be instrumented for TestRunner tests by build.xml, target &lt;code&gt;instrument-test&lt;/code&gt;&#10; * &#10; * @author Christoph Müller &#10; *&#10; * @version 1.0 ($Id: junit-tests-tsc.xml 1936 2007-09-23 11:44:43Z muellecr $)&#10; */&#10;public class ExampleProgramer extends ExamplePerson {&#10;    &#10;    public ExampleProgramer() {&#10;        super.access();&#10;        super.setFamilyName(&quot;&quot;);&#10;        super.setGivenName(&quot;&quot;);&#10;    }&#10;&#10;    public void setFamilyName(String familyName) {&#10;        super.access();&#10;        if (familyName.equals(&quot;Müller&quot;)) {&#10;            familyName = &quot;Mueller&quot;;&#10;        }&#10;        super.setFamilyName(familyName);&#10;    }&#10;    &#10;    public void setSalary(double salary) {&#10;        super.access();&#10;        super.setSalary(salary * 1.1);&#10;    }&#10;}&#10;" Filename="ExampleProgramer.java" Intrnl_Id="2"/>
+</SrcFileList>
+<CritList>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.BranchCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.LoopCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.ConditionCoverage"/>
+<CritListEntry MthdName="getInstance" Name="org.codecover.model.utils.criteria.StatementCoverage"/>
+</CritList>
+<BoolOpList/>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="6"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="10"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="14"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="4"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="16" HierarchyLvlTypeId="4" Intrnl_Id="3" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="15" HierarchyLvlTypeId="6" Intrnl_Id="5" Name="org">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="14" HierarchyLvlTypeId="6" Intrnl_Id="7" Name="codecover">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="13" HierarchyLvlTypeId="6" Intrnl_Id="8" Name="classes">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="8" HierarchyLvlTypeId="10" Intrnl_Id="9" Name="ExamplePerson">
+<Header>
+<Loc EndOffset="1027" SrcFileId="1" StartOffset="1001"/>
+</Header>
+<LocList>
+<Loc EndOffset="1816" SrcFileId="1" StartOffset="1001"/>
+</LocList>
+<StmntSeq Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="1154" SrcFileId="1" StartOffset="1126"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="1154" SrcFileId="1" StartOffset="1126"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="1" HierarchyLvlTypeId="14" Intrnl_Id="13" Name="getFamilyName">
+<Header>
+<Loc EndOffset="1189" SrcFileId="1" StartOffset="1160"/>
+</Header>
+<LocList>
+<Loc EndOffset="1247" SrcFileId="1" StartOffset="1160"/>
+</LocList>
+<StmntSeq Intrnl_Id="15">
+<LocList>
+<Loc EndOffset="1209" SrcFileId="1" StartOffset="1200"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="1209" SrcFileId="1" StartOffset="1200"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="2" HierarchyLvlTypeId="14" Intrnl_Id="17" Name="setFamilyName">
+<Header>
+<Loc EndOffset="1297" SrcFileId="1" StartOffset="1253"/>
+</Header>
+<LocList>
+<Loc EndOffset="1361" SrcFileId="1" StartOffset="1253"/>
+</LocList>
+<StmntSeq Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="1317" SrcFileId="1" StartOffset="1308"/>
+<Loc EndOffset="1355" SrcFileId="1" StartOffset="1326"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="1317" SrcFileId="1" StartOffset="1308"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="20">
+<LocList>
+<Loc EndOffset="1355" SrcFileId="1" StartOffset="1326"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="3" HierarchyLvlTypeId="14" Intrnl_Id="21" Name="getGivenName">
+<Header>
+<Loc EndOffset="1395" SrcFileId="1" StartOffset="1367"/>
+</Header>
+<LocList>
+<Loc EndOffset="1452" SrcFileId="1" StartOffset="1367"/>
+</LocList>
+<StmntSeq Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="1415" SrcFileId="1" StartOffset="1406"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="1415" SrcFileId="1" StartOffset="1406"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="4" HierarchyLvlTypeId="14" Intrnl_Id="24" Name="setGivenName">
+<Header>
+<Loc EndOffset="1500" SrcFileId="1" StartOffset="1458"/>
+</Header>
+<LocList>
+<Loc EndOffset="1562" SrcFileId="1" StartOffset="1458"/>
+</LocList>
+<StmntSeq Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="1520" SrcFileId="1" StartOffset="1511"/>
+<Loc EndOffset="1556" SrcFileId="1" StartOffset="1529"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="1520" SrcFileId="1" StartOffset="1511"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="1556" SrcFileId="1" StartOffset="1529"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="5" HierarchyLvlTypeId="14" Intrnl_Id="28" Name="getSalary">
+<Header>
+<Loc EndOffset="1593" SrcFileId="1" StartOffset="1568"/>
+</Header>
+<LocList>
+<Loc EndOffset="1647" SrcFileId="1" StartOffset="1568"/>
+</LocList>
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="1613" SrcFileId="1" StartOffset="1604"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="1613" SrcFileId="1" StartOffset="1604"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="6" HierarchyLvlTypeId="14" Intrnl_Id="31" Name="setSalary">
+<Header>
+<Loc EndOffset="1689" SrcFileId="1" StartOffset="1653"/>
+</Header>
+<LocList>
+<Loc EndOffset="1745" SrcFileId="1" StartOffset="1653"/>
+</LocList>
+<StmntSeq Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="1709" SrcFileId="1" StartOffset="1700"/>
+<Loc EndOffset="1739" SrcFileId="1" StartOffset="1718"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="1709" SrcFileId="1" StartOffset="1700"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="1739" SrcFileId="1" StartOffset="1718"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="7" HierarchyLvlTypeId="14" Intrnl_Id="35" Name="access">
+<Header>
+<Loc EndOffset="1778" SrcFileId="1" StartOffset="1755"/>
+</Header>
+<LocList>
+<Loc EndOffset="1814" SrcFileId="1" StartOffset="1755"/>
+</LocList>
+<StmntSeq Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="1808" SrcFileId="1" StartOffset="1789"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="org.codecover.classes.ExamplePerson.java" Intrnl_Id="37">
+<LocList>
+<Loc EndOffset="1808" SrcFileId="1" StartOffset="1789"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="12" HierarchyLvlTypeId="10" Intrnl_Id="38" Name="ExampleProgramer">
+<Header>
+<Loc EndOffset="1052" SrcFileId="2" StartOffset="1001"/>
+</Header>
+<LocList>
+<Loc EndOffset="1517" SrcFileId="2" StartOffset="1001"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="9" HierarchyLvlTypeId="14" Intrnl_Id="39" Name="ExampleProgramer">
+<Header>
+<Loc EndOffset="1089" SrcFileId="2" StartOffset="1064"/>
+</Header>
+<LocList>
+<Loc EndOffset="1186" SrcFileId="2" StartOffset="1064"/>
+</LocList>
+<StmntSeq Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="1115" SrcFileId="2" StartOffset="1100"/>
+<Loc EndOffset="1148" SrcFileId="2" StartOffset="1124"/>
+<Loc EndOffset="1180" SrcFileId="2" StartOffset="1157"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="41">
+<LocList>
+<Loc EndOffset="1115" SrcFileId="2" StartOffset="1100"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="1148" SrcFileId="2" StartOffset="1124"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="43">
+<LocList>
+<Loc EndOffset="1180" SrcFileId="2" StartOffset="1157"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="10" HierarchyLvlTypeId="14" Intrnl_Id="44" Name="setFamilyName">
+<Header>
+<Loc EndOffset="1236" SrcFileId="2" StartOffset="1192"/>
+</Header>
+<LocList>
+<Loc EndOffset="1398" SrcFileId="2" StartOffset="1192"/>
+</LocList>
+<StmntSeq Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="1262" SrcFileId="2" StartOffset="1247"/>
+<Loc EndOffset="1351" SrcFileId="2" StartOffset="1271"/>
+<Loc EndOffset="1392" SrcFileId="2" StartOffset="1360"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="46">
+<LocList>
+<Loc EndOffset="1262" SrcFileId="2" StartOffset="1247"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S5" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="52">
+<Branch CovItemId="B1" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Implct="false" Intrnl_Id="47">
+<Cond/>
+<LocList>
+<Loc EndOffset="1351" SrcFileId="2" StartOffset="1304"/>
+</LocList>
+<StmntSeq Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="1341" SrcFileId="2" StartOffset="1318"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="1341" SrcFileId="2" StartOffset="1318"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Implct="true" Intrnl_Id="50">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="51">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1273" SrcFileId="2" StartOffset="1271"/>
+<LocList>
+<Loc EndOffset="1351" SrcFileId="2" StartOffset="1271"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="53">
+<BasicBoolTerm Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="1302" SrcFileId="2" StartOffset="1275"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="55">
+<LocList>
+<Loc EndOffset="1392" SrcFileId="2" StartOffset="1360"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="11" HierarchyLvlTypeId="14" Intrnl_Id="56" Name="setSalary">
+<Header>
+<Loc EndOffset="1444" SrcFileId="2" StartOffset="1408"/>
+</Header>
+<LocList>
+<Loc EndOffset="1515" SrcFileId="2" StartOffset="1408"/>
+</LocList>
+<StmntSeq Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="1470" SrcFileId="2" StartOffset="1455"/>
+<Loc EndOffset="1509" SrcFileId="2" StartOffset="1479"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="1470" SrcFileId="2" StartOffset="1455"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="org.codecover.classes.ExampleProgramer.java" Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="1509" SrcFileId="2" StartOffset="1479"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>

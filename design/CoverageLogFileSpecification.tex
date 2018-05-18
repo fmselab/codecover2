@@ -1,0 +1,109 @@
+\section{Coverage log file specification} \label{Coverage log file specification}
+\subsection{General description}
+The coverage log file contains all information of a test session. These are:
+\begin{itemize}
+\item the names of the test cases $\geq$ 1
+\item sections for different source files within a test case
+\item ID of a Coverable item and a counter value
+\end{itemize}
+The coverage log file is no XML file, cause this would be too much overhead. This file is a plain text file with a specific grammar. This grammar is presented in the following, using the "Extended Backus–Naur form" as a notation. Some production use \linkwithfootnote{http://www.unicode.org/}{Unicode} code points and ranges to define the valid characters.
+\par The nonterminal \code{EOL} is standing for \textit{end of line} and can be \code{CR ($\backslash$r)}, \code{NL ($\backslash$n)} or \code{CRNL ($\backslash$r$\backslash$n)}. The Literal \code{"EOF"} is standing for \textit{end of file}. The nonterminal \code{Not\-Escaped\-Character} is standing for any character of the character encoding, that is no \code{Escaped\-Character} and no \textit{control character}.
+\par Nevertheless, the coverage log file can use any character encoding the \clsab{java.nio.Charset} supports (see \linkwithfootnote{http://java.sun.com/j2se/1.5.0/docs/guide/intl/encoding.doc.html}{Supported Encodings}).
+
+\subsection{EBNF grammar}
+\begin{verbatim}
+CoverageLogFile = Comment TestCase {Comment | TestCase} {EOL} "EOF";
+
+Comment = {CommentLine};
+CommentLine = "//" ExtendedCharacter* EOL;
+
+TestCase = TestSessionContainer StartTestCase [Section] EndTestCase;
+StartTestCase = "START_TEST_CASE" " " TestCaseName [" " TimeStamp]
+                [" " TestCaseComment] EOL;
+TestCaseName = StringLiteral;
+TimeStamp = IntegerLiteral;
+TestCaseComment = StringLiteral;
+EndTestCase = "END_TEST_CASE" " " TestCaseName [" " TimeStamp]
+              [" " TestCaseComment] EOL;
+
+TestSessionContainer = "TEST_SESSION_CONTAINER" " "
+                       TestSessionContainerUID EOL;
+TestSessionContainerUID = StringLiteral;
+
+Section = (NamedSection {NamedSection}) | UnnamedSection;
+NamedSection = StartSection Counter*;
+StartSection = "START_SECTION" " " SectionName EOL;
+SectionName = StringLiteral;
+UnnamedSection = Counter Counter*;
+
+Counter = CounterID " " IntegerLiteral EOL;
+CounterID = Character Character* IntegerLiteral {"-" IntegerLiteral};
+
+IntegerLiteral = Digit Digit*;
+Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+
+StringLiteral = '"' {ExtendedCharacter} '"';
+Character = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" |
+            "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
+            "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" |
+            "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" |
+            "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" |
+            "T" | "U" | "V" | "W" | "X" | "Y" | "Z";
+ExtendedCharacter = Digit | Character | EscapedCharacter |
+                    NotEscapedCharacter;
+EscapedCharacter = "\n" | "\t" | "\b" | "\r" | "\f" | "\\" | '\"' |
+                   "\'";
+NotEscapedCharacter = "U+0020" | "U+0021" | "U+0023" .. "U+0026" |
+                      "U+0028" .. "U+005B" | "U+005D" .. "U+10FFFF";
+
+EOL = "U+000D" | "U+000A" | "U+000D" "U+000A";
+\end{verbatim}
+
+\newpage
+
+\subsection{Example}
+\begin{footnotesize}
+\begin{verbatim}
+// ///////////////////////////////
+// Start Session
+// 18.05.2007 19:54:52.797
+// ///////////////////////////////
+// 18.05.2007 19:36:17.704
+TEST_SESSION_CONTAINER "4f97f9b3-9284-4d36-817b-a4bda7714540"
+START_TEST_CASE "My Name is \"Test Case 1\"" 1179509777704
+START_SECTION "org.codecover.CodeExample"
+S2 1
+S4 1
+C1-1010 2
+C1-1100 1
+C2-10 2
+C2-11 40
+C3-10 2
+C3-11 38
+L1-2 1
+L4-0 15
+L4-1 8
+L4-2 221
+END_TEST_CASE "My Name is \"Test Case 1\"" 1179509778775
+// 18.05.2007 19:36:18.775
+TEST_SESSION_CONTAINER "4f97f9b3-9284-4d36-817b-a4bda7714540"
+START_TEST_CASE "Second Class"
+START_SECTION "org.codecover.CodeExample"
+S20 1
+S21 1
+START_SECTION "org.codecover.SecondClassOfFile"
+C1-10 1
+C1-11 2
+C2-10 1
+C3-10 1
+C6-11 1
+C7-11 1
+C8-1111 1
+C21-10101010101010101010101010101010 30
+C21-11101110111000000000000000000000 1
+C22-1010101010101010101010101010101011 30
+C22-1110000000000000000000000000000000 1
+L4-2 1
+END_TEST_CASE "Second Class"
+\end{verbatim}
+\end{footnotesize}

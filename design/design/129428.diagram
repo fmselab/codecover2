@@ -1,0 +1,9 @@
+format 29
+
+classcanvas 128276 class_ref 136596 // Command
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 25 18 2000
+classcanvas 128788 class_ref 137108 // Batch
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 155 190 2000
+end

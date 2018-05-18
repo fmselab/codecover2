@@ -1,0 +1,195 @@
+// ///////////////////////////////
+// 
+// Start Session
+// 
+// 09.05.2007 08:33:32.766
+// 
+// ///////////////////////////////
+// 09.05.2007 08:33:32.786
+START_TEST_CASE "my Name is \"main\"" 1178692412786
+START_SECTION "org.codecover.instrument.java15.test.test3.CodeExample"
+S2 1
+S4 1
+S5 1
+S6 1
+S7 1
+S8 1
+S9 3
+S10 3
+S11 1
+S12 2
+S13 2
+S14 40
+S15 40
+S16 38
+S17 2
+S26 1
+S27 1
+S28 1
+S29 1
+S30 1
+S31 1
+S32 1
+S35 3
+S36 3
+S37 1
+S38 1
+S39 1
+S40 1
+S41 1
+S42 1
+S43 3
+S44 1
+S45 1
+S46 1
+S47 1
+S48 1
+S49 1
+S50 243
+S51 243
+S52 243
+S53 243
+S54 243
+S55 243
+S56 243
+S57 1
+S58 1
+S59 1
+S60 3
+S61 244
+S62 244
+S63 244
+S64 244
+S65 2818203
+S66 244
+S67 244
+S69 1
+S71 1
+B2 1
+B3 2
+B4 38
+B5 2
+B10 1
+B11 1
+B15 1
+B16 1
+B17 1
+B18 1
+B19 1
+B20 1
+C1-1010 2
+C1-1100 1
+C2-10 2
+C2-11 40
+C3-10 2
+C3-11 38
+C4-11 1
+C5-111111 1
+C7-10 1
+C7-11 242
+C8-10 244
+C8-11 2818203
+L1-2 1
+L2-2 2
+L3-2 1
+L4-0 15
+L4-1 8
+L4-2 221
+// 09.05.2007 08:33:33.878
+// 00:01.092
+END_TEST_CASE "my Name is \"main\"" 1178692413878
+// 09.05.2007 08:33:33.878
+START_TEST_CASE "Second Inner Class" 1178692413878 "Contains some\n\"special statements\""
+START_SECTION "org.codecover.instrument.java15.test.test3.CodeExample"
+S19 1
+S20 1
+START_SECTION "org.codecover.instrument.java15.test.test3.SecondClassOfFile"
+S1 1
+S2 1
+S3 1
+S4 1
+S5 1
+S6 1
+S7 1
+S8 1
+S9 2
+S10 1
+S11 1
+S12 1
+S14 1
+S16 1
+S17 1
+S18 1
+S19 1
+S21 1
+S22 1
+S23 1
+S24 1
+S25 1
+S26 1
+S28 1
+S29 1
+S30 1
+S31 1
+S32 1
+S34 1
+S35 1
+S36 31
+S37 31
+S38 1
+S39 31
+S40 31
+S41 998
+S42 990
+S44 8
+S46 1
+S47 1
+S48 1
+S49 1
+B2 1
+B5 1
+B7 1
+B9 1
+B10 30
+B11 31
+B13 990
+B14 8
+B15 1
+C1-10 1
+C1-11 2
+C2-10 1
+C3-10 1
+C4-10 1
+C4-11 31
+C5-10101010101010101010101010101010 30
+C5-11101110111000000000000000000000 1
+C6-1010101010101010101010101010101011 30
+C6-1110000000000000000000000000000000 1
+C7-10 8
+C7-11 990
+C8-11 1
+L1-2 1
+L2-1 1
+L3-0 1
+L4-2 1
+// 09.05.2007 08:33:33.978
+// 00:00.100
+END_TEST_CASE "Second Inner Class" 1178692413978
+// 09.05.2007 08:33:33.978
+START_TEST_CASE "try catch of CodeExample" 1178692413978
+START_SECTION "org.codecover.instrument.java15.test.test3.CodeExample"
+S21 1
+B1 1
+START_SECTION "org.codecover.instrument.java15.test.test3.SecondClassOfFile"
+// 09.05.2007 08:33:33.978
+// 00:00.000
+END_TEST_CASE "try catch of CodeExample" 1178692413978
+// ///////////////////////////////
+// 
+// End Session
+// 
+// 09.05.2007 08:33:33.988
+// 00:01.222
+// 
+// ///////////////////////////////
+

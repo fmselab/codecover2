@@ -1,0 +1,195 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 137226 // decision
+  xyz 32 54 2000
+activitynodecanvas 128040 activitynode_ref 128040 // initial
+  xyz 35 0 2000
+activityactioncanvas 128424 activityaction_ref 128168 // activity action Check whether the sessions can be merged
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 110 396 2000 160 90
+end
+activitynodecanvas 128778 activitynode_ref 137354 // decision
+  xyz 296 338 2000
+activityactioncanvas 129320 activityaction_ref 128296 // activity action Merge sessions
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 136 559 2000 109 57
+end
+activitynodecanvas 129448 activitynode_ref 128296 // decision
+  xyz 175 496 2000
+activityactioncanvas 129674 activityaction_ref 137226 // activity action User clicks the "Merge Sessions" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 170 40 2000 191 65
+end
+activityactioncanvas 129930 activityaction_ref 137354 // activity action Open "Merge Sessions" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 396 39 2000 151 69
+end
+activityactioncanvas 130186 activityaction_ref 137482 // activity action User selects sessions
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 402 121 2000 144 61
+end
+activityactioncanvas 130216 activityaction_ref 128424 // activity action Save the merged session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 270 557 2000 149 70
+end
+activityactioncanvas 130344 activityaction_ref 128552 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 333 397 2000 131 71
+end
+activitynodecanvas 131624 activitynode_ref 128552 // decision
+  xyz 334 639 2000
+activityactioncanvas 131880 activityaction_ref 128680 // activity action Display error message 
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 381 709 2005 119 69
+end
+activitynodecanvas 132264 activitynode_ref 128680 // activity_final
+  xyz 32 787 2000
+activitynodecanvas 132618 activitynode_ref 137482 // decision
+  xyz 250 290 2000
+activityactioncanvas 133770 activityaction_ref 137610 // activity action User enters name for the merged session
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 177 179 2005 174 71
+end
+activitynodecanvas 135050 activitynode_ref 137738 // decision
+  xyz 249 133 2000
+flowcanvas 128138 flow_ref 157066 // Project not opened
+  
+  from ref 128010 z 1999 label "Project not opened" xyz 4 107 1999 to ref 132264
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128394 flow_ref 157194 // <flow>
+  
+  from ref 128040 z 1999 to ref 128010
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129418 flow_ref 157706 // Two or more session selected
+  geometry HV
+  
+  from ref 128778 z 1999 label "Two or more session selected" xyz 123 339 1999 to point 187 354
+  line 129546 z 1999 to ref 128424
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129576 flow_ref 128552 // <flow>
+  
+  from ref 128424 z 1999 to ref 129448
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 157834 // Project opened
+  
+  from ref 128010 z 1999 label "Project opened" xyz 67 48 1999 to ref 129674
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130058 flow_ref 157962 // <flow>
+  
+  from ref 129674 z 1999 to ref 129930
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130088 flow_ref 128808 // Sessions can be merged
+  
+  from ref 129448 z 1999 label "Sessions can be merged" xyz 92 537 1999 to ref 129320
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130728 flow_ref 128936 // Sessions cannot be merged
+  geometry HV
+  
+  from ref 129448 z 1999 label "Sessions cannot be merged" xyz 227 494 1999 to point 396 512
+  line 130698 z 1999 to ref 130344
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131210 flow_ref 158346 // <flow>
+  geometry HV
+  
+  from ref 130344 z 1999 to point 471 430
+  line 136970 z 1999 to ref 130186
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131496 flow_ref 129320 // <flow>
+  
+  from ref 129320 z 1999 to ref 130216
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131752 flow_ref 129448 // <flow>
+  
+  from ref 130216 z 1999 to ref 131624
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132008 flow_ref 129576 // Errors whilst saving
+  geometry HV
+  
+  from ref 131624 z 1999 label "Errors whilst saving" xyz 385 637 1999 to point 438 655
+  line 130954 z 1999 to ref 131880
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132392 flow_ref 129704 // No errors whilst saving
+  geometry VHr
+  
+  from ref 131624 z 1999 label "No errors whilst saving" xyz 119 639 1999 to point 42 655
+  line 130826 z 1999 to ref 132264
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132520 flow_ref 129832 // <flow>
+  geometry VHr
+  
+  from ref 131880 z 1999 to point 42 741
+  line 131082 z 1999 to ref 132264
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132874 flow_ref 158602 // User clicks the "OK" button
+  geometry HV
+  
+  from ref 132618 z 1999 label "User clicks the \"OK\" button" xyz 260 284 1999 to point 306 306
+  line 133514 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 133002 flow_ref 158730 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 132618 z 1999 label "User clicks the \"Cancel\" button" xyz 70 283 1999 to point 42 306
+  line 133386 z 1999 to ref 132264
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 134922 flow_ref 159114 // <flow>
+  
+  from ref 129930 z 1999 to ref 130186
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135178 flow_ref 159242 // <flow>
+  
+  from ref 130186 z 1999 to ref 135050
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135434 flow_ref 159370 // <flow>
+  
+  from ref 135050 z 1999 to ref 133770
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135562 flow_ref 159498 // <flow>
+  
+  from ref 135050 z 1999 to point 124 148
+  line 136458 z 1999 to point 124 257
+  line 136842 z 1999 to point 260 257
+  line 137098 z 1999 to ref 132618
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 135818 flow_ref 159626 // <flow>
+  
+  from ref 133770 z 1999 to ref 132618
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 136202 flow_ref 159754 // Less than two sessions selected
+  geometry HV
+  
+  from ref 128778 z 1999 label "Less than two sessions selected" xyz 321 339 1999 to point 396 354
+  line 136330 z 1999 to ref 130344
+  show_infonote default drawing_language default write_horizontally default
+end
+end

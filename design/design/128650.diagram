@@ -1,0 +1,114 @@
+format 29
+
+activitynodecanvas 128010 activitynode_ref 131722 // initial
+  xyz 32 2 2000
+activitynodecanvas 128138 activitynode_ref 131850 // activity_final
+  xyz 28 614 2000
+activityactioncanvas 128266 activityaction_ref 131850 // activity action Call activity "select session"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 135 78 2000 169 77
+end
+activityactioncanvas 128394 activityaction_ref 131978 // activity action Call activity "select test cases"
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 251 212 2000 173 77
+end
+activitynodecanvas 128778 activitynode_ref 131978 // decision
+  xyz 456 460 2000
+activityactioncanvas 129290 activityaction_ref 132106 // activity action Highlight the code according to the measurement
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 384 534 2000 169 89
+end
+activityactioncanvas 129802 activityaction_ref 132234 // activity action User opens code file, whose measurement is to be displayed
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 365 350 2000 207 91
+end
+activitynodecanvas 130442 activitynode_ref 139530 // decision
+  xyz 28 44 2000
+activitynodecanvas 130954 activitynode_ref 139658 // decision
+  xyz 205 173 2000
+activitynodecanvas 131722 activitynode_ref 139786 // decision
+  xyz 324 307 2000
+flowcanvas 129034 flow_ref 137866 // code file changed since measurement
+  geometry VHr
+  
+  from ref 128778 z 1999 label "code file changed since measurement" xyz 103 452 1999 to point 38 476
+  line 132874 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129418 flow_ref 137994 // No changes in code file
+  
+  from ref 128778 z 1999 label "No changes in code file" xyz 387 501 1999 to ref 129290
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130058 flow_ref 138250 // <flow>
+  
+  from ref 129802 z 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 138378 // <flow>
+  geometry VHr
+  
+  from ref 129290 z 1999 to point 38 576
+  line 133002 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130570 flow_ref 165514 // <flow>
+  
+  from ref 128010 z 1999 to ref 130442
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130698 flow_ref 165642 // Project not opened
+  
+  from ref 130442 z 1999 label "Project not opened" xyz 1 116 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130826 flow_ref 165770 // Project opened
+  geometry HV
+  
+  from ref 130442 z 1999 label "Project opened" xyz 92 33 1999 to point 217 60
+  line 132234 z 1999 to ref 128266
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131082 flow_ref 165898 // <flow>
+  
+  from ref 128266 z 1999 to ref 130954
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131210 flow_ref 166026 // No session selected
+  geometry VHr
+  
+  from ref 130954 z 1999 label "No session selected" xyz 67 173 1999 to point 38 189
+  line 132362 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131338 flow_ref 166154 // Session selected
+  geometry HV
+  
+  from ref 130954 z 1999 label "Session selected" xyz 249 172 1999 to point 335 189
+  line 132618 z 1999 to ref 128394
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131850 flow_ref 166282 // <flow>
+  
+  from ref 128394 z 1999 to ref 131722
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131978 flow_ref 166410 // No test case selected
+  geometry VHr
+  
+  from ref 131722 z 1999 label "No test case selected" xyz 96 307 1999 to point 38 323
+  line 132490 z 1999 to ref 128138
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 132106 flow_ref 166538 // Test case selected
+  geometry HV
+  
+  from ref 131722 z 1999 label "Test case selected" xyz 368 307 1999 to point 466 323
+  line 132746 z 1999 to ref 129802
+  show_infonote default drawing_language default write_horizontally default
+end
+end

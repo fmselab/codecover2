@@ -1,0 +1,34 @@
+       IDENTIFICATION DIVISION.
+
+
+        PROGRAM-ID. PP.
+       AUTHOR. DPS/THALMANN.
+        DATE-WRITTEN. 08/01.
+
+        ENVIRONMENT DIVISION.
+
+        CONFIGURATION SECTION.
+
+       SPECIAL-NAMES.
+            DECIMAL-POINT IS COMMA.
+
+        INPUT-OUTPUT SECTION.
+
+        FILE-CONTROL.
+
+        FILE-CONTROL.
+
+            SELECT DISDAT            ASSIGN TO A-1.
+
+        DATA DIVISION.
+        
+        LINKAGE SECTION.
+        
+        WORKING-STORAGE SECTION.
+        
+        PROCEDURE DIVISION.
+        
+        DISPLAY "something"
+        
+        STOP RUN.
+        

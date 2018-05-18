@@ -1,0 +1,85 @@
+\svnid{$Id: Introduction.tex 1 2007-12-12 17:37:26Z t-scheller $}
+\section{Introduction} \label{Introduction}
+
+\subsection{Project overview} \label{in:Overview}
+\gbt is a glass box testing tool to measure the coverage of a running program.
+It will be as independent as possible of the programming language of the covered program.
+
+%TODO: Bla Bla bla...
+\subsection{About this document} \label{in:AboutThisDocument}
+
+This document contains the necessary information to create a detailed design
+obeying the requirements documented in the specification. It describes the
+behaviour of the software and the artifacts which are created by it. The
+architecture is also defined by this document, as well as the data structures
+used to store the data pertaining to the operation of the software. Details
+like the structure of classes and the design of methods have to be determined
+in the detailed design document.
+
+
+\subsection{Addressed audience} \label{in:Addressed audience}
+This document is addressed to
+\begin{itemize}
+  \item the customer who ordered the software
+  \item the project manager controlling the work
+  \item the quality assurance division creating test cases for the software
+  \item the developers implementing the design
+  \item future developers maintaining and extending the software
+  \item interested users of the software
+  \item students of upcoming student projects
+\end{itemize}
+
+\subsection{Authors}
+In the following table authors of this document are named.
+{\small
+\begin{longtable}{|p{35mm}|p{65mm}|l|} \hline
+   {\normalsize \textbf{Author}} &
+   {\normalsize \textbf{E-mail}} \\\hline \hline \endhead
+   Robert Hanussek & \email{hanussrt@studi.informatik.uni-stuttgart.de} \\\hline
+   Steffen Kieß & \email{kiesssn@studi.informatik.uni-stuttgart.de} \\\hline
+   Tilmann Scheller & \email{schellrt@studi.informatik.uni-stuttgart.de} \\\hline
+   Markus Wittlinger & \email{wittlims@studi.informatik.uni-stuttgart.de} \\\hline
+\end{longtable}
+}
+
+
+
+
+\subsection{Notation}
+
+\subsubsection{Identifiers}
+
+\cls{FooBar} denotes a class named \code{FooBar}.
+
+\clsab{FooBar} denotes an abstract class named \code{FooBar}.
+
+\obj{FooBar} denotes an instantiated object of class \cls{FooBar}.
+
+\itf{FooBar} denotes an interface class named \code{FooBar}.
+
+\imp{FooBar} denotes an object of a class which implementes the interface named \code{FooBar}.
+
+\mtd{fooBar(...)} denotes a method named \code{fooBar} which has parameters (which are not listed). Methods don't have a special color because they can be easily identified by the trailing brackets.
+
+\mtd{fooBar()} denotes a method named \code{fooBar} which doesn't have any parameters.
+
+\mtdst{fooBar(...)} denotes a static method (which has parameters).
+
+\fld{fooBar} denotes a field named \code{fooBar}.
+
+\pkg{foo.bar} denotes a package called \code{bar} which resides in a package called \code{foo}. Packages don't have a special color because they can be identified easily since they are the only items which contain a dot and are lower case.
+
+%% \subsubsection{Namespace}
+
+%% Every section can define a namespace. All relative paths in such a section are relative to this namespace except paths which point to standard Java classes which are listed below. If for example the namespace \pkg{\rootpkg.report} is defined then \pkg{html.}\cls{Report} points to class \cls{Report} which resides in the package \pkg{\rootpkg.report.html}. It is also possible to define namespaces which refer to classes, e.g. \pkg{\rootpkg.report.}\cls{Report}. This allows it to directly reference the methods in \cls{Report} (see~\ref{Classes:Report:Report} for an example).
+
+%% Namespaces are defined directly under the header of a section and are valid for the section the header belongs to. A Namespace definition looks like this:
+%% \namespace{\pkg{\rootpkg.report}}
+
+%% Following standard Java classes are used in this document without specifing their fully qualified package paths. These classes are also unaffected by namespace definitions:
+%% % we will just write String instead of java.lang.String
+%% \begin{itemize}
+%% \item \pkg{java.lang.}\cls{String}
+%% \item \pkg{java.io.}\cls{OutputStream}
+%% \item \pkg{java.util.}\itf{List}
+%% \end{itemize}

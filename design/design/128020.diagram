@@ -1,0 +1,37 @@
+format 29
+
+classcanvas 128020 class_ref 128404 // GenericUser
+  xyz 240 132 3005 label_xy 220 178
+classcanvas 128148 class_ref 128276 // EclipseUser
+  xyz 101 210 3005 label_xy 79 250
+classcanvas 128276 class_ref 128020 // ShellUser
+  xyz 76 95 3005 label_xy 62 135
+usecasecanvas 128660 usecase_ref 128532 // show coverage
+  xyzwh 260 260 3005 64 32 label_xy 238 292
+usecasecanvas 128916 usecase_ref 128020 // configure software
+  xyzwh 242 35 3005 64 32 label_xy 208 67
+usecasecanvas 129044 usecase_ref 128148 // measure coverage
+  xyzwh 397 63 3005 64 32 label_xy 380 100
+usecasecanvas 129172 usecase_ref 128276 // generate report
+  xyzwh 424 149 3005 64 32 label_xy 401 181
+usecasecanvas 129812 usecase_ref 128404 // administrate sessions
+  xyzwh 406 226 3005 64 32 label_xy 361 258
+relationcanvas 128404 relation_ref 128020 // <generalisation>
+  from ref 128276 z 3004 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128532 relation_ref 128148 // <generalisation>
+  from ref 128148 z 3004 to ref 128020
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+line 128788 ----
+  from ref 128148 z 3004 to ref 128660
+line 129300 ----
+  from ref 128020 z 3004 to ref 128916
+line 129428 ----
+  from ref 128020 z 3004 to ref 129044
+line 129556 ----
+  from ref 128020 z 3004 to ref 129172
+line 129940 ----
+  from ref 128020 z 3004 to ref 129812
+end

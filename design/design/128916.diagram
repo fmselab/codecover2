@@ -1,0 +1,150 @@
+format 29
+
+activitynodecanvas 128020 activitynode_ref 130068 // initial
+  xyz 34 3 2000
+activitynodecanvas 128148 activitynode_ref 130196 // decision
+  xyz 30 53 2000
+activitynodecanvas 128276 activitynode_ref 130324 // decision
+  xyz 200 53 2000
+activitynodecanvas 128404 activitynode_ref 130452 // activity_final
+  xyz 30 758 2000
+activityactioncanvas 128650 activityaction_ref 134538 // activity action User opens the "Session" view of the plugin
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 327 83 2000 175 75
+end
+activityactioncanvas 129044 activityaction_ref 130196 // activity action User selects session in the "Session" view
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 322 167 2000 183 64
+end
+activityactioncanvas 129546 activityaction_ref 134794 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 202 711 2000 121 55
+end
+activitynodecanvas 129674 activitynode_ref 134154 // decision
+  xyz 251 614 2000
+activityactioncanvas 129812 activityaction_ref 130452 // activity action User clicks the "Export" button
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 323 240 2000 186 62
+end
+activityactioncanvas 129940 activityaction_ref 130580 // activity action Show "Export" dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 322 314 2000 186 50
+end
+activityactioncanvas 130068 activityaction_ref 130708 // activity action User chooses destination folder
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 346 376 2000 143 68
+end
+activityactioncanvas 130196 activityaction_ref 130836 // activity action User selects session to export
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 329 456 2000 176 67
+end
+activitynodecanvas 130324 activitynode_ref 130580 // decision
+  xyz 403 535 2000
+activityactioncanvas 131348 activityaction_ref 130964 // activity action Copy file containing the session to the chosen destination folder
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 309 598 2000 211 73
+end
+flowcanvas 128394 flow_ref 144778 // <flow>
+  
+  from ref 129044 z 1999 to ref 129812
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128532 flow_ref 132884 // <flow>
+  
+  from ref 128020 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128660 flow_ref 133012 // Project opened
+  
+  from ref 128148 z 1999 label "Project opened" xyz 76 43 1999 to ref 128276
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128778 flow_ref 144906 // <flow>
+  
+  from ref 128650 z 1999 to ref 129044
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128788 flow_ref 133140 // Project not opened
+  
+  from ref 128148 z 1999 label "Project not opened" xyz 3 151 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128906 flow_ref 145034 // Project contains at least one session
+  
+  from ref 128276 z 1999 label "Project contains at least one session" xyz 249 45 1999 to point 411 68
+  line 129162 z 1999 to ref 128650
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128916 flow_ref 133268 // Project contains no session
+  geometry VHV
+  
+  from ref 128276 z 1999 label "Project contains no session" xyz 123 113 1999 to point 210 421
+  line 130954 z 1999 to point 40 421
+  line 131082 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129802 flow_ref 145546 // <flow>
+  
+  from ref 131348 z 1999 to ref 129674
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129930 flow_ref 145674 // No errors whilst copying
+  geometry VHr
+  
+  from ref 129674 z 1999 label "No errors whilst copying" xyz 68 607 1999 to point 40 630
+  line 130698 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130058 flow_ref 145802 // Errors whilst copying
+  
+  from ref 129674 z 1999 label "Errors whilst copying" xyz 268 677 1999 to ref 129546
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130186 flow_ref 145930 // <flow>
+  geometry VHr
+  
+  from ref 129546 z 1999 to point 40 736
+  line 130570 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130452 flow_ref 133524 // User clicks the "Cancel" button
+  geometry VHr
+  
+  from ref 130324 z 1999 label "User clicks the \"Cancel\" button" xyz 109 529 1999 to point 40 551
+  line 130826 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130836 flow_ref 133780 // <flow>
+  
+  from ref 129812 z 1999 to ref 129940
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130964 flow_ref 133908 // <flow>
+  
+  from ref 129940 z 1999 to ref 130068
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131092 flow_ref 134036 // <flow>
+  
+  from ref 130068 z 1999 to ref 130196
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131220 flow_ref 134164 // <flow>
+  
+  from ref 130196 z 1999 to ref 130324
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131476 flow_ref 134292 // User clicks the "Finished" button
+  
+  from ref 130324 z 1999 label "User clicks the \"Finished\" button" xyz 273 572 1999 to ref 131348
+  show_infonote default drawing_language default write_horizontally default
+end
+end

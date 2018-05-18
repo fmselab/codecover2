@@ -1,0 +1,162 @@
+\section{Formal Proof Of Conditional Coverage Instrumentation} \label{Formal Proof}
+\subsection{Java Language Specification}
+\par We have created source code examples in Java and have instrumented them \textit{by hand}. Especially the instrumentation for the conditional coverage is very tricky. Therefore we want to proof, that the semantic of the boolean terms is not effected and is equal to the instrumented boolean terms.
+\par First there are quotations of the \linkwithfootnote{http://java.sun.com/docs/books/jls/third_edition/html/j3TOC.html}{Java Language Specification---Third Edition}.
+
+\begin{quote}
+\textbf{§15.23}\\
+The \textbf{\&\&} operator is like \&, but evaluates its right-hand operand only if the value of its left-hand operand is true. [..] At run time, the left-hand operand expression is evaluated first; if the resulting value is false, the value of the conditional-and expression is false and the right-hand operand expression is not evaluated. If the value of the left-hand operand is true, then the right-hand expression is evaluated; the resulting value becomes the value of the conditional-and expression.
+\end{quote}
+
+\begin{quote}
+\textbf{§15.24}\\
+The \textbf{||} operator is like | , but evaluates its right-hand operand only if the value of its left-hand operand is false. [..] At run time, the left-hand operand expression is evaluated first; if the resulting value is true, the value of the conditional-or expression is true and the right-hand operand expression is not evaluated. If the value of the left-hand operand is false, then the right-hand expression is evaluated; the resulting value becomes the value of the conditional-or expression.
+\end{quote}
+
+\subsection{Predefinitions}
+Lets now discuss a number of functions that transform boolean terms. We use $\phi$ for the boolean environment, that assigns every boolean expression either true or false.
+
+\begin{equation}\label{eqn_f}\begin{split}
+f_{L}(T) := (S \:\&\&\: T), \phi(S) = true\\
+f_{R}(T) := (T \:\&\&\: U), \phi(U) = true\\
+\phi(f_{L}(T)) = \phi(f_{R}(T)) = \phi(T)
+\end{split}\end{equation}
+For $f_{L}(T)$: according to §15.23, first the value of $S$ is evaluated. Only if $\phi(S)$ is true, which is certain, then $T$ is evaluated. To sum this up, $\phi(f_{L}(T))$ is true if, and only if, $\phi(T)$ is true.\\
+For $f_{R}(T)$: according to §15.23, first the value of $T$ is evaluated. Only if $\phi(T)$ is true, then $U$ is evaluated (to true). Moreover $\phi(f_{R}(T))$ is true if, and only if, $\phi(T)$ is true.
+
+\begin{equation}\label{eqn_g}\begin{split}
+g(T) := f_{R} \circ f_{L}(T) = f_{R}(f_{L}(T)) = ((S \: \&\& \: T) \: \&\& \: U), \phi(S) = \phi(U) = true\\
+\phi(g(T)) \stackrel{\text{def. of $g$}}{=} \phi(f_{R}(f_{L}(T))) \stackrel{eq.~\eqref{eqn_f}}{=} \phi(f_{L}(T)) \stackrel{eq.~\eqref{eqn_f}}{=} \phi(T)
+\end{split}\end{equation}
+According to equation~\eqref{eqn_f}, which is used twice, $\phi(g(T))$ is true, if, and only if, $\phi(T)$ is true.
+
+\begin{equation}\label{eqn_h}\begin{split}
+h(T) := (T \: || \: V), \phi(V) = false\\
+\phi(h(T)) = \phi(T)
+\end{split}\end{equation}
+According to §15.22.4, the $||$ operation evaluates the left operant ($T$) first. If it is true, the whole $||$ expression is evaluated to true. Is the first operant ($T$) false, then the second operant ($V$) determines the result of the whole expression. So $\phi(h(T))$ is false if and only if $\phi(T)$ is false.
+
+\begin{equation}\label{eqn_i}\begin{split}
+i(T) := h \circ f_{R} \circ f_{L}(T) = h(f_{R}(f_{L}(T)))\\
+i(T) = ((S \: \&\& \: T) \: \&\& \: U) \: || \: V, \: \phi(S) = \phi(U) = true, \phi(V) = false\\
+\phi(i(T)) \stackrel{\text{def. of $i$}}{=} \phi(h(f_{R}(f_{L}(T)))) \stackrel{eq.~\eqref{eqn_h}}{=} \phi(f_{R}(f_{L}(T))) \stackrel{eq.~\eqref{eqn_f}}{=} \phi(f_{L}(T)) \stackrel{eq.~\eqref{eqn_f}}{=} \phi(T)
+\end{split}\end{equation}
+According to equations~\eqref{eqn_f} and \eqref{eqn_h} $\phi(i(T))$ is true, if, and only if, $\phi(T)$ is true.
+
+Using Java syntax, we can consider some terms:
+\begin{equation}\label{eqn_init}\begin{split}
+\text{INITIAL} := (((\text{intBitMask} \: = 0) == 0) \: || \: true)\\
+\phi(\text{INITIAL}) = true\\
+\text{USAGE} := ((\text{intBitMask} \: |= 1 == 0) \: || \: true)\\
+\phi(\text{USAGE}) = true\\
+\text{RESULT} := ((\text{intBitMask} \: |= 2 == 0) \: || \: true)\\
+\phi(\text{RESULT}) = true
+\end{split}\end{equation}
+The evaluation of the left operands is true for the first example and false for the second and third example. But as §15.22.2 says, for the right operands always evaluating to true, $\phi(\text{INITIAL})$, $\phi(\text{USAGE})$ and $\phi(\text{RESULT})$ are true too.
+
+Last but not least we need a description of a Java method:
+\begin{verbatim}
+    public boolean add(int intBitMask) {
+        [..]
+        return true;
+    }
+\end{verbatim}
+\begin{equation}\label{eqn_store}\begin{split}
+\text{STORE-T} := (\text{add(intBitMask)} \: || \: true)\\
+\phi(\text{STORE-T}) = true\\
+\text{STORE-F} := (\text{add(intBitMask)} \: \&\& \: false)\\
+\phi(\text{STORE-F}) = false
+\end{split}\end{equation}
+The evaluation of \code{add(intBitMask)} is true for both equations. The usage of the $|| \: true$ does not change this semantic. According to §15.22.4: if the first term is evaluated to true, the second term is not evaluated anymore and can not affect the evaluation. So  $\phi(\text{STORE-T})$ is known to be true.\\
+The usage of the $\&\& \: false$ in the second term sets the whole term to false. According to §15.22.3: if the first term is evaluated to true, which is the case, the second term is considered. If and only if this term is true too, which is not the case, the whole expression is evaluate to true. So  $\phi(\text{STORE-F})$ is known to be false.
+
+\subsection{Consideration Of The Instrumentation I}
+\gbt will instrument every condition of \texttt{if}, \texttt{while} and \texttt{for} statements. Every basic boolean term of these conditions is instrumented by using function $g$ (see equation~\eqref{eqn_g}). The terms $S$ and $U$ are replaced by $\text{USAGE}$ and $\text{RESULT}$. Two examples will illustrate the instrumentation.
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (position == 0)}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}\depDo{}\depEo{}(intBitMask1 |= 1 == 0) || true\depEc{} \&\&
+      (\uic{position == 0})\depDc{} \&\&
+       \depEo{}(intBitMask1 |= 2 == 0) || true\depEc{}\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if ((position == 0) ||}
+  \uic{list.isEmpty())}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}\depCo{}\depDo{}\depEo{}(intBitMask2 |= 1 == 0) || true\depEc{} \&\&
+       (\uic{position == 0})\depDc{} \&\&
+        \depEo{}(intBitMask2 |= 2 == 0) || true\depEc{}\depCc{} \uic{||}
+     \depCo{}\depDo{}\depEo{}(intBitMask2 |= 4 == 0) || true\depEc{} \&\&
+       (\uic{list.isEmpty()})\depDc{} \&\&
+        \depEo{}(intBitMask2 |= 8 == 0) || true\depEc{}\depCc{}\uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+As discussed after equation~\eqref{eqn_g}, the semantic of the basic boolean terms is not changed. In addition to that, the bit mask is used to get to know, whether an basic boolean term is evaluated or not. Moreover the result of the evaluation can be stored in the bit mask too.
+
+\subsection{Consideration Of The Instrumentation II}
+Unfortunately we need to add more instrumentation tags. This is needed because we have to store the full evaluation of the conditional terms within the \texttt{if}, \texttt{while} or \texttt{for} statements. Two examples illustrate these extensions.
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (position == 0)}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}(\depAo{}\depEo{}((intBitMask1 = 0) == 0) || true\depEc \&\&
+       \depBo{}\depDo{}\depEo{}(intBitMask1 |= 1 == 0) || true\depEc{} \&\&
+         (\uic{position == 0})\depDc{} \&\&
+        \depEo{}(intBitMask1 |= 2 == 0) || true\depEc{}\depBc{}\depAc{} \&\&
+      \depEo{}counter1.add(intBitMask1) || true\depEc{}) ||
+     \depEo{}counter1.add(intBitMask1)) \&\& false\depEc{} \uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+\begin{minipage}[t]{0.35\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if ((position == 0) ||}
+  \uic{list.isEmpty())}
+\end{Verbatim}
+\end{minipage}
+\begin{minipage}[t]{0.65\textwidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+\uic{if (}(\depAo{}\depEo{}((intBitMask1 = 0) == 0) || true\depEc \&\&
+       \depBo{}\depCo{}\depDo{}\depEo{}(intBitMask2 |= 1 == 0) || true\depEc{} \&\&
+         (\uic{position == 0})\depDc{} \&\&
+        \depEo{}(intBitMask2 |= 2 == 0) || true\depEc{}\depCc{} \uic{||}
+       \depCo{}\depDo{}\depEo{}(intBitMask2 |= 4 == 0) || true\depEc{} \&\&
+         (\uic{list.isEmpty()})\depDc{} \&\&
+        \depEo{}(intBitMask2 |= 8 == 0) || true\depEc{}\depCc{}\depBc{}\depAc{} \&\&
+      \depEo{}counter1.add(intBitMask1) || true\depEc{}) ||
+     \depEo{}counter1.add(intBitMask1)) \&\& false\depEc{} \uic{)}
+\end{Verbatim}
+\end{minipage}
+\newline
+\newline
+
+The whole boolean expression will be instrumented using function $i$ (see equation~\eqref{eqn_i}). The terms $S$, $U$ and $V$ are replaced by $\text{INITIAL}$, $\text{STORE-T}$ and $\text{STORE-F}$. So the semantic is not changed. \\
+But what is this instrumentation doing? The $\text{INITIAL}$ is needed to reset the bit mask to zero before starting to measure the evaluations of the basic boolean terms. The $\text{STORE-?}$ method calls are needed to store the bit mask for every time, the whole expression has been evaluated. And only one of the $\text{STORE-?}$ methods is evaluated. \\
+Is the whole \depAo{}expression\depAc{} true, than the $\text{STORE-T}$ is evaluated, as a result of the $\&\&$ operator. This evaluation does not change the semantic and the expression is true again. For this reason the $\text{STORE-F}$ is not evaluated, because of the short circuit semantic of the $||$ operator.\\
+Is the whole \depAo{}expression\depAc{} false, than the $\text{STORE-T}$ is not evaluated, because of the short circuit semantic of the $\&\&$ operator. But in this case the $\text{STORE-F}$ is evaluated. For being false, the $\text{STORE-F}$ causes the whole expression to be evaluated to false.\\
+So in each case of the evaluation of \depAo{}expression\depAc{}, only one $\text{STORE-?}$ method is called.
+
+\vfill{}
+by Christoph Müller

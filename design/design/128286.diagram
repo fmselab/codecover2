@@ -1,0 +1,106 @@
+format 29
+
+componentcanvas 128030 component_ref 128158 // Eclipse-Plugin
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 309 44 2000 207 71
+componentcanvas 128158 component_ref 128286 // Batch
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 311 359 2000 207 71
+componentcanvas 128286 component_ref 128414 // Model
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 313 600 2000 207 71
+arrowjunctioncanvas 128414 class_ref 128286 // Model
+  xyz 732 131 2000 label_xy 745 112
+componentcanvas 128542 component_ref 128542 // Report
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 2 50 2005 207 71
+arrowjunctioncanvas 129054 class_ref 128286 // Model
+  xyz 732 326 2000 label_xy 745 341
+componentcanvas 129182 component_ref 128926 // Java Instrumentation
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 636 42 2000 207 71
+arrowjunctioncanvas 130462 class_ref 128286 // Model
+  xyz 93 142 2000 label_xy 106 121
+componentcanvas 130590 component_ref 129054 // Cobol Instrumentation
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 637 360 2005 207 71
+arrowjunctioncanvas 130718 class_ref 128286 // Model
+  xyz 401 4 2000 label_xy 414 23
+arrowjunctioncanvas 130974 class_ref 128286 // Model
+  xyz 405 449 2000 label_xy 418 430
+arrowjunctioncanvas 131102 class_ref 128158 // Instrumentation
+  xyz 602 387 2000 label_xy 530 405
+componentcanvas 131230 component_ref 129182 // Metrics
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  xyzwh 0 365 2010 207 71
+arrowjunctioncanvas 131358 class_ref 128414 // Metrics
+  xyz 220 387 2000 label_xy 212 403
+arrowjunctioncanvas 131486 class_ref 128542 // Report
+  xyz 219 71 2000 label_xy 213 53
+note 131614 "contains sessions including the AST"
+  xyzwh 572 603 2000 160 64
+note 131742 "calculates the coverage measurement results, e.g. percentage of statement coverage or the data needed for code highlighting"
+  xyzwh -2 472 2000 214 129
+arrowjunctioncanvas 131870 class_ref 128158 // Instrumentation
+  xyz 599 69 2000 label_xy 527 50
+note 131998 "connected to everything; these connections are omitted here for clearness"
+  xyzwh 476 465 2000 206 80
+arrowjunctioncanvas 132126 class_ref 128286 // Model
+  xyz 96 326 2000 label_xy 108 344
+note 132254 "used for saving the AST"
+  xyzwh 688 191 2000 110 83
+arrowjunctioncanvas 132382 class_ref 128286 // Model
+  xyz 406 493 2000 label_xy 364 500
+line 129950 ---(
+  from ref 128158 z 1999 to point 226 223
+  line 130078 z 1999 to ref 131486
+line 130334 ---O
+  from ref 130590 z 1999 to ref 131102
+line 130846 ---(
+  from ref 128030 z 1999 to ref 130718
+line 133022 ---(
+  from ref 128158 z 1999 to point 606 210
+  line 130206 z 1999 to ref 131870
+line 133150 ---(
+  from ref 129182 z 1999 to ref 128414
+line 133278 ---(
+  from ref 130590 z 1999 to ref 129054
+line 133406 ---(
+  from ref 128542 z 1999 to ref 130462
+line 133534 ---(
+  from ref 128158 z 1999 to ref 130974
+line 133662 ---(
+  from ref 128158 z 1999 to ref 131102
+line 133790 ---O
+  from ref 131230 z 1999 to ref 131358
+line 133918 ---(
+  from ref 128030 z 1999 to point 227 265
+  line 134046 z 1999 to ref 131358
+line 134174 ---(
+  from ref 128158 z 1999 to ref 131358
+line 134302 ---O
+  from ref 128542 z 1999 to ref 131486
+line 134430 ---(
+  from ref 128030 z 1999 to ref 131486
+line 134558 ---O
+  from ref 129182 z 1999 to ref 131870
+line 134686 ---(
+  from ref 128030 z 1999 to ref 131870
+line 134814 ---(
+  from ref 131230 z 1999 to ref 132126
+line 134942 ---O
+  from ref 128286 z 1999 to ref 132382
+line 135198 ---(
+  from ref 128030 z 1999 to point 609 264
+  line 135326 z 1999 to ref 131102
+line 128670 -_-_
+  from ref 132254 z 1999 to ref 128414
+line 129310 -_-_
+  from ref 132254 z 1999 to ref 129054
+line 135838 -_-_
+  from ref 128286 z 1999 to ref 131614
+line 135966 -_-_
+  from ref 131998 z 1999 to ref 132382
+line 136222 -_-_
+  from ref 131742 z 1999 to ref 131230
+end

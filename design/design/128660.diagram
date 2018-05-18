@@ -1,0 +1,139 @@
+format 29
+
+activitynodecanvas 128020 activitynode_ref 128788 // initial
+  xyz 35 5 2000
+activitynodecanvas 128148 activitynode_ref 128916 // activity_final
+  xyz 32 514 2000
+activitynodecanvas 128276 activitynode_ref 129044 // decision
+  xyz 32 54 2000
+activitynodecanvas 128404 activitynode_ref 129172 // decision
+  xyz 183 90 2000
+activityactioncanvas 128778 activityaction_ref 135050 // activity action Display error message
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 240 665 2000 119 55
+end
+activitynodecanvas 129034 activitynode_ref 134922 // decision
+  xyz 287 594 2000
+activityactioncanvas 129428 activityaction_ref 128660 // activity action User selects "Instrument Project..." in "Project" menu
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 232 123 2000 241 73
+end
+activityactioncanvas 129684 activityaction_ref 128788 // activity action Show instrumentation dialog
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 233 226 2000 238 56
+end
+activityactioncanvas 129812 activityaction_ref 128916 // activity action User chooses destination folder
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 239 312 2000 225 58
+end
+activitynodecanvas 130196 activitynode_ref 129300 // decision
+  xyz 338 390 2000
+activityactioncanvas 131220 activityaction_ref 129044 // activity action Show progress bar
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 344 446 2000 186 47
+end
+activityactioncanvas 131604 activityaction_ref 129172 // activity action Perform instrumentation
+  show_infonote default drawing_language default
+  show_opaque_action_definition default
+  xyzwh 337 520 2000 199 60
+end
+flowcanvas 128532 flow_ref 129812 // <flow>
+  
+  from ref 128020 z 1999 to ref 128276
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128660 flow_ref 129940 // Project opened
+  geometry HV
+  
+  from ref 128276 z 1999 label "Project opened" xyz 72 50 1999 to point 193 70
+  line 130570 z 1999 to ref 128404
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128788 flow_ref 130068 // Project not opened
+  
+  from ref 128276 z 1999 label "Project not opened" xyz 5 110 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128906 flow_ref 147978 // <flow>
+  geometry VHr
+  
+  from ref 128778 z 1999 to point 42 690
+  line 130314 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 128916 flow_ref 130196 // Project contains no instrumentable item
+  geometry VHV
+  
+  from ref 128404 z 1999 label "Project contains no instrumentable item" xyz 89 201 1999 to point 193 318
+  line 130826 z 1999 to point 42 318
+  line 130954 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129162 flow_ref 148106 // <flow>
+  geometry HVr
+  
+  from ref 131604 z 1999 to point 434 610
+  line 131082 z 1999 to ref 129034
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129290 flow_ref 148234 // No errors whilst instrumenting
+  geometry HVH
+  
+  from ref 129034 z 1999 label "No errors whilst instrumenting" xyz 117 585 1999 to point 169 610
+  line 131466 z 1999 to point 169 524
+  line 131594 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129546 flow_ref 148362 // Errors whilst instrumenting
+  
+  from ref 129034 z 1999 label "Errors whilst instrumenting" xyz 304 648 1999 to ref 128778
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129556 flow_ref 130324 // Project contains at least one instrumentable item
+  geometry HV
+  
+  from ref 128404 z 1999 label "Project contains at least one instrumentable item" xyz 214 91 1999 to point 350 106
+  line 129674 z 1999 to ref 129428
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 129940 flow_ref 130452 // <flow>
+  
+  from ref 129428 z 1999 to ref 129684
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130068 flow_ref 130580 // <flow>
+  
+  from ref 129684 z 1999 to ref 129812
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130324 flow_ref 130708 // <flow>
+  
+  from ref 129812 z 1999 to ref 130196
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 130452 flow_ref 130836 // User clicks the "Cancel" button
+  geometry HVH
+  
+  from ref 130196 z 1999 label "User clicks the \"Cancel\" button" xyz 149 388 1999 to point 195 406
+  line 131210 z 1999 to point 195 524
+  line 131338 z 1999 to ref 128148
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131348 flow_ref 130964 // User clicks the "Instrument" button
+  geometry HV
+  
+  from ref 130196 z 1999 label "User clicks the \"Instrument\" button" xyz 373 390 1999 to point 434 406
+  line 130442 z 1999 to ref 131220
+  show_infonote default drawing_language default write_horizontally default
+end
+flowcanvas 131732 flow_ref 131092 // <flow>
+  
+  from ref 131220 z 1999 to ref 131604
+  show_infonote default drawing_language default write_horizontally default
+end
+end

@@ -1,0 +1,19 @@
+<!-- $Id: build-manual.xml 1 2007-12-12 17:37:26Z t-scheller $ -->
+<project default="jar">
+  <property name="component-name" value="instrumentation" />
+  <property name="jarfile" value="${component-name}.jar" />
+  <property name="classpath" value="../model/model.jar" />
+  <property name="junit-classpath" value="" />
+  <property name="unittest-class-name" value="org.codecover.instrumentation.AllTests" />
+
+  <import file="build-common.xml" />
+
+  <target name="jar" depends="compiletest,compile">
+    <jar destfile="${jarfile}">
+      <fileset dir="bin"
+	           excludes="**/*Test.class **/*Test$*.class **/*Tests.class **/*Tests$*.class **/UtilsForTesting*.class">
+        <include name="**/*.class" />
+      </fileset>
+	</jar>
+  </target>
+</project>

@@ -1,0 +1,349 @@
+options {
+  UNICODE_INPUT = true;
+  ERROR_REPORTING = true;
+  USER_CHAR_STREAM = true;
+  STATIC = false;
+  JDK_VERSION = "1.5";
+  FORCE_LA_CHECK = true;
+}
+
+PARSER_BEGIN(XampilParser)
+package org.codecover.instrumentation.xampil.parser;
+
+public class XampilParser
+{
+    private InstrumentableItemCounter counter = new InstrumentableItemCounter();
+
+    static interface IntegerContainer {
+        public void set(int value);
+        public int get();
+    }
+
+    static class RealIntegerContainer implements IntegerContainer {
+        int value = 0;
+
+        public void set(int value) {
+            this.value = value;
+        }
+
+        public int get() {
+            return this.value;
+        }
+    }
+
+    static class DummyIntegerContainer implements IntegerContainer {
+        public void set(int value) {}
+
+        public int get() {
+            return 0;
+        }
+    }
+
+    static final DummyIntegerContainer DUMMY_CONTAINER = new DummyIntegerContainer();
+}
+
+PARSER_END(XampilParser)
+
+/*
+ * TOKENS
+ */
+SPECIAL_TOKEN :
+{
+    < SPACE_CHAR: " " | "\t" | "\f" >
+}
+
+SPECIAL_TOKEN :
+{
+    < SINGLE_LINE_COMMENT: "//" (~["\n", "\r"])* ("\n" | "\r" | "\n\r")? >
+}
+
+TOKEN :
+{
+    < EOL: ("\n" | "\r" | "\n\r") ("\n" | "\r" | "\n\r" | " " | "\t" | "\f")* >
+}
+
+TOKEN :
+{
+    < DECLARATION: "DECLARATION" >
+  | < PROGRAM: "PROGRAM" >
+  | < ENDPROGRAM: "ENDPROGRAM" >
+
+  | < BOOLEAN: "BOOLEAN" >
+  | < INTEGER: "INTEGER" >
+  | < STRING: "STRING" >
+
+  | < IF: "IF" >
+  | < THEN: "THEN" >
+  | < ELSE: "ELSE" >
+  | < ENDIF: "ENDIF" >
+  | < WHILE: "WHILE" >
+  | < DO: "DO" >
+  | < ENDWHILE: "ENDWHILE" >
+  | < SWITCH: "SWITCH" >
+  | < CASE: "CASE" >
+  | < CASE_DEFAULT: "DEFAULT" >
+  | < ENDCASE: "ENDCASE" >
+  | < ENDSWITCH: "ENDSWITCH" >
+  | < FILE: "FILE" >
+  | < OVERWRITE: "OVERWRITE" >
+  | < APPEND: "APPEND" >
+
+  | < AND: "AND" >
+  | < OR: "OR" >
+  | < NOT: "NOT" >
+  | < TRUE: "TRUE" >
+  | < FALSE: "FALSE" >
+}
+
+TOKEN :
+{
+    < LPAREN: "(" >
+  | < RPAREN: ")" >
+  | < COLON: ":" >
+
+  | < ASSIGN: ":=" >
+
+  | < EQ: "=" >
+  | < NEQ: "<>" >
+  | < LT: "<" >
+  | < GT: ">" >
+  | < LE: "<=" >
+  | < GE: ">=" >
+
+  | < PLUS: "+" >
+  | < MINUS: "-" >
+  | < STAR: "*" >
+  | < SLASH: "/" >
+}
+
+TOKEN :
+{
+    < IDENTIFIER: ( ["a"-"z"] | ["A"-"Z"] ) 
+                  ( ["a"-"z"] | ["A"-"Z"] | ["0"-"9"] | "_" )* >
+}
+
+TOKEN :
+{
+    < INTEGER_LITERAL: ( ( <MINUS> )? ["1"-"9"] (["0"-"9"])* ) | "0" >
+
+  | < STRING_LITERAL:
+      "\""
+      (   ( ~["\"","\\","\n","\r"] )
+        | ( "\\" ["n", "t", "b", "r", "f", "\\", "'", "\""] )
+      )*
+      "\""
+    >
+}
+
+/* 
+ * SYNTAX
+ */
+void CompilationUnit(InstrumentableItemCounter counter):
+{
+    this.counter = counter;
+}
+{
+    Declaration()
+    Program()
+    ( <EOL> )?
+    <EOF>
+    {
+        // finished this parsing -> create a new counter
+        // to avoid incrementing of the old counter
+        // at the next parsing
+        this.counter = new InstrumentableItemCounter();
+    }
+}
+
+void Declaration():
+{}
+{
+    <DECLARATION> <EOL>
+    ( SimpleDeclaration() )*
+}
+
+void SimpleDeclaration():
+{}
+{
+    (   
+        <BOOLEAN>
+      | <INTEGER>
+      | <STRING>
+    ) <IDENTIFIER>
+
+    (
+      <ASSIGN> (   <INTEGER_LITERAL>
+                 | <STRING_LITERAL>
+                 | <TRUE>
+                 | <FALSE> )
+    ) ?
+    <EOL>
+}
+
+void Program():
+{}
+{
+    <PROGRAM> <EOL>
+    ( Statement() )*
+    <ENDPROGRAM>
+}
+
+void Statement():
+{
+    // found a statement
+    this.counter.incrementStatementCount();
+}
+{
+    AssignmentStatement()
+  | IfStatement()
+  | WhileStatement()
+  | SwitchStatement()
+  | FileStatement()
+}
+
+void AssignmentStatement():
+{}
+{
+    <IDENTIFIER> <ASSIGN> Expression(DUMMY_CONTAINER) <EOL>
+}
+
+void IfStatement():
+{
+    RealIntegerContainer basicBooleanCounter = new RealIntegerContainer(); 
+}
+{
+    <IF> Expression(basicBooleanCounter)
+    { this.counter.incrementConditionCount(basicBooleanCounter.get()); }
+    <THEN> <EOL>
+    {
+        // found a branch
+        this.counter.incrementBranchCount();
+    }
+        ( Statement() )*
+    (
+        <ELSE> <EOL>
+            {
+                // found another branch
+                this.counter.incrementBranchCount();
+            }
+            ( Statement() )*
+    )?
+    <ENDIF> <EOL>
+}
+
+void WhileStatement():
+{
+    this.counter.incrementLoopCount();
+    RealIntegerContainer basicBooleanCounter = new RealIntegerContainer(); 
+}
+{
+    <WHILE> Expression(basicBooleanCounter)
+    { this.counter.incrementConditionCount(basicBooleanCounter.get()); }
+    <DO> <EOL>
+        ( Statement() )*
+    <ENDWHILE> <EOL>
+}
+
+void SwitchStatement():
+{}
+{
+    <SWITCH> <IDENTIFIER> <EOL>
+    (
+        <CASE> Expression(DUMMY_CONTAINER) <COLON> ( <EOL> )?
+            {
+                // found a branch
+                this.counter.incrementBranchCount();
+            }
+            ( Statement() )*
+        <ENDCASE> <EOL>
+    )+
+    (
+        <CASE_DEFAULT> <COLON> ( <EOL> )?
+            {
+                // found a branch
+                this.counter.incrementBranchCount();
+            }
+            ( Statement() )*
+        <ENDCASE> <EOL>
+    )?
+    <ENDSWITCH> <EOL>
+}
+
+void FileStatement():
+{}
+{
+    <FILE> ( <OVERWRITE> | <APPEND> ) (<STRING_LITERAL> | <IDENTIFIER>) Expression(DUMMY_CONTAINER) <EOL>
+}
+
+void Expression(IntegerContainer basicBooleanCounter):
+{}
+{
+   OrExpression(basicBooleanCounter)
+}
+
+void OrExpression(IntegerContainer basicBooleanCounter):
+{}
+{
+    AndExpression(basicBooleanCounter)
+    ( <OR> AndExpression(basicBooleanCounter) )*
+}
+
+void AndExpression(IntegerContainer basicBooleanCounter):
+{}
+{
+    NotExpression(basicBooleanCounter)
+    ( <AND> NotExpression(basicBooleanCounter) )*
+}
+
+void NotExpression(IntegerContainer basicBooleanCounter):
+{}
+{
+    ( <NOT> )? EqualityExpression(basicBooleanCounter)
+}
+
+void EqualityExpression(IntegerContainer basicBooleanCounter):
+{
+    int basicBooleanCountBefore = basicBooleanCounter.get();
+}
+{
+    RelationalExpression(basicBooleanCounter)
+    ( ( <EQ> | <NEQ> ) RelationalExpression(basicBooleanCounter) { basicBooleanCounter.set(basicBooleanCountBefore + 1); } ) ?
+}
+
+void RelationalExpression(IntegerContainer basicBooleanCounter):
+{
+    int basicBooleanCountBefore = basicBooleanCounter.get();
+}
+{
+    AdditiveExpression(basicBooleanCounter)
+    ( ( <LT> | <GT> | <LE> | <GE> ) AdditiveExpression(basicBooleanCounter) { basicBooleanCounter.set(basicBooleanCountBefore + 1); } )?
+}
+
+void AdditiveExpression(IntegerContainer basicBooleanCounter):
+{
+    int basicBooleanCountBefore = basicBooleanCounter.get();
+}
+{
+    MultiplicativeExpression(basicBooleanCounter)
+    ( ( <PLUS> | <MINUS> ) MultiplicativeExpression(basicBooleanCounter) { basicBooleanCounter.set(basicBooleanCountBefore + 1); } )*
+}
+
+void MultiplicativeExpression(IntegerContainer basicBooleanCounter):
+{
+    int basicBooleanCountBefore = basicBooleanCounter.get();
+}
+{
+   BasicExpression(basicBooleanCounter)
+   ( ( <STAR> | <SLASH> ) BasicExpression(basicBooleanCounter) { basicBooleanCounter.set(basicBooleanCountBefore + 1); } )*
+}
+
+void BasicExpression(IntegerContainer basicBooleanCounter):
+{}
+{
+    <IDENTIFIER> { basicBooleanCounter.set(basicBooleanCounter.get() + 1); }
+  | <INTEGER_LITERAL>
+  | <STRING_LITERAL>
+  | <TRUE>
+  | <FALSE>
+  | <LPAREN> Expression(basicBooleanCounter) <RPAREN>
+}

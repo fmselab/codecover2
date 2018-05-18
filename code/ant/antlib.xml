@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: build.xml 2117 2007-10-23 14:30:32Z kiesssn $ -->
+<antlib>
+  <!-- Tasks -->
+  <taskdef name="codecover" classname="org.codecover.ant.CodecoverTask" />
+
+  <!-- Types -->
+  <typedef name="criteria" classname="org.codecover.ant.CriteriaList" />
+  <typedef name="directives" classname="org.codecover.ant.DirectiveList" />
+  <typedef name="directive" classname="org.codecover.ant.Directive" />
+</antlib>
