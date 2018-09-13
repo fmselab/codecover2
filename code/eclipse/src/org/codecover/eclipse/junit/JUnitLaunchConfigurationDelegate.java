@@ -29,10 +29,13 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.internal.junit.launcher.ITestKind;
 import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
+
+import cern.colt.Arrays;
 
 /**
  * @author Christoph Müller, Igor Podolskiy
@@ -59,11 +62,24 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 
 	@Override
 	public String verifyMainTypeName(ILaunchConfiguration configuration) throws CoreException {
+		System.out.println("***************VVVVVVVVVV");		
 		return "org.codecover.juniteclipse.runner.EclipseTestRunner"; //$NON-NLS-1$
 	}
-
+	
+	@Override
+	public String[][] getClasspathAndModulepath(ILaunchConfiguration configuration) throws CoreException {
+		System.out.println("**getClasspathAndModulepath");	
+		String[][] cpmp= super.getClasspathAndModulepath(configuration);
+		System.out.println("classpath original " + Arrays.toString(cpmp[0]));	
+		System.out.println("modulepath" + Arrays.toString(cpmp[1]));	
+		//
+		cpmp[0] = getClasspath(configuration);
+		System.out.println("classpath modified" + Arrays.toString(cpmp[0]));	
+		return cpmp;
+}
 	@Override
 	public String[] getClasspath(ILaunchConfiguration configuration) throws CoreException {
+		System.out.println("***************KKKKKKKKK");
 		String[] applicationAndJUnitClasspath = super.getClasspath(configuration);
 
 		// we extend the classpath of the tests and junit by the classpath
