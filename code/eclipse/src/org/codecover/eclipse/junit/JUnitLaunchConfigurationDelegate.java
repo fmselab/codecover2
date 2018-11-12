@@ -364,7 +364,7 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 		IStatus status = new Status(IStatus.ERROR, CodeCoverPlugin.PLUGIN_ID, message, cause);
 		throw new CoreException(status);
 	}
-
+	// TO CHECK SE RSSTITUSCIE FILE:// ....
 	// ANGELO DA INTERNET
 	private static List<String> getClassPath(Bundle bundle) throws IOException, BundleException {
 		List<String> result = new ArrayList<String>();
