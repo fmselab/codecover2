@@ -74,7 +74,7 @@ public class CodeCoverPropertyPage extends PropertyPage {
      * 
      * @see org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.swt.widgets.Composite)
      */
-    @Override
+    @Override    
     protected Control createContents(Composite parent) {
         Composite mainComposite = new Composite(parent, SWT.NONE);
         mainComposite.setLayout(new GridLayout());

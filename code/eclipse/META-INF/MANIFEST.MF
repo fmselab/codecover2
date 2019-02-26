@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CodeCover Plug-in
 Bundle-SymbolicName: org.codecover.eclipse;singleton:=true
-Bundle-Version: 1.0.2.0
+Bundle-Version: 2.0.1
 Bundle-Activator: org.codecover.eclipse.CodeCoverPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,

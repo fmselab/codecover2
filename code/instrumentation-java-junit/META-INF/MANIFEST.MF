@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.codecover.instrumentation.java.junit
 Bundle-SymbolicName: org.codecover.instrumentation.java.junit
-Bundle-Version: 1.0.1.2
+Bundle-Version: 2.0.1
 Bundle-ClassPath: bin,
  lib/junit3.8.1.jar,
  lib/junit-4.5.jar,
