@@ -1,5 +1,9 @@
 # codecover2
-Updated version of codecover.org
 
-versione su cui lavoriamo a Jun 18.
+This is the updated version of the original codecover that can still be found at <http://codecover.org/>
+
+The codecover2:
+* works with the latest version of eclipe
+
+
 
