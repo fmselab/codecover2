@@ -4,6 +4,8 @@ This is the updated version of the original codecover that can still be found at
 
 The codecover2:
 * works with the latest version of eclipe
+* requires the workspace compiled with Java 1.8
+* requires Subclipse (it can be found in the Eclipse Marketplace)
 
 ## update site
 
