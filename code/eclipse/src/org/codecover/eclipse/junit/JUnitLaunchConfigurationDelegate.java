@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.codecover.eclipse.CodeCoverPlugin;
 import org.codecover.eclipse.Messages;
+import org.codecover.model.utils.Logger;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -35,6 +36,7 @@ import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.internal.core.ClasspathEntry;
 import org.eclipse.jdt.internal.junit.JUnitCorePlugin;
 import org.eclipse.jdt.internal.junit.launcher.ITestKind;
 import org.eclipse.jdt.internal.junit.launcher.JUnitLaunchConfigurationConstants;
@@ -43,11 +45,14 @@ import org.eclipse.jdt.internal.junit.launcher.TestKindRegistry;
 //import org.eclipse.jdt.junit.launcher.JUnitLaunchConfigurationDelegate.ClasspathLocalizer;
 import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.JavaRuntime;
+import org.eclipse.osgi.internal.framework.EquinoxBundle;
+import org.eclipse.osgi.internal.loader.EquinoxClassLoader;
 import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
+import org.osgi.framework.wiring.BundleWiring;
 
 import cern.colt.Arrays;
 
@@ -66,6 +71,9 @@ import  org.osgi.framework.*;
  */
 public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.launcher.JUnitLaunchConfigurationDelegate {
 
+	// Logger
+	private final Logger logger = CodeCoverPlugin.getDefault().getLogger();
+	
 	@Override
 	protected void preLaunchCheck(ILaunchConfiguration configuration, ILaunch launch, IProgressMonitor monitor)
 			throws CoreException {
@@ -105,12 +113,14 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 					if (!modulepathSet.contains(location)) {
 						modulepathEntries.add(location);
 						modulepathSet.add(location);
+						this.logger.info("Add " + location + " to MODULE_PATH");
 					}
-				} else if (entry.getClasspathProperty() != IRuntimeClasspathEntry.MODULE_PATH
-						&& entry.getClasspathProperty() != IRuntimeClasspathEntry.PATCH_MODULE) {
+				} else if (entry.getClasspathProperty() == IRuntimeClasspathEntry.USER_CLASSES
+											|| entry.getClasspathProperty() == IRuntimeClasspathEntry.CLASS_PATH) {
 					if (!classpathSet.contains(location)) {
 						classpathEntries.add(location);
 						classpathSet.add(location);
+						this.logger.info("Add " + location + " to CLASS_PATH/USER_CLASSES");
 					}
 				} 
 			}
@@ -166,15 +176,16 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 			//Modifiche Paolo ***********************************************************************************************
 			classPathOfPlugin = _classPathOfPlugin.toArray(new String[0]);
 			for(int i = 0; i< classPathOfPlugin.length; i++) {
-				classPathOfPlugin[i] = classPathOfPlugin[i].substring(8); //rimuove "file:///" all'inizio di ogni stringa
+				if (classPathOfPlugin[i].substring(0, 1).compareTo("/")==0) 
+					classPathOfPlugin[i] = classPathOfPlugin[i].substring(1); //rimuove "file:///" all'inizio di ogni stringa
+				classPathOfPlugin[i] = classPathOfPlugin[i].replace("file://", "");
 			}
 			//fine modifiche paolo ***********************************************************************************************
 			
-//			System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-//			for (String string : _classPathOfPlugin) {
-//				System.out.println(string);
-//			}
-//			System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+			for (String s: classPathOfPlugin) {
+				s = s.replace("/", "\\");
+				this.logger.info("Add " + s + " to PLUGIN CLASS_PATH");
+			}
 			
 	
 		} catch (BundleException e) {
@@ -364,11 +375,14 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 		IStatus status = new Status(IStatus.ERROR, CodeCoverPlugin.PLUGIN_ID, message, cause);
 		throw new CoreException(status);
 	}
+	
+	
 	// TO CHECK SE RSSTITUSCIE FILE:// ....
 	// ANGELO DA INTERNET
 	private static List<String> getClassPath(Bundle bundle) throws IOException, BundleException {
 		List<String> result = new ArrayList<String>();
 		String requires = bundle.getHeaders().get(Constants.BUNDLE_CLASSPATH);
+		
 		if (requires == null)
 			requires = ".";
 		ManifestElement[] elements = ManifestElement.parseHeader(Constants.BUNDLE_CLASSPATH, requires);
@@ -376,6 +390,7 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 			for (int i = 0; i < elements.length; ++i) {
 				ManifestElement element = elements[i];
 				String value = element.getValue();
+				
 				if (".".equals(value))
 					value = "/";
 				URL url = bundle.getEntry(value);
@@ -386,11 +401,51 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 					// URL requires trailing / if a directory
 					if (f.isDirectory() && !filestring.endsWith("/"))
 						filestring += "/";
-					result.add("file://" + filestring);
+					result.add(/*"file://" +*/ filestring);
 					// System.out.println(" added "+"file://"+filestring);
 				}
 			}
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("!\\", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java.junit_2.0.1.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java.measurement_2.0.1.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java_2.0.1.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation_2.0.1.jar").replace("!", " "));
+			
+			/*result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.eclipse_2.0.1.jar");
+			result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.instrumentation.java.measurement_2.0.1.jar");
+			result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.instrumentation.java_2.0.1.jar");
+			result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.instrumentation_2.0.1.jar");*/
 		}
 		return result;
+	}
+	
+	public static String getPluginDir(String pluginId)
+	{
+		/* get bundle with the specified id */
+		Bundle bundle = Platform.getBundle(pluginId);
+		if( bundle == null )
+			throw new RuntimeException("Could not resolve plugin: " + pluginId + "\r\n" +
+					"Probably the plugin has not been correctly installed.\r\n" +
+					"Running eclipse from shell with -clean option may rectify installation.");
+		
+		/* resolve Bundle::getEntry to local URL */
+		URL pluginURL = null;
+		try {
+			pluginURL = Platform.resolve(bundle.getEntry("/"));
+		} catch (IOException e) {
+			throw new RuntimeException("Could not get installation directory of the plugin: " + pluginId);
+		}
+		String pluginInstallDir = pluginURL.getPath().trim();
+		if( pluginInstallDir.length() == 0 )
+			throw new RuntimeException("Could not get installation directory of the plugin: " + pluginId);
+		
+		/* since path returned by URL::getPath starts with a forward slash, that
+		 * is not suitable to run commandlines on Windows-OS, but for Unix-based
+		 * OSes it is needed. So strip one character for windows. There seems
+		 * to be no other clean way of doing this. */
+		if( Platform.getOS().compareTo(Platform.OS_WIN32) == 0 )
+			pluginInstallDir = pluginInstallDir.substring(1);
+		
+		return pluginInstallDir;
 	}
 }
