@@ -9,8 +9,8 @@ The codecover2:
 
 ## People involved
 
-Andrea Bombarda - research assistant at the University of Bergamo
-[Angelo Gargantini](https://cs.unibg.it/gargantini/) - associate professor at the University of Bergamo
+- Andrea Bombarda - research assistant at the University of Bergamo
+- [Angelo Gargantini](https://cs.unibg.it/gargantini/) - associate professor at the University of Bergamo
 
 ## update site
 
