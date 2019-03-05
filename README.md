@@ -3,7 +3,7 @@
 This is the updated version of the original codecover that can still be found at <http://codecover.org/>
 
 The codecover2:
-* works with the latest version of eclipe (feb 19 is 4.10.0 but we will keep updated)
+* works with the latest version of eclipe (feb 19 is 4.10.0 but we will keep it updated)
 * requires the workspace compiled with Java 1.8
 * requires Subclipse (it can be found in the Eclipse Marketplace)
 
