@@ -12,6 +12,7 @@ Require-Bundle: org.codecover.metrics,
  org.codecover.model,
  org.codecover.report
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.report.html
 
 
 

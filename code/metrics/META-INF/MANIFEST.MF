@@ -9,3 +9,4 @@ Export-Package: org.codecover.metrics,
 Require-Bundle: org.codecover.model
 Bundle-ClassPath: bin
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.metrics

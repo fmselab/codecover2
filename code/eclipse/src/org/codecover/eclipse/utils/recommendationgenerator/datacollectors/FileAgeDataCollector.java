@@ -21,18 +21,18 @@ public class FileAgeDataCollector extends DataCollector {
 		// < 6 Wochen: 5
 		
 		for (IResource resource : getRelevantFiles()) {
-			Date firstRevisionDate = SVNInfoCache.getFirstRevisionDate(resource);
-			if (firstRevisionDate == null) {
-				continue;
-			}
-			Date today = new Date();
-			int ageInWeeks = ((int)(today.getTime()-firstRevisionDate.getTime())) / (1000*60*60*24*7);
-			double score = 0.0d;
-			score = 11.0 - ageInWeeks;
-			if (score > 0) {
-				this.getErrorIndicator().addProbabilityInformation(resource, score);
-			}
-			
+//			Date firstRevisionDate = SVNInfoCache.getFirstRevisionDate(resource);
+//			if (firstRevisionDate == null) {
+//				continue;
+//			}
+//			Date today = new Date();
+//			int ageInWeeks = ((int)(today.getTime()-firstRevisionDate.getTime())) / (1000*60*60*24*7);
+//			double score = 0.0d;
+//			score = 11.0 - ageInWeeks;
+//			if (score > 0) {
+//				this.getErrorIndicator().addProbabilityInformation(resource, score);
+//			}
+//			
 		}
 	}
 

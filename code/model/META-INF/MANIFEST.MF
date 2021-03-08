@@ -15,3 +15,4 @@ Export-Package: org.codecover,
 Eclipse-BuddyPolicy: dependent
 Bundle-ClassPath: bin, lib/svnkit.jar
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.model

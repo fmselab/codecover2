@@ -28,13 +28,7 @@ Require-Bundle: org.eclipse.ui,
  org.codecover.report.html,
  org.codecover.report.csv,
  org.eclipse.ui.console,
- org.eclipse.search,
- org.tigris.subversion.clientadapter;bundle-version="1.6.12",
- org.tigris.subversion.clientadapter.javahl;bundle-version="1.6.15",
- org.tigris.subversion.clientadapter.svnkit;bundle-version="1.6.15",
- org.tigris.subversion.subclipse.core;bundle-version="1.6.17",
- org.tigris.subversion.subclipse.ui;bundle-version="1.6.17",
- org.eclipse.team.core;bundle-version="3.5.101"
+ org.eclipse.search
 Eclipse-LazyStart: true
 Bundle-ClassPath: lib/collections-generic-4.01.jar,
  lib/colt-1.2.0.jar,
@@ -64,4 +58,5 @@ Bundle-ClassPath: lib/collections-generic-4.01.jar,
  lib/jdepend-2.9.jar,
  lib/jFormatString.jar,
  lib/jsr305.jar
+Automatic-Module-Name: org.codecover.eclipse
 

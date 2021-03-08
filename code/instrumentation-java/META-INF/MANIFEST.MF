@@ -16,3 +16,4 @@ Require-Bundle: org.codecover.instrumentation,
  org.codecover.instrumentation.java.measurement,
  org.codecover.model
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.instrumentation.java

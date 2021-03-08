@@ -89,13 +89,13 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 
 	@Override
 	public String verifyMainTypeName(ILaunchConfiguration configuration) throws CoreException {
-		System.out.println("***************VVVVVVVVVV");		
+		//System.out.println("***************VVVVVVVVVV");		
 		return "org.codecover.juniteclipse.runner.EclipseTestRunner"; //$NON-NLS-1$
 	}
 	
 	@Override
 	public String[][] getClasspathAndModulepath(ILaunchConfiguration configuration) throws CoreException {
-		System.out.println("**getClasspathAndModulepath");
+		//System.out.println("**getClasspathAndModulepath");
 		
 		
 		//Da abstractJavaLaunchConfigurationDelegate***********************************************************************************************

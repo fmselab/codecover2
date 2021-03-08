@@ -17,7 +17,7 @@ import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CCPrio
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CodeBlockTypeDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CodeFileLineDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FileAgeDataCollector;
-import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FindBugsDataCollector;
+//import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FindBugsDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.LengthOfPredicateDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.PassingTestCaseCountDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.UncBranchLineCountDataCollector;
@@ -208,11 +208,11 @@ public class RecommendationGenerator {
 		errorIndicator.addParameter(new Parameter("Grenze", "Max. Zeilenanzahl", new Integer(3), new Integer(1000), true, false));
 		this.codeErrorDataSource.addErrorIndicator(errorIndicator);
 
-		errorIndicator = new ErrorIndicator(
-				"FindBugs", "Ergebnis der statischen Analyse von FindBugs", new FindBugsDataCollector(), true); //$NON-NLS-1$ //$NON-NLS-2$
-		errorIndicator.addParameter(new Parameter("LineErrorRatingFactor", 
-				"Faktor, mit dem konkrete Fehlerfunde von FindBugs in einer Zeile bewertet werden sollen", 
-				new Double(3.0), new Double(10), true, false));
+//		errorIndicator = new ErrorIndicator(
+//				"FindBugs", "Ergebnis der statischen Analyse von FindBugs", new FindBugsDataCollector(), true); //$NON-NLS-1$ //$NON-NLS-2$
+//		errorIndicator.addParameter(new Parameter("LineErrorRatingFactor", 
+//				"Faktor, mit dem konkrete Fehlerfunde von FindBugs in einer Zeile bewertet werden sollen", 
+//				new Double(3.0), new Double(10), true, false));
 		this.codeErrorDataSource.addErrorIndicator(errorIndicator);
 	}
 

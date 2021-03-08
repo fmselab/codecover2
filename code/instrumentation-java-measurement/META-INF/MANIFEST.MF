@@ -9,3 +9,4 @@ Export-Package: org.codecover.instrumentation.java.measurement,
 Require-Bundle: org.codecover.instrumentation,
  org.codecover.model
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.instrumentation.java.measurement

@@ -22,3 +22,4 @@ Require-Bundle: org.codecover.model,
  org.codecover.instrumentation,
  org.eclipse.jdt.junit.runtime
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.instrumentation.java.junit
