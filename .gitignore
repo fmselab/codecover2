@@ -24,3 +24,10 @@ hs_err_pid*
 
 
 bin/
+# maven projects
+target/classes/
+code/eclipse/target/classes/org/codecover/eclipse/messages.properties
+code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/errorIndicator.xsd
+code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/ExampleErrorIndicator.xml
+code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/NewFile.xml
+code/model/target/classes/org/codecover/model/resources/testSessionContainerSchema.xsd
