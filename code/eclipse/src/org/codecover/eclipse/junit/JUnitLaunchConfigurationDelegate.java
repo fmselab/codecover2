@@ -412,21 +412,21 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 			int beginIndex = getPluginDir(CodeCoverPlugin.PLUGIN_ID).startsWith("file") ? 5 : 0;
 			String pluginPath = getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(beginIndex);
 			result.add(pluginPath.replace("!\\", " "));
+			String pluginName = CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar";
 			result.add(pluginPath
-					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
+					.replace(pluginName,
 							"org.codecover.instrumentation.java.junit_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
 			result.add(pluginPath
-					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
+					.replace(pluginName,
 							"org.codecover.instrumentation.java.measurement_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
 			result.add(pluginPath
-					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
+					.replace(pluginName,
 							"org.codecover.instrumentation.java_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
 			result.add(pluginPath
-					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
-							"org.codecover.instrumentation_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
+					.replace(pluginName, "org.codecover.instrumentation_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
 		}
 		return result;
