@@ -409,10 +409,10 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 				}
 			}
 			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("!\\", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java.junit_2.0.1.jar").replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java.measurement_2.0.1.jar").replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation.java_2.0.1.jar").replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.1.jar","org.codecover.instrumentation_2.0.1.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.2.jar","org.codecover.instrumentation.java.junit_2.0.2.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.2.jar","org.codecover.instrumentation.java.measurement_2.0.3.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.2.jar","org.codecover.instrumentation.java_2.0.2.jar").replace("!", " "));
+			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("org.codecover.eclipse_2.0.2.jar","org.codecover.instrumentation_2.0.2.jar").replace("!", " "));
 			
 			/*result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.eclipse_2.0.1.jar");
 			result.add("C:\\Users\\Andrea_PC\\Downloads\\eclipse-java-photon-R-win32-x86_64\\eclipse\\plugins\\org.codecover.instrumentation.java.measurement_2.0.1.jar");
