@@ -409,20 +409,25 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 				}
 			}
 			
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace("!\\", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5)
+			int beginIndex = getPluginDir(CodeCoverPlugin.PLUGIN_ID).startsWith("file") ? 5 : 0;
+			String pluginPath = getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(beginIndex);
+			result.add(pluginPath.replace("!\\", " "));
+			result.add(pluginPath
 					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
 							"org.codecover.instrumentation.java.junit_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5)
+			result.add(pluginPath
 					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
 							"org.codecover.instrumentation.java.measurement_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5)
+			result.add(pluginPath
 					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
 							"org.codecover.instrumentation.java_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
 					.replace("!", " "));
-			result.add(getPluginDir(CodeCoverPlugin.PLUGIN_ID).substring(5).replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar","org.codecover.instrumentation_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar").replace("!", " "));
+			result.add(pluginPath
+					.replace(CodeCoverPlugin.PLUGIN_ID + "_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar",
+							"org.codecover.instrumentation_" + CodeCoverPlugin.PLUGIN_VERSION + ".jar")
+					.replace("!", " "));
 		}
 		return result;
 	}
