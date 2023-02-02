@@ -194,6 +194,11 @@ public class CodeCoverPlugin extends AbstractUIPlugin {
      * The ID of the plugin.
      */
     public static final String PLUGIN_ID = "org.codecover.eclipse";//$NON-NLS-1$
+    
+    /**
+     * The version of the plugin.
+     */
+    public static final String PLUGIN_VERSION = "2.0.2";//$NON-NLS-1$
 
     /**
      * The name of the folder which contains the test session containers of a
