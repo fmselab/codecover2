@@ -176,7 +176,7 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 			//Modifiche Paolo ***********************************************************************************************
 			classPathOfPlugin = _classPathOfPlugin.toArray(new String[0]);
 			for(int i = 0; i< classPathOfPlugin.length; i++) {
-				if (classPathOfPlugin[i].substring(0, 1).compareTo("/")==0) 
+				if (classPathOfPlugin[i].substring(0, 1).compareTo("/")==0 && Platform.getOS().contains("WIN")) 
 					classPathOfPlugin[i] = classPathOfPlugin[i].substring(1); //rimuove "file:///" all'inizio di ogni stringa
 				classPathOfPlugin[i] = classPathOfPlugin[i].replace("file://", "");
 			}
@@ -200,6 +200,9 @@ public class JUnitLaunchConfigurationDelegate extends org.eclipse.jdt.junit.laun
 		System.arraycopy(classPathOfPlugin, 0, adaptedClassPath, applicationAndJUnitClasspath.length,
 				classPathOfPlugin.length);
 		cpmp[0] =  adaptedClassPath;
+		
+		for (String s : adaptedClassPath)
+			System.out.println(s);
 		
 		
 //		String[] test = getClasspath(configuration);
