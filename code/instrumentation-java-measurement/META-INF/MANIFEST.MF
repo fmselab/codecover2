@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.codecover.instrumentation.java.measurement
 Bundle-SymbolicName: org.codecover.instrumentation.java.measurement
-Bundle-Version: 2.0.1
+Bundle-Version: 2.0.2
 Bundle-ClassPath: bin, src
 Export-Package: org.codecover.instrumentation.java.measurement,
  org.codecover.instrumentation.java.measurement.jmx
