@@ -825,7 +825,7 @@ public class CoverageView extends CodeCoverView
             @Override
             public String getLabelText(CoverageResult result) {
                 if (result.getTotalItems() == 0) {
-                    return "–"; //$NON-NLS-1$
+                    return ""; //$NON-NLS-1$
                 }
                 float coverage = evaluateCoverageResult(result);
                 return PERCENTAGE_FORMAT.format(coverage);
