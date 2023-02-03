@@ -21,7 +21,6 @@ import junit.framework.Assert;
 
 import org.codecover.instrumentation.java.measurement.Protocol;
 import org.codecover.instrumentation.java.measurement.TestMethod;
-import org.codecover.junit3.JUnitResultListenerTestCase;
 
 /**
  * @author Christoph Müller
