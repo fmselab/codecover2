@@ -27,6 +27,21 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>model</groupId>
+			<artifactId>model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation-java</groupId>
+			<artifactId>instrumentation-java</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation</groupId>
+			<artifactId>instrumentation</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>instrumentation-java-measurement</groupId>
 			<artifactId>instrumentation-java-measurement</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -46,9 +61,9 @@
 			<systemPath>${project.basedir}/lib/junit-4.5.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.junit.runtime</artifactId>
+			<version>3.7.0</version>
 		</dependency>
 	</dependencies>
 </project>
