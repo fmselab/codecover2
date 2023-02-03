@@ -31,3 +31,5 @@ code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/
 code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/ExampleErrorIndicator.xml
 code/eclipse/target/classes/org/codecover/eclipse/utils/recommendationgenerator/NewFile.xml
 code/model/target/classes/org/codecover/model/resources/testSessionContainerSchema.xsd
+
+code/eclipse-update-site/temp/
