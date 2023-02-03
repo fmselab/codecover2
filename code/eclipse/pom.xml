@@ -21,10 +21,24 @@
 				<version>3.8.1</version>
 				<configuration>
 					<release>11</release>
+					<target>11</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	<packaging>pom</packaging>
+	<modules>
+		<module>eclipse-feature</module>
+		<module>instrumentation</module>
+		<module>instrumentation-java</module>
+		<module>instrumentation-java-junit</module>
+		<module>instrumentation-java-measurement</module>
+		<module>metrics</module>
+		<module>model</module>
+		<module>report</module>
+		<module>report-csv</module>
+		<module>report-html</module>
+	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>

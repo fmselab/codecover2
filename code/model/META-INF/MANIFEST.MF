@@ -13,5 +13,5 @@ Export-Package: org.codecover,
  org.codecover.model.utils.file;uses:="org.codecover.model.utils.file.listener,junit.framework",
  org.codecover.model.utils.file.listener
 Eclipse-BuddyPolicy: dependent
-Bundle-ClassPath: bin, lib/svnkit.jar
+Bundle-ClassPath: bin
 Bundle-Vendor: CodeCover.org
