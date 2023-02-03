@@ -1,3 +1,4 @@
 instrumentation-java-measurement.jar
 java-protocol-dummy.jar
 servlet-live-notification.jar
+/target/

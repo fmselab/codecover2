@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>eclipse-feature</groupId>
+  <artifactId>eclipse-feature</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+	<modules>
+		<module>../instrumentation</module>
+		<module>../instrumentation-java</module>
+		<module>../instrumentation-java-junit</module>
+		<module>../instrumentation-java-measurement</module>
+		<module>../metrics</module>
+		<module>../model</module>
+		<module>../report</module>
+		<module>../report-csv</module>
+		<module>../report-html</module>
+		<module>../eclipse</module>
+	</modules>
+</project>

@@ -26,19 +26,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>pom</packaging>
-	<modules>
-		<module>eclipse-feature</module>
-		<module>instrumentation</module>
-		<module>instrumentation-java</module>
-		<module>instrumentation-java-junit</module>
-		<module>instrumentation-java-measurement</module>
-		<module>metrics</module>
-		<module>model</module>
-		<module>report</module>
-		<module>report-csv</module>
-		<module>report-html</module>
-	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
@@ -54,6 +41,71 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-algorithms</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-io</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-graph-impl</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation</groupId>
+			<artifactId>instrumentation</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>model</groupId>
+			<artifactId>model</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation-java</groupId>
+			<artifactId>instrumentation-java</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation-java-junit</groupId>
+			<artifactId>instrumentation-java-junit</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>instrumentation-java-measurement</groupId>
+			<artifactId>instrumentation-java-measurement</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>metrics</groupId>
+			<artifactId>metrics</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>report</groupId>
+			<artifactId>report</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>report-html</groupId>
+			<artifactId>report-html</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>report-csv</groupId>
+			<artifactId>report-csv</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

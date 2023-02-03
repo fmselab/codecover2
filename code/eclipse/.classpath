@@ -9,18 +9,12 @@
 	<classpathentry excluding="**/.svn/**" kind="src" path="junit"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="lib/collections-generic-4.01.jar"/>
-	<classpathentry kind="lib" path="lib/jung-algorithms-2.0-alpha3.jar"/>
-	<classpathentry kind="lib" path="lib/jung-api-2.0-alpha3.jar"/>
-	<classpathentry kind="lib" path="lib/jung-graph-impl-2.0-alpha3.jar"/>
-	<classpathentry kind="lib" path="lib/jung-io-2.0-alpha3.jar"/>
 	<classpathentry kind="lib" path="lib/jung-swt-rendering-2.0-alpha3.jar"/>
-	<classpathentry kind="lib" path="lib/jung-swt-samples-2.0-alpha3.jar"/>
 	<classpathentry kind="lib" path="lib/jung-swt-visualization-2.0-alpha3.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/model"/>
 	<classpathentry kind="con" path="com.soyatec.uml.CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
-			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
