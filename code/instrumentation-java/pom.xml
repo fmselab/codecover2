@@ -31,5 +31,10 @@
 			<artifactId>instrumentation</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>instrumentation-java-measurement</groupId>
+			<artifactId>instrumentation-java-measurement</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
