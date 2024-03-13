@@ -16,10 +16,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+//import org.w3c.dom.Document;
+//import org.w3c.dom.Element;
+//import org.w3c.dom.Node;
+//import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public final class ErrorIndicator {
@@ -176,56 +176,57 @@ public final class ErrorIndicator {
 		if (this.xmlErrorDataInformation == null || !this.xmlErrorDataInformation.canRead()) {
 			return;
 		}
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(this.xmlErrorDataInformation);
-		doc.getDocumentElement().normalize();
-
-		NodeList errorIndicators = doc.getElementsByTagName("errorIndicator");
-		for (int eICnt = 0; eICnt < errorIndicators.getLength(); eICnt++) {
-			Element errorIndicator = (Element) errorIndicators.item(eICnt);
-			if (errorIndicator.getNodeType() == Node.ELEMENT_NODE) {
-
-				NodeList fileInfos = errorIndicator.getElementsByTagName("file");
-				for (int fiCnt = 0; fiCnt < fileInfos.getLength(); fiCnt++) {
-					Element fileInfo = (Element) fileInfos.item(fiCnt);
-					String path = fileInfo.getAttribute("path");
-					String clazz = fileInfo.getAttribute("class");
-					String value = fileInfo.getAttribute("value");
-					IResource file = null;
-					if (clazz != null && clazz.length() > 0) {
-						file = ToResourceConverter.getResourceFromClass(clazz);
-					} else {
-						file = ToResourceConverter.getResourceFromPath(path);
-					}
-					addProbabilityInformation(file, Integer.parseInt(value));
-				}
-
-				NodeList lineInfos = errorIndicator.getElementsByTagName("line");
-				for (int liCnt = 0; liCnt < lineInfos.getLength(); liCnt++) {
-					Element lineInfo = (Element) lineInfos.item(liCnt);
-					String path = lineInfo.getAttribute("path");
-					String clazz = lineInfo.getAttribute("class");
-					String severity = lineInfo.getAttribute("severity");
-					String lineFrom = lineInfo.getAttribute("lineFrom");
-					String lineTo = lineInfo.getAttribute("lineTo");
-					for (int a = Integer.valueOf(lineFrom); a < Integer.valueOf(lineTo); a++) {
-						IResource file = null;
-						if (clazz != null && clazz.length() > 0) {
-							file = ToResourceConverter.getResourceFromClass(clazz);
-						} else {
-							file = ToResourceConverter.getResourceFromPath(path);
-						}
-						if ("warning".equals(severity)) {
-							addProbabilityInformation(file, a, 10.0);
-						} else if ("error".equals(severity)) {
-							addProbabilityInformation(file, a, 20.0);
-						}
-					}
-				}
-			}
-
-		}
+		// ANGELO 2024 non serve ????
+//		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+//		DocumentBuilder db = dbf.newDocumentBuilder();
+//		Document doc = db.parse(this.xmlErrorDataInformation);
+//		doc.getDocumentElement().normalize();
+//
+//		NodeList errorIndicators = doc.getElementsByTagName("errorIndicator");
+//		for (int eICnt = 0; eICnt < errorIndicators.getLength(); eICnt++) {
+//			Element errorIndicator = (Element) errorIndicators.item(eICnt);
+//			if (errorIndicator.getNodeType() == Node.ELEMENT_NODE) {
+//
+//				NodeList fileInfos = errorIndicator.getElementsByTagName("file");
+//				for (int fiCnt = 0; fiCnt < fileInfos.getLength(); fiCnt++) {
+//					Element fileInfo = (Element) fileInfos.item(fiCnt);
+//					String path = fileInfo.getAttribute("path");
+//					String clazz = fileInfo.getAttribute("class");
+//					String value = fileInfo.getAttribute("value");
+//					IResource file = null;
+//					if (clazz != null && clazz.length() > 0) {
+//						file = ToResourceConverter.getResourceFromClass(clazz);
+//					} else {
+//						file = ToResourceConverter.getResourceFromPath(path);
+//					}
+//					addProbabilityInformation(file, Integer.parseInt(value));
+//				}
+//
+//				NodeList lineInfos = errorIndicator.getElementsByTagName("line");
+//				for (int liCnt = 0; liCnt < lineInfos.getLength(); liCnt++) {
+//					Element lineInfo = (Element) lineInfos.item(liCnt);
+//					String path = lineInfo.getAttribute("path");
+//					String clazz = lineInfo.getAttribute("class");
+//					String severity = lineInfo.getAttribute("severity");
+//					String lineFrom = lineInfo.getAttribute("lineFrom");
+//					String lineTo = lineInfo.getAttribute("lineTo");
+//					for (int a = Integer.valueOf(lineFrom); a < Integer.valueOf(lineTo); a++) {
+//						IResource file = null;
+//						if (clazz != null && clazz.length() > 0) {
+//							file = ToResourceConverter.getResourceFromClass(clazz);
+//						} else {
+//							file = ToResourceConverter.getResourceFromPath(path);
+//						}
+//						if ("warning".equals(severity)) {
+//							addProbabilityInformation(file, a, 10.0);
+//						} else if ("error".equals(severity)) {
+//							addProbabilityInformation(file, a, 20.0);
+//						}
+//					}
+//				}
+//			}
+//
+//		}
 	}
 
 	public void invoke() {

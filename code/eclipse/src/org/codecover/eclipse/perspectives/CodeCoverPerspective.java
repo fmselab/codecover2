@@ -64,7 +64,10 @@ public class CodeCoverPerspective implements IPerspectiveFactory {
                 IPageLayout.ID_EDITOR_AREA);
         left.addView("org.eclipse.jdt.junit.ResultView");          //$NON-NLS-1$
         left.addView(JavaUI.ID_PACKAGES);
-        left.addPlaceholder(IPageLayout.ID_RES_NAV);
+        //ID_RES_NAV
+        //The view id for the workbench's Resource Navigator standard component.
+        // no loger in use AG 2024
+        //left.addPlaceholder(IPageLayout.ID_RES_NAV);
 
         IFolderLayout bottom = this.layout.createFolder(
                 "bottomRight",                                     //$NON-NLS-1$
@@ -132,7 +135,9 @@ public class CodeCoverPerspective implements IPerspectiveFactory {
         // standard workbench
         this.layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
         this.layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
-        this.layout.addShowViewShortcut(IPageLayout.ID_RES_NAV);
+        // no longe rin USE 
+        // ANGELO 2024
+        //this.layout.addShowViewShortcut(IPageLayout.ID_RES_NAV);
         this.layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
         this.layout.addShowViewShortcut(IProgressConstants.PROGRESS_VIEW_ID);
         this.layout.addShowViewShortcut(
