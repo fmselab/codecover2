@@ -14,3 +14,4 @@ Export-Package: org.codecover.instrumentation.c,
 Require-Bundle: org.codecover.instrumentation,
  org.codecover.model
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.instrumentation.c

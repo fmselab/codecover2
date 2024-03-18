@@ -12,6 +12,7 @@ Export-Package: org.codecover.report,
 Require-Bundle: org.codecover.metrics,
  org.codecover.model
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.report
 
 
 

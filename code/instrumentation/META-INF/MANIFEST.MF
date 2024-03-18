@@ -11,3 +11,4 @@ Export-Package: org.codecover.instrumentation,
  org.codecover.instrumentation.measurement.parser
 Require-Bundle: org.codecover.model
 Bundle-Vendor: CodeCover.org
+Automatic-Module-Name: org.codecover.instrumentation
