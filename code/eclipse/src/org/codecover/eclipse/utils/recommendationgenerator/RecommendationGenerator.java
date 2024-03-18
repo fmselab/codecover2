@@ -16,7 +16,7 @@ import org.codecover.eclipse.utils.EclipseMASTLinkage.MAST;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CCPriorityDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CodeBlockTypeDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.CodeFileLineDataCollector;
-import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FileAgeDataCollector;
+//import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FileAgeDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.FindBugsDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.LengthOfPredicateDataCollector;
 import org.codecover.eclipse.utils.recommendationgenerator.datacollectors.PassingTestCaseCountDataCollector;
@@ -178,11 +178,11 @@ public class RecommendationGenerator {
 				"Fehlerindikatoren, die sich aus der Versionsgeschichte der Dateien ableiten lassen");
 		errorDataSources.add(this.versionErrorDataSource);
 
-		errorIndicator = new ErrorIndicator("Alter der Datei",
-				"Wie lange ist die Datei schon im System? Je älter, desto weniger fehleranfällig dürfte sie sein.", new FileAgeDataCollector());
-		errorIndicator.addParameter(new Parameter("Pfad der Quelldatei",
-				"Pfad zur Datei, die die Informationen zum Dateialter enthält", new File("."), false, true));
-		this.versionErrorDataSource.addErrorIndicator(errorIndicator);
+//		errorIndicator = new ErrorIndicator("Alter der Datei",
+//				"Wie lange ist die Datei schon im System? Je älter, desto weniger fehleranfällig dürfte sie sein.", new FileAgeDataCollector());
+//		errorIndicator.addParameter(new Parameter("Pfad der Quelldatei",
+//				"Pfad zur Datei, die die Informationen zum Dateialter enthält", new File("."), false, true));
+//		this.versionErrorDataSource.addErrorIndicator(errorIndicator);
 
 		errorIndicator = new ErrorIndicator("Änderungen seit letztem Release",
 				"Wurden viele Änderungen seit dem letzten Release gemacht, spricht dies für Fehler in der Datei.");

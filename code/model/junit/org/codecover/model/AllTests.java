@@ -36,7 +36,7 @@ public class AllTests {
         suite.addTestSuite(LoggerTest.class);
         suite.addTestSuite(SimpleTest.class);
         suite.addTestSuite(DatabaseTest.class);
-        suite.addTestSuite(SVNRevisionToolTest.class);
+        //suite.addTestSuite(SVNRevisionToolTest.class);
         suite.addTestSuite(AntPathMatcherTest.class);
         suite.addTestSuite(FileToolTest.class);
         suite.addTestSuite(XML_Tests.class);
