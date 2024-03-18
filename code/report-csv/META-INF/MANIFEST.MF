@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.codecover.report.csv
 Bundle-SymbolicName: org.codecover.report.csv
-Bundle-Version: 2.0.1
+Bundle-Version: 2.0.2
 Bundle-ClassPath: bin,
  lib/commons-collections-2.1.1.jar,
  lib/log4j-1.2.13.jar,

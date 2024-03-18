@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/codecover_2.0.1.jar" id="codecover" version="2.0.1">
+   <feature url="features/codecover_2.0.2.jar" id="codecover" version="2.0.2">
       <category name="CodeCover"/>
    </feature>
    <category-def name="CodeCover" label="CodeCover">
